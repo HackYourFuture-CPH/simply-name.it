@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1766.6667px" preserveAspectRatio="none" style="width:1160px;height:1766px;background:#00000000;" version="1.1" viewBox="0 0 1160 1766" width="1160.4167px" zoomAndPan="magnify"><defs><linearGradient id="gedpw8us2bi330" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#2FA4E7"/><stop offset="100%" stop-color="#2683B9"/></linearGradient></defs><g><!--MD5=[9d1b795d975ab05f601abc37ebe56014]
+cluster Aggregate--><rect height="1506.25" rx="4.1667" ry="4.1667" style="stroke:#033C73;stroke-width:1.5625;fill:none;" width="441.6667" x="395.3125" y="254.1667"/><path d="M491.1458,254.1667 L491.1458,271.8424 L480.7292,282.2591 L395.3125,282.2591 " fill="none" style="stroke:#033C73;stroke-width:1.5625;"/><text fill="#033C73" font-family="Verdana" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="75" x="403.6458" y="272.0194">Aggregate</text><!--MD5=[8dce5be27b88f5328a055380ca382252]
+class Ranking--><rect codeLine="6" height="75.8057" id="Ranking" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="217.7083" x="451.0417" y="1479.1667"/><rect fill="url(#gedpw8us2bi330)" height="35.3841" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="217.7083" x="451.0417" y="1479.1667"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="217.7083" x="451.0417" y="1510.3841"/><rect codeLine="6" fill="none" height="75.8057" id="Ranking" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="217.7083" x="451.0417" y="1479.1667"/><ellipse cx="525" cy="1496.8587" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M525.1139,1492.8223 L524.2676,1496.7122 L525.9766,1496.7122 L525.1139,1492.8223 Z M524.0234,1491.6504 L526.2207,1491.6504 L528.6784,1501.0254 L526.8717,1501.0254 L526.3184,1498.2422 L523.9095,1498.2422 L523.3561,1501.0254 L521.5495,1501.0254 L524.0234,1491.6504 Z " fill="#000000"/><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="51.0417" x="550" y="1501.1861">Ranking</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="667.7083" y1="1514.5508" y2="1514.5508"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="194.7917" x="462.5" y="1534.5617">&lt;Candidate, number&gt;[] ordering</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="667.7083" y1="1546.639" y2="1546.639"/><!--MD5=[0c8a5ca64e335d28cfe171be9b7a5fa2]
+class Ballot--><rect codeLine="9" height="77.0182" id="Ballot" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="128.125" x="451.0417" y="1279.1667"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="128.125" x="451.0417" y="1279.1667"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="128.125" x="451.0417" y="1335.3516"/><rect codeLine="9" fill="none" height="77.0182" id="Ballot" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="128.125" x="451.0417" y="1279.1667"/><ellipse cx="465.625" cy="1309.3424" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M467.5293,1313.5742 Q467.1061,1313.8021 466.6341,1313.916 Q466.1621,1314.0299 465.6576,1314.0299 Q463.8021,1314.0299 462.8255,1312.8255 Q461.8652,1311.6211 461.8652,1309.3424 Q461.8652,1307.0801 462.8255,1305.8757 Q463.8021,1304.6549 465.6576,1304.6549 Q466.1621,1304.6549 466.6341,1304.7689 Q467.1224,1304.8828 467.5293,1305.1107 L467.5293,1307.1452 Q467.0736,1306.7383 466.6341,1306.543 Q466.1947,1306.3477 465.7389,1306.3477 Q464.7461,1306.3477 464.2415,1307.1126 Q463.737,1307.8613 463.737,1309.3424 Q463.737,1310.8236 464.2415,1311.5885 Q464.7461,1312.3535 465.7389,1312.3535 Q466.1947,1312.3535 466.6341,1312.1582 Q467.0736,1311.9629 467.5293,1311.556 L467.5293,1313.5742 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="90.625" x="482.2917" y="1301.1861">«value object»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="34.375" x="510.4167" y="1326.1536">Ballot</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="578.125" y1="1339.5182" y2="1339.5182"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="578.125" y1="1347.8516" y2="1347.8516"/><!--MD5=[651984b30145f63e53adab6e7e9bc4b7]
+class Outcome--><rect codeLine="10" height="77.0182" id="Outcome" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="128.125" x="691.6667" y="1111.4583"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="128.125" x="691.6667" y="1111.4583"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="128.125" x="691.6667" y="1167.6432"/><rect codeLine="10" fill="none" height="77.0182" id="Outcome" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="128.125" x="691.6667" y="1111.4583"/><ellipse cx="706.25" cy="1141.6341" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M708.1543,1145.8659 Q707.7311,1146.0938 707.2591,1146.2077 Q706.7871,1146.3216 706.2826,1146.3216 Q704.4271,1146.3216 703.4505,1145.1172 Q702.4902,1143.9128 702.4902,1141.6341 Q702.4902,1139.3717 703.4505,1138.1673 Q704.4271,1136.9466 706.2826,1136.9466 Q706.7871,1136.9466 707.2591,1137.0605 Q707.7474,1137.1745 708.1543,1137.4023 L708.1543,1139.4368 Q707.6986,1139.0299 707.2591,1138.8346 Q706.8197,1138.6393 706.3639,1138.6393 Q705.3711,1138.6393 704.8665,1139.4043 Q704.362,1140.153 704.362,1141.6341 Q704.362,1143.1152 704.8665,1143.8802 Q705.3711,1144.6452 706.3639,1144.6452 Q706.8197,1144.6452 707.2591,1144.4499 Q707.6986,1144.2546 708.1543,1143.8477 L708.1543,1145.8659 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="90.625" x="722.9167" y="1133.4778">«value object»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="57.2917" x="739.5833" y="1158.4452">Outcome</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="692.7083" x2="818.75" y1="1171.8099" y2="1171.8099"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="692.7083" x2="818.75" y1="1180.1432" y2="1180.1432"/><!--MD5=[d1f051c962f93ac764d41377d96968df]
+class Candidate--><rect codeLine="12" height="124.528" id="Candidate" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="134.375" x="452.0833" y="1618.75"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="134.375" x="452.0833" y="1618.75"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="134.375" x="452.0833" y="1674.9349"/><rect codeLine="12" fill="none" height="124.528" id="Candidate" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="134.375" x="452.0833" y="1618.75"/><ellipse cx="469.4792" cy="1648.9258" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M471.3835,1653.1576 Q470.9603,1653.3854 470.4883,1653.4993 Q470.0163,1653.6133 469.5117,1653.6133 Q467.6563,1653.6133 466.6797,1652.4089 Q465.7194,1651.2044 465.7194,1648.9258 Q465.7194,1646.6634 466.6797,1645.459 Q467.6563,1644.2383 469.5117,1644.2383 Q470.0163,1644.2383 470.4883,1644.3522 Q470.9766,1644.4661 471.3835,1644.694 L471.3835,1646.7285 Q470.9277,1646.3216 470.4883,1646.1263 Q470.0488,1645.931 469.5931,1645.931 Q468.6003,1645.931 468.0957,1646.696 Q467.5911,1647.4447 467.5911,1648.9258 Q467.5911,1650.4069 468.0957,1651.1719 Q468.6003,1651.9368 469.5931,1651.9368 Q470.0488,1651.9368 470.4883,1651.7415 Q470.9277,1651.5462 471.3835,1651.1393 L471.3835,1653.1576 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="90.625" x="486.7708" y="1640.7694">«value object»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="63.5417" x="500.3125" y="1665.7369">Candidate</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="453.125" x2="585.4167" y1="1679.1016" y2="1679.1016"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="70.8333" x="463.5417" y="1699.1124">string name</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="111.4583" x="463.5417" y="1722.8673">boolean is_blocked</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="453.125" x2="585.4167" y1="1734.9447" y2="1734.9447"/><!--MD5=[03da7ad6344b0b2c818a169ad3cc63fd]
+class Permission--><rect codeLine="17" height="172.0378" id="Permission" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="136.4583" x="615.625" y="1231.7708"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="136.4583" x="615.625" y="1231.7708"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="136.4583" x="615.625" y="1287.9557"/><rect codeLine="17" fill="none" height="172.0378" id="Permission" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="136.4583" x="615.625" y="1231.7708"/><ellipse cx="633.9583" cy="1261.9466" fill="#E47833" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M637.0182,1266.6341 L631.3379,1266.6341 L631.3379,1257.2591 L637.0182,1257.2591 L637.0182,1258.903 L633.1445,1258.903 L633.1445,1260.8073 L636.6439,1260.8073 L636.6439,1262.4674 L633.1445,1262.4674 L633.1445,1264.974 L637.0182,1264.974 L637.0182,1266.6341 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="90.625" x="651.4583" y="1253.7903">«value object»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="66.6667" x="663.4375" y="1278.7577">Permission</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="616.6667" x2="751.0417" y1="1292.1224" y2="1292.1224"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="32.2917" x="627.0833" y="1312.1333">VOTE</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="98.9583" x="627.0833" y="1335.8882">ADD_CANDIDATE</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="113.5417" x="627.0833" y="1359.643">BLOCK_CANDIDATE</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="627.0833" y="1383.3979">ADD_MEMBER</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="616.6667" x2="751.0417" y1="1395.4753" y2="1395.4753"/><!--MD5=[8c78fc17f783daf587fb1ec6e412568e]
+class ElectionBoard--><rect codeLine="24" height="447.8923" id="ElectionBoard" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="328.125" x="471.875" y="297.9167"/><rect fill="url(#gedpw8us2bi330)" height="74.9023" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="328.125" x="471.875" y="297.9167"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="328.125" x="471.875" y="368.6523"/><rect codeLine="24" fill="none" height="447.8923" id="ElectionBoard" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="328.125" x="471.875" y="297.9167"/><ellipse cx="574.4792" cy="335.3678" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M576.3835,339.5996 Q575.9603,339.8275 575.4883,339.9414 Q575.0163,340.0553 574.5117,340.0553 Q572.6563,340.0553 571.6797,338.8509 Q570.7194,337.6465 570.7194,335.3678 Q570.7194,333.1055 571.6797,331.901 Q572.6563,330.6803 574.5117,330.6803 Q575.0163,330.6803 575.4883,330.7943 Q575.9766,330.9082 576.3835,331.1361 L576.3835,333.1706 Q575.9277,332.7637 575.4883,332.5684 Q575.0488,332.373 574.5931,332.373 Q573.6003,332.373 573.0957,333.138 Q572.5911,333.8867 572.5911,335.3678 Q572.5911,336.849 573.0957,337.6139 Q573.6003,338.3789 574.5931,338.3789 Q575.0488,338.3789 575.4883,338.1836 Q575.9277,337.9883 576.3835,337.5814 L576.3835,339.5996 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="51.0417" x="626.0417" y="319.9361">«entity»</text><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="108.3333" x="597.3958" y="334.4869">«aggregate root»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="86.4583" x="608.3333" y="359.4543">ElectionBoard</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="472.9167" x2="798.9583" y1="372.819" y2="372.819"/><polygon fill="none" points="483.3333,379.069,487.5,383.2357,483.3333,387.4023,479.1667,383.2357" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="59.375" x="496.875" y="392.8299">string title</text><polygon fill="none" points="483.3333,402.8239,487.5,406.9906,483.3333,411.1572,479.1667,406.9906" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="94.7917" x="496.875" y="416.5848">Member creator</text><polygon fill="none" points="483.3333,426.5788,487.5,430.7454,483.3333,434.9121,479.1667,430.7454" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="116.6667" x="496.875" y="440.3397">Member[] members</text><polygon fill="none" points="483.3333,450.3337,487.5,454.5003,483.3333,458.667,479.1667,454.5003" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="135.4167" x="496.875" y="464.0945">Candidate[] candidates</text><polygon fill="none" points="483.3333,474.0885,487.5,478.2552,483.3333,482.4219,479.1667,478.2552" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="108.3333" x="496.875" y="487.8494">Outcome outcome</text><polygon fill="none" points="483.3333,497.8434,487.5,502.0101,483.3333,506.1768,479.1667,502.0101" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="81.25" x="496.875" y="511.6043">Date deadline</text><polygon fill="none" points="483.3333,521.5983,487.5,525.765,483.3333,529.9316,479.1667,525.765" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="92.7083" x="496.875" y="535.3592">Date createdOn</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="472.9167" x2="798.9583" y1="547.4365" y2="547.4365"/><ellipse cx="483.3333" cy="558.8949" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="291.6667" x="496.875" y="567.4474">addMember(User user, Permission[] permissions)</text><ellipse cx="483.3333" cy="582.6497" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="159.375" x="496.875" y="591.2023">removeMember(User user)</text><ellipse cx="483.3333" cy="606.4046" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="171.875" x="496.875" y="614.9572">boolean isClosed(Date.now())</text><ellipse cx="483.3333" cy="630.1595" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="236.4583" x="496.875" y="638.7121">addCandidate(Candidate newCandidate)</text><ellipse cx="483.3333" cy="653.9144" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="218.75" x="496.875" y="662.4669">blockCandidate(Candidate candidate)</text><ellipse cx="483.3333" cy="677.6693" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="212.5" x="496.875" y="686.2218">Candidate[] getPossibleCandidates()</text><ellipse cx="483.3333" cy="701.4242" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="210.4167" x="496.875" y="709.9767">Candidate[] getBlockedCandidates()</text><ellipse cx="483.3333" cy="725.179" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="112.5" x="496.875" y="733.7316">Ballot[] getBallots()</text><!--MD5=[f58fd777f29c17413488bea9e7cfcca3]
+class Member--><rect codeLine="43" height="195.7926" id="Member" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="330.2083" x="451.0417" y="884.375"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="330.2083" x="451.0417" y="884.375"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="330.2083" x="451.0417" y="940.5599"/><rect codeLine="43" fill="none" height="195.7926" id="Member" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="330.2083" x="451.0417" y="884.375"/><ellipse cx="563.5417" cy="914.5508" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M565.446,918.7826 Q565.0228,919.0104 564.5508,919.1243 Q564.0788,919.2383 563.5742,919.2383 Q561.7188,919.2383 560.7422,918.0339 Q559.7819,916.8294 559.7819,914.5508 Q559.7819,912.2884 560.7422,911.084 Q561.7188,909.8633 563.5742,909.8633 Q564.0788,909.8633 564.5508,909.9772 Q565.0391,910.0911 565.446,910.319 L565.446,912.3535 Q564.9902,911.9466 564.5508,911.7513 Q564.1113,911.556 563.6556,911.556 Q562.6628,911.556 562.1582,912.321 Q561.6536,913.0697 561.6536,914.5508 Q561.6536,916.0319 562.1582,916.7969 Q562.6628,917.5618 563.6556,917.5618 Q564.1113,917.5618 564.5508,917.3665 Q564.9902,917.1712 565.446,916.7643 L565.446,918.7826 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="90.625" x="586.4583" y="906.3944">«value object»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="51.0417" x="606.25" y="931.3619">Member</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="780.2083" y1="944.7266" y2="944.7266"/><polygon fill="none" points="462.5,950.9766,466.6667,955.1432,462.5,959.3099,458.3333,955.1432" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="57.2917" x="476.0417" y="964.7374">User user</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="147.9167" x="476.0417" y="988.4923">Permission[] permissions</text><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="69.7917" x="476.0417" y="1012.2472">Ballot ballot</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="452.0833" x2="780.2083" y1="1024.3245" y2="1024.3245"/><ellipse cx="462.5" cy="1035.7829" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="293.75" x="476.0417" y="1044.3354">changePermissions(Permission[] newPermissions)</text><ellipse cx="462.5" cy="1059.5378" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="187.5" x="476.0417" y="1068.0903">changeBallot(Ballot[] newBallot)</text><!--MD5=[3fd616f346a44cd59a91eb10b19e157c]
+class User--><rect codeLine="53" height="195.7926" id="User" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="159.375" x="132.2917" y="1219.7917"/><rect fill="url(#gedpw8us2bi330)" height="60.3516" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="159.375" x="132.2917" y="1219.7917"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="159.375" x="132.2917" y="1275.9766"/><rect codeLine="53" fill="none" height="195.7926" id="User" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="159.375" x="132.2917" y="1219.7917"/><ellipse cx="179.1667" cy="1249.9674" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M181.071,1254.1992 Q180.6478,1254.4271 180.1758,1254.541 Q179.7038,1254.6549 179.1992,1254.6549 Q177.3438,1254.6549 176.3672,1253.4505 Q175.4069,1252.2461 175.4069,1249.9674 Q175.4069,1247.7051 176.3672,1246.5007 Q177.3438,1245.2799 179.1992,1245.2799 Q179.7038,1245.2799 180.1758,1245.3939 Q180.6641,1245.5078 181.071,1245.7357 L181.071,1247.7702 Q180.6152,1247.3633 180.1758,1247.168 Q179.7363,1246.9727 179.2806,1246.9727 Q178.2878,1246.9727 177.7832,1247.7376 Q177.2786,1248.4863 177.2786,1249.9674 Q177.2786,1251.4486 177.7832,1252.2135 Q178.2878,1252.9785 179.2806,1252.9785 Q179.7363,1252.9785 180.1758,1252.7832 Q180.6152,1252.5879 181.071,1252.181 L181.071,1254.1992 Z " fill="#000000"/><text fill="#343A40" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="51.0417" x="202.0833" y="1241.8111">«entity»</text><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="28.125" x="213.5417" y="1266.7786">User</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="133.3333" x2="290.625" y1="1280.1432" y2="1280.1432"/><polygon fill="none" points="143.75,1286.3932,147.9167,1290.5599,143.75,1294.7266,139.5833,1290.5599" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="69.7917" x="157.2917" y="1300.1541">string email</text><polygon fill="none" points="143.75,1310.1481,147.9167,1314.3148,143.75,1318.4814,139.5833,1314.3148" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="89.5833" x="157.2917" y="1323.909">string fullName</text><polygon fill="none" points="143.75,1333.903,147.9167,1338.0697,143.75,1342.2363,139.5833,1338.0697" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="92.7083" x="157.2917" y="1347.6639">Date createdOn</text><polygon fill="none" points="143.75,1357.6579,147.9167,1361.8245,143.75,1365.9912,139.5833,1361.8245" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="69.7917" x="157.2917" y="1371.4188">string token</text><polygon fill="none" points="143.75,1381.4128,147.9167,1385.5794,143.75,1389.7461,139.5833,1385.5794" style="stroke:#B38D22;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="122.9167" x="157.2917" y="1395.1736">bytes[] profilePicture</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="133.3333" x2="290.625" y1="1407.251" y2="1407.251"/><!--MD5=[093c210125347143eef5bb9199eae634]
+class UserRepository--><rect codeLine="61" height="147.0703" id="UserRepository" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="367.7083" x="7.2917" y="908.8542"/><rect fill="url(#gedpw8us2bi330)" height="35.3841" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="367.7083" x="7.2917" y="908.8542"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="367.7083" x="7.2917" y="940.0716"/><rect codeLine="61" fill="none" height="147.0703" id="UserRepository" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="367.7083" x="7.2917" y="908.8542"/><ellipse cx="134.8958" cy="926.5462" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M136.8001,930.778 Q136.377,931.0059 135.9049,931.1198 Q135.4329,931.2337 134.9284,931.2337 Q133.0729,931.2337 132.0964,930.0293 Q131.1361,928.8249 131.1361,926.5462 Q131.1361,924.2839 132.0964,923.0794 Q133.0729,921.8587 134.9284,921.8587 Q135.4329,921.8587 135.9049,921.9727 Q136.3932,922.0866 136.8001,922.3145 L136.8001,924.349 Q136.3444,923.9421 135.9049,923.7467 Q135.4655,923.5514 135.0098,923.5514 Q134.0169,923.5514 133.5124,924.3164 Q133.0078,925.0651 133.0078,926.5462 Q133.0078,928.0273 133.5124,928.7923 Q134.0169,929.5573 135.0098,929.5573 Q135.4655,929.5573 135.9049,929.362 Q136.3444,929.1667 136.8001,928.7598 L136.8001,930.778 Z " fill="#000000"/><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="93.75" x="159.8958" y="930.8736">UserRepository</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="8.3333" x2="373.9583" y1="944.2383" y2="944.2383"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="8.3333" x2="373.9583" y1="952.5716" y2="952.5716"/><ellipse cx="18.75" cy="964.0299" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="331.25" x="32.2917" y="972.5825">User createUser(string name, string email, string token)</text><ellipse cx="18.75" cy="987.7848" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="178.125" x="32.2917" y="996.3374">inviteUser(string emailAdress)</text><ellipse cx="18.75" cy="1011.5397" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="195.8333" x="32.2917" y="1020.0923">User getUser(string emailAdress)</text><ellipse cx="18.75" cy="1035.2946" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="168.75" x="32.2917" y="1043.8471">User[] findUser(string query)</text><!--MD5=[26f10598c241beadc9e7abf9126ab0e5]
+class ElectionBoardRepository--><rect codeLine="70" height="147.0703" id="ElectionBoardRepository" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="412.5" x="429.6875" y="7.2917"/><rect fill="url(#gedpw8us2bi330)" height="35.3841" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="412.5" x="429.6875" y="7.2917"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="412.5" x="429.6875" y="38.5091"/><rect codeLine="70" fill="none" height="147.0703" id="ElectionBoardRepository" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="412.5" x="429.6875" y="7.2917"/><ellipse cx="550.5208" cy="24.9837" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M552.4251,29.2155 Q552.002,29.4434 551.5299,29.5573 Q551.0579,29.6712 550.5534,29.6712 Q548.6979,29.6712 547.7214,28.4668 Q546.7611,27.2624 546.7611,24.9837 Q546.7611,22.7214 547.7214,21.5169 Q548.6979,20.2962 550.5534,20.2962 Q551.0579,20.2962 551.5299,20.4102 Q552.0182,20.5241 552.4251,20.752 L552.4251,22.7865 Q551.9694,22.3796 551.5299,22.1842 Q551.0905,21.9889 550.6348,21.9889 Q549.6419,21.9889 549.1374,22.7539 Q548.6328,23.5026 548.6328,24.9837 Q548.6328,26.4648 549.1374,27.2298 Q549.6419,27.9948 550.6348,27.9948 Q551.0905,27.9948 551.5299,27.7995 Q551.9694,27.6042 552.4251,27.1973 L552.4251,29.2155 Z " fill="#000000"/><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="152.0833" x="575.5208" y="29.3111">ElectionBoardRepository</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="430.7292" x2="841.1458" y1="42.6758" y2="42.6758"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="430.7292" x2="841.1458" y1="51.0091" y2="51.0091"/><ellipse cx="441.1458" cy="62.4674" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="376.0417" x="454.6875" y="71.02">ElectionBoard createElectionBoard(User creator, Date deadline)</text><ellipse cx="441.1458" cy="86.2223" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="332.2917" x="454.6875" y="94.7749">ElectionBoard[] findCreatedElectionBoards(User creator)</text><ellipse cx="441.1458" cy="109.9772" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="333.3333" x="454.6875" y="118.5298">ElectionBoard[] findMemberElectionBoards(User creator)</text><ellipse cx="441.1458" cy="133.7321" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="321.875" x="454.6875" y="142.2846">ElectionBoard[] findActiveElectionBoards(User creator)</text><!--MD5=[e7444c0bffbe8f8c83646919e8b807ee]
+class CountingStrategy--><rect codeLine="93" height="75.8057" id="CountingStrategy" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="300" x="853.6458" y="777.0833"/><rect fill="url(#gedpw8us2bi330)" height="35.3841" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="300" x="853.6458" y="777.0833"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="300" x="853.6458" y="808.3008"/><rect codeLine="93" fill="none" height="75.8057" id="CountingStrategy" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="300" x="853.6458" y="777.0833"/><ellipse cx="938.5417" cy="794.7754" fill="#8FB961" rx="10.4167" ry="10.4167" style="stroke:#FFFFFF;stroke-width:1.0416666666666667;"/><path d="M938.6556,790.7389 L937.8092,794.6289 L939.5182,794.6289 L938.6556,790.7389 Z M937.5651,789.5671 L939.7624,789.5671 L942.2201,798.9421 L940.4134,798.9421 L939.86,796.1589 L937.4512,796.1589 L936.8978,798.9421 L935.0911,798.9421 L937.5651,789.5671 Z " fill="#000000"/><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" font-style="italic" lengthAdjust="spacing" textLength="111.4583" x="963.5417" y="799.1028">CountingStrategy</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="854.6875" x2="1152.6042" y1="812.4674" y2="812.4674"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="854.6875" x2="1152.6042" y1="820.8008" y2="820.8008"/><ellipse cx="865.1042" cy="832.2591" fill="#84BE84" rx="3.125" ry="3.125" style="stroke:#038048;stroke-width:1.0416666666666667;"/><text fill="#343A40" font-family="Verdana" font-size="11.4583" lengthAdjust="spacing" textLength="263.5417" x="878.6458" y="840.8117">Outcome generateOutcome(Ballot[] election)</text><!--MD5=[a23d63df8a61ec1c103a2e63078c6dac]
+class SchulzeService--><rect codeLine="97" height="52.0508" id="SchulzeService" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;fill:none;" width="136.4583" x="935.4167" y="185.4167"/><rect fill="url(#gedpw8us2bi330)" height="35.3841" rx="4.1667" ry="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="136.4583" x="935.4167" y="185.4167"/><rect fill="url(#gedpw8us2bi330)" height="4.1667" style="stroke:url(#gedpw8us2bi330);stroke-width:1.0416666666666667;" width="136.4583" x="935.4167" y="216.6341"/><rect codeLine="97" fill="none" height="52.0508" id="SchulzeService" rx="4.1667" ry="4.1667" style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" width="136.4583" x="935.4167" y="185.4167"/><ellipse cx="950" cy="203.1087" fill="#EDF0F2" rx="10.4167" ry="10.4167" style="stroke:#BABDBF;stroke-width:1.0416666666666667;"/><path d="M951.9043,207.3405 Q951.4811,207.5684 951.0091,207.6823 Q950.5371,207.7962 950.0326,207.7962 Q948.1771,207.7962 947.2005,206.5918 Q946.2402,205.3874 946.2402,203.1087 Q946.2402,200.8464 947.2005,199.6419 Q948.1771,198.4212 950.0326,198.4212 Q950.5371,198.4212 951.0091,198.5352 Q951.4974,198.6491 951.9043,198.877 L951.9043,200.9115 Q951.4486,200.5046 951.0091,200.3092 Q950.5697,200.1139 950.1139,200.1139 Q949.1211,200.1139 948.6165,200.8789 Q948.112,201.6276 948.112,203.1087 Q948.112,204.5898 948.6165,205.3548 Q949.1211,206.1198 950.1139,206.1198 Q950.5697,206.1198 951.0091,205.9245 Q951.4486,205.7292 951.9043,205.3223 L951.9043,207.3405 Z " fill="#000000"/><text fill="#F8F9FA" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="94.7917" x="968.75" y="207.4361">SchulzeService</text><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="936.4583" x2="1070.8333" y1="220.8008" y2="220.8008"/><line style="stroke:#2FA4E7;stroke-width:1.0416666666666667;" x1="936.4583" x2="1070.8333" y1="229.1341" y2="229.1341"/><!--MD5=[6122a42ef3eb625904d9b9b0fc9fafda]
+link UserRepository to User--><path codeLine="68" d="M195.6875,1056.0729 C198.5938,1102.4688 202.3958,1163.2708 205.5938,1214.4792 " fill="none" id="UserRepository-to-User" style="stroke:#2FA4E7;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#2FA4E7" points="205.9167,1219.7292,209.5144,1210.1214,205.6047,1214.5302,201.196,1210.6205,205.9167,1219.7292" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[4e14c563877c455bcfca9b16c8b0f15b]
+link ElectionBoardRepository to ElectionBoard--><path codeLine="77" d="M635.9375,154.2708 C635.9375,192.6979 635.9375,242.2396 635.9375,292.4063 " fill="none" id="ElectionBoardRepository-to-ElectionBoard" style="stroke:#2FA4E7;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#2FA4E7" points="635.9375,297.8854,640.1042,288.5104,635.9375,292.6771,631.7708,288.5104,635.9375,297.8854" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[10c80f95b36e57f6f7717e0e654d6284]
+reverse link Ballot to Ranking--><path codeLine="79" d="M528.2708,1376.8021 C535.7708,1409.8438 544.9479,1450.25 551.4688,1479.0313 " fill="none" id="Ballot-backto-Ranking" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="521.1354,1378.2708,523.6354,1356.3438,535.3542,1375.0417,521.1354,1378.2708" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[ddaf968f21d78bb6cfbf0cd3f99682e6]
+reverse link Outcome to Ranking--><path codeLine="80" d="M776.9167,1208.5313 C794.0625,1265.6146 809.5625,1353.375 770.3125,1415.625 C747.5313,1451.75 707.7917,1475.1771 668.9375,1490.2292 " fill="none" id="Outcome-backto-Ranking" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="769.9583,1210.6979,770.5,1188.6354,783.8333,1206.2188,769.9583,1210.6979" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[1fa7e882c33891dc0b5abb1cc9a5feab]
+link Member to Permission--><path codeLine="82" d="M638.4024,1092.8962 C638.4024,1092.8962 655.9271,1179.1667 663.8438,1218.1667 " fill="none" id="Member-Permission" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="666.5938,1231.6875,668.8129,1221.6712,665.558,1226.5832,660.646,1223.3283,666.5938,1231.6875" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="665.558" x2="663.8958" y1="1226.5832" y2="1218.4219"/><polygon fill="#2FA4E7" points="635.9167,1080.6458,633.0761,1087.5996,638.4024,1092.8962,641.243,1085.9424,635.9167,1080.6458" style="stroke:#2FA4E7;stroke-width:3.125;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="8.3333" x="650.5134" y="1215.24">1</text><!--MD5=[254edea85c1225b8b2d351809b4a90e4]
+link Member to Ballot--><path codeLine="83" d="M583.02,1092.6084 C583.02,1092.6084 544.3438,1220.1979 530.5313,1265.7917 " fill="none" id="Member-Ballot" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="526.5625,1278.875,533.2694,1271.1117,528.0733,1273.8906,525.2944,1268.6945,526.5625,1278.875" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="528.0733" x2="530.4844" y1="1273.8906" y2="1265.9167"/><polygon fill="#2FA4E7" points="586.6458,1080.6458,580.8454,1085.4185,583.02,1092.6084,588.8204,1087.8357,586.6458,1080.6458" style="stroke:#2FA4E7;stroke-width:3.125;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="8.3333" x="513.3919" y="1262.7725">1</text><!--MD5=[678b0b523e79cc18d6a39ddec7dade71]
+link Member to User--><path codeLine="84" d="M488.7839,1088.3702 C488.7839,1088.3702 357.1042,1196.9792 302.5104,1242 " fill="none" id="Member-User" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="291.8021,1250.8333,301.6876,1248.0895,295.8224,1247.5222,296.3897,1241.657,291.8021,1250.8333" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="295.8224" x2="302.2552" y1="1247.5222" y2="1242.2135"/><polygon points="498.4271,1080.4167,490.9543,1081.1791,488.7839,1088.3702,496.2567,1087.6078,498.4271,1080.4167" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="8.3333" x="305.2333" y="1236.4651">1</text><!--MD5=[bdb4425ba3590c19902ee7c1077b99de]
+link Ranking to Candidate--><path codeLine="86" d="M547.5348,1567.5106 C547.5348,1567.5106 541.1875,1592.8125 538.0938,1605.1771 " fill="none" id="Ranking-Candidate" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="534.7604,1618.4583,541.0894,1610.3839,536.0317,1613.4075,533.0081,1608.3499,534.7604,1618.4583" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="536.0317" x2="538.0521" y1="1613.4075" y2="1605.3229"/><polygon points="550.5729,1555.3854,545.0121,1560.4353,547.5348,1567.5106,553.0956,1562.4607,550.5729,1555.3854" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="6.25" x="524.1743" y="1602.2887">*</text><!--MD5=[1a0b6e123ea806414fec580cefe05112]
+link ElectionBoard to Member--><path codeLine="88" d="M563.123,758.4378 C563.123,758.4378 560.4583,822.9063 566.1458,853.125 C567.2604,859.0313 568.6354,865 570.2083,870.9896 " fill="none" id="ElectionBoard-Member" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="573.9583,884.0625,575.3784,873.902,572.5222,879.0561,567.3682,876.1998,573.9583,884.0625" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="572.5222" x2="570.224" y1="879.0561" y2="871.0469"/><polygon points="564.4688,746.0104,559.6534,751.7755,563.123,758.4378,567.9383,752.6727,564.4688,746.0104" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="59.375" x="572.3958" y="819.9361">members</text><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="6.25" x="558.3162" y="867.8321">*</text><!--MD5=[1a0b6e123ea806414fec580cefe05112]
+link ElectionBoard to Member--><path codeLine="89" d="M647.2376,758.6242 C647.2376,758.6242 645.2083,823.0625 642.1875,853.125 C641.6146,858.8438 640.8958,864.6771 640.0729,870.5625 " fill="none" id="ElectionBoard-Member-1" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="637.9688,884.3229,643.5096,875.6887,638.759,879.1749,635.2728,874.4243,637.9688,884.3229" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="638.759" x2="640.0156" y1="879.1749" y2="870.9375"/><polygon points="647.375,746.125,643.1399,752.3288,647.2376,758.6242,651.4727,752.4204,647.375,746.125" style="stroke:#2FA4E7;stroke-width:3.125;fill:none;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="44.7917" x="652.6042" y="819.9361">creator</text><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="8.3333" x="625.4968" y="867.7722">1</text><!--MD5=[ec69e0cd76473f58f296e783453965ef]
+link ElectionBoard to Candidate--><path codeLine="90" d="M473.0803,757.1562 C473.0803,757.1562 413.0208,904.4583 413.0208,981.25 C413.0208,981.25 413.0208,981.25 413.0208,1518.2292 C413.0208,1550.75 428.1771,1581.8021 447.0417,1607.875 " fill="none" id="ElectionBoard-Candidate" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="455.3229,1618.7292,452.9522,1608.7476,452.1651,1614.5873,446.3253,1613.8002,455.3229,1618.7292" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="452.1651" x2="447.1042" y1="1614.5873" y2="1607.9583"/><polygon fill="#2FA4E7" points="478.6979,745.9896,472.1669,749.7003,473.0803,757.1562,479.6113,753.4454,478.6979,745.9896" style="stroke:#2FA4E7;stroke-width:3.125;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="6.25" x="434.6035" y="1602.1315">*</text><!--MD5=[e65348866a1115ba4b49c0393e85c80c]
+link ElectionBoard to Outcome--><path codeLine="91" d="M759.1456,757.4417 C759.1456,757.4417 790.4271,842.4271 799.4792,884.375 C817.8333,969.4583 823.8125,996.6458 799.4792,1080.2083 C797.625,1086.5833 794.9792,1092.9271 791.8958,1099.0417 " fill="none" id="ElectionBoard-Outcome" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="#2FA4E7" points="785.0729,1111.1979,793.2911,1105.0569,787.6193,1106.6545,786.0217,1100.9827,785.0729,1111.1979" style="stroke:#2FA4E7;stroke-width:3.125;"/><line style="stroke:#2FA4E7;stroke-width:3.125;" x1="787.6193" x2="791.6979" y1="1106.6545" y2="1099.3906"/><polygon fill="#2FA4E7" points="754.4063,745.875,752.9203,753.2381,759.1456,757.4417,760.6315,750.0786,754.4063,745.875" style="stroke:#2FA4E7;stroke-width:3.125;"/><text fill="#343A40" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="8.3333" x="790.6345" y="1105.4426">1</text><!--MD5=[fcbc00a56402174af6b84b62b9c9f7f5]
+reverse link SchulzeService to CountingStrategy--><path codeLine="99" d="M1003.6458,258.6458 C1003.6458,373.7396 1003.6458,671.7813 1003.6458,776.7813 " fill="none" id="SchulzeService-backto-CountingStrategy" style="stroke:#2FA4E7;stroke-width:3.125;"/><polygon fill="none" points="996.3542,258.4167,1003.6458,237.5833,1010.9375,258.4167,996.3542,258.4167" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[632839ce699c817ef0c183a977466ee7]
+link CountingStrategy to Outcome--><path codeLine="101" d="M982.6354,853.4479 C952.0208,906.3646 891.8958,1005.125 828.6458,1080.2083 C820.8021,1089.5208 811.7917,1098.8854 802.8438,1107.5729 " fill="none" id="CountingStrategy-to-Outcome" style="stroke:#2FA4E7;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><polygon fill="#2FA4E7" points="799.0208,1111.25,808.6685,1107.7609,802.7772,1107.6421,802.8959,1101.7508,799.0208,1111.25" style="stroke:#2FA4E7;stroke-width:3.125;"/><!--MD5=[2edb553f9e331ef65fba14bd187315c4]
+@startuml
+'https://plantuml.com/class-diagram
+!theme cerulean-outline
+
+package Aggregate <<Frame>> {
+
+    abstract class Ranking {
+        <Candidate, number>[] ordering
+    }
+    class Ballot <<value object>>
+    class Outcome <<value object>>
+
+    class Candidate <<value object>> {
+        string name
+        boolean is_blocked
+    }
+
+    enum Permission <<value object>> {
+        VOTE
+        ADD_CANDIDATE
+        BLOCK_CANDIDATE
+        ADD_MEMBER
+    }
+
+    class ElectionBoard <<entity>> <<aggregate root>> {
+        #string title
+        #Member creator
+        #Member[] members
+        #Candidate[] candidates
+        #Outcome outcome
+        #Date deadline
+        #Date createdOn
+
+        +addMember(User user, Permission[] permissions)
+        +removeMember(User user)
+        +boolean isClosed(Date.now())
+        +addCandidate(Candidate newCandidate)
+        +blockCandidate(Candidate candidate)
+        +Candidate[] getPossibleCandidates()
+        +Candidate[] getBlockedCandidates()
+        +Ballot[] getBallots()
+    }
+
+    class Member <<value object>> {
+        #User user
+        Permission[] permissions
+        Ballot ballot
+
+        +changePermissions(Permission[] newPermissions)
+        +changeBallot(Ballot[] newBallot)
+    }
+}
+
+class User <<entity>> {
+    #string email
+    #string fullName
+    #Date createdOn
+    #string token
+    #bytes[] profilePicture
+}
+
+class UserRepository {
+    +User createUser(string name, string email, string token)
+    +inviteUser(string emailAdress)
+    +User getUser(string emailAdress)
+    +User[] findUser(string query)
+}
+
+UserRepository ..> User
+
+class ElectionBoardRepository {
+    +ElectionBoard createElectionBoard(User creator, Date deadline)
+    +ElectionBoard[] findCreatedElectionBoards(User creator)
+    +ElectionBoard[] findMemberElectionBoards(User creator)
+    +ElectionBoard[] findActiveElectionBoards(User creator)
+}
+
+ElectionBoardRepository ..> ElectionBoard
+
+Ballot <|- - Ranking
+Outcome <|- - Ranking
+
+Member *- -> "1" Permission
+Member *- -> "1" Ballot
+Member o- -> "1" User
+
+Ranking o- -> "*" Candidate
+
+ElectionBoard o- -> "*" Member : members
+ElectionBoard o- -> "1" Member : creator
+ElectionBoard *- -> "*" Candidate
+ElectionBoard *- -> "1" Outcome
+
+abstract class CountingStrategy {
+    +Outcome generateOutcome(Ballot[] election)
+}
+
+class SchulzeService
+
+SchulzeService <|- - CountingStrategy
+
+CountingStrategy ..> Outcome
+
+@enduml
+
+@startuml
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #868E96
+skinparam stereotype {
+    CBackgroundColor #EDF0F2
+    CBorderColor #BABDBF
+    ABackgroundColor #8FB961
+    ABorderColor $SUCCESS_DARK
+    IBackgroundColor #D2494E
+    IBorderColor $DANGER_DARK
+    EBackgroundColor #E47833
+    EBorderColor $WARNING_DARK
+    NBackgroundColor #35638F
+    NBorderColor $INFO_DARK
+}
+skinparam title {
+	FontColor	                 #2FA4E7
+	BorderColor	                 #BABDBF
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              transparent
+}
+
+skinparam legend {
+	BackgroundColor transparent
+	BorderColor #BABDBF
+	FontColor #343A40
+}
+
+skinparam swimlane {
+	BorderColor #033C73
+	BorderThickness 2
+	TitleBackgroundColor  #EDF0F2-#E9ECEF
+	TitleFontColor #2FA4E7
+}
+
+
+skinparam activity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BarColor #73A839
+	StartColor #033C73
+	EndColor #033C73
+	DiamondBackgroundColor transparent
+  	DiamondBorderColor #BABDBF
+	DiamondFontColor #BABDBF
+}
+
+
+skinparam participant {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #2FA4E7
+	FontColor #343A40
+}
+
+
+skinparam sequence {
+	BorderColor #2FA4E7
+	TitleFontColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #2FA4E7
+	EndColor #2FA4E7
+	BoxBackgroundColor transparent
+	BoxBorderColor #868E96
+	BoxFontColor #343A40
+	LifeLineBorderColor #BABDBF
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor transparent
+	GroupBorderColor #868E96
+	GroupFontColor #343A40
+	GroupHeaderFontColor #033C73
+	DividerBackgroundColor transparent
+    DividerBorderColor #868E96
+    DividerBorderThickness 2
+    DividerFontColor #343A40
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #868E96
+	ReferenceFontColor #343A40
+	ReferenceHeaderFontColor #033C73
+}
+
+
+skinparam partition {
+	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam control {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam entity {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam boundary {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam agent {
+	BackgroundColor transparent
+	BorderColor #999999
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam artifact {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam component {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam interface {
+	BackgroundColor  transparent
+	BorderColor  #C71C22
+	FontColor #343A40
+}
+
+
+skinparam storage {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+}
+
+
+skinparam node {
+	BackgroundColor transparent
+	BorderColor #343A40
+	FontColor #343A40
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #343A40
+}
+
+
+skinparam database {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam class {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	FontColor #F8F9FA
+	HeaderBackgroundColor #2FA4E7-#2683B9
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #343A40
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StereotypeFontColor #343A40
+	BorderThickness 1
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam rectangle {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	BorderThickness 2
+	StereotypeFontColor #2FA4E7
+}
+
+
+skinparam package {
+	BackgroundColor transparent
+  	BorderColor #2FA4E7
+	FontColor #2FA4E7
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor transparent
+  	BorderColor #DD5600
+	FontColor #DD5600
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor transparent
+  	BorderColor #033C73
+	FontColor #033C73
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+	StartColor #033C73
+	EndColor #033C73
+	AttributeFontColor #BABDBF
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+skinparam card {
+	BackgroundColor transparent
+	BorderColor #033C73
+	FontColor #033C73
+}
+
+
+skinparam file {
+	BackgroundColor transparent
+	BorderColor #868E96
+	FontColor #868E96
+}
+
+
+skinparam stack {
+		FontColor #2FA4E7
+	BorderColor #2FA4E7
+	BackgroundColor transparent
+}
+
+
+
+
+package Aggregate <<Frame>> {
+
+    abstract class Ranking {
+        <Candidate, number>[] ordering
+    }
+    class Ballot <<value object>>
+    class Outcome <<value object>>
+
+    class Candidate <<value object>> {
+        string name
+        boolean is_blocked
+    }
+
+    enum Permission <<value object>> {
+        VOTE
+        ADD_CANDIDATE
+        BLOCK_CANDIDATE
+        ADD_MEMBER
+    }
+
+    class ElectionBoard <<entity>> <<aggregate root>> {
+        #string title
+        #Member creator
+        #Member[] members
+        #Candidate[] candidates
+        #Outcome outcome
+        #Date deadline
+        #Date createdOn
+
+        +addMember(User user, Permission[] permissions)
+        +removeMember(User user)
+        +boolean isClosed(Date.now())
+        +addCandidate(Candidate newCandidate)
+        +blockCandidate(Candidate candidate)
+        +Candidate[] getPossibleCandidates()
+        +Candidate[] getBlockedCandidates()
+        +Ballot[] getBallots()
+    }
+
+    class Member <<value object>> {
+        #User user
+        Permission[] permissions
+        Ballot ballot
+
+        +changePermissions(Permission[] newPermissions)
+        +changeBallot(Ballot[] newBallot)
+    }
+}
+
+class User <<entity>> {
+    #string email
+    #string fullName
+    #Date createdOn
+    #string token
+    #bytes[] profilePicture
+}
+
+class UserRepository {
+    +User createUser(string name, string email, string token)
+    +inviteUser(string emailAdress)
+    +User getUser(string emailAdress)
+    +User[] findUser(string query)
+}
+
+UserRepository ..> User
+
+class ElectionBoardRepository {
+    +ElectionBoard createElectionBoard(User creator, Date deadline)
+    +ElectionBoard[] findCreatedElectionBoards(User creator)
+    +ElectionBoard[] findMemberElectionBoards(User creator)
+    +ElectionBoard[] findActiveElectionBoards(User creator)
+}
+
+ElectionBoardRepository ..> ElectionBoard
+
+Ballot <|- - Ranking
+Outcome <|- - Ranking
+
+Member *- -> "1" Permission
+Member *- -> "1" Ballot
+Member o- -> "1" User
+
+Ranking o- -> "*" Candidate
+
+ElectionBoard o- -> "*" Member : members
+ElectionBoard o- -> "1" Member : creator
+ElectionBoard *- -> "*" Candidate
+ElectionBoard *- -> "1" Outcome
+
+abstract class CountingStrategy {
+    +Outcome generateOutcome(Ballot[] election)
+}
+
+class SchulzeService
+
+SchulzeService <|- - CountingStrategy
+
+CountingStrategy ..> Outcome
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
