@@ -1,15 +1,15 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=150px height=150px src="https://www.hackyourfuture.dk/static/logo-dark.svg" alt="Project logo"></a>
+ <img width=150px height=150px src="https://www.hackyourfuture.dk/static/logo-dark.svg" alt="HackYourFuture logo"></a>
 </p>
+
 
 <h3 align="center">Simply name it
 </h3>
 
 <p align="center">
-  <a href="" rel="noopener">
-    
-![image](https://user-images.githubusercontent.com/6642037/124296829-afecbf80-db5a-11eb-9dbc-d92b588e1f42.png)
+  <a href="" rel="noopener">   
+  <img  height=230px src="https://user-images.githubusercontent.com/6642037/124296829-afecbf80-db5a-11eb-9dbc-d92b588e1f42.png" alt="Project Homepage"></a>
 </p>
 
 
