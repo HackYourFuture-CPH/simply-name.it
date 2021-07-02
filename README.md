@@ -3,51 +3,67 @@
  <img width=150px height=150px src="https://www.hackyourfuture.dk/static/logo-dark.svg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Boilerplate for Final projects
+<h3 align="center">Simply name it
 </h3>
+
+<p align="center">
+  <a href="" rel="noopener">
+    
+![image](https://user-images.githubusercontent.com/6642037/124296829-afecbf80-db5a-11eb-9dbc-d92b588e1f42.png)
+</p>
+
 
 ---
 
 ## 📝 Table of Contents
 
 - [About](#about)
-  - [Setting up the boilerplate](/setting-up-instructions.md)
-  - [Plan the project](/planning.md)
 - [Project's Calendar](#-projects-calendar)
 - [Class Daily Agenda](#-class-daily-agenda-)
 - [The Customer](#-the-customer)
-  - [Business Glossary](/BusinessGlossary.md)
-  - [Database Model Diagram](#️-database-model-diagram)
-- [Process](#-process-)
-  - [Working with code](#-working-with-code)
-  - [Guidelines for building components](#-guidelines-for-building-components)
-  - [Code best practices](#-code-best-practices)
-  - [Working with GIT](/working-with-git.md)
-  - [Working with Heroku and Deployment](/deployment.md)
-  - [Working Knex and migrations](/knex-and-migrations.md)
-  - [Working with API Documentation - Swagger](#working-with-api-documentation---swagger)
-  - [Working with Storybook](#working-with-storybook)
-  - [Working with AWS - Amazon Services](#working-with-aws---amazon-services) - [Testing](#testing)
-- [Getting Started](#getting-started)
-  - [Installations](/installations.md) - [Code linting](#code-linting)
-- [Getting the certificate](/certificate.md)
-- [Authors](#authors)
-- [License](#license)
+  - [💼 Business Glossary](#-business-glossary)
+  - [🖼 Wireframes](#-wireframes)
+  - [🗄️ Database Model Diagram](#️-database-model-diagram)
+- [📈 Process 📉📈](#-process-)
+ - [💻 Working with code](#-working-with-code)
+  - [🧱 Guidelines for building components](#-guidelines-for-building-components)
+    - [A note about React Hooks](#a-note-about-react-hooks)
+    - [Proptypes](#proptypes)
+    - [Using Storybook](#using-storybook)
+    - [How to create a new story](#how-to-create-a-new-story)
+      - [Adding knobs (optional)](#adding-knobs-optional)
+    - [Breaking down components](#breaking-down-components)
+    - [Coding guidelines for components](#coding-guidelines-for-components)
+  - [🎨 Theming and global styling](#-theming-and-global-styling)
+  - [🧱 Component styling](#-component-styling)
+  - [📤 📥 Inline CSS vs Stylesheets](#--inline-css-vs-stylesheets)
+  - [👍🏽 Code best practices](#-code-best-practices)
+  - <img width=20px height=20px src="/git-logo.png" alt="GitHub logo"></img>[Working with GIT](#-working-with-git)
+  - <img width=15px height=30px src="/heroku-logo.svg" alt="Heroku logo"></img>[Working with Heroku and Deployment](#-working-with-heroku-and-deployment)
+  - <img width=59x height=20px src="/knex-logo.png"  alt="Knex logo"></img>[Working with Knex and Migrations](#-working-with-knex-and-migrations)
+  - <img width=25px height=25x src="/swagger-logo.png"  alt="Swagger logo"></img>[Working with API Documentation - Swagger](#-working-with-api-documentation---swagger)
+  - <img width=20px height=20x src="/storybook.svg"  alt="Storybook logo"></img>[Working with Storybook](#-working-with-storybook)
+  - <img width=30px height=30x src="/aws.svg"  alt="AWS S3 logo"></a><img width=30px height=30x src="/s3.png"  alt="AWS S3 logo"></img>[Working with AWS - Amazon Services](#-working-with-aws---amazon-services)
+  - [Testing](#testing)
+  - [Making authenticated requests through firebase (useFetch hook)](#making-authenticated-requests-through-firebase-usefetch-hook)
+    - [What is it?](#what-is-it)
+    - [Usage](#usage)
+- [🏁 Getting Started](#-getting-started)
+  - [💾 Installations](#-installations)
+    - [Errors](#errors)
+  - [Code linting](#code-linting)
+- [📜 Getting the HackYourFuture certificate](#-getting-the-hackyourfuture-certificate)
+- [👨🏾‍💻 Authors](#-authors)
+- [📝 License](#-license)
+
 
 ## 🧐 About <a name = "about"></a>
 
-This repository is a boilerplate and set-up instructions for the Final Project.
+This repository is for Class17 Final Project - Guide IT
 
-To setup the boilerplate for a New Final project you MUST read this first [HERE](/setting-up-instructions.md)
+Production website: https://simply-name-it-production.herokuapp.com/
 
-After the previous steps, you have new repository ready but you need plan the project,
-check [HERE](/planning.md) before you go more down.
-
-🚨Delete the About Topic from you new repository README.MD file  
-🚨Delete the instructions files:
-
-- [Setting up Instructions](/setting-up-instructions.md)
-- [Planning](/planning.md)
+Staging website: https://simply-name-it-staging.herokuapp.com/
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -62,9 +78,16 @@ check [HERE](/planning.md) before you go more down.
 
 ## 📅 Project's Calendar
 
-_Add the dates for the project and study groups_
-_Class Dates_  
-_Study groups dates_
+04-Jul-2021 - 12:00 to 16:00
+11-Jul-2021 - 12:00 to 16:00
+18-Jul-2021	- Holidays
+25-Jul-2021	- Holidays
+01-Aug-2021	- 12:00 to 16:00
+08-Aug-2021	- 12:00 to 16:00
+15-Aug-2021	- 12:00 to 16:00
+22-Aug-2021	- 12:00 to 16:00
+29-Aug-2021	- 12:00 to 16:00
+01-Sep-2021 - Graduation
 
 ## 🕛 Class Daily Agenda 🕓
 
@@ -77,14 +100,20 @@ _Add the Class schedule for the project_
 
 ## 👩🏻‍💼💡👨🏽‍💼 The Customer
 
-_Add here information about the customer/partner_
+This project came from an idea from a personal project fom Moritz E. Beber - https://github.com/Midnighter
 
 #### 💼 Business Glossary
 
 _Add here information about the Business Glossary_
 [Business Glossary](/BusinessGlossary.md)
 
+#### 🖼 Wirefames
+
+Check the mockup [here](https://www.figma.com/file/xUJNNwiE4N8TC6Q6rnQd5p/simply-name-it)
+
 #### 🗄️ Database Model Diagram
+
+Check the domain model [here](/domain_model.md)
 
 _Add here the DB Model Diagram_ - Use https://dbdiagram.io/
 
@@ -94,10 +123,17 @@ _Add here the DB Model Diagram_ - Use https://dbdiagram.io/
 
 ### 💻 Working with code
 
-- ALWAYS run code before a PR is made.
+- Take a story/task by assigning to you on the storyboard. Remember to update the status of your work when needed: in progress, blocked, waiting for review, etc.
+- Always create your branches from the develop branch. Do not interact with the master branch.
+- ALWAYS run code before a PR is made
+- Remember to go through the checklist for the PRs, and to make it easier for others, try to be as pedagogical as possible in your PRs by fx. adding pictures of your changes.
+- Test, test, test. Check the console before commiting, are there any errors/warnings?
 - No committing `console.log`
 - No committing merge conflicts!
 - Work in separate files! When you make a new feature, the first thing you do is create a new file for that (of course if it makes sense). Especially for components.
+- When working with components that are built using storybook, test them by adding them on a page. Do not commit those tests but there are errors that might not appear in storybook, but might show up outside of storybook.
+- [The mockup](https://www.figma.com/file/xUJNNwiE4N8TC6Q6rnQd5p/simply-name-it) is very helpful to know the styles for the project, fonts, colors, typography, etc.
+- Remember to use each other and take advantage of the studyrooms (Zendesk and Elastic).
 
 ### 🧱 Guidelines for building components
 
