@@ -78,20 +78,18 @@ Staging website: https://simply-name-it-staging.herokuapp.com/
 
 ## 📅 Project's Calendar
 
-04-Jul-2021 - 12:00 to 16:00
-11-Jul-2021 - 12:00 to 16:00
-18-Jul-2021	- Holidays
-25-Jul-2021	- Holidays
-01-Aug-2021	- 12:00 to 16:00
-08-Aug-2021	- 12:00 to 16:00
-15-Aug-2021	- 12:00 to 16:00
-22-Aug-2021	- 12:00 to 16:00
-29-Aug-2021	- 12:00 to 16:00
-01-Sep-2021 - Graduation
+- 04-Jul-2021 - 12:00 to 16:00
+- 11-Jul-2021 - 12:00 to 16:00
+- 18-Jul-2021	- _Holidays_
+- 25-Jul-2021	- _Holidays_
+- 01-Aug-2021	- 12:00 to 16:00
+- 08-Aug-2021	- 12:00 to 16:00
+- 15-Aug-2021	- 12:00 to 16:00
+- 22-Aug-2021	- 12:00 to 16:00
+- 29-Aug-2021	- 12:00 to 16:00
+- 01-Sep-2021 - _Graduation_
 
 ## 🕛 Class Daily Agenda 🕓
-
-_Add the Class schedule for the project_
 
 - 12:00 - 13:30 - ...
 - 13:30 - 14:00 - ...
@@ -100,14 +98,14 @@ _Add the Class schedule for the project_
 
 ## 👩🏻‍💼💡👨🏽‍💼 The Customer
 
-This project came from an idea from a personal project fom Moritz E. Beber - https://github.com/Midnighter
+This project came from an personal project idea from [**Moritz E. Beber**](https://github.com/Midnighter)
 
 #### 💼 Business Glossary
 
 _Add here information about the Business Glossary_
 [Business Glossary](/BusinessGlossary.md)
 
-#### 🖼 Wirefames
+#### 🖼 Wireframes
 
 Check the mockup [here](https://www.figma.com/file/xUJNNwiE4N8TC6Q6rnQd5p/simply-name-it)
 
