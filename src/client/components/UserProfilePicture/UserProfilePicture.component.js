@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserProfilePicture.css';
+import './UserProfilePicture.styles.css';
 /* eslint-disable react/prop-types */
 function UserProfilePicture({ size, profilePictureLink }) {
   return (
