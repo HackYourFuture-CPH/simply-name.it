@@ -9,6 +9,7 @@ export default function Dropdown(props) {
     <div className="dropdown-container">
       <div className="dropdown-button-container">
         <button
+          type="button"
           className={`dropdown-button ${variant}`}
           onClick={() => setVisible(!visible)}
         >
@@ -23,5 +24,10 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
+  variant: PropTypes.string,
   children: PropTypes.node.isRequired,
+};
+
+Dropdown.defaultProps = {
+  variant: 'Dark',
 };
