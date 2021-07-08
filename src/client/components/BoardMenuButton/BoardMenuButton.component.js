@@ -23,4 +23,5 @@ BoardMenuButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool.isRequired,
 };
+
 export default BoardMenuButton;
