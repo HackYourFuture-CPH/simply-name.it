@@ -13,9 +13,9 @@ export const GoogleButton = ({ hasAccount }) => {
 };
 
 GoogleButton.propTypes = {
-  signedIn: PropTypes.bool,
+  hasAccount: PropTypes.bool,
 };
 
 GoogleButton.defaultProps = {
-  signedIn: true,
+  hasAccount: true,
 };
