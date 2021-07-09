@@ -4,7 +4,7 @@ import './CheckboxInput.styles.css';
 const Checkbox = (props) => {
   const { id, onChange, labelText, isDisabled } = props;
   return (
-    <div class="container">
+    <div className="container">
       <div className="checkbox">
         <li>
           <input
@@ -24,7 +24,7 @@ const Checkbox = (props) => {
             type="checkbox"
             id="checkbox2"
             onChange={(e) => {
-              onChange(e, e.target.checked, customId);
+              onChange(e, e.target.checked, id);
             }}
             disabled={isDisabled}
           />
@@ -37,7 +37,7 @@ const Checkbox = (props) => {
             type="checkbox"
             id="checkbox3"
             onChange={(e) => {
-              onChange(e, e.target.checked, customId);
+              onChange(e, e.target.checked, id);
             }}
             disabled={isDisabled}
           />
@@ -52,6 +52,7 @@ const Checkbox = (props) => {
 
 Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
+  labelText: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
 };
