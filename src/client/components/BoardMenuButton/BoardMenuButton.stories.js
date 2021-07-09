@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardMenuButton from './';
+import BoardMenuButton from './BoardMenuButton.component';
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 

@@ -21,7 +21,7 @@ const BoardMenuButton = (props) => {
 BoardMenuButton.propTypes = {
   btnText: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
 };
 
 export default BoardMenuButton;
