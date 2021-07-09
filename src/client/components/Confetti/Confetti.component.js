@@ -9,20 +9,18 @@ function Confetti() {
         src="https://img.icons8.com/emoji/208/000000/confetti-ball.png"
         alt="confetti-animation"
       />
-      <div class="container">
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-        <div class="confetti"></div>
-      </div>
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
+      <div className="confetti" />
     </div>
   );
 }
