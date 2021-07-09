@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import './CheckboxInput.styles.css';
+
 const Checkbox = (props) => {
   const { id, onChange, labelText, isDisabled } = props;
   return (
@@ -55,6 +56,9 @@ Checkbox.propTypes = {
   labelText: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
+};
+Checkbox.defaultProps = {
+  isDisabled: false,
 };
 
 export default Checkbox;
