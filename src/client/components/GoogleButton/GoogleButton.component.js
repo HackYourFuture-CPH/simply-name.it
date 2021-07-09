@@ -4,18 +4,16 @@ import PropTypes from 'prop-types';
 import './GoogleButton.css';
 
 export const GoogleButton = ({ signedIn }) => {
-  const [hasAccount, setHasAccount] = useState(signedIn); //so it can be reused both as "sign in" or "sign up"
-
   return (
     <div id="g-button">
-      <span class="buttonText">Sign {hasAccount ? 'in' : 'up'} with</span>
-      <span class="icon"></span>
+      <span className="buttonText">Sign {hasAccount ? 'in' : 'up'} with</span>
+      <span className="icon" />
     </div>
   );
 };
 
 GoogleButton.propTypes = {
-  signedIn: PropTypes.bool.isRequired,
+  signedIn: PropTypes.bool,
 };
 
 GoogleButton.defaultProps = {
