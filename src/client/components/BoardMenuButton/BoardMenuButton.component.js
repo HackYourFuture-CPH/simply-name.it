@@ -24,4 +24,8 @@ BoardMenuButton.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
+BoardMenuButton.defaultProps = {
+  isDisabled: true,
+};
+
 export default BoardMenuButton;
