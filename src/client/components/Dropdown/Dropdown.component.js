@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Dropdown.css';
 import PropTypes from 'prop-types';
 
 export default function Dropdown(props) {
-  const { variant = 'dark', children } = props;
-  const [visible, setVisible] = useState(false);
+  const { variant = 'dark', children, visible, onClick } = props;
   return (
     <div className="dropdown-container">
       <div className="dropdown-button-container">
         <button
           type="button"
           className={`dropdown-button ${variant}`}
-          onClick={() => setVisible(!visible)}
+          onClick={onClick}
         >
           &#10247;
         </button>
@@ -26,8 +25,11 @@ export default function Dropdown(props) {
 Dropdown.propTypes = {
   variant: PropTypes.string,
   children: PropTypes.node.isRequired,
+  visible: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 };
 
 Dropdown.defaultProps = {
   variant: 'Dark',
+  visible: false,
 };
