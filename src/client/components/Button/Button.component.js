@@ -47,9 +47,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  buttonLabel: 'HYF <3',
   size: 'large',
-  onClick: null,
   buttonColor: 'purple',
   buttonBorder: 'none',
   buttonLabelColor: 'white',
