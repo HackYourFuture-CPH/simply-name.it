@@ -7,9 +7,9 @@ const ArrowButton = ({ onClick, backgroundColor }) => {
     '--backgroundColor': backgroundColor,
   };
   return (
-    <div class="icon">
+    <div className="icon">
       <div
-        class="arrow"
+        className="arrow"
         type="button"
         onClick={() => onClick()}
         style={style}
