@@ -8,6 +8,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+ul li {
+  list-style: none;
+}
+
 .btn-openModal {
   width: 112px;
   height: 36px;
@@ -17,8 +21,6 @@ body {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-
-  /* identical to box height */
   background-color: #fff;
   color: #5d0096;
   cursor: pointer;
