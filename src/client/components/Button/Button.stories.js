@@ -8,7 +8,7 @@ export default {
   component: Button,
 };
 
-export const allButtons = () => (
+export const AllButtons = () => (
   <Button
     buttonLabel={text('button label')}
     onClick={action('you clicked!')}
@@ -31,7 +31,7 @@ export const allButtons = () => (
   />
 );
 
-export const largeGrayButton = () => (
+export const LargeGrayButton = () => (
   <Button
     buttonLabel="Login"
     onClick={action('you clicked!')}
@@ -41,7 +41,7 @@ export const largeGrayButton = () => (
   />
 );
 
-export const mediumPurpleGradientButton = () => (
+export const MediumPurpleGradientButton = () => (
   <Button
     buttonLabel="Create"
     onClick={action('you clicked!')}
@@ -51,7 +51,7 @@ export const mediumPurpleGradientButton = () => (
   />
 );
 
-export const smallWhiteButton = () => (
+export const SmallWhiteButton = () => (
   <Button
     buttonLabel="Members"
     onClick={action('you clicked!')}
