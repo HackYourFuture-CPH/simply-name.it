@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { text, select } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
 };
 
