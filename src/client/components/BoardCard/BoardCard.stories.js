@@ -1,6 +1,8 @@
 import React from 'react';
 import BoardCard from './BoardCard.component';
-import { text } from '@storybook/addon-knobs';
+import { text, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import Dropdown from '../Dropdown/Dropdown.component';
 
 export default {
   title: 'Components / Board Card',
@@ -17,5 +19,17 @@ export const testCard = () => (
     boardTitle={text('Board title', 'Baby name')}
     fontSize={text('Font size', '40px')}
     fontWeight={text('Font weight', 'bold')}
-  />
+  >
+    <Dropdown
+      variant="dark"
+      visible={boolean('visible', true)}
+      onClick={action('clicked')}
+    >
+      <ul>
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+      </ul>
+    </Dropdown>
+  </BoardCard>
 );
