@@ -74,8 +74,14 @@
 }
 
 .border-purple-gradient {
-  border: 3px solid;
-  border-image-source: linear-gradient(270deg, #9400d3 0%, #4b0082 100%);
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: linear-gradient(270deg, #9400d3 0%, #4b0082 100%) border-box;
+  -webkit-mask: /*4*/
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
 }
 
 /* button label color */
