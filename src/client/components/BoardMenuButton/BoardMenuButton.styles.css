@@ -1,5 +1,6 @@
-.enabled {
-  height: 45px;
+.btn-action {
+  font-weight: 600;
+  height: 50px;
   text-align: center;
   color: #5d0096;
   font-size: 16px;
@@ -10,7 +11,7 @@
   background-color: #fff;
 }
 
-.enabled:disabled {
+.btn-action:disabled {
   color: #d2d2d2;
   border-bottom: 1px solid #f0f0f0;
 }

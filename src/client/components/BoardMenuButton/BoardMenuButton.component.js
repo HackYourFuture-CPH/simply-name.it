@@ -8,7 +8,7 @@ const BoardMenuButton = (props) => {
     <div>
       <button
         type="button"
-        className="enabled"
+        className="btn-action"
         onClick={onClick}
         disabled={isDisabled}
       >
