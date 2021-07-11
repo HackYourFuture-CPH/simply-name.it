@@ -1,0 +1,23 @@
+.card-container {
+  position: relative;
+  display: inline-block;
+}
+
+.card {
+  display: inline-block;
+  position: absolute;
+  z-index: -1;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.headerContainer {
+  display: flex;
+  padding-top: 30px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title {
+  padding-left: 20px;
+}
