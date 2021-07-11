@@ -11,6 +11,7 @@ export default function Dropdown(props) {
           type="button"
           className={`dropdown-button ${variant}`}
           onClick={onClick}
+          aria-label="Display options"
         >
           &#10247;
         </button>
