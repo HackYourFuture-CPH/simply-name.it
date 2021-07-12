@@ -7,7 +7,9 @@ import MembersPanel from './MembersPanel';
 export default function Modal({ show, close }) {
   return (
     <div className={show ? 'modal-wrapper' : 'modal-wrapper invisible'}>
-      <button type="button" aria-label="Toggle" className="toggle-btn" />
+      <div className="toggle-wrapper">
+        <button type="button" aria-label="Toggle" className="toggle-btn" />
+      </div>
       <div className="modal-header">
         <h1>Members</h1>
         <button

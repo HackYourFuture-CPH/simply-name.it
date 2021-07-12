@@ -1,14 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-ul li {
+.members-wrapper ul li {
   list-style: none;
 }
 
@@ -43,7 +33,7 @@ ul li {
 }
 
 .modal-header {
-  padding: 2.5rem 2.5rem 1rem 2.5rem;
+  padding: 0 2.5rem 0 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,13 +45,12 @@ ul li {
 }
 
 .modal-content {
-  padding: 1rem 2rem;
+  padding: 0 2.5rem 1rem 2.5rem;
   border-bottom: 2px solid #bdbdbd;
 }
 
 .modal-members {
   margin-top: 0.5rem;
-  margin-left: 2rem;
   margin-right: 2rem;
   display: flex;
   flex-direction: row;
@@ -73,16 +62,28 @@ ul li {
   margin-top: 2rem;
 }
 
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .toggle-btn {
-  position: relative;
+  margin-top: 10px;
   width: 130px;
   height: 0;
-  left: 250px;
-  top: 10px;
   border-radius: 20px;
   background-color: #e5e5e5;
   border: 6px solid #e5e5e5;
   cursor: pointer;
+}
+
+.profile h3 {
+  margin-block-end: 0;
+}
+
+.profile p {
+  margin-block-start: 0.5em;
 }
 
 .close-btn {
@@ -160,7 +161,6 @@ ul li {
 
 .caption {
   color: #ababab;
-  margin-top: 5px;
 }
 
 .back-drop {
