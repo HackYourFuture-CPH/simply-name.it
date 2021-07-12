@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .board-menu-button {
-  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   height: 50px;
   text-align: center;
   color: #5d0096;
