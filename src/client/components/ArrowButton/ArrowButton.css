@@ -35,3 +35,8 @@
   top: 12px;
   transform: rotate(45deg);
 }
+
+.button {
+  background: transparent;
+  border: transparent;
+}
