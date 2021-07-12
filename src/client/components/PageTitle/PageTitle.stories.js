@@ -12,5 +12,6 @@ export const TestTitle = () => (
     title={text('Title', ' Welcome ')}
     fontSize={text('Font-size', '60px')}
     fontWeight={text('Font-weight', 'bold')}
+    colorVariant={text('Text color', 'black')}
   />
 );
