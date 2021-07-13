@@ -2,19 +2,19 @@ import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
-import SampleComponent from './SampleComponent';
+import Example from './Example.component';
 
 export default {
-  title: 'Components / Sample Component',
-  component: SampleComponent,
+  title: 'Example Component',
+  component: Example,
   argTypes: {
     onClick: { action: 'clicked' },
   },
   parameters: { actions: { argTypesRegex: '^on.*' } },
 };
 
-export const Component = () => (
-  <SampleComponent
+export const ExampleStory = () => (
+  <Example
     title={text('Title', 'Test title')}
     onClick={action('You have clicked the button')}
   />
