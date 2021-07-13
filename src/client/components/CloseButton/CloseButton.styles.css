@@ -1,4 +1,4 @@
-.first_line {
+.left_diagonal {
   height: 25px;
   width: 2px;
   background-color: black;
@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-.second_line {
+.right_diagonal {
   height: 25px;
   width: 2px;
   background-color: black;

@@ -5,9 +5,14 @@ import './CloseButton.styles.css';
 const CloseButton = ({ onClick }) => {
   return (
     <div>
-      <button className="close_button" type="button" onClick={() => onClick()}>
-        <div className="first_line">
-          <div className="second_line" />
+      <button
+        className="close_button"
+        type="button"
+        onClick={onClick}
+        aria-label="Close Button"
+      >
+        <div className="left_diagonal">
+          <div className="right_diagonal" />
         </div>
       </button>
     </div>
