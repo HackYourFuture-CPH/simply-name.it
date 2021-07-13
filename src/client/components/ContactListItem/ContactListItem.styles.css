@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+li {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 10px 0;
+}
+
+.user-name {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000;
+}
+
+.user-email {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #bdbdbd;
+}
