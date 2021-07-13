@@ -14,8 +14,8 @@ export const testCard = () => (
       'Image',
       'https://www.forbes.com/health/wp-content/uploads/2021/05/baby_spit_up_1-getty_creative.jpg',
     )}
-    width={text('Width', '400')}
-    height={text('Height', '400')}
+    width={text('Width', '400px')}
+    height={text('Height', '400px')}
     boardTitle={text('Board title', 'Baby name')}
     fontSize={text('Font size', '40px')}
     fontWeight={text('Font weight', 'bold')}

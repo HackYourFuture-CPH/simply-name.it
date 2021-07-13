@@ -13,8 +13,8 @@ export default function BoardCard({
   children,
 }) {
   const style = {
-    width: `${width}`,
-    height: `${height}`,
+    width,
+    height,
   };
   return (
     <div className="card-container" style={style}>
