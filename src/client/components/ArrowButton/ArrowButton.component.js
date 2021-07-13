@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import './ArrowButton.styles.css';
 
 const ArrowButton = ({ onClick, backgroundColor }) => {
-  const style = {
-    '--backgroundColor': backgroundColor,
-  };
   return (
     <button
       className="arrow-button-wrapper"
@@ -13,7 +10,10 @@ const ArrowButton = ({ onClick, backgroundColor }) => {
       onClick={() => onClick()}
     >
       <div className="icon">
-        <div className="arrow" style={style} aria-label="Arrow Button" />
+        <div
+          className={`${'arrow'} ${'arrow-background-'}${backgroundColor}`}
+          aria-label="Arrow Button"
+        />
       </div>
     </button>
   );
