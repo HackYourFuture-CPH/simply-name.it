@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './PageTitle.style.css';
 
-export default function PageTitle({
-  title,
-  fontSize,
-  fontWeight,
-  colorVariant,
-}) {
+export default function PageTitle({ title, fontSize, isBold, colorVariant }) {
   return (
-    <div className={` ${colorVariant}`} style={{ fontSize, fontWeight }}>
+    <div
+      className={`pageTitle${colorVariant}`}
+      style={{ fontSize, fontWeight: isBold ? 'bold' : 'normal' }}
+    >
       {title}
     </div>
   );
@@ -18,12 +16,12 @@ export default function PageTitle({
 PageTitle.propTypes = {
   title: PropTypes.string.isRequired,
   fontSize: PropTypes.string,
-  fontWeight: PropTypes.string,
-  colorVariant: PropTypes.string,
+  isBold: PropTypes.bool,
+  colorVariant: PropTypes.oneOf(['black', 'white']),
 };
 
 PageTitle.defaultProps = {
   fontSize: '100px',
-  fontWeight: 'bold',
+  isBold: false,
   colorVariant: 'black',
 };
