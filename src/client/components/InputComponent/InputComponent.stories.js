@@ -9,9 +9,27 @@ export default {
   argTypes: { onChange: { action: 'changed' } },
 };
 
+export const mainType1 = () => (
+  <InputComponent
+    placeholder="Type 1"
+    borderShape="round"
+    theme="light"
+    onChange={action('You have changed the search input content')}
+  />
+);
+
+export const mainType2 = () => (
+  <InputComponent
+    placeholder="Type 2"
+    borderShape="curved"
+    theme="dark"
+    onChange={action('You have changed the search input content')}
+  />
+);
+
 export const DynamicInput = () => (
   <InputComponent
-    type={select('Input Type', ['text', 'date', 'nmuber'], 'text')}
+    type={select('Input Type', ['text', 'date', 'number', 'password'], 'text')}
     placeholder={text('Placeholder', 'Add Name')}
     inputValue={text('Initial Input Value')}
     borderShape={select('Border Shape', ['curved', 'round'], 'curved')}
@@ -26,7 +44,7 @@ export const SearchInput = () => (
     placeholder="Search"
     borderShape="round"
     theme="light"
-    showSearchIcon="true"
+    showSearchIcon={true}
     onChange={action('You have changed the search input content')}
   />
 );
@@ -47,5 +65,15 @@ export const DateInput = () => (
     borderShape="round"
     theme="light"
     onChange={action('You have changed the date')}
+  />
+);
+
+export const PasswordInput = () => (
+  <InputComponent
+    type="password"
+    placeholder="Password"
+    borderShape="round"
+    theme="light"
+    onChange={action('You have changed the password')}
   />
 );

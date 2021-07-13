@@ -23,7 +23,7 @@
 }
 
 .curvedBorder {
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .roundBorder {
@@ -31,12 +31,12 @@
 }
 
 .lightInput {
-  border: gray 1px solid;
+  border: rgb(197, 197, 197) 1px solid;
   background-color: white;
 }
 
 .lightInput::placeholder {
-  color: gray;
+  color: rgb(197, 197, 197);
 }
 
 .darkInput {

@@ -17,6 +17,14 @@ export default function InputComponent({
     classNames += theme === 'light' ? ' lightInput' : ' darkInput';
     return classNames;
   }
+  function textChange(e) {
+    if (e.target.value !== null && e.target.value !== '' && theme === 'light') {
+      e.target.parentElement.parentElement.style.border = '1px solid black';
+    } else {
+      e.target.parentElement.parentElement.style.border = '';
+    }
+    onChange(e.target.value);
+  }
   return (
     <div className={getInputClassNames()}>
       {showSearchIcon && (
@@ -32,23 +40,32 @@ export default function InputComponent({
         </div>
       )}
       <div className="inputTextContainer">
-        <input
-          type={type}
-          value={inputValue}
-          placeholder={placeholder}
-          onChange={(e) => onChange(e.target.value)}
-        />
+        {inputValue === null && (
+          <input
+            type={type}
+            placeholder={placeholder}
+            onChange={(e) => textChange(e)}
+          />
+        )}
+        {inputValue !== null && (
+          <input
+            type={type}
+            value={inputValue}
+            placeholder={placeholder}
+            onChange={(e) => textChange(e)}
+          />
+        )}
       </div>
     </div>
   );
 }
 
 InputComponent.propTypes = {
-  type: PropTypes.oneOfType(['text', 'date', 'number']),
+  type: PropTypes.oneOf(['text', 'date', 'number', 'password']),
   inputValue: PropTypes.string,
   placeholder: PropTypes.string,
-  theme: PropTypes.oneOfType(['light', 'dark']),
-  borderShape: PropTypes.oneOfType(['curved', 'round']),
+  theme: PropTypes.oneOf(['light', 'dark']),
+  borderShape: PropTypes.oneOf(['curved', 'round']),
   showSearchIcon: PropTypes.bool,
   onChange: PropTypes.func,
 };
