@@ -68,6 +68,13 @@
   justify-content: center;
 }
 
+.no-member-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
 .toggle-btn {
   margin-top: 10px;
   width: 130px;

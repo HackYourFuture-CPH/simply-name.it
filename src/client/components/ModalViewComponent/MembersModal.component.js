@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ModalViewComponent.styles.css';
+import './MembersModal.styles.css';
 import AdminPanel from './AdminPanel';
 import MembersPanel from './MembersPanel';
 
-export default function Modal({ show, close }) {
+export default function MembersModal({ show, close, members }) {
   return (
     <div className={show ? 'modal-wrapper' : 'modal-wrapper invisible'}>
       <div className="toggle-wrapper">
@@ -21,12 +21,13 @@ export default function Modal({ show, close }) {
         />
       </div>
       <AdminPanel />
-      <MembersPanel />
+      <MembersPanel members={members} />
     </div>
   );
 }
 
-Modal.propTypes = {
+MembersModal.propTypes = {
   show: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
+  members: PropTypes.instanceOf(Object).isRequired,
 };

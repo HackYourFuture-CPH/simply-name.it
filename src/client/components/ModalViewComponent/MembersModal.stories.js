@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import Modal from './ModalViewComponent';
+import MembersModal from './MembersModal.component';
+import members from './membersData.json';
 
 export default {
   title: 'Components / ModalView Component',
-  component: Modal,
+  component: MembersModal,
 };
 
 export function Component() {
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => setShowModal(false);
-
   return (
     <div>
       {showModal ? (
@@ -28,7 +28,7 @@ export function Component() {
       >
         Members
       </button>
-      <Modal show={showModal} close={closeModal} />
+      <MembersModal show={showModal} close={closeModal} members={members} />
     </div>
   );
 }
