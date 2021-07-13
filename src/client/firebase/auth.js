@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 function handleAuthErrors({ code, message }) {
   switch (code) {
     case FIREBASE_ERROR_CODES.WRONG_PASSWORD:
