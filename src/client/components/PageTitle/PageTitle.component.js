@@ -2,26 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './PageTitle.style.css';
 
-export default function PageTitle({ title, fontSize, isBold, colorVariant }) {
-  return (
-    <div
-      className={`pageTitle${colorVariant}`}
-      style={{ fontSize, fontWeight: isBold ? 'bold' : 'normal' }}
-    >
-      {title}
-    </div>
-  );
+export default function PageTitle({ title, variant }) {
+  return <div className={`pageTitle${variant}`}> {title} </div>;
 }
 
 PageTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  fontSize: PropTypes.string,
-  isBold: PropTypes.bool,
-  colorVariant: PropTypes.oneOf(['black', 'white']),
+  variant: PropTypes.oneOf(['Black', 'White', 'BigerBlack']),
 };
 
 PageTitle.defaultProps = {
-  fontSize: '100px',
-  isBold: false,
-  colorVariant: 'black',
+  variant: 'Black',
 };

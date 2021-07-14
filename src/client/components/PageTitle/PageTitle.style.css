@@ -6,10 +6,20 @@ div {
   font-family: 'Roboto', sans-serif;
 }
 
+.pageTitleBigerBlack {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+}
+
 .pageTitleBlack {
   color: black;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .pageTitleWhite {
   color: white;
+  font-size: 54px;
+  font-weight: 500;
 }

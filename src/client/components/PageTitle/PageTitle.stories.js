@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTitle from './PageTitle.component';
-import { text, select, boolean } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 export default {
   title: 'Components / Page Title',
@@ -10,8 +10,6 @@ export default {
 export const TestTitle = () => (
   <PageTitle
     title={text('Title', ' Welcome ')}
-    fontSize={text('Font-size', '60px')}
-    isBold={boolean('Bold', false)}
-    colorVariant={select('Text color', ['White', 'Black'])}
+    variant={select('Text color', ['White', 'Black', 'BigerBlack'])}
   />
 );
