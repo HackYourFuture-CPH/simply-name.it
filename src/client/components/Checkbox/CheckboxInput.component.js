@@ -12,19 +12,15 @@ const optionList = [
 ];
 
 const CheckboxItem = (props) => {
-  const { id, onChange, isDisabled } = props;
-  const handleChange = (e) => {
+  const { id, isDisabled } = props;
+  const onChange = (e) => {
     e, e.target.checked, id;
   };
   return (
     <li>
       <div className="container">
         <div className="checkbox">
-          <input
-            type="checkbox"
-            onChange={handleChange}
-            disabled={isDisabled}
-          />
+          <input type="checkbox" onChange={onChange} disabled={isDisabled} />
           <label> {props.option.description}</label>
         </div>
       </div>
@@ -46,12 +42,8 @@ const CheckboxContainer = () => {
 
 CheckboxContainer.propTypes = {
   id: PropTypes.string.isRequired,
-  labelText: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
-};
-CheckboxContainer.defaultProps = {
-  isDisabled: false,
   description: PropTypes.string,
   option: PropTypes.shape({
     id: PropTypes.number,
@@ -59,8 +51,9 @@ CheckboxContainer.defaultProps = {
   }),
 };
 CheckboxItem.defaultProps = {
+  isDisabled: false,
   description: 'Option',
-  option: [1, 2, 3],
+  option: [],
 };
 
 export default CheckboxContainer;
