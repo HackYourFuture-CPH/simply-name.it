@@ -2,63 +2,65 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './CheckboxInput.styles.css';
 
-const Checkbox = (props) => {
-  const { id, onChange, labelText, isDisabled } = props;
+const optionList = [
+  {
+    id: 1,
+    description: 'Add contact',
+  },
+  { id: 2, description: 'Block member' },
+  { id: 3, description: 'Add member' },
+];
+
+const CheckboxItem = (props) => {
+  const { id, onChange, isDisabled } = props;
+  const handleChange = (e) => {
+    e, e.target.checked, id;
+  };
   return (
-    <div className="container">
-      <div className="checkbox">
-        <li>
+    <li>
+      <div className="container">
+        <div className="checkbox">
           <input
             type="checkbox"
-            id="checkbox"
-            onChange={(e) => {
-              onChange(e, e.target.checked, id);
-            }}
+            onChange={handleChange}
             disabled={isDisabled}
           />
-          <label htmlFor="checkbox">
-            <span>{labelText}</span>
-          </label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="checkbox2"
-            onChange={(e) => {
-              onChange(e, e.target.checked, id);
-            }}
-            disabled={isDisabled}
-          />
-          <label htmlFor="checkbox2">
-            <span>{labelText}</span>
-          </label>
-        </li>{' '}
-        <li>
-          <input
-            type="checkbox"
-            id="checkbox3"
-            onChange={(e) => {
-              onChange(e, e.target.checked, id);
-            }}
-            disabled={isDisabled}
-          />
-          <label htmlFor="checkbox3">
-            <span>{labelText}</span>
-          </label>
-        </li>
+          <label> {props.option.description}</label>
+        </div>
       </div>
-    </div>
+    </li>
   );
 };
 
-Checkbox.propTypes = {
+const CheckboxContainer = () => {
+  return (
+    <li>
+      <label htmlFor="checkbox">
+        {optionList.map((option) => {
+          return <CheckboxItem option={option} key={option.id} />;
+        })}
+      </label>
+    </li>
+  );
+};
+
+CheckboxContainer.propTypes = {
   id: PropTypes.string.isRequired,
-  labelText: PropTypes.string.isRequired,
+  labelText: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
 };
-Checkbox.defaultProps = {
+CheckboxContainer.defaultProps = {
   isDisabled: false,
+  description: PropTypes.string,
+  option: PropTypes.shape({
+    id: PropTypes.number,
+    description: PropTypes.string,
+  }),
+};
+CheckboxItem.defaultProps = {
+  description: 'Option',
+  option: [1, 2, 3],
 };
 
-export default Checkbox;
+export default CheckboxContainer;
