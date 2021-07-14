@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './PageTitle.style.css';
 
 export default function PageTitle({ title, variant }) {
-  return <div className={`pageTitle${variant}`}> {title} </div>;
+  return <div className={`page-title-${variant}`}> {title} </div>;
 }
 
 PageTitle.propTypes = {
   title: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(['Black', 'White', 'BigerBlack']),
+  variant: PropTypes.oneOf(['black', 'white', 'black-large']),
 };
 
 PageTitle.defaultProps = {
-  variant: 'Black',
+  variant: 'black',
 };

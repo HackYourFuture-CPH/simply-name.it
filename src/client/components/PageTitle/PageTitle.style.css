@@ -6,19 +6,19 @@ div {
   font-family: 'Roboto', sans-serif;
 }
 
-.pageTitleBigerBlack {
+.page-title-black-large {
   color: black;
   font-weight: bold;
   font-size: 30px;
 }
 
-.pageTitleBlack {
+.page-title-black {
   color: black;
   font-weight: bold;
   font-size: 24px;
 }
 
-.pageTitleWhite {
+.page-title-white {
   color: white;
   font-size: 54px;
   font-weight: 500;
