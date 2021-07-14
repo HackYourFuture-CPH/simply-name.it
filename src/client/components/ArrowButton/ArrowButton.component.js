@@ -21,11 +21,11 @@ const ArrowButton = ({ onClick, backgroundColor }) => {
 
 ArrowButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  backgroundColor: PropTypes.string,
+  backgroundColor: PropTypes.oneOf(['black', 'white']),
 };
 
 ArrowButton.defaultProps = {
-  backgroundColor: '#000',
+  backgroundColor: 'black',
 };
 
 export default ArrowButton;

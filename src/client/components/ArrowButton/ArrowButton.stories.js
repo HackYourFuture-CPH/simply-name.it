@@ -16,12 +16,7 @@ export default {
   },
 };
 
-export const BlackArrow = () => (
-  <ArrowButton
-    backgroundColor={color('color', 'black')}
-    onClick={action('clicked')}
-  />
-);
+export const BlackArrow = () => <ArrowButton onClick={action('clicked')} />;
 export const WhiteArrow = () => (
   <ArrowButton
     backgroundColor={color('color', 'white')}
