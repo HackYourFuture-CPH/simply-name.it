@@ -1,0 +1,19 @@
+.left_diagonal {
+  height: 25px;
+  width: 2px;
+  background-color: black;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.right_diagonal {
+  height: 25px;
+  width: 2px;
+  background-color: black;
+  transform: rotate(90deg);
+}
+
+.close_button {
+  background-color: transparent;
+  border: transparent;
+}
