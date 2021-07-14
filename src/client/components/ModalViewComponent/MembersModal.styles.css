@@ -1,0 +1,179 @@
+.members-wrapper ul li {
+  list-style: none;
+}
+
+.btn-openModal {
+  width: 112px;
+  height: 36px;
+  border: 2px solid #5d0096;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: #fff;
+  color: #5d0096;
+  cursor: pointer;
+}
+
+.modal-wrapper {
+  background-color: #fff;
+  width: 80%;
+  max-width: 600px;
+  margin: 4rem auto;
+  transition: all 0.5s ease;
+  border-radius: 50px 50px 0 0;
+  display: block;
+  transform: translateY(0);
+}
+
+.invisible {
+  display: none;
+  transform: translateY(100vh);
+}
+
+.modal-header {
+  padding: 0 2.5rem 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header span {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding: 0 2.5rem 1rem 2.5rem;
+  border-bottom: 2px solid #bdbdbd;
+}
+
+.modal-members {
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.members-wrapper {
+  margin-top: 2rem;
+}
+
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-member-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.toggle-btn {
+  margin-top: 10px;
+  width: 130px;
+  height: 0;
+  border-radius: 20px;
+  background-color: #e5e5e5;
+  border: 6px solid #e5e5e5;
+  cursor: pointer;
+}
+
+.profile h3 {
+  margin-block-end: 0;
+}
+
+.profile p {
+  margin-block-start: 0.5em;
+}
+
+.close-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  border: none;
+  background: none;
+}
+
+.close-btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.close-btn::before,
+.close-btn::after {
+  position: absolute;
+  left: 15px;
+  top: 3px;
+  content: ' ';
+  height: 28px;
+  width: 2px;
+  background-color: #000;
+}
+
+.close-btn::before {
+  transform: rotate(45deg);
+}
+
+.close-btn::after {
+  transform: rotate(-45deg);
+}
+
+.dropdown::after {
+  content: '\2807';
+  font-size: 40px;
+}
+
+.dropdown {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.modal-body {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-body h4 {
+  font-size: 1.8rem;
+  color: #dd501d;
+}
+
+.modal-body p {
+  font-size: 1rem;
+}
+
+.round {
+  border-radius: 50%;
+  padding: 7px;
+  width: 100px;
+  height: 100px;
+}
+
+.modal-body .profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 150px;
+  margin: 0 10px;
+}
+
+.caption {
+  color: #ababab;
+}
+
+.back-drop {
+  background: rgba(63, 61, 61, 0.692);
+  height: 100%;
+  position: fixed;
+  transition: all 1.3s;
+  width: 100%;
+}
