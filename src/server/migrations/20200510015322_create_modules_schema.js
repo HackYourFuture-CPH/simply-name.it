@@ -1,18 +1,15 @@
-// TODO: This is a sample migration for demonstration. Remove before adding real ones.
+// This is a migration for Results table
 
 exports.up = function (knex) {
-  return knex.schema.createTable('modules', (table) => {
-    table.increments();
-    table.string('title').notNullable();
-    table.datetime('startDate').notNullable();
-    table.datetime('endDate').notNullable();
-    table.string('classId').notNullable();
-    table.datetime('createdAt').defaultTo(knex.fn.now()).notNullable();
-    table.datetime('updatedAt').defaultTo(knex.fn.now()).notNullable();
-    table.datetime('deletedAt');
+  return knex.schema.createTable('results', (table) => {
+    table.integer('fk_boardId').unsigned().notNullable();
+    table.foreign('fk_boardId').references('boards.id');
+    table.integer('fk_candidateId').unsigned().notNullable();
+    table.foreign('fk_candidateId').references('candidates.id');
+    table.integer('rank').unsigned().notNullable();
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('modules');
+  return knex.schema.dropTable('results');
 };
