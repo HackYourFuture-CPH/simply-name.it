@@ -1,6 +1,7 @@
 .card-container {
   position: relative;
   display: inline-block;
+  width: 50%;
 }
 
 .card {
@@ -8,16 +9,18 @@
   position: absolute;
   z-index: -1;
   border-radius: 20px;
-  width: 100%;
+  width: 95%;
 }
 
 .headerContainer {
   display: flex;
   padding-top: 30px;
-  width: 100%;
   justify-content: space-between;
 }
 
 .title {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
   padding-left: 20px;
 }
