@@ -1,26 +1,30 @@
-.card-container {
+.board-container {
   position: relative;
-  display: inline-block;
-  width: 50%;
+  width: 100%;
 }
 
-.card {
-  display: inline-block;
+.board-image {
   position: absolute;
   z-index: -1;
   border-radius: 20px;
-  width: 95%;
+  width: 100%;
 }
 
-.headerContainer {
+.board-header-container {
   display: flex;
   padding-top: 30px;
   justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
 }
 
-.title {
+.board-title {
   color: white;
   font-weight: bold;
   font-size: 30px;
-  padding-left: 20px;
+}
+
+.children-button-class {
+  display: flex;
+  justify-content: flex-end;
 }
