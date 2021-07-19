@@ -8,7 +8,7 @@ export default function BoardCard({ src, alt, boardTitle, children }) {
       <img src={src} alt={alt} className="board-image" />
       <div className="board-header-container">
         <div className="board-title">{boardTitle}</div>
-        <div className="children-button-class">{children}</div>
+        <div className="board-header-children">{children}</div>
       </div>
     </div>
   );

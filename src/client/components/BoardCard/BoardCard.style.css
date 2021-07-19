@@ -24,7 +24,7 @@
   font-size: 30px;
 }
 
-.children-button-class {
+.board-header-children {
   display: flex;
   justify-content: flex-end;
 }
