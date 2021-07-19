@@ -2,58 +2,43 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './CheckboxInput.styles.css';
 
-const optionList = [
-  {
-    id: 1,
-    description: 'Add contact',
-  },
-  { id: 2, description: 'Block member' },
-  { id: 3, description: 'Add member' },
-];
-
-const CheckboxItem = (props) => {
-  const { id, isDisabled } = props;
-  const onChange = (e) => {
-    e, e.target.checked, id;
-  };
+export const CheckboxItem = ({
+  id,
+  description,
+  isDisabled,
+  isChecked,
+  onCheckboxChange,
+}) => {
   return (
-    <li>
-      <div className="container">
-        <div className="checkbox">
-          <input type="checkbox" onChange={onChange} disabled={isDisabled} />
-          <label> {props.option.description}</label>
-        </div>
-      </div>
+    <li className={`${'checkbox'} ${isDisabled && 'checkbox-disabled'}`}>
+      <input
+        id={id}
+        type="checkbox"
+        disabled={isDisabled}
+        checked={isChecked}
+        onChange={() => {
+          onCheckboxChange(id);
+        }}
+      />
+      <label htmlFor={id}>{description}</label>
     </li>
   );
 };
 
-const CheckboxContainer = () => {
-  return (
-    <li>
-      <label htmlFor="checkbox">
-        {optionList.map((option) => {
-          return <CheckboxItem option={option} key={option.id} />;
-        })}
-      </label>
-    </li>
-  );
+export const CheckboxContainer = ({ children }) => {
+  return <div>{children}</div>;
 };
 
 CheckboxContainer.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
-  description: PropTypes.string,
-  option: PropTypes.shape({
-    id: PropTypes.number,
-    description: PropTypes.string,
-  }),
+  children: PropTypes.node.isRequired,
 };
-CheckboxItem.defaultProps = {
-  isDisabled: false,
-  description: 'Option',
-  option: [],
+
+CheckboxItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  onCheckboxChange: PropTypes.func.isRequired,
 };
 
 export default CheckboxContainer;

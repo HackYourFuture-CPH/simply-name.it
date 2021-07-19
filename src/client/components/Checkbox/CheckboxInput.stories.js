@@ -1,7 +1,5 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
-import CheckboxContainer from './CheckboxInput.component';
-import { boolean, text } from '@storybook/addon-knobs';
+import React, { useState } from 'react';
+import { CheckboxContainer, CheckboxItem } from './CheckboxInput.component';
 
 export default {
   option: 'Add member',
@@ -9,10 +7,45 @@ export default {
   component: CheckboxContainer,
 };
 
-export const checkboxInputList = () => (
-  <CheckboxContainer
-    isDisabled={boolean('isDisabled')}
-    onChange={action('selected')}
-    labelText={text('labelText', 'labelText')}
-  />
-);
+const optionList = [
+  {
+    id: 1,
+    description: 'Add contact',
+    isChecked: true,
+    isDisabled: false,
+  },
+  { id: 2, description: 'Block member', isChecked: true, isDisabled: false },
+  { id: 3, description: 'Add member', isChecked: false, isDisabled: true },
+];
+
+export const CheckboxInputListExample = () => {
+  const [optionListState, setOptionListState] = useState(optionList);
+
+  function onCheckboxChange(id) {
+    setOptionListState((prev) => {
+      return prev.map((option) => {
+        if (option.id === id) {
+          return { ...option, isChecked: !option.isChecked };
+        }
+        return option;
+      });
+    });
+  }
+
+  return (
+    <CheckboxContainer>
+      {optionListState.map((option) => {
+        return (
+          <CheckboxItem
+            key={option.id}
+            id={option.id}
+            description={option.description}
+            isDisabled={option.isDisabled}
+            isChecked={option.isChecked}
+            onCheckboxChange={onCheckboxChange}
+          />
+        );
+      })}
+    </CheckboxContainer>
+  );
+};
