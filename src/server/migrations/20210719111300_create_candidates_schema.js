@@ -8,7 +8,7 @@ exports.up = function (knex) {
       .references('id')
       .inTable('boards');
     table.string('name').notNullable();
-    table.boolean('isBlocked').defaultTo(false);
+    table.boolean('isBlocked').notNullable().defaultTo(false);
   });
 };
 
