@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string('fullname').notNullable().index();
     table.string('email').unique().notNullable().index();
     table.datetime('createdOn').defaultTo(knex.fn.now()).notNullable();
-    table.string('uid').notNullable();
+    table.string('firebaseUId').notNullable();
   });
 };
 
