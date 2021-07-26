@@ -13,7 +13,15 @@ exports.up = function (knex) {
       .references('id')
       .inTable('users');
     table.primary(['boardId', 'userId']);
-    table.enum('role', ['member', 'admin']).defaultTo('member');
+    table
+      .enum('role', [
+        'basic',
+        'owner',
+        'add_candidates',
+        'block_candidates',
+        'add_members',
+      ])
+      .defaultTo('basic');
   });
 };
 
