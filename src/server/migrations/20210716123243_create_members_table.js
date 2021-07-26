@@ -1,17 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable('members', (table) => {
-    table
-      .integer('boardId')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable('boards');
-    table
-      .integer('userId')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable('users');
+    table.integer('boardId').unsigned().notNullable().references('boards.id');
+    table.integer('userId').unsigned().notNullable().references('users.id');
     table.primary(['boardId', 'userId']);
     table
       .enum('role', [
