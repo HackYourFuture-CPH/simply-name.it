@@ -20,9 +20,3 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema.dropTable('members');
 };
-
-// Table members {
-//   boardId int [pk, ref: > boards.id]
-//   userId int [pk, ref: > users.id]
-//   role enum
-// }
