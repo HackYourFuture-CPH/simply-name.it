@@ -3,19 +3,13 @@ import PropTypes from 'prop-types';
 
 import './GoogleButton.css';
 
-export const GoogleButton = ({ hasAccount }) => {
+const GoogleButton = ({ hasAccount }) => {
   return (
     <div id="g-button">
-      <span className="buttonText">Sign {hasAccount ? 'in' : 'up'} with</span>
       <span className="icon" />
+      <span className="buttonText">Sign up with Google</span>
     </div>
   );
 };
 
-GoogleButton.propTypes = {
-  hasAccount: PropTypes.bool,
-};
-
-GoogleButton.defaultProps = {
-  hasAccount: true,
-};
+export default GoogleButton;

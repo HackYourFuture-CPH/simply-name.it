@@ -1,16 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 #g-button {
   display: inline-block;
-  background: white;
-  color: #444;
-  width: 190px;
   white-space: nowrap;
-  border-bottom: rgba(68, 68, 68, 0.295) solid 1px;
-  padding-bottom: 15px;
+  height: 53px;
+  width: 328px;
+  left: 42px;
+  top: 565px;
+  border-radius: 50px;
+  padding: 16px 40px;
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
 }
 
 #g-button:hover {
@@ -21,22 +18,26 @@ span.icon {
   background:
     url('../../assets/images/g-icon.png') transparent 5px 50%
     no-repeat;
-  background-size: 30px;
+  background-size: 25px;
   display: inline-block;
   vertical-align: middle;
-  width: 42px;
-  height: 42px;
+  width: 25px;
+  height: 25px;
   padding-right: 30px;
 }
 
 span.buttonText {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 25px;
-  padding-right: 21px;
-  font-size: 14px;
-  font-weight: bold;
-
-  /* Use the Roboto font that is loaded in the <head> */
+  position: static;
+  width: 177px;
+  height: 23px;
+  left: 93px;
+  top: 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  margin: 0 10px;
+  color: #fff;
   font-family: 'Roboto', sans-serif;
 }
