@@ -2,12 +2,14 @@
 
 exports.up = function (knex) {
   return knex.schema.createTable('ballots', (table) => {
-    table.integer('fk_userId').unsigned().notNullable();
-    table.foreign('fk_userId').references('users.id');
-    table.integer('fk_boardId').unsigned().notNullable();
-    table.foreign('fk_boardId').references('boards.id');
-    table.integer('fk_candidateId').unsigned().notNullable();
-    table.foreign('fk_candidateId').references('candidates.id');
+    table.integer('userId').unsigned().notNullable().references('users.id');
+    table.integer('boardId').unsigned().notNullable().references('boards.id');
+    table
+      .integer('candidateId')
+      .unsigned()
+      .notNullable()
+      .references('candidates.id');
+    table.primary(['boardId', 'userId', 'candidateId']);
     table.integer('rank').unsigned().notNullable();
   });
 };
