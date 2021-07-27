@@ -1,5 +1,3 @@
-// This is a migration for Results table
-
 exports.up = function (knex) {
   return knex.schema.createTable('results', (table) => {
     table.integer('boardId').unsigned().notNullable().references('boards.id');
