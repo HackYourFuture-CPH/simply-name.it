@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import './GoogleButton.css';
 
-const GoogleButton = ({ hasAccount }) => {
+const GoogleButton = () => {
   return (
     <div id="g-button">
       <span className="icon" />
