@@ -1,0 +1,43 @@
+#g-button {
+  display: inline-block;
+  white-space: nowrap;
+  height: 53px;
+  width: 328px;
+  left: 42px;
+  top: 565px;
+  border-radius: 50px;
+  padding: 16px 40px;
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
+}
+
+#g-button:hover {
+  cursor: pointer;
+}
+
+span.icon {
+  background:
+    url('../../assets/images/g-icon.png') transparent 5px 50%
+    no-repeat;
+  background-size: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  padding-right: 30px;
+}
+
+span.buttonText {
+  position: static;
+  width: 177px;
+  height: 23px;
+  left: 93px;
+  top: 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  margin: 0 10px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
