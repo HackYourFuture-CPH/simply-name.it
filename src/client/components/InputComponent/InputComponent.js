@@ -12,11 +12,12 @@ export default function InputComponent({
   onChange,
 }) {
   function getInputClassNames() {
-    let classNames = 'inputComponentContainer';
-    classNames += borderShape === 'curved' ? ' curvedBorder' : ' roundBorder';
-    classNames += theme === 'light' ? ' lightInput' : ' darkInput';
-    return classNames;
+    const classNames = ['inputComponentContainer'];
+    classNames.push(borderShape === 'curved' ? 'curvedBorder' : 'roundBorder');
+    classNames.push(theme === 'light' ? 'lightInput' : 'darkInput');
+    return classNames.join(' ');
   }
+
   function textChange(e) {
     if (e.target.value !== null && e.target.value !== '' && theme === 'light') {
       e.target.parentElement.parentElement.style.border = '1px solid black';
@@ -25,43 +26,53 @@ export default function InputComponent({
     }
     onChange(e.target.value);
   }
-  return (
-    <div className={getInputClassNames()}>
-      {showSearchIcon && (
+
+  function getSearchIconContent() {
+    if (showSearchIcon) {
+      return (
         <div className="searchContainer">
           <div className="searchContent">
             <div className="searchCircle">
-              <div className="searchCircleContent" />
+              <div
+                className={
+                  theme === 'light'
+                    ? 'searchCircleContentLight'
+                    : 'searchCircleContentDark'
+                }
+              />
             </div>
             <div className="searchRectangle">
               <div className="searchRectangleContent" />
             </div>
           </div>
         </div>
-      )}
+      );
+    }
+  }
+
+  return (
+    <div className={getInputClassNames()}>
+      {getSearchIconContent()}
       <div className="inputTextContainer">
-        {inputValue === null && (
-          <input
-            type={type}
-            placeholder={placeholder}
-            onChange={(e) => textChange(e)}
-          />
-        )}
-        {inputValue !== null && (
-          <input
-            type={type}
-            value={inputValue}
-            placeholder={placeholder}
-            onChange={(e) => textChange(e)}
-          />
-        )}
+        <input
+          type={type}
+          value={inputValue}
+          placeholder={placeholder}
+          onChange={(e) => textChange(e)}
+        />
       </div>
     </div>
   );
 }
 
 InputComponent.propTypes = {
-  type: PropTypes.oneOf(['text', 'date', 'number', 'password']),
+  type: PropTypes.oneOf([
+    'text',
+    'date',
+    'datetime-local',
+    'number',
+    'password',
+  ]),
   inputValue: PropTypes.string,
   placeholder: PropTypes.string,
   theme: PropTypes.oneOf(['light', 'dark']),
@@ -73,7 +84,7 @@ InputComponent.propTypes = {
 InputComponent.defaultProps = {
   type: 'text',
   placeholder: '',
-  inputValue: null,
+  inputValue: undefined,
   theme: 'light',
   borderShape: 'round',
   showSearchIcon: false,

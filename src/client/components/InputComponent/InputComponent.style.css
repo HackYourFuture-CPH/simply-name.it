@@ -72,10 +72,17 @@
   padding: 10%;
 }
 
-.searchCircleContent {
+.searchCircleContentLight {
   width: 100%;
   height: 100%;
   background-color: white;
+  border-radius: 50%;
+}
+
+.searchCircleContentDark {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(230, 217, 239);
   border-radius: 50%;
 }
 

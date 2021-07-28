@@ -51,7 +51,7 @@ export const SearchInput = () => (
 
 export const BoardNameInput = () => (
   <InputComponent
-    placeholder="Borad Name"
+    placeholder="Board Name"
     borderShape="round"
     theme="light"
     onChange={action('You have changed the board name')}
@@ -65,6 +65,16 @@ export const DateInput = () => (
     borderShape="round"
     theme="light"
     onChange={action('You have changed the date')}
+  />
+);
+
+export const DateTimeInput = () => (
+  <InputComponent
+    type="datetime-local"
+    placeholder="Date/Time"
+    borderShape="round"
+    theme="light"
+    onChange={action('You have changed the date/time')}
   />
 );
 
