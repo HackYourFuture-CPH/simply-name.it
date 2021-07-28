@@ -4,7 +4,7 @@ import './GoogleButton.css';
 const GoogleButton = () => {
   return (
     <div id="g-button">
-      <span className="icon" />
+      <span className="google-icon" />
       <span className="buttonText">Sign up with Google</span>
     </div>
   );

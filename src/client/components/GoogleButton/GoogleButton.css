@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-span.icon {
+span.google-icon {
   background:
     url('../../assets/images/g-icon.png') transparent 5px 50%
     no-repeat;
