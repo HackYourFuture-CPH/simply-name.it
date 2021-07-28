@@ -15,6 +15,10 @@ li {
   display: block;
 }
 
+.checkbox-disabled {
+  opacity: 0.5;
+}
+
 .checkbox input[type='checkbox'] {
   width: auto;
   opacity: 0.00000001;
@@ -26,12 +30,13 @@ li {
 .checkbox label {
   position: relative;
   min-height: 34px;
-  display: block;
   padding-left: 40px;
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
   vertical-align: sub;
+  display: flex;
+  align-items: center;
 }
 
 .checkbox label::before {
