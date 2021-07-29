@@ -10,7 +10,7 @@ exports.up = function (knex) {
       .notNullable()
       .references('candidates.id');
     table.primary(['boardId', 'userId', 'candidateId']);
-    table.integer('rank').unsigned().notNullable();
+    table.integer('rank').notNullable().defaultTo(true);
   });
 };
 
