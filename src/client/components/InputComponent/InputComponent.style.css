@@ -8,6 +8,10 @@
   padding: 6px 15px 5px 15px;
 }
 
+.inputHighlightedWhenNotEmpty {
+  border: 1px solid black !important;
+}
+
 .inputTextContainer {
   flex-grow: 1;
 }
@@ -70,6 +74,10 @@
   border-radius: 50%;
   background-color: gray;
   padding: 10%;
+}
+
+.highlightedIcon {
+  background-color: black !important;
 }
 
 .searchCircleContentLight {

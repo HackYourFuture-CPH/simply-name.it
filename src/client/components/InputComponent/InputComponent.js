@@ -11,10 +11,18 @@ export default function InputComponent({
   showSearchIcon,
   onChange,
 }) {
+  const highlightedIconClass =
+    inputValue !== null && inputValue !== '' ? 'highlightedIcon' : '';
+  const iconCircleClass =
+    theme === 'light' ? 'searchCircleContentLight' : 'searchCircleContentDark';
+
   function getInputClassNames() {
     const classNames = ['inputComponentContainer'];
     classNames.push(borderShape === 'curved' ? 'curvedBorder' : 'roundBorder');
     classNames.push(theme === 'light' ? 'lightInput' : 'darkInput');
+    if (inputValue !== null && inputValue !== '') {
+      classNames.push('inputHighlightedWhenNotEmpty');
+    }
     return classNames.join(' ');
   }
 
@@ -23,28 +31,10 @@ export default function InputComponent({
       return (
         <div className="searchContainer">
           <div className="searchContent">
-            <div
-              className="searchCircle"
-              style={{
-                backgroundColor:
-                  inputValue !== null && inputValue !== '' ? 'black' : '',
-              }}
-            >
-              <div
-                className={
-                  theme === 'light'
-                    ? 'searchCircleContentLight'
-                    : 'searchCircleContentDark'
-                }
-              />
+            <div className={`searchCircle ${highlightedIconClass}`}>
+              <div className={iconCircleClass} />
             </div>
-            <div
-              className="searchRectangle"
-              style={{
-                backgroundColor:
-                  inputValue !== null && inputValue !== '' ? 'black' : '',
-              }}
-            >
+            <div className={`searchRectangle ${highlightedIconClass}`}>
               <div className="searchRectangleContent" />
             </div>
           </div>
@@ -54,13 +44,7 @@ export default function InputComponent({
   }
 
   return (
-    <div
-      className={getInputClassNames()}
-      style={{
-        border:
-          inputValue !== null && inputValue !== '' ? '1px solid black' : '',
-      }}
-    >
+    <div className={getInputClassNames()}>
       {getSearchIconContent()}
       <div className="inputTextContainer">
         <input
