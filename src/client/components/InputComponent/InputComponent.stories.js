@@ -1,6 +1,6 @@
 import { text, select, boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
+import React, { useState } from 'react';
 import InputComponent from './InputComponent';
 
 export default {
@@ -9,81 +9,156 @@ export default {
   argTypes: { onChange: { action: 'changed' } },
 };
 
-export const mainType1 = () => (
-  <InputComponent
-    placeholder="Type 1"
-    borderShape="round"
-    theme="light"
-    onChange={action('You have changed the search input content')}
-  />
-);
+function useMainType1() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      placeholder="Type 1"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the input content')(e);
+      }}
+    />
+  );
+}
 
-export const mainType2 = () => (
-  <InputComponent
-    placeholder="Type 2"
-    borderShape="curved"
-    theme="dark"
-    onChange={action('You have changed the search input content')}
-  />
-);
+export const MainType1 = () => useMainType1();
 
-export const DynamicInput = () => (
-  <InputComponent
-    type={select('Input Type', ['text', 'date', 'number', 'password'], 'text')}
-    placeholder={text('Placeholder', 'Add Name')}
-    inputValue={text('Initial Input Value')}
-    borderShape={select('Border Shape', ['curved', 'round'], 'curved')}
-    theme={select('Theme', ['light', 'dark'], 'light')}
-    showSearchIcon={boolean('Show Search Icon', false)}
-    onChange={action('You have changed the input text content')}
-  />
-);
+function useMainType2() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      placeholder="Type 2"
+      borderShape="curved"
+      theme="dark"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the input content')(e);
+      }}
+    />
+  );
+}
 
-export const SearchInput = () => (
-  <InputComponent
-    placeholder="Search"
-    borderShape="round"
-    theme="light"
-    showSearchIcon={true}
-    onChange={action('You have changed the search input content')}
-  />
-);
+export const MainType2 = () => useMainType2();
 
-export const BoardNameInput = () => (
-  <InputComponent
-    placeholder="Board Name"
-    borderShape="round"
-    theme="light"
-    onChange={action('You have changed the board name')}
-  />
-);
+function useDynamicInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      type={select(
+        'Input Type',
+        ['text', 'date', 'number', 'password'],
+        'text',
+      )}
+      placeholder={text('Placeholder', 'Add Name')}
+      borderShape={select('Border Shape', ['curved', 'round'], 'curved')}
+      theme={select('Theme', ['light', 'dark'], 'light')}
+      inputValue={inputValue}
+      showSearchIcon={boolean('Show Search Icon', false)}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the input content')(e);
+      }}
+    />
+  );
+}
 
-export const DateInput = () => (
-  <InputComponent
-    type="date"
-    placeholder="Date"
-    borderShape="round"
-    theme="light"
-    onChange={action('You have changed the date')}
-  />
-);
+export const DynamicInput = () => useDynamicInput();
 
-export const DateTimeInput = () => (
-  <InputComponent
-    type="datetime-local"
-    placeholder="Date/Time"
-    borderShape="round"
-    theme="light"
-    onChange={action('You have changed the date/time')}
-  />
-);
+function useSearchInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      placeholder="Search"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      showSearchIcon={true}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the search input content')(e);
+      }}
+    />
+  );
+}
 
-export const PasswordInput = () => (
-  <InputComponent
-    type="password"
-    placeholder="Password"
-    borderShape="round"
-    theme="light"
-    onChange={action('You have changed the password')}
-  />
-);
+export const SearchInput = () => useSearchInput();
+
+function useBoardNameInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      placeholder="Board Name"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the input content')(e);
+      }}
+    />
+  );
+}
+
+export const BoardNameInput = () => useBoardNameInput();
+
+function useDateInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      type="date"
+      placeholder="Date"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the date input content')(e);
+      }}
+    />
+  );
+}
+
+export const DateInput = () => useDateInput();
+
+function useDateTimeInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      type="datetime-local"
+      placeholder="Date/Time"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the date/time input content')(e);
+      }}
+    />
+  );
+}
+
+export const DateTimeInput = () => useDateTimeInput();
+
+function usePasswordInput() {
+  const [inputValue, setInputValue] = useState('');
+  return (
+    <InputComponent
+      type="password"
+      placeholder="Password"
+      borderShape="round"
+      theme="light"
+      inputValue={inputValue}
+      onChange={(e) => {
+        setInputValue(e);
+        action('You have changed the password input content')(e);
+      }}
+    />
+  );
+}
+
+export const PasswordInput = () => usePasswordInput();

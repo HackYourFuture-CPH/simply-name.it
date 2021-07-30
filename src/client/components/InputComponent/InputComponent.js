@@ -18,21 +18,18 @@ export default function InputComponent({
     return classNames.join(' ');
   }
 
-  function textChange(e) {
-    if (e.target.value !== null && e.target.value !== '' && theme === 'light') {
-      e.target.parentElement.parentElement.style.border = '1px solid black';
-    } else {
-      e.target.parentElement.parentElement.style.border = '';
-    }
-    onChange(e.target.value);
-  }
-
   function getSearchIconContent() {
     if (showSearchIcon) {
       return (
         <div className="searchContainer">
           <div className="searchContent">
-            <div className="searchCircle">
+            <div
+              className="searchCircle"
+              style={{
+                backgroundColor:
+                  inputValue !== null && inputValue !== '' ? 'black' : '',
+              }}
+            >
               <div
                 className={
                   theme === 'light'
@@ -41,7 +38,13 @@ export default function InputComponent({
                 }
               />
             </div>
-            <div className="searchRectangle">
+            <div
+              className="searchRectangle"
+              style={{
+                backgroundColor:
+                  inputValue !== null && inputValue !== '' ? 'black' : '',
+              }}
+            >
               <div className="searchRectangleContent" />
             </div>
           </div>
@@ -51,14 +54,20 @@ export default function InputComponent({
   }
 
   return (
-    <div className={getInputClassNames()}>
+    <div
+      className={getInputClassNames()}
+      style={{
+        border:
+          inputValue !== null && inputValue !== '' ? '1px solid black' : '',
+      }}
+    >
       {getSearchIconContent()}
       <div className="inputTextContainer">
         <input
           type={type}
           value={inputValue}
           placeholder={placeholder}
-          onChange={(e) => textChange(e)}
+          onChange={(e) => onChange(e.target.value)}
         />
       </div>
     </div>
