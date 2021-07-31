@@ -23,7 +23,7 @@ export const PrimaryActive = () => (
   <Button
     buttonLabel={text('button label', 'text')}
     size={select('size', ['small', 'medium', 'large'], 'large')}
-    buttonType={'primary'}
+    buttonType="primary"
     disabled={false}
     onClick={action('you clicked!')}
   />
@@ -33,7 +33,7 @@ export const PrimaryDisabled = () => (
   <Button
     buttonLabel={text('button label', 'text')}
     size={select('size', ['small', 'medium', 'large'], 'large')}
-    buttonType={'primary'}
+    buttonType="primary"
     disabled={true}
     onClick={action('you clicked!')}
   />
@@ -43,7 +43,7 @@ export const SecondaryActive = () => (
   <Button
     buttonLabel={text('button label', 'text')}
     size={select('size', ['small', 'medium', 'large'], 'large')}
-    buttonType={'secondary'}
+    buttonType="secondary"
     disabled={false}
     onClick={action('you clicked!')}
   />
@@ -53,7 +53,7 @@ export const SecondaryDisabled = () => (
   <Button
     buttonLabel={text('button label', 'text')}
     size={select('size', ['small', 'medium', 'large'], 'large')}
-    buttonType={'secondary'}
+    buttonType="secondary"
     disabled={true}
     onClick={action('you clicked!')}
   />
