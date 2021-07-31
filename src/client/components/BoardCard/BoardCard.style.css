@@ -1,0 +1,30 @@
+.board-container {
+  position: relative;
+  width: 100%;
+}
+
+.board-image {
+  position: absolute;
+  z-index: -1;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.board-header-container {
+  display: flex;
+  padding-top: 30px;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.board-title {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.board-header-children {
+  display: flex;
+  justify-content: flex-end;
+}
