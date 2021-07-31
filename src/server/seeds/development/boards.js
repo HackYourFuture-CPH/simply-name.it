@@ -12,7 +12,6 @@ exports.seed = function (knex) {
           title: 'What should I name my pet?',
           deadline: '2021-08-13 00:00:00',
           isDeleted: false,
-          banner: '',
         },
       ]);
     });
