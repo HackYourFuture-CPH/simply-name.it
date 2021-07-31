@@ -8,17 +8,22 @@ exports.seed = function (knex) {
         {
           boardId: 1,
           userId: 1,
-          role: 'BOSS',
+          role: 'add_members',
+        },
+        {
+          boardId: 1,
+          userId: 2,
+          role: 'owner',
         },
         {
           boardId: 1,
           userId: 3,
-          role: 'MEMBER',
+          role: 'basic',
         },
         {
           boardId: 1,
           userId: 4,
-          role: 'MEMBER',
+          role: 'basic',
         },
       ]);
     });
