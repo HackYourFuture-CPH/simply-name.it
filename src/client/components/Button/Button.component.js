@@ -2,20 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.styles.css';
 
-const Button = ({
-  buttonLabel,
-  onClick,
-  size,
-  buttonColor,
-  buttonBorder,
-  buttonLabelColor,
-}) => {
+const Button = ({ buttonLabel, size, buttonType, disabled, onClick }) => {
   const getButtonClassName = () => {
     let buttonClassNames = 'button';
     buttonClassNames += ` ${size}`;
-    buttonClassNames += ` button-${buttonColor}`;
-    buttonClassNames += ` text-${buttonLabelColor}`;
-    buttonClassNames += ` border-${buttonBorder}`;
+    buttonClassNames += ` ${buttonType}`;
+    buttonClassNames += disabled ? ` disabled` : ` active`;
     return buttonClassNames;
   };
 
@@ -28,29 +20,16 @@ const Button = ({
 
 Button.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOfType(['large', 'medium', 'small']),
-  buttonColor: PropTypes.oneOfType([
-    'white',
-    'gray',
-    'turquoise',
-    'purple',
-    'purple-gradient',
-  ]),
-  buttonBorder: PropTypes.oneOfType([
-    'none',
-    'black',
-    'purple',
-    'purple-gradient',
-  ]),
-  buttonLabelColor: PropTypes.oneOfType(['black', 'gray', 'white', 'purple']),
+  buttonType: PropTypes.oneOfType(['primary', 'secondary']),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
-  size: 'large',
-  buttonColor: 'purple',
-  buttonBorder: 'none',
-  buttonLabelColor: 'white',
+  size: 'medium',
+  buttonType: 'primary',
+  disabled: false,
 };
 
 export default Button;
