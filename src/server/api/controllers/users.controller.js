@@ -2,7 +2,6 @@
 Can be deleted as soon as the first real controller is added. */
 
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
 
 const getUsers = async () => {
   return knex('users').select(
