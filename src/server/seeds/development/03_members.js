@@ -8,7 +8,7 @@ exports.seed = function (knex) {
         {
           boardId: 1,
           userId: 1,
-          role: 'add_members',
+          role: 'basic',
         },
         {
           boardId: 1,
