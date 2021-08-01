@@ -39,7 +39,7 @@ const CardListItem = (props) => {
 
 const CardList = () => {
   return (
-    <ul>
+    <ul className="card-display">
       {candidateList.map((candidate) => {
         return <CardListItem candidate={candidate} key={candidate.id} />;
       })}
