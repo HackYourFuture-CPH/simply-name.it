@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "photo": "https://randomuser.me/api/portraits/women/80.jpg",
+    "name": "Darrell Steward",
+    "role": "Member"
+  },
+  {
+    "id": 2,
+    "photo": "https://randomuser.me/api/portraits/women/81.jpg",
+    "name": "Kristin Watson",
+    "role": "Member"
+  },
+  {
+    "id": 3,
+    "photo": "https://randomuser.me/api/portraits/men/80.jpg",
+    "name": "Theresa Webb",
+    "role": "Member"
+  },
+  {
+    "id": 4,
+    "photo": "https://randomuser.me/api/portraits/women/82.jpg",
+    "name": "Dianne Russell",
+    "role": "Member"
+  },
+  {
+    "id": 5,
+    "photo": "https://randomuser.me/api/portraits/men/83.jpg",
+    "name": "Arlene McCoy",
+    "role": "Member"
+  }
+]

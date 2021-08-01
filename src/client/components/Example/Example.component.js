@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SampleComponent.styles.css';
+import './Example.styles.css';
 
-export default function SampleComponent({ title, onClick, children }) {
+export default function Example({ title, onClick, children }) {
   return (
-    <div className="sample-component">
+    <div className="example-component">
       <h2>{title}</h2>
-      <p>(this is a sample component)</p>
+      <p>(this is an example component)</p>
       {children}
       <button type="button" onClick={onClick}>
         Click me
@@ -15,13 +15,13 @@ export default function SampleComponent({ title, onClick, children }) {
   );
 }
 
-SampleComponent.propTypes = {
+Example.propTypes = {
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   children: PropTypes.node,
 };
 
-SampleComponent.defaultProps = {
+Example.defaultProps = {
   onClick: null,
   children: null,
 };
