@@ -1,5 +1,3 @@
-import { text } from '@storybook/addon-knobs';
-
 import React from 'react';
 
 import CardList from './CandidateCardList';
@@ -9,7 +7,25 @@ export default {
   title: 'Components / Candidate Card List Component',
   component: CardList,
 };
+export const CardListExample = () => {
+  const candidateList = [
+    {
+      id: 1,
+      name: 'Eric',
+    },
+    {
+      id: 2,
+      name: 'Hipolito',
+    },
+    {
+      id: 3,
+      name: 'Robert     ',
+    },
+    {
+      id: 4,
+      name: 'Dennis',
+    },
+  ];
 
-export const CardListExample = () => (
-  <CardList name={text('name', 'candidate name')} />
-);
+  return <CardList candidateList={candidateList} />;
+};
