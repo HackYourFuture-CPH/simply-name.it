@@ -23,12 +23,6 @@ exports.seed = function (knex) {
           name: 'Balthromaw',
           isBlocked: false,
         },
-        {
-          id: 4,
-          boardId: 1,
-          name: 'Cutie Pie',
-          isBlocked: true,
-        },
       ]);
     });
 };
