@@ -1,12 +1,7 @@
-/* TODO: This is an example controller to illustrate a server side controller.
-Can be deleted as soon as the first real controller is added. */
-
 const knex = require('../../config/db');
 const HttpError = require('../lib/utils/http-error');
-const moment = require('moment-timezone');
 
-const getBoardByUserId = async (id) => {
-  console.log(id);
+const getBoardByCreatorId = async (id) => {
   if (!id) {
     throw new HttpError('Id should be a number', 400);
   }
@@ -26,5 +21,5 @@ const getBoardByUserId = async (id) => {
 };
 
 module.exports = {
-  getBoardByUserId,
+  getBoardByCreatorId,
 };

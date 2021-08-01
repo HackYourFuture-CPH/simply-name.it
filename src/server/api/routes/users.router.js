@@ -1,12 +1,9 @@
-/* TODO: This is just an example file to illustrate API routing and
-documentation. Can be deleted when the first real route is added. */
-
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const usersController = require('../controllers/users.controller');
+const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
@@ -33,8 +30,8 @@ const usersController = require('../controllers/users.controller');
  *        description: Unexpected error.
  */
 router.get('/:userId/boards/created', (req, res, next) => {
-  usersController
-    .getBoardByUserId(req.params.userId)
+  boardsController
+    .getBoardByCreatorId(req.params.userId)
     .then((result) => {
       return res.json(result);
     })
