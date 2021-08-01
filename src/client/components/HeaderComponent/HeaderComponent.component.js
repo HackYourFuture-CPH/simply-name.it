@@ -7,8 +7,8 @@ export default function HeaderComponent({ src, alt, children }) {
     <div className="headerComponent-container">
       <img src={src} alt={alt} className="headerComponent-image" />
       <div className="headerComponent-main">
-        <div className="headerComponent-title">&#129060;</div>
-        <div className="headerComponent-children">{children}</div>
+        <div className="headerComponent-title">{arrowButton}</div>
+        <div className="headerComponent-children">{dropDownButton}</div>
       </div>
     </div>
   );
