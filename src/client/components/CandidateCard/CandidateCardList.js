@@ -2,25 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CandidateCardList.style.css';
 
-const candidateList = [
-  {
-    id: 1,
-    name: 'Eric',
-  },
-  {
-    id: 2,
-    name: 'Hipolito',
-  },
-  {
-    id: 3,
-    name: 'Robert     ',
-  },
-  {
-    id: 4,
-    name: 'Dennis',
-  },
-];
-
 const CardListItem = (props) => {
   return (
     <li>
@@ -37,7 +18,7 @@ const CardListItem = (props) => {
   );
 };
 
-const CardList = () => {
+const CardList = ({ candidateList }) => {
   return (
     <ul>
       {candidateList.map((candidate) => {
@@ -46,6 +27,15 @@ const CardList = () => {
     </ul>
   );
 };
+CardList.propTypes = {
+  candidateList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ).isRequired,
+};
+
 CardListItem.defaultProps = {
   name: 'Standard Name',
   candidate: [],
