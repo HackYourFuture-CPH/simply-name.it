@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const usersController = require('../controllers/users.controller');
+const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
@@ -30,7 +30,7 @@ const usersController = require('../controllers/users.controller');
  *        description: Unexpected error.
  */
 router.get('/:memberId/boards', (req, res, next) => {
-  usersController
+  boardsController
     .getBoardsByMemberId(req.params.memberId)
     .then((result) => {
       return res.json(result);
