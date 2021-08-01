@@ -11,7 +11,7 @@
   height: 25em;
 }
 
-.headerComponent-main {
+.header-component-main {
   display: flex;
   padding-top: 30px;
   justify-content: space-between;
