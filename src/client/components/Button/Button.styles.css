@@ -54,13 +54,16 @@
 
 .secondary.active {
   border-radius: 50px;
-  border: 3px solid transparent;
-  background: linear-gradient(270deg, #9400d3 0%, #4b0082 100%) border-box;
-  -webkit-mask: /*4*/
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
+  border: solid 3px transparent;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(270deg, #4b0082, #9400d3);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
   color: var(--purple);
 }
 
