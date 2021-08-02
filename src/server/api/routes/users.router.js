@@ -29,7 +29,7 @@ const boardsController = require('../controllers/boards.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.get('/:memberId/boards', (req, res, next) => {
+router.get('/:memberId/boards/member', (req, res, next) => {
   boardsController
     .getBoardsByMemberId(req.params.memberId)
     .then((result) => {
