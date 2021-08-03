@@ -1,12 +1,12 @@
 import React from 'react';
 
-import CardList from './CandidateCardList';
+import ExtendCardList from './ExtendCandidateCardList';
 
 export default {
-  title: 'Components / Candidate Card List Component',
-  component: CardList,
+  title: 'Components / Extended Candidate Card List Component',
+  component: ExtendCardList,
 };
-export const CardListExample = () => {
+export const ExtendCardListExample = () => {
   const candidateList = [
     {
       id: 1,
@@ -26,5 +26,5 @@ export const CardListExample = () => {
     },
   ];
 
-  return <CardList candidateList={candidateList} />;
+  return <ExtendCardList candidateList={candidateList} />;
 };

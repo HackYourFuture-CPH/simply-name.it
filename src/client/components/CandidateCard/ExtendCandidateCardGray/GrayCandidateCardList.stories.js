@@ -1,12 +1,12 @@
 import React from 'react';
 
-import CardList from './CandidateCardList';
+import GrayCardList from './GrayCandidateCardList';
 
 export default {
-  title: 'Components / Candidate Card List Component',
-  component: CardList,
+  title: 'Components / Gray Candidate Card List Component',
+  component: GrayCardList,
 };
-export const CardListExample = () => {
+export const GrayCardListExample = () => {
   const candidateList = [
     {
       id: 1,
@@ -26,5 +26,5 @@ export const CardListExample = () => {
     },
   ];
 
-  return <CardList candidateList={candidateList} />;
+  return <GrayCardList candidateList={candidateList} />;
 };

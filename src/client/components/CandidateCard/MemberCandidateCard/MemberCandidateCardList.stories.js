@@ -1,9 +1,9 @@
 import React from 'react';
 
-import CardList from './CandidateCardList';
+import CardList from './MemberCandidateCardList';
 
 export default {
-  title: 'Components / Candidate Card List Component',
+  title: 'Components / Member Gray Candidate Card List Component',
   component: CardList,
 };
 export const CardListExample = () => {

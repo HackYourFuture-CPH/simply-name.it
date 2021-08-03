@@ -63,6 +63,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-icons": "^4.2.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.3.0",
     "sass-loader": "^7.1.0",

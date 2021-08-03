@@ -1,0 +1,28 @@
+.gr-card-container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  margin: 20px;
+  width: 368px;
+  height: 52px;
+  left: 23px;
+  top: 248px;
+}
+
+.gr-card-container > * {
+  width: 20px;
+}
+
+.gr-card-display {
+  list-style-type: none;
+}
+
+.gr-card-title {
+  padding-right: 250px;
+  padding-top: 0;
+}
