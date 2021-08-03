@@ -3,7 +3,7 @@ const HttpError = require('../lib/utils/http-error');
 
 const getUsersByKeyword = async (searchWord) => {
   if (!searchWord) {
-    throw new HttpError('Use valid keyword', 400);
+    throw new HttpError('Use valid keyword!', 400);
   }
 
   try {
