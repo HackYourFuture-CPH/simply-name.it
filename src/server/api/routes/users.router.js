@@ -27,10 +27,17 @@ const usersController = require('../controllers/users.controller');
  *         description: search word to match against the user's full name
  *
  *    responses:
+ *
  *      200:
  *        description: Successful request
  *      5XX:
- *        description: Unexpected error.
+ *        description: Unexpected error
+ * 404:
+ *        description: Not found
+ * 400:
+ *        description: Bad request
+ *
+ *
  */
 router.get('/search', (req, res, next) => {
   usersController
