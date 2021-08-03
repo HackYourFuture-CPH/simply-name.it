@@ -7,7 +7,7 @@ const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
- * /users/{ID}/boards/member:
+ * /users/{ID}/boards:
  *  get:
  *    tags:
  *    - Users
@@ -29,9 +29,9 @@ const boardsController = require('../controllers/boards.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.get('/:memberId/boards/member', (req, res, next) => {
+router.get('/', (req, res, next) => {
   boardsController
-    .getBoardsByMemberId(req.params.memberId)
+    .getBoardsByMemberId(req.params.userId)
     .then((result) => {
       return res.json(result);
     })
