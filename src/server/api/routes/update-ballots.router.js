@@ -29,17 +29,36 @@ const ballotsController = require('../controllers/update-ballots.controller');
  *        name: ballot
  *        description: The ballot to update.
  *        schema:
- *          type: object
- *          properties:
- *            candidateId:
- *              type: integer
- *            rank:
- *              type: integer
+ *          type: array
+ *          items:
+ *            $ref: '#/definitions/Candidates'
+ *          example:
+ *           [
+ *              { "candidateId":  1, "rank": 1},
+ *              { "candidateId":  2, "rank": 2},
+ *              { "candidateId":  3, "rank": 3}
+ *           ]
  *    responses:
  *      201:
  *        description: Ballot is updated
  *      5XX:
  *        description: Unexpected error.
+ *
+ * definitions:
+ *   Candidates:
+ *     type: array
+ *     items:
+ *       $ref: '#/definitions/CandidatesModel'
+ *
+ *   CandidatesModel:
+ *     type: object
+ *     properties:
+ *       candidateId:
+ *         type: integer
+ *         example: 1
+ *       rank:
+ *         type: integer
+ *         example: 1
  */
 router.put('/:userId/boards/:boardId/ballots', (req, res, next) => {
   ballotsController
