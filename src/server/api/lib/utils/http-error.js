@@ -37,5 +37,13 @@ class HttpError extends Error {
     this.body = body; // If defined, this'll be the response body
   }
 }
+class InvalidEntryError extends Error {
+  constructor(message, status, body = null) {
+    super(message);
+    this.message = message;
+    this.httpStatus = status;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
 
-module.exports = HttpError;
+module.exports = { HttpError, InvalidEntryError };
