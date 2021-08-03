@@ -3,7 +3,7 @@ const HttpError = require('../lib/utils/http-error');
 
 const editBallots = async (userId, boardId, candidates) => {
   if (!userId && !boardId) {
-    throw new HttpError('moduleId should be a number', 400);
+    throw new HttpError('userId and boardId should be a number', 400);
   }
   const trx = await knex.transaction();
   const queries = candidates.map((candidate) => {
