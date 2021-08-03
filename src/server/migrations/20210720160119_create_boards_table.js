@@ -6,7 +6,6 @@ exports.up = function (knex) {
     table.varchar('title').notNullable();
     table.datetime('deadline').notNullable();
     table.boolean('isDeleted').notNullable();
-    table.binary('banner').notNullable();
   });
 };
 

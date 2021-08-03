@@ -8,7 +8,7 @@ import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import { useAuthentication } from './hooks/useAuthentication';
 import Header from './components/Navigation/Header';
-import Profile from './containers/Profile';
+import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute exact path="/profile">
-          <Profile />
+          <ProfilePage />
         </AuthenticatedRoute>
       </Switch>
     </Router>
