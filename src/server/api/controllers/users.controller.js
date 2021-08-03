@@ -1,6 +1,5 @@
 const knex = require('../../config/db');
 const HttpError = require('../lib/utils/http-error');
-const InvalidEntryError = require('../lib/utils/http-error');
 
 const getUsersByKeyword = async (searchWord) => {
   if (!searchWord) {
@@ -14,7 +13,7 @@ const getUsersByKeyword = async (searchWord) => {
       `%${searchWord}%`,
     );
     if (users.length === 0) {
-      throw new InvalidEntryError(
+      throw new HttpError(
         `Cannot find user with name like '${searchWord}'`,
         404,
       );
