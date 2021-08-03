@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.styles.css';
 
-const Button = ({ buttonLabel, size, buttonType, disabled, onClick }) => {
+const Button = ({
+  buttonLabel,
+  buttonSize,
+  buttonType,
+  buttonDisabled,
+  onClick,
+}) => {
   const getButtonClassName = () => {
     let buttonClassNames = 'button';
-    buttonClassNames += ` ${size}`;
+    buttonClassNames += ` ${buttonSize}`;
     buttonClassNames += ` ${buttonType}`;
-    buttonClassNames += disabled ? ` disabled` : ` active`;
+    buttonClassNames += buttonDisabled ? ` disabled` : ` active`;
     return buttonClassNames;
   };
 
@@ -20,16 +26,16 @@ const Button = ({ buttonLabel, size, buttonType, disabled, onClick }) => {
 
 Button.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
-  size: PropTypes.oneOfType(['large', 'medium', 'small']),
+  buttonSize: PropTypes.oneOfType(['large', 'medium', 'small']),
   buttonType: PropTypes.oneOfType(['primary', 'secondary']),
-  disabled: PropTypes.bool,
+  buttonDisabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
-  size: 'medium',
+  buttonSize: 'medium',
   buttonType: 'primary',
-  disabled: false,
+  buttonDisabled: false,
 };
 
 export default Button;

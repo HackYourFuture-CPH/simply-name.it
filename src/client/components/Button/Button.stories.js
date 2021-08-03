@@ -12,9 +12,9 @@ export default {
 export const DynamicButton = () => (
   <Button
     buttonLabel={text('button label')}
-    size={select('size', ['small', 'medium', 'large'], 'large')}
+    buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType={select('type', ['primary', 'secondary'], 'primary')}
-    disabled={boolean('is disabled', false)}
+    buttonDisabled={boolean('is disabled', false)}
     onClick={action('you clicked!')}
   />
 );
@@ -22,9 +22,9 @@ export const DynamicButton = () => (
 export const PrimaryActive = () => (
   <Button
     buttonLabel={text('button label', 'text')}
-    size={select('size', ['small', 'medium', 'large'], 'large')}
+    buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="primary"
-    disabled={false}
+    buttonDisabled={false}
     onClick={action('you clicked!')}
   />
 );
@@ -32,9 +32,9 @@ export const PrimaryActive = () => (
 export const PrimaryDisabled = () => (
   <Button
     buttonLabel={text('button label', 'text')}
-    size={select('size', ['small', 'medium', 'large'], 'large')}
+    buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="primary"
-    disabled={true}
+    buttonDisabled={true}
     onClick={action('you clicked!')}
   />
 );
@@ -42,9 +42,9 @@ export const PrimaryDisabled = () => (
 export const SecondaryActive = () => (
   <Button
     buttonLabel={text('button label', 'text')}
-    size={select('size', ['small', 'medium', 'large'], 'large')}
+    buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="secondary"
-    disabled={false}
+    buttonDisabled={false}
     onClick={action('you clicked!')}
   />
 );
@@ -52,9 +52,9 @@ export const SecondaryActive = () => (
 export const SecondaryDisabled = () => (
   <Button
     buttonLabel={text('button label', 'text')}
-    size={select('size', ['small', 'medium', 'large'], 'large')}
+    buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="secondary"
-    disabled={true}
+    buttonDisabled={true}
     onClick={action('you clicked!')}
   />
 );
