@@ -39,7 +39,7 @@ const ballotsController = require('../controllers/update-ballots.controller');
  *              { "candidateId":  3, "rank": 3}
  *           ]
  *    responses:
- *      201:
+ *      204:
  *        description: Ballot is updated
  *      5XX:
  *        description: Unexpected error.
@@ -63,7 +63,7 @@ const ballotsController = require('../controllers/update-ballots.controller');
 router.put('/:userId/boards/:boardId/ballots', (req, res, next) => {
   ballotsController
     .editBallots(req.params.userId, req.params.boardId, req.body)
-    .then((result) => res.json(result))
+    .then((result) => res.status(204).send())
     .catch(next);
 });
 
