@@ -18,6 +18,7 @@ const boardsController = require('../controllers/boards.controller');
  *    parameters:
  *      - in: path
  *        name: userId
+ *        required:true
  *
  *      - in: path
  *        name: boardId
