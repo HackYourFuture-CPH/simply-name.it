@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
-const updateBoardsRouter = require('./update-boards.router');
+const boardsRouter = require('./boards.router');
 
-router.use('/:memberId/boards', updateBoardsRouter);
+router.use('/:memberId/boards', boardsRouter);
 
 module.exports = router;
