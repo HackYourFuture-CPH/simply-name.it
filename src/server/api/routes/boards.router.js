@@ -29,13 +29,12 @@ const boardsController = require('../controllers/boards.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.get('/', (req, res, next) => {
-  boardsController
-    .getBoardsByMemberId(req.params.userId)
-    .then((result) => {
-      return res.json(result);
-    })
-    .catch(next);
+router.get('/', async (req, res) => {
+  const boardsByMemberId = await boardsController.getBoardsByMemberId(
+    req.params.userId,
+  );
+
+  return res.json(boardsByMemberId);
 });
 
 module.exports = router;
