@@ -1,6 +1,6 @@
 import React from 'react';
 import './404Page.styles.css';
-import error from '../../assets/images/error.svg';
+import error from '../../assets/images/404.svg';
 
 function Error404Page() {
   return (
@@ -9,7 +9,9 @@ function Error404Page() {
 
       <div className="main-text">
         <h2>Page not found</h2>
-        <p>The page you are looking for doesn't exist or has been moved.</p>
+        <p>
+          The page you are looking for doesn&apos;t exist or has been moved.
+        </p>
       </div>
     </div>
   );
