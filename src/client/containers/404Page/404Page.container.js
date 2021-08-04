@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './404Page.styles.css';
 import error from '../../assets/images/404.svg';
 
@@ -18,3 +19,9 @@ function Error404Page() {
 }
 
 export default Error404Page;
+
+
+export default function Error404Founder() {
+  return <div>Error 404 was detected</div>;
+}
+
