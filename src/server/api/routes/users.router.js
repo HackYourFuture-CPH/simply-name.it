@@ -27,7 +27,11 @@ const userController = require('../controllers/user.controller');
  *      200:
  *        description: Successful request
  *      5XX:
- *        description: Unexpected error.
+ *        description: Unexpected error
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: Not found
  */
 router.get('/:id', (req, res, next) => {
   userController
