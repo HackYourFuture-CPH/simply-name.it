@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router({ mergeParams: true });
 
-const resultsController = require('../controllers/users.controller');
+const resultsController = require('../controllers/results.controller');
 
 /**
  * @swagger
@@ -34,13 +34,13 @@ const resultsController = require('../controllers/users.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.get('/:userId/boards/:boardId/results', (req, res, next) => {
-  resultsController
-    .getResultsByBoardId(req.params.userId, req.params.boardId)
-    .then((result) => {
-      return res.json(result);
-    })
-    .catch(next);
+router.get('/', async (req, res) => {
+  const resultsByBoardId = await resultsController.getResultsByBoardId(
+    req.params.userId,
+    req.params.boardId,
+  );
+
+  return res.json(resultsByBoardId);
 });
 
 module.exports = router;
