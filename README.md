@@ -110,7 +110,7 @@ Check the mockup [here](https://www.figma.com/file/xUJNNwiE4N8TC6Q6rnQd5p/simply
 
 Check the domain model [here](/domain_model.md)
 
-_Add here the DB Model Diagram_ - Use https://dbdiagram.io/
+_Add here the DB Model Diagram_ - Use https://dbdiagram.io/d/60db3d75dd6a59714824f6fa
 
 - [How to make changes on the diagram](/diagram.md)
 
