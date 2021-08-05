@@ -6,26 +6,27 @@
 .headerComponent-image {
   position: absolute;
   z-index: -1;
-  border-radius: 20px;
+  width: 100%;
+  height: 25em;
+}
+
+.headerComponent-color {
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
   width: 100%;
   height: 25em;
 }
 
 .header-component-main {
   display: flex;
-  padding-top: 30px;
   justify-content: space-between;
   margin: 0 auto;
   width: 90%;
 }
 
-.headerComponent-title {
-  color: white;
-  font-weight: bolder;
-  font-size: 30px;
-}
-
 .headerComponent-children {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 30px;
 }
