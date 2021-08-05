@@ -63,7 +63,7 @@ const ballotsController = require('../controllers/update-ballots.controller');
 router.put('/:userId/boards/:boardId/ballots', (req, res, next) => {
   ballotsController
     .editBallots(req.params.userId, req.params.boardId, req.body)
-    .then((result) => res.json(result))
+    .then(() => res.status(204).send())
     .catch(next);
 });
 
