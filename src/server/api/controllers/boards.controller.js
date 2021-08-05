@@ -1,7 +1,11 @@
 const knex = require('../../config/db');
 const HttpError = require('../lib/utils/http-error');
+const {
+  IncorrectEntryError,
+  InvalidIdError,
+} = require('../lib/utils/http-error');
 
-const getBoardByCreatorId = async (id) => {
+const getBoardsByCreatorId = async (id) => {
   if (!id) {
     throw new HttpError('Id should be a number', 400);
   }
@@ -20,6 +24,25 @@ const getBoardByCreatorId = async (id) => {
   }
 };
 
+const getBoardsByMemberId = async (id) => {
+  if (!Number.isInteger(Number(id))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+
+  const boards = await knex('boards')
+    .join('members', 'boards.id', '=', 'members.boardId')
+    .select('*')
+    .where('members.userId', id)
+    .whereNot('members.role', 'owner');
+
+  if (boards.length === 0) {
+    throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
+  }
+
+  return boards;
+};
+
 module.exports = {
-  getBoardByCreatorId,
+  getBoardsByMemberId,
+  getBoardsByCreatorId,
 };
