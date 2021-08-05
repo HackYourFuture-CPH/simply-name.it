@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CandidateCardList.style.css';
+import Icon from './SvgIcon.component';
 
 const CardListItem = (props) => {
   return (
     <li>
       <div className="card-container">
-        <p>{props.candidate.name}</p>
+        <div className="card-title">
+          <p>{props.candidate.name}</p>
+        </div>
+
         <div>
           <span>&#8942;</span>
           <span>&#8942;</span>
@@ -16,16 +20,25 @@ const CardListItem = (props) => {
   );
 };
 
-const CardList = ({ candidateList }) => {
+const CardList = ({ variant, candidateList, display }) => {
   return (
-    <ul className="card-display">
+    <ul>
       {candidateList.map((candidate) => {
-        return <CardListItem candidate={candidate} key={candidate.id} />;
+        return (
+          <div className={`card-display ${variant}`}>
+            <div className={`icon-display ${display}`}>
+              <Icon />
+            </div>
+            <CardListItem candidate={candidate} key={candidate.id} />
+          </div>
+        );
       })}
     </ul>
   );
 };
 CardList.propTypes = {
+  display: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
   candidateList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
