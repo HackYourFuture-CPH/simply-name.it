@@ -5,9 +5,11 @@ const router = express.Router({ mergeParams: true });
 // controllers
 const candidatesController = require('../controllers/candidates.controller');
 
+//
+
 /**
  * @swagger
- * /candidates/{ID}:
+ * /Candidates/users/{userId}/boards/{boardId}/candidates/{candidateId}:
  *  delete:
  *    tags:
  *    - Candidates
@@ -17,30 +19,41 @@ const candidatesController = require('../controllers/candidates.controller');
  *    produces: application/json
  *    parameters:
  *      - in: path
- *        name: ID
+ *        name: candidateId
  *        description: ID of the candidate to delete.
+ *      - in: path
+ *        name: userId
+ *        description: ID of the user who create the candidates.
+ *      - in: path
+ *        name: boardId
+ *        description: ID of the board which contain the candidate.
  *    responses:
  *      404:
  *        description: Candidate Not Found
  *      5XX:
  *        description: Unexpected error.
  */
+
 router.delete(
-  '/users/:userId/boards/:boardId/:candidateId',
-  (req, res, next) => {
+  '/users/:userId/boards/:boardId/candidates/:candidateId',
+  (req, res) => {
     candidatesController
-      .deleteCandidate(req.params.candidateId, req)
+      .getCandidate(req.params)
       .then((result) => {
         // If result is equal to 0, then that means the candidate id does not exist
-        if (result === 0) {
+        if (result.length === 0) {
           res
             .status(404)
             .json({ message: 'The candidate ID you provided does not exist.' });
         } else {
-          res.status(204);
+          candidatesController.deleteCandidate(req.params).then(() => {
+            res.status(204).end();
+          });
         }
       })
-      .catch(next);
+      .catch((error) => {
+        console.error(error);
+      });
   },
 );
 
