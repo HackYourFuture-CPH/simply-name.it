@@ -4,7 +4,6 @@ const router = express.Router();
 
 // Router imports
 const usersRouter = require('./users.router');
-
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 

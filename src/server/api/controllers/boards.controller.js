@@ -4,21 +4,24 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const getUserById = async (id) => {
+const getBoardsByMemberId = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer');
   }
 
-  const userById = await knex('users')
-    .select('users.id', 'users.fullName', 'users.firebaseUId')
-    .where({ id });
+  const boards = await knex('boards')
+    .join('members', 'boards.id', '=', 'members.boardId')
+    .select('*')
+    .where('members.userId', id)
+    .whereNot('members.role', 'owner');
 
-  if (userById.length === 0) {
+  if (boards.length === 0) {
     throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
   }
-  return userById;
+
+  return boards;
 };
 
 module.exports = {
-  getUserById,
+  getBoardsByMemberId,
 };
