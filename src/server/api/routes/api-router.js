@@ -6,6 +6,7 @@ const router = express.Router();
 const modulesRouter = require('./modules.router');
 const updateBallotsRouter = require('./update-ballots.router');
 
+const usersRouter = require('./users.router');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -32,5 +33,6 @@ router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Application routes
 router.use('/modules', modulesRouter);
 router.use('/users', updateBallotsRouter);
+router.use('/users', usersRouter);
 
 module.exports = router;
