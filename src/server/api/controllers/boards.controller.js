@@ -6,7 +6,7 @@ const {
 
 const getBoardsByCreatorId = async (id) => {
   if (!Number.isInteger(Number(id))) {
-    throw new InvalidIdError('Id should be an integer');
+    throw new InvalidIdError('Id should be an integer!');
   }
 
   const boards = await knex('users')
