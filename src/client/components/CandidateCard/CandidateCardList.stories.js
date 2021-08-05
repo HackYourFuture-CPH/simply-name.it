@@ -1,29 +1,13 @@
 import React from 'react';
 import CardList from './CandidateCardList.component';
+import { candidateListArr } from './CandidateListArray.js';
 
 export default {
   title: 'Components / Candidate Card List Component',
   component: CardList,
 };
 export const CardListExample = () => {
-  const candidateList = [
-    {
-      id: 1,
-      name: 'Eric',
-    },
-    {
-      id: 2,
-      name: 'Hipolito',
-    },
-    {
-      id: 3,
-      name: 'Robert     ',
-    },
-    {
-      id: 4,
-      name: 'Dennis',
-    },
-  ];
+  const candidateList = candidateListArr();
 
   return (
     <div>
@@ -36,47 +20,11 @@ export const CardListExample = () => {
   );
 };
 export const CardListExampleGray = () => {
-  const candidateList = [
-    {
-      id: 1,
-      name: 'Eric',
-    },
-    {
-      id: 2,
-      name: 'Hipolito',
-    },
-    {
-      id: 3,
-      name: 'Robert     ',
-    },
-    {
-      id: 4,
-      name: 'Dennis',
-    },
-  ];
-
+  const candidateList = candidateListArr();
   return <CardList variant="secondary" candidateList={candidateList} />;
 };
 export const CardListExampleMemberGray = () => {
-  const candidateList = [
-    {
-      id: 1,
-      name: 'Eric',
-    },
-    {
-      id: 2,
-      name: 'Hipolito',
-    },
-    {
-      id: 3,
-      name: 'Robert     ',
-    },
-    {
-      id: 4,
-      name: 'Dennis',
-    },
-  ];
-
+  const candidateList = candidateListArr();
   return (
     <div>
       <CardList
@@ -88,25 +36,7 @@ export const CardListExampleMemberGray = () => {
   );
 };
 export const CardListExampleMember = () => {
-  const candidateList = [
-    {
-      id: 1,
-      name: 'Eric',
-    },
-    {
-      id: 2,
-      name: 'Hipolito',
-    },
-    {
-      id: 3,
-      name: 'Robert     ',
-    },
-    {
-      id: 4,
-      name: 'Dennis',
-    },
-  ];
-
+  const candidateList = candidateListArr();
   return (
     <div>
       <CardList
