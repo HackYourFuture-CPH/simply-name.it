@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Button.styles.css';
+import './GenericButton.styles.css';
 
-const Button = ({
+const GenericButton = ({
   buttonLabel,
   buttonSize,
   buttonType,
@@ -24,18 +24,18 @@ const Button = ({
   );
 };
 
-Button.propTypes = {
+GenericButton.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
-  buttonSize: PropTypes.oneOfType(['large', 'medium', 'small']),
-  buttonType: PropTypes.oneOfType(['primary', 'secondary']),
+  buttonSize: PropTypes.oneOf(['large', 'medium', 'small']),
+  buttonType: PropTypes.oneOf(['primary', 'secondary']),
   buttonDisabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
 };
 
-Button.defaultProps = {
+GenericButton.defaultProps = {
   buttonSize: 'medium',
   buttonType: 'primary',
   buttonDisabled: false,
 };
 
-export default Button;
+export default GenericButton;

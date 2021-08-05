@@ -1,15 +1,15 @@
 import React from 'react';
-import Button from './Button.component';
+import GenericButton from './GenericButton.component';
 import { action } from '@storybook/addon-actions';
 import { text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/Generic Button',
+  component: GenericButton,
 };
 
 export const DynamicButton = () => (
-  <Button
+  <GenericButton
     buttonLabel={text('button label')}
     buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType={select('type', ['primary', 'secondary'], 'primary')}
@@ -19,7 +19,7 @@ export const DynamicButton = () => (
 );
 
 export const PrimaryActive = () => (
-  <Button
+  <GenericButton
     buttonLabel={text('button label', 'text')}
     buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="primary"
@@ -29,7 +29,7 @@ export const PrimaryActive = () => (
 );
 
 export const PrimaryDisabled = () => (
-  <Button
+  <GenericButton
     buttonLabel={text('button label', 'text')}
     buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="primary"
@@ -39,7 +39,7 @@ export const PrimaryDisabled = () => (
 );
 
 export const SecondaryActive = () => (
-  <Button
+  <GenericButton
     buttonLabel={text('button label', 'text')}
     buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="secondary"
@@ -49,7 +49,7 @@ export const SecondaryActive = () => (
 );
 
 export const SecondaryDisabled = () => (
-  <Button
+  <GenericButton
     buttonLabel={text('button label', 'text')}
     buttonSize={select('button size', ['small', 'medium', 'large'], 'large')}
     buttonType="secondary"
