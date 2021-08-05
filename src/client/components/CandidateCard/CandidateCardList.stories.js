@@ -3,6 +3,7 @@ import React from 'react';
 import CardList from './CandidateCardList';
 
 export default {
+  name: 'Eric',
   title: 'Components / Candidate Card List Component',
   component: CardList,
 };
