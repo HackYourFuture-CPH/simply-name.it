@@ -8,7 +8,6 @@ export default {
   component: Button,
 };
 
-// buttonLabel, size, buttonType, disabled, onClick
 export const DynamicButton = () => (
   <Button
     buttonLabel={text('button label')}
