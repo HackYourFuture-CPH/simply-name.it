@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 // Router imports
-const modulesRouter = require('./modules.router');
 const updateBallotsRouter = require('./update-ballots.router');
 
 const usersRouter = require('./users.router');
@@ -31,7 +30,6 @@ const swaggerDocument = swaggerJsDoc(swaggerOptions);
 router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Application routes
-router.use('/modules', modulesRouter);
 router.use('/users', updateBallotsRouter);
 router.use('/users', usersRouter);
 

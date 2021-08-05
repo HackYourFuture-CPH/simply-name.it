@@ -1,10 +1,11 @@
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
+const { InvalidIdError } = require('../lib/utils/http-error');
 
 const editBallots = async (userId, boardId, candidates) => {
-  if (!userId && !boardId) {
-    throw new HttpError('userId and boardId should be numbers', 400);
+  if (!Number.isInteger(Number(userId)) && !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('userId and boardId should be integers');
   }
+
   knex.transaction(function (trx) {
     const queries = candidates.map((candidate) => {
       return knex('ballots')
