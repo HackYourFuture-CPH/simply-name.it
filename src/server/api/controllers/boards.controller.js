@@ -1,10 +1,9 @@
 const knex = require('../../config/db');
-
-const HttpError = require('../lib/utils/http-error');
+const { InvalidIdError } = require('../lib/utils/http-error');
 
 const deleteBoards = async (userId, boardId) => {
-  if (!userId && !boardId) {
-    throw new HttpError('Id should be a number', 400);
+  if (!Number.isInteger(Number(userId)) && !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('Id should be an integer');
   }
   await knex('ballots').where({ boardId }).del();
   await knex('candidates').where({ boardId }).del();

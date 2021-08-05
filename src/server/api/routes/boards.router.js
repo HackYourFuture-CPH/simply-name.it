@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const deleteBoardsController = require('../controllers/delete.boards.controller');
+const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
- * /boards/{ID}:
+ * /users/{userId}/boards/{boardId}:
  *  delete:
  *    tags:
  *    - boards
@@ -17,17 +17,22 @@ const deleteBoardsController = require('../controllers/delete.boards.controller'
  *    produces: application/json
  *    parameters:
  *      - in: path
- *        name: ID
+ *        name: userId
+ *        description: ID of the user.
+ *      - in: path
+ *        name: boardId
  *        description: ID of the board to delete.
+ *
  *    responses:
  *      200:
  *        description: Board deleted
  *      5XX:
  *        description: Unexpected error.
  */
-router.delete('/:id', (req, res) => {
-  deleteBoardsController
-    .deleteBoards(req.params.id, req)
+
+router.delete('/:userId/boards/:boardId', (req, res) => {
+  boardsController
+    .deleteBoards(req.params.userId, req.params.boardId)
     .then((result) => {
       // If result is equal to 0, then that means the module id does not exist
       if (result === 0) {
