@@ -39,7 +39,7 @@ const ballotsController = require('../controllers/update-ballots.controller');
  *              { "candidateId":  3, "rank": 3}
  *           ]
  *    responses:
- *      201:
+ *      204:
  *        description: Ballot is updated
  *      5XX:
  *        description: Unexpected error.
