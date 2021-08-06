@@ -5,11 +5,14 @@
 .sign-in-div {
   width: 100vw;
   height: 100vh;
-  background-image: url(../../assets/images/pages-background/Login.svg);
+  border: 1px red solid;
+
+  /* background-image: url(../../assets/images/pages-background/Login.svg); */
 }
 
 .welcome-background {
   position: relative;
+  border: 2px green solid;
 }
 
 .welcome-slogan-container {

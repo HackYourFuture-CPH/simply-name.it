@@ -11,11 +11,11 @@ export default function Welcome() {
   };
   return (
     <div className="sign-in-div">
-      {/* <img
+      <img
         src={background}
         className="welcome-background"
         alt="background blobs"
-      /> */}
+      />
       <div className="welcome-slogan-container">
         <h1 className="welcome-slogan">Take Tough Decisions Together</h1>
       </div>
