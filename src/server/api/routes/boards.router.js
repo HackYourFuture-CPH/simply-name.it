@@ -43,6 +43,8 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Board created
  *      5XX:
  *        description: Unexpected error.
+ *      400:
+ *        description: Invalid Id error.
  */
 
 router.post('/', async (req, res) => {

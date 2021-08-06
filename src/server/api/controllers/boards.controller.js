@@ -14,7 +14,7 @@ const createBoard = async (userId, newBoard) => {
     creatorId: userId,
     title: newBoard.title,
     deadline: moment(newBoard.deadline).format(),
-    isDeleted: newBoard.isDeleted,
+    isDeleted: false,
     banner: newBoard.banner,
   });
 
