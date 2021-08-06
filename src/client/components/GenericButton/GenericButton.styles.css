@@ -22,7 +22,7 @@
 
 /* SIZE */
 
-.generic-button.small {
+.generic-button.small-button {
   width: 106px;
   height: 39px;
   font-size: 16px;
@@ -30,29 +30,29 @@
   padding: 16px, 133px, 16px, 133px;
 }
 
-.generic-button.medium {
+.generic-button.medium-button {
   width: 155px;
 }
 
-.generic-button.large {
+.generic-button.large-button {
   width: 328px;
 }
 
 /* PRIMARY */
 
-.primary.active {
+.button-primary.active-button {
   background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
   color: var(--white);
 }
 
-.primary.disabled {
+.button-primary.disabled-button {
   background-color: var(--light-gray);
   color: var(--dark-gray);
 }
 
 /* SECONDARY */
 
-.secondary.active {
+.button-secondary.active-button {
   border-radius: 50px;
   border: solid 3px transparent;
   background-image:
@@ -67,7 +67,7 @@
   color: var(--purple);
 }
 
-.secondary.disabled {
+.button-secondary.disabled-button {
   border: 3px solid var(--dark-gray);
   background-color: transparent;
   color: var(--dark-gray);

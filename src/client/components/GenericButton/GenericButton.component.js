@@ -11,9 +11,9 @@ const GenericButton = ({
 }) => {
   const getButtonClassName = () => {
     let buttonClassNames = 'generic-button';
-    buttonClassNames += ` ${buttonSize}`;
-    buttonClassNames += ` ${buttonType}`;
-    buttonClassNames += buttonDisabled ? ` disabled` : ` active`;
+    buttonClassNames += ` ${buttonSize}-button`;
+    buttonClassNames += ` button-${buttonType}`;
+    buttonClassNames += buttonDisabled ? ` disabled-button` : ` active-button`;
     return buttonClassNames;
   };
 
