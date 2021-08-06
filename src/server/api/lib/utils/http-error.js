@@ -29,6 +29,14 @@ const http = require('http')
 console.log(http.STATUS_CODES)
 */
 
+class HttpError extends Error {
+  constructor(message, status, body = null) {
+    super(message);
+    this.message = message;
+    this.httpStatus = status;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
 class IncorrectEntryError extends HttpError {
   constructor(message, body = null) {
     super(message);
