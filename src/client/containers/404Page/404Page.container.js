@@ -19,9 +19,3 @@ function Error404Page() {
 }
 
 export default Error404Page;
-
-
-export default function Error404Founder() {
-  return <div>Error 404 was detected</div>;
-}
-
