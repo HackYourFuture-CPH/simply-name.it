@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const HttpError = require('./api/lib/utils/http-error');
+const { HttpError } = require('./api/lib/utils/http-error');
 
 const buildPath = path.join(__dirname, '../../dist');
 
