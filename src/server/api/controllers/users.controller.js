@@ -1,27 +1,23 @@
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
+const { IncorrectEntryError } = require('../lib/utils/http-error');
 
 const getUsersByKeyword = async (searchWord) => {
   if (!searchWord) {
-    throw new HttpError('Use valid keyword!', 400);
+    throw new IncorrectEntryError('Use a keyword!', 400);
   }
 
-  try {
-    const users = await knex('users').where(
-      'fullname',
-      'like',
-      `%${searchWord}%`,
+  const users = await knex('users').where(
+    'fullname',
+    'like',
+    `%${searchWord}%`,
+  );
+  if (users.length === 0) {
+    throw new IncorrectEntryError(
+      `Cannot find user with name like '${searchWord}'`,
+      404,
     );
-    if (users.length === 0) {
-      throw new HttpError(
-        `Cannot find user with name like '${searchWord}'`,
-        404,
-      );
-    }
-    return users;
-  } catch (error) {
-    return error.message;
   }
+  return users;
 };
 
 module.exports = {
