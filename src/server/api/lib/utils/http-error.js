@@ -29,13 +29,26 @@ const http = require('http')
 console.log(http.STATUS_CODES)
 */
 
-class HttpError extends Error {
-  constructor(message, status, body = null) {
+class IncorrectEntryError extends HttpError {
+  constructor(message, body = null) {
     super(message);
-    this.message = message;
-    this.httpStatus = status;
+    this.message = `Incorrect entry Error + ${message}`;
+    this.httpStatus = 404;
     this.body = body; // If defined, this'll be the response body
   }
 }
 
-module.exports = HttpError;
+class InvalidIdError extends HttpError {
+  constructor(message, body = null) {
+    super(message);
+    this.message = `Invalid Id Error + ${message}`;
+    this.httpStatus = 400;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
+
+module.exports = {
+  HttpError,
+  IncorrectEntryError,
+  InvalidIdError,
+};
