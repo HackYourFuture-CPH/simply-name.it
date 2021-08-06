@@ -26,7 +26,8 @@ router.use('/:userId/boards', boardsRouter);
  *        description: Unexpected error.
  */
 router.get('/', async (req, res) => {
-  await usersController.getUsers().then((result) => res.json(result));
+  const users = await usersController.getUsers();
+  return res.json(users);
 });
 
 module.exports = router;
