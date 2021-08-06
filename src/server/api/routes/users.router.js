@@ -33,11 +33,9 @@ const userController = require('../controllers/user.controller');
  *      404:
  *        description: Not found
  */
-router.get('/:id', (req, res, next) => {
-  userController
-    .getUserById(req.params.id)
-    .then((result) => res.json(result))
-    .catch(next);
+router.get('/:id', async (req, res) => {
+  const userById = await userController.getUserById(req.params.id);
+  return res.json(userById);
 });
 
 module.exports = router;

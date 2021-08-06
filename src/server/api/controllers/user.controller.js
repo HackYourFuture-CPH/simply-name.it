@@ -4,8 +4,15 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
+const isInteger = (id) => {
+  if (Number.isInteger(Number(id))) {
+    return true;
+  }
+  return false;
+};
+
 const getUserById = async (id) => {
-  if (!Number.isInteger(Number(id))) {
+  if (!isInteger(id)) {
     throw new InvalidIdError('Id should be an integer');
   }
 
