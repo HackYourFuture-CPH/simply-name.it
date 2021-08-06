@@ -1,7 +1,7 @@
 .dropdown-container {
   display: inline-block;
   position: relative;
-  width: 200px;
+  width: 175px;
 }
 
 button.dark {
@@ -40,7 +40,8 @@ div.light {
   min-width: 50px;
   position: absolute;
   top: 0;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem;
   right: 1.25rem;
   margin: 5px 5px 0 0;
+  line-height: 1.6em;
 }
