@@ -27,5 +27,8 @@ router.get('/', (req, res, next) => {
     .then((result) => res.json(result))
     .catch(next);
 });
+const boardsRouter = require('./boards.router');
+
+router.use('/:userId/boards', boardsRouter);
 
 module.exports = router;
