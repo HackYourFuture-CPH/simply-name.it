@@ -21,11 +21,8 @@ const usersController = require('../controllers/users.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.get('/', (req, res, next) => {
-  usersController
-    .getUsers()
-    .then((result) => res.json(result))
-    .catch(next);
+router.get('/', async (req, res) => {
+  await usersController.getUsers().then((result) => res.json(result));
 });
 const boardsRouter = require('./boards.router');
 
