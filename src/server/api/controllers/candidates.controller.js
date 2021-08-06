@@ -1,5 +1,9 @@
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
+
+const {
+  IncorrectEntryError,
+  InvalidIdError,
+} = require('../lib/utils/http-error');
 
 const getCandidate = ({ candidateId, userId, boardId }) => {
   return knex('candidates')
