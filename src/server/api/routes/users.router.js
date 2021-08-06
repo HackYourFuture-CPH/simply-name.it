@@ -39,11 +39,12 @@ const usersController = require('../controllers/users.controller');
  *
  *
  */
-router.get('/search', (req, res, next) => {
-  usersController
-    .getUsersByKeyword(req.query.fullName)
-    .then((result) => res.json(result))
-    .catch(next);
+router.get('/search', async (req, res) => {
+  const searchedUsers = await usersController.getUsersByKeyword(
+    req.query.fullName,
+  );
+
+  return res.json(searchedUsers);
 });
 
 module.exports = router;
