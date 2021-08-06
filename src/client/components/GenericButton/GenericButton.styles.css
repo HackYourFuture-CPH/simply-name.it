@@ -9,7 +9,7 @@
 
 /* shared/default style attributes */
 
-.button {
+.generic-button {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -22,7 +22,7 @@
 
 /* SIZE */
 
-.button.small {
+.generic-button.small {
   width: 106px;
   height: 39px;
   font-size: 16px;
@@ -30,11 +30,11 @@
   padding: 16px, 133px, 16px, 133px;
 }
 
-.button.medium {
+.generic-button.medium {
   width: 155px;
 }
 
-.button.large {
+.generic-button.large {
   width: 328px;
 }
 

@@ -10,7 +10,7 @@ const GenericButton = ({
   onClick,
 }) => {
   const getButtonClassName = () => {
-    let buttonClassNames = 'button';
+    let buttonClassNames = 'generic-button';
     buttonClassNames += ` ${buttonSize}`;
     buttonClassNames += ` ${buttonType}`;
     buttonClassNames += buttonDisabled ? ` disabled` : ` active`;
