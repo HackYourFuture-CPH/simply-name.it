@@ -33,15 +33,15 @@
   top: 248px;
 }
 
-.icon-display {
+.delete-icon-display {
   padding-right: 10px;
 }
 
-.primary {
+.primary-color {
   background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
 }
 
-.secondary {
+.secondary-color {
   background: rgba(0, 0, 0, 0.5);
 }
 

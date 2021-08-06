@@ -12,7 +12,7 @@ export const CardListExample = () => {
   return (
     <div>
       <CardList
-        variant="primary"
+        variant="primary-color"
         candidateList={candidateList}
         display="visible"
       />
@@ -21,14 +21,14 @@ export const CardListExample = () => {
 };
 export const CardListExampleGray = () => {
   const candidateList = candidateListArr();
-  return <CardList variant="secondary" candidateList={candidateList} />;
+  return <CardList variant="secondary-color" candidateList={candidateList} />;
 };
 export const CardListExampleMemberGray = () => {
   const candidateList = candidateListArr();
   return (
     <div>
       <CardList
-        variant="secondary"
+        variant="secondary-color"
         candidateList={candidateList}
         display="hidden"
       />
@@ -40,7 +40,7 @@ export const CardListExampleMember = () => {
   return (
     <div>
       <CardList
-        variant="primary"
+        variant="primary-color"
         candidateList={candidateList}
         display="hidden"
       />

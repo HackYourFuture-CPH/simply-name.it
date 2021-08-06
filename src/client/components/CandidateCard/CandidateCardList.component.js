@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CandidateCardList.style.css';
-import Icon from './SvgIcon.component';
+import DeleteIcon from './SvgIcon.component';
 
 const CardListItem = (props) => {
   return (
@@ -26,8 +26,8 @@ const CardList = ({ variant, candidateList, display }) => {
       {candidateList.map((candidate) => {
         return (
           <div className={`card-display ${variant}`}>
-            <div className={`icon-display ${display}`}>
-              <Icon />
+            <div className={`delete-icon-display ${display}`}>
+              <DeleteIcon />
             </div>
             <CardListItem candidate={candidate} key={candidate.id} />
           </div>

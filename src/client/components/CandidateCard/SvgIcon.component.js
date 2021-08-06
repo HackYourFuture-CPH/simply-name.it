@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Icon() {
+function DeleteIcon() {
   return (
     <svg
       height="15pt"
@@ -16,4 +16,4 @@ function Icon() {
     </svg>
   );
 }
-export default Icon;
+export default DeleteIcon;
