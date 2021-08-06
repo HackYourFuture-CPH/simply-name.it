@@ -70,7 +70,7 @@ router.get('/', async (req, res) => {
  *      400:
  *          Bad Request
  */
-router.get('/:userId/boards/:boardId/members', async (req, res) => {
+router.get('/:boardId/members', async (req, res) => {
   const membersOfBoard = await boardsController.getAllMembers(
     req.params.userId,
     req.params.boardId,
