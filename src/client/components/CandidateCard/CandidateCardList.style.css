@@ -1,0 +1,61 @@
+.card-container {
+  padding-right: 80px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  margin: 20px;
+  width: 368px;
+  height: 52px;
+  left: 23px;
+  top: 248px;
+}
+
+.card-container > * {
+  width: 20px;
+}
+
+.card-display {
+  padding-right: 325px;
+  list-style-type: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  margin: 20px;
+  width: 368px;
+  height: 52px;
+  left: 23px;
+  top: 248px;
+}
+
+.delete-icon-display {
+  padding-right: 10px;
+}
+
+.primary-color {
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
+}
+
+.secondary-color {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  padding-left: 0;
+  padding-right: 100px;
+  padding-top: 0;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+  margin-left: -20px;
+}
