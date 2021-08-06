@@ -9,6 +9,7 @@ const router = express.Router({ mergeParams: true });
 const usersController = require('../controllers/users.controller');
 
 const boardsRouter = require('./boards.router');
+
 router.use('/:userId/boards', boardsRouter);
 
 /**
