@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /**
 400 Bad Request
 The server cannot or will not process the request due to an apparent client error (e.g., malformed request syntax, too large size, invalid request message framing, or deceptive request routing)
@@ -38,4 +39,26 @@ class HttpError extends Error {
   }
 }
 
-module.exports = HttpError;
+class IncorrectEntryError extends HttpError {
+  constructor(message, body = null) {
+    super(message);
+    this.message = `Incorrect entry Error + ${message}`;
+    this.httpStatus = 404;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
+
+class InvalidIdError extends HttpError {
+  constructor(message, body = null) {
+    super(message);
+    this.message = `Invalid Id Error + ${message}`;
+    this.httpStatus = 400;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
+
+module.exports = {
+  HttpError,
+  IncorrectEntryError,
+  InvalidIdError,
+};
