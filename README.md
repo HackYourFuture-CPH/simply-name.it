@@ -3,7 +3,6 @@
  <img width=150px height=150px src="https://www.hackyourfuture.dk/static/logo-dark.svg" alt="HackYourFuture logo"></a>
 </p>
 
-
 <h3 align="center">Simply name it
 </h3>
 
@@ -11,7 +10,6 @@
   <a href="" rel="noopener">   
   <img  height=230px src="https://user-images.githubusercontent.com/6642037/124296829-afecbf80-db5a-11eb-9dbc-d92b588e1f42.png" alt="Project Homepage"></a>
 </p>
-
 
 ---
 
@@ -25,29 +23,29 @@
   - [🖼 Wireframes](#-wireframes)
   - [🗄️ Database Model Diagram](#️-database-model-diagram)
 - [📈 Process 📉📈](#-process-)
- - [💻 Working with code](#-working-with-code)
-  - [🧱 Guidelines for building components](#-guidelines-for-building-components)
-    - [A note about React Hooks](#a-note-about-react-hooks)
-    - [Proptypes](#proptypes)
-    - [Using Storybook](#using-storybook)
-    - [How to create a new story](#how-to-create-a-new-story)
-      - [Adding knobs (optional)](#adding-knobs-optional)
-    - [Breaking down components](#breaking-down-components)
-    - [Coding guidelines for components](#coding-guidelines-for-components)
-  - [🎨 Theming and global styling](#-theming-and-global-styling)
-  - [🧱 Component styling](#-component-styling)
-  - [📤 📥 Inline CSS vs Stylesheets](#--inline-css-vs-stylesheets)
-  - [👍🏽 Code best practices](#-code-best-practices)
-  - <img width=20px height=20px src="/git-logo.png" alt="GitHub logo"></img>[Working with GIT](#-working-with-git)
-  - <img width=15px height=30px src="/heroku-logo.svg" alt="Heroku logo"></img>[Working with Heroku and Deployment](#-working-with-heroku-and-deployment)
-  - <img width=59x height=20px src="/knex-logo.png"  alt="Knex logo"></img>[Working with Knex and Migrations](#-working-with-knex-and-migrations)
-  - <img width=25px height=25x src="/swagger-logo.png"  alt="Swagger logo"></img>[Working with API Documentation - Swagger](#-working-with-api-documentation---swagger)
-  - <img width=20px height=20x src="/storybook.svg"  alt="Storybook logo"></img>[Working with Storybook](#-working-with-storybook)
-  - <img width=30px height=30x src="/aws.svg"  alt="AWS S3 logo"></a><img width=30px height=30x src="/s3.png"  alt="AWS S3 logo"></img>[Working with AWS - Amazon Services](#-working-with-aws---amazon-services)
-  - [Testing](#testing)
-  - [Making authenticated requests through firebase (useFetch hook)](#making-authenticated-requests-through-firebase-usefetch-hook)
-    - [What is it?](#what-is-it)
-    - [Usage](#usage)
+- [💻 Working with code](#-working-with-code)
+- [🧱 Guidelines for building components](#-guidelines-for-building-components)
+  - [A note about React Hooks](#a-note-about-react-hooks)
+  - [Proptypes](#proptypes)
+  - [Using Storybook](#using-storybook)
+  - [How to create a new story](#how-to-create-a-new-story)
+    - [Adding knobs (optional)](#adding-knobs-optional)
+  - [Breaking down components](#breaking-down-components)
+  - [Coding guidelines for components](#coding-guidelines-for-components)
+- [🎨 Theming and global styling](#-theming-and-global-styling)
+- [🧱 Component styling](#-component-styling)
+- [📤 📥 Inline CSS vs Stylesheets](#--inline-css-vs-stylesheets)
+- [👍🏽 Code best practices](#-code-best-practices)
+- <img width=20px height=20px src="/git-logo.png" alt="GitHub logo"></img>[Working with GIT](#-working-with-git)
+- <img width=15px height=30px src="/heroku-logo.svg" alt="Heroku logo"></img>[Working with Heroku and Deployment](#-working-with-heroku-and-deployment)
+- <img width=59x height=20px src="/knex-logo.png"  alt="Knex logo"></img>[Working with Knex and Migrations](#-working-with-knex-and-migrations)
+- <img width=25px height=25x src="/swagger-logo.png"  alt="Swagger logo"></img>[Working with API Documentation - Swagger](#-working-with-api-documentation---swagger)
+- <img width=20px height=20x src="/storybook.svg"  alt="Storybook logo"></img>[Working with Storybook](#-working-with-storybook)
+- <img width=30px height=30x src="/aws.svg"  alt="AWS S3 logo"></a><img width=30px height=30x src="/s3.png"  alt="AWS S3 logo"></img>[Working with AWS - Amazon Services](#-working-with-aws---amazon-services)
+- [Testing](#testing)
+- [Making authenticated requests through firebase (useFetch hook)](#making-authenticated-requests-through-firebase-usefetch-hook)
+  - [What is it?](#what-is-it)
+  - [Usage](#usage)
 - [🏁 Getting Started](#-getting-started)
   - [💾 Installations](#-installations)
     - [Errors](#errors)
@@ -55,7 +53,6 @@
 - [📜 Getting the HackYourFuture certificate](#-getting-the-hackyourfuture-certificate)
 - [👨🏾‍💻 Authors](#-authors)
 - [📝 License](#-license)
-
 
 ## 🧐 About <a name = "about"></a>
 
@@ -80,13 +77,13 @@ Staging website: https://simply-name-it-staging.herokuapp.com/
 
 - 04-Jul-2021 - 12:00 to 16:00
 - 11-Jul-2021 - 12:00 to 16:00
-- 18-Jul-2021	- _Holidays_
-- 25-Jul-2021	- _Holidays_
-- 01-Aug-2021	- 12:00 to 16:00
-- 08-Aug-2021	- 12:00 to 16:00
-- 15-Aug-2021	- 12:00 to 16:00
-- 22-Aug-2021	- 12:00 to 16:00
-- 29-Aug-2021	- 12:00 to 16:00
+- 18-Jul-2021 - _Holidays_
+- 25-Jul-2021 - _Holidays_
+- 01-Aug-2021 - 12:00 to 16:00
+- 08-Aug-2021 - 12:00 to 16:00
+- 15-Aug-2021 - 12:00 to 16:00
+- 22-Aug-2021 - 12:00 to 16:00
+- 29-Aug-2021 - 12:00 to 16:00
 - 01-Sep-2021 - _Graduation_
 
 ## 🕛 Class Daily Agenda 🕓
@@ -138,14 +135,14 @@ _Add here the DB Model Diagram_ - Use https://dbdiagram.io/d/60db3d75dd6a5971482
 Generally there are 2 types of components: _presentational_ and _container_ components. Please review the differences below:
 
 |                       | Presentational components                           | Container components                                                                                                                                                      |
-| --------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
 | Also known as         | "dumb" components, functional stateless components  | "smart" components, stateful components                                                                                                                                   |
 | Lives in this folder  | `/components`                                       | `/containers`                                                                                                                                                             |
 | Purpose               | Determines what a component looks like              | Determines how the applications works                                                                                                                                     |
 | Communication         | Can only communicate by receiving and passing props | Can communicate via props, can call APIs, can manipulate the DOM with REFs, etc.                                                                                          |
 | Markup                | Contains most of the markup for the application     | Should generally have as little markup as possible. A container `<div>` or an `<ul>` tag is ok, but if you need more, consider making a separate presentational component |
 | Storybook             | Can easily be mocked in Storybook                   | Cannot easily be mocked in Storybook, would require mocking API calls, etc.                                                                                               |
-| Can have side effects | No                                                  | Yes                                                                                                                                                                       |  |
+| Can have side effects | No                                                  | Yes                                                                                                                                                                       |     |
 
 #### A note about React Hooks
 
