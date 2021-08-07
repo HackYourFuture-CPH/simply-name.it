@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+:root {
+  --purple: #5d0096;
+  --white: #fff;
+  --dark-gray: #8c8c8c;
+  --light-gray: #c4c4c4;
+}
+
+/* shared/default style attributes */
+
+.generic-button {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  height: 53px;
+  border-radius: 50px;
+  border: none;
+}
+
+/* SIZE */
+
+.generic-button.small-button {
+  width: 106px;
+  height: 39px;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 16px, 133px, 16px, 133px;
+}
+
+.generic-button.medium-button {
+  width: 155px;
+}
+
+.generic-button.large-button {
+  width: 328px;
+}
+
+/* PRIMARY */
+
+.button-primary.active-button {
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
+  color: var(--white);
+}
+
+.button-primary.disabled-button {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+}
+
+/* SECONDARY */
+
+.button-secondary.active-button {
+  border-radius: 50px;
+  border: solid 3px transparent;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(270deg, #4b0082, #9400d3);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+  color: var(--purple);
+}
+
+.button-secondary.disabled-button {
+  border: 3px solid var(--dark-gray);
+  background-color: transparent;
+  color: var(--dark-gray);
+}
