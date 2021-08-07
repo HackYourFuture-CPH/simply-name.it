@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const ballotsController = require('../controllers/update-ballots.controller');
+const ballotsController = require('../controllers/ballots.controller');
 
 /**
  * @swagger

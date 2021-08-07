@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
-const ballotsRouter = require('./update-ballots.router');
+const ballotsRouter = require('./ballots.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
