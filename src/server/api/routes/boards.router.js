@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
+const ballotsRouter = require('./update-ballots.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
@@ -36,5 +37,5 @@ router.get('/', async (req, res) => {
 
   return res.json(boardsByMemberId);
 });
-
+router.use('/:boardId/ballots', ballotsRouter);
 module.exports = router;

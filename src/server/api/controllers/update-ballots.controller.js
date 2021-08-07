@@ -10,11 +10,20 @@ const editBallots = async (userId, boardId, candidates) => {
   } else if (candidates.length === 0) {
     throw new IncorrectEntryError(`candidates list is empty`);
   } else {
-    knex.transaction(async (trx) => {
+    knex.transaction(function (trx) {
       const queries = candidates.map((candidate) => {
-        return trx('ballots')
-          .where({ userId, boardId, candidateId: candidate.candidateId })
-          .update({ rank: candidate.rank });
+        if (
+          Number.isInteger(candidate.candidateId) &&
+          Number.isInteger(candidate.rank)
+        ) {
+          return trx('ballots')
+            .where({ userId, boardId, candidateId: candidate.candidateId })
+            .update({ rank: candidate.rank });
+        } else {
+          throw new IncorrectEntryError(
+            `candidateId and rank should be integers`,
+          );
+        }
       });
       return Promise.all(queries);
     });
