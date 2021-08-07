@@ -18,7 +18,6 @@ const boardsController = require('../controllers/boards.controller');
  *    parameters:
  *      - in: path
  *        name: userId
- *        required:true
  *
  *      - in: path
  *        name: boardId
@@ -49,9 +48,9 @@ const boardsController = require('../controllers/boards.controller');
  *      5XX:
  *        description: Unexpected error.
  */
-router.put('/:userId/boards/:boardId', (req, res, next) => {
+router.put('/:boardId', (req, res, next) => {
   boardsController
-    .editBoard(req.params.userId, req.body)
+    .editBoard(req.params.boardId, req.body)
     .then(res.status(204))
     .catch(next);
 });
