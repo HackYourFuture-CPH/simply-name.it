@@ -60,11 +60,17 @@ const ballotsController = require('../controllers/update-ballots.controller');
  *         type: integer
  *         example: 1
  */
-router.put('/:userId/boards/:boardId/ballots', (req, res, next) => {
-  ballotsController
-    .editBallots(req.params.userId, req.params.boardId, req.body)
-    .then(() => res.status(204).send())
-    .catch(next);
+router.put('/', async (req, res) => {
+  try {
+    await ballotsController.editBallots(
+      req.params.userId,
+      req.params.boardId,
+      req.body,
+    );
+    res.status(204).send();
+  } catch (error) {
+    res.status(404).send(error);
+  }
 });
 
 module.exports = router;
