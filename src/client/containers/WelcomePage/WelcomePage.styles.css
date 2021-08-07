@@ -20,7 +20,7 @@
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-.sign-in-buttons {
+.sign-in-buttons-container {
   position: absolute;
   display: flex;
   align-items: center;
