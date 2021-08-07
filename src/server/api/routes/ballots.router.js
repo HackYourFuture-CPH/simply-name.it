@@ -66,7 +66,6 @@ router.put('/', async (req, res) => {
     req.params.boardId,
     req.body,
   );
-  console.log(result);
   if (result.includes(1)) {
     res.status(204).send();
   } else {
