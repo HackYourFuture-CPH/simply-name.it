@@ -18,7 +18,7 @@ const editBallots = async (userId, boardId, candidates) => {
   ) {
     throw new IncorrectEntryError(`candidateId and rank should be integers`);
   } else {
-    knex.transaction(function (trx) {
+    return knex.transaction(function (trx) {
       const queries = candidates.map((candidate) => {
         return trx('ballots')
           .where({ userId, boardId, candidateId: candidate.candidateId })
