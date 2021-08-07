@@ -1,6 +1,6 @@
 import React from 'react';
 import './WelcomePage.styles.css';
-import Button from '../../components/Button/Button.component';
+import GenericButton from '../../components/GenericButton/GenericButton.component';
 import GoogleButton from '../../components/GoogleButton/GoogleButton.component';
 
 export default function Welcome() {
@@ -14,14 +14,13 @@ export default function Welcome() {
       </div>
       <div className="sign-in-buttons">
         <GoogleButton className="google-button" />
-        <Button
+        <GenericButton
           className="generic-button"
-          buttonLabel="Login"
+          buttonLabel="Log in"
+          buttonSize="large"
+          buttonType="secondary"
+          buttonDisabled={false}
           onClick={onClick}
-          size="large"
-          buttonColor="white"
-          buttonBorder="purple-gradient"
-          buttonLabelColor="purple"
         />
       </div>
     </div>
