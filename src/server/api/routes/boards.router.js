@@ -30,6 +30,31 @@ const boardsController = require('../controllers/boards.controller');
  *      5XX:
  *        description: Unexpected error.
  */
+
+/**
+ * @swagger
+ * /users/{ID}/boards/created:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get boards by user ID
+ *    description:
+ *      Will return the boards which creatorId matches with user Id.
+ *    produces: application/json
+ *    parameters:
+ *     - in: path
+ *       name: ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the module to get
+ *
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error.
+ */
 router.get('/', async (req, res) => {
   const boardsByMemberId = await boardsController.getBoardsByMemberId(
     req.params.userId,
@@ -38,4 +63,13 @@ router.get('/', async (req, res) => {
   return res.json(boardsByMemberId);
 });
 router.use('/:boardId/ballots', ballotsRouter);
+
+router.get('/created', async (req, res) => {
+  const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
+    req.params.userId,
+  );
+
+  return res.json(boardsByCreatorId);
+});
+
 module.exports = router;
