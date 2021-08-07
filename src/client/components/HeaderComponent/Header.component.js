@@ -1,14 +1,15 @@
 import React from 'react';
-import './HeaderComponent.styles.css';
+import './Header.styles.css';
 import PropTypes from 'prop-types';
 
 export default function HeaderComponent({ variant, src, alt, children }) {
   return (
-    <div className="headerComponent-container">
-      <img src={src} alt={alt} className={`headerComponent-${variant}`} />
-      <div className={`headerComponent-${variant}`}> </div>
-      <div className="headerComponent-main">
-        <div className="headerComponent-children">{children}</div>
+    <div className="header-component-container">
+      <img src={src} alt={alt} className={`header-component-${variant}`} />
+      <div className={`header-component-${variant}`}> </div>
+
+      <div className="header-component-main">
+        <div className="header-component-children">{children}</div>
       </div>
     </div>
   );

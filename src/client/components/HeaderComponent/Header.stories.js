@@ -1,6 +1,6 @@
 import React from 'react';
-import './HeaderComponent.styles.css';
-import HeaderComponent from './HeaderComponent.component.js';
+import './Header.styles.css';
+import HeaderComponent from './Header.component.js';
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Dropdown from '../Dropdown/Dropdown.component';
@@ -10,8 +10,9 @@ export default {
   title: 'Components / HeaderComponent',
 };
 
-export const HeaderComponentWithPurpleBackground = () => (
+export const TestHeaderComponent = () => (
   <HeaderComponent variant={select('background-type', ['color', 'image'])}>
+    <ArrowButton />
     <Dropdown
       variant="dark"
       visible={boolean('Menu Options', false)}
@@ -23,6 +24,5 @@ export const HeaderComponentWithPurpleBackground = () => (
         <li>Option 3</li>
       </ul>
     </Dropdown>
-    <ArrowButton> </ArrowButton>
   </HeaderComponent>
 );
