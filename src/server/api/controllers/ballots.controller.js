@@ -10,10 +10,10 @@ const editBallots = async (userId, boardId, candidates) => {
   } else if (candidates.length === 0) {
     throw new IncorrectEntryError(`candidates list is empty`);
   } else if (
-    candidates.every(
+    candidates.some(
       (candidate) =>
-        Number.isInteger(candidate.candidateId) ||
-        Number.isInteger(candidate.rank),
+        !Number.isInteger(candidate.candidateId) ||
+        !Number.isInteger(candidate.rank),
     )
   ) {
     throw new IncorrectEntryError(`candidateId and rank should be integers`);
