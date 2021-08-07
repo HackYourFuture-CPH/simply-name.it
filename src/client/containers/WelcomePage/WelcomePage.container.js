@@ -1,7 +1,5 @@
 import React from 'react';
 import './WelcomePage.styles.css';
-
-import background from '../../assets/images/pages-background/Login.svg';
 import Button from '../../components/Button/Button.component';
 import GoogleButton from '../../components/GoogleButton/GoogleButton.component';
 
@@ -10,12 +8,7 @@ export default function Welcome() {
     console.log('you clicked!');
   };
   return (
-    <div className="sign-in-div">
-      <img
-        src={background}
-        className="welcome-background"
-        alt="background blobs"
-      />
+    <div className="sign-in-container">
       <div className="welcome-slogan-container">
         <h1 className="welcome-slogan">Take Tough Decisions Together</h1>
       </div>

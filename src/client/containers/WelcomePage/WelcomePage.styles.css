@@ -1,45 +1,30 @@
-* {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
-.sign-in-div {
-  width: 100vw;
-  height: 100vh;
-  border: 1px red solid;
-
-  /* background-image: url(../../assets/images/pages-background/Login.svg); */
-}
-
-.welcome-background {
+.sign-in-container {
   position: relative;
-  border: 2px green solid;
+  height: 100vh;
+  background: url('../../assets/images/pages-background/Login.svg') no-repeat;
+  max-width: 414px;
 }
 
 .welcome-slogan-container {
-  width: 70vw;
-}
-
-.welcome-slogan {
   position: absolute;
-  width: 80vw;
-  height: 66px;
-  left: 65px;
-  top: 10px;
-  font-size: 4em;
-  line-height: 77px;
-  letter-spacing: 0.01em;
+  top: 1.5rem;
+  left: 4rem;
+  max-width: 18rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8em;
   text-transform: capitalize;
+  line-height: 4.8rem;
   color: #fff;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .sign-in-buttons {
+  position: absolute;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  row-gap: 15px;
-  position: absolute;
-  width: 100vw;
-  bottom: 200px;
+  row-gap: 2vh;
+  top: 35rem;
 }
