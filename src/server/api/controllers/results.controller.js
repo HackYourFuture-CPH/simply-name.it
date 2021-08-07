@@ -1,9 +1,12 @@
 const knex = require('../../config/db');
-const HttpError = require('../lib/utils/http-error');
+const {
+  IncorrectEntryError,
+  InvalidIdError,
+} = require('../lib/utils/http-error');
 
 const getResultsByBoardId = async (userId, boardId) => {
-  if (!userId && boardId) {
-    throw new HttpError('Id should be a number', 400);
+  if (!Number.isInteger(Number(userId, boardId))) {
+    throw new InvalidIdError('Id should be an integer');
   }
 
   const candidatesName = await knex('candidates')
@@ -15,7 +18,9 @@ const getResultsByBoardId = async (userId, boardId) => {
     .select('candidates.name');
 
   if (candidatesName.length === 0) {
-    throw new Error(`incorrect entry with the id of ${userId || boardId}`, 404);
+    throw new IncorrectEntryError(
+      `incorrect entry with the id of ${userId || boardId}`,
+    );
   }
 
   return candidatesName;
