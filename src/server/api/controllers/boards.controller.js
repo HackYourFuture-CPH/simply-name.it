@@ -4,6 +4,21 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
+const getBoardsByCreatorId = async (id) => {
+  if (!Number.isInteger(Number(id))) {
+    throw new InvalidIdError('Id should be an integer!');
+  }
+
+  const boards = await knex('users')
+    .join('boards', 'users.id', '=', 'boards.creatorId')
+    .select('*')
+    .where('creatorId', id);
+  if (boards.length === 0) {
+    throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
+  }
+  return boards;
+};
+
 const getBoardsByMemberId = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer');
@@ -24,4 +39,5 @@ const getBoardsByMemberId = async (id) => {
 
 module.exports = {
   getBoardsByMemberId,
+  getBoardsByCreatorId,
 };

@@ -12,6 +12,27 @@ const boardsRouter = require('./boards.router');
 
 router.use('/:userId/boards', boardsRouter);
 
+
+/**
+ * @swagger
+ * /users:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get all users
+ *    description:
+ *      Will return all users registered in the app.
+ *    produces: application/json
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error.
+ */
+router.get('/', async (req, res) => {
+  const users = await usersController.getUsers();
+  return res.json(users);
+
 /**
  * @swagger
  * /users/search?fullName=keyword:
@@ -54,5 +75,7 @@ router.get('/search', async (req, res) => {
 
   return res.json(searchedUsers);
 });
+
+
 
 module.exports = router;
