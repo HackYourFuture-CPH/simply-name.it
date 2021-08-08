@@ -1,11 +1,9 @@
 const knex = require('../../config/db');
-const { IncorrectEntryError } = require('../lib/utils/http-error');
 
 const {
   IncorrectEntryError,
   InvalidIdError,
 } = require('../lib/utils/http-error');
-
 
 const isInteger = (id) => {
   if (Number.isInteger(Number(id))) {
@@ -56,5 +54,5 @@ const getUsersByKeyword = async (searchWord) => {
 module.exports = {
   getUsers,
   getUserById,
-    getUsersByKeyword,
+  getUsersByKeyword,
 };
