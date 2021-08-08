@@ -38,7 +38,6 @@ class HttpError extends Error {
     this.body = body; // If defined, this'll be the response body
   }
 }
-
 class IncorrectEntryError extends HttpError {
   constructor(message, body = null) {
     super(message);
