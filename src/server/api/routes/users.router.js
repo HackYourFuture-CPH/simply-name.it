@@ -1,15 +1,3 @@
-import React from 'react';
-import Welcome from './WelcomePage.container';
-
-export default {
-  title: 'containers / Welcome page ',
-  component: WelcomePage,
-};
-
-export const WelcomePage = () => <Welcome />;
-
-
-
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
@@ -70,35 +58,36 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const userById = await usersController.getUserById(req.params.id);
   return res.json(userById);
+});
 
-  /**
-   * @swagger
-   * /users/search?fullName=keyword:
-  *  get:
-  *    tags:
-  *    - Users
-  *    summary: Get users by search word
-  *    description:
-  *      Will return users whos full name match the search word.
-  *    produces: application/json
-  *    parameters:
-  *     - in: query
-  *       name: fullName
-  *       schema:
-  *         type: string
-  *         required: true
-  *         description: search word to match against the user's full name
-  *
-  *    responses:
-*
-*      200:
-*        description: Successful request
-*      5XX:
-*        description: Unexpected error
-*      404:
-*        description: Not found
-*      400:
-*        description: Bad request
+/**
+ * @swagger
+ * /users/search?fullName=keyword:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get users by search word
+ *    description:
+ *      Will return users whos full name match the search word.
+ *    produces: application/json
+ *    parameters:
+ *     - in: query
+ *       name: fullName
+ *       schema:
+ *         type: string
+ *         required: true
+ *         description: search word to match against the user's full name
+ *
+ *    responses:
+ *
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error
+ *      404:
+ *        description: Not found
+ *      400:
+ *        description: Bad request
  *
  *
  */
