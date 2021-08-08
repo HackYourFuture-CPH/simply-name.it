@@ -5,7 +5,7 @@ const express = require('express');
 
 const router = express.Router({ mergeParams: true });
 
-// controllers
+// Controllers
 const usersController = require('../controllers/users.controller');
 
 const boardsRouter = require('./boards.router');
