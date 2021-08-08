@@ -3,7 +3,28 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const userController = require('../controllers/user.controller');
+const usersController = require('../controllers/users.controller');
+
+/**
+ * @swagger
+ * /users:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get all users
+ *    description:
+ *      Will return all users registered in the app.
+ *    produces: application/json
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error.
+ */
+router.get('/', async (req, res) => {
+  const users = await usersController.getUsers();
+  return res.json(users);
+});
 
 /**
  * @swagger
@@ -34,7 +55,7 @@ const userController = require('../controllers/user.controller');
  *        description: Not found
  */
 router.get('/:id', async (req, res) => {
-  const userById = await userController.getUserById(req.params.id);
+  const userById = await usersController.getUserById(req.params.id);
   return res.json(userById);
 });
 
