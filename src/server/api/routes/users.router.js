@@ -48,6 +48,10 @@ router.get('/search', async (req, res) => {
     req.query.fullName,
   );
 
+  if (users.length === 0) {
+    res.status(200).send(`Cannot find user with name like '${searchWord}'`);
+  }
+
   return res.json(searchedUsers);
 });
 
