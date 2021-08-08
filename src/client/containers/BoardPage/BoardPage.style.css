@@ -1,3 +1,38 @@
-* {
+/* * {
   box-sizing: border-box;
+}
+
+.drop-down {
+  list-style-type: none;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.Board-container {
+  position: relative;
+  height: 100vh;
+  max-width: 414px;
+}
+
+.Header-component {
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.title,
+.Input-component {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.CandidateCard-component {
+  position: relative;
+  right: 30px;
+}
+
+.Result button {
+  float: right;
 }

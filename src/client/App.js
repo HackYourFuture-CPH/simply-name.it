@@ -7,9 +7,9 @@ import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import { useAuthentication } from './hooks/useAuthentication';
-import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
+import Board from './containers/BoardPage/BoardPage.container';
 
 function App() {
   const { isLoading } = useAuthentication();
@@ -20,7 +20,6 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Switch>
         {/* Home page */}
         <Route exact path="/">
@@ -31,11 +30,15 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
+        <Board exact path="/BoardPage" />
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute exact path="/profile">
           <ProfilePage />
         </AuthenticatedRoute>
+        {/* <AuthenticatedRoute exact path="/BoardPage">
+          <BoardPage />
+        </AuthenticatedRoute> */}
       </Switch>
     </Router>
   );
