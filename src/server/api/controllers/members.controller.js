@@ -10,7 +10,12 @@ const getAllMembers = async (userId, boardId) => {
   }
   const members = await knex('members')
     .join('users', 'members.userId', '=', 'users.id')
-    .select('*')
+    .select(
+      'members.userId',
+      'members.role',
+      'users.fullName',
+      'users.firebaseUId',
+    )
     .where('members.boardId', boardId);
   if (members.length === 0) {
     throw new IncorrectEntryError(`incorrect entry with the id of ${boardId}`);
