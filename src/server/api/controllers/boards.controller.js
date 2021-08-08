@@ -9,6 +9,9 @@ const createBoard = async (userId, newBoard) => {
   if (!Number.isInteger(Number(userId))) {
     throw new InvalidIdError('Id should be an integer');
   }
+  if (newBoard.length === 0) {
+    throw new IncorrectEntryError(`Board is not created`);
+  }
 
   const createNewBoard = await knex('boards').insert({
     creatorId: userId,
