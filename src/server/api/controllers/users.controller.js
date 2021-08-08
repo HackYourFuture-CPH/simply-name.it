@@ -11,11 +11,9 @@ const getUsersByKeyword = async (searchWord) => {
     'like',
     `%${searchWord}%`,
   );
+
   if (users.length === 0) {
-    throw new IncorrectEntryError(
-      `Cannot find user with name like '${searchWord}'`,
-      404,
-    );
+    res.status(200).send(`Cannot find user with name like '${searchWord}'`);
   }
   return users;
 };
