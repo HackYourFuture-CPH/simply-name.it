@@ -34,8 +34,8 @@ const editBallots = async (userId, boardId, candidates) => {
       if (intersection.length !== candidates.length) {
         throw new IncorrectEntryError(`candidateId is not found`);
       } else {
-        const queries = candidates.map(async (candidate) => {
-          return await trx('ballots')
+        const queries = candidates.map((candidate) => {
+          return trx('ballots')
             .where({ userId, boardId, candidateId: candidate.candidateId })
             .update({ rank: candidate.rank });
         });
