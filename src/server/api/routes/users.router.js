@@ -12,7 +12,6 @@ const boardsRouter = require('./boards.router');
 
 router.use('/:userId/boards', boardsRouter);
 
-
 /**
  * @swagger
  * /users:
@@ -29,9 +28,11 @@ router.use('/:userId/boards', boardsRouter);
  *      5XX:
  *        description: Unexpected error.
  */
+
 router.get('/', async (req, res) => {
   const users = await usersController.getUsers();
   return res.json(users);
+});
 
 /**
  * @swagger
@@ -64,18 +65,17 @@ router.get('/', async (req, res) => {
  *
  *
  */
+
 router.get('/search', async (req, res) => {
   const searchedUsers = await usersController.getUsersByKeyword(
     req.query.fullName,
   );
 
-  if (users.length === 0) {
+  if (searchedUsers.length === 0) {
     res.status(200).send(`Cannot find user with name like '${searchWord}'`);
   }
 
   return res.json(searchedUsers);
 });
-
-
 
 module.exports = router;
