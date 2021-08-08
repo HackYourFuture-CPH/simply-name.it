@@ -7,9 +7,13 @@ const {
 const editBallots = async (userId, boardId, candidates) => {
   if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('userId and boardId should be integers');
-  } else if (candidates.length === 0) {
+  }
+
+  if (candidates.length === 0) {
     throw new IncorrectEntryError(`candidates list is empty`);
-  } else if (
+  }
+
+  if (
     candidates.some(
       (candidate) =>
         !Number.isInteger(candidate.candidateId) ||
@@ -17,32 +21,21 @@ const editBallots = async (userId, boardId, candidates) => {
     )
   ) {
     throw new IncorrectEntryError(`candidateId and rank should be integers`);
-  } else {
-    return knex.transaction(async (trx) => {
-      const candidateIds = await trx('ballots')
-        .where({ userId, boardId })
-        .select('candidateId');
-      const candidateIdsInDbSet = new Set(
-        candidateIds.map((candidate) => candidate.candidateId),
-      );
-      const candidateIdsSet = new Set(
-        candidates.map((candidate) => candidate.candidateId),
-      );
-      const intersection = [...candidateIdsSet].filter((ids) =>
-        candidateIdsInDbSet.has(ids),
-      );
-      if (intersection.length !== candidates.length) {
-        throw new IncorrectEntryError(`candidateId is not found`);
-      } else {
-        const queries = candidates.map((candidate) => {
-          return trx('ballots')
-            .where({ userId, boardId, candidateId: candidate.candidateId })
-            .update({ rank: candidate.rank });
-        });
-        return Promise.all(queries);
-      }
-    });
   }
+
+  return knex.transaction(function (trx) {
+    const queries = candidates.map((candidate) => {
+      return trx('ballots')
+        .where({ userId, boardId, candidateId: candidate.candidateId })
+        .update({ rank: candidate.rank });
+    });
+    return Promise.all(queries).then((results) => {
+      if (results.includes(0)) {
+        throw new IncorrectEntryError(`Some candidates could not be updated`);
+      }
+      return results;
+    });
+  });
 };
 module.exports = {
   editBallots,

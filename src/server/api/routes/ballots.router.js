@@ -61,16 +61,12 @@ const ballotsController = require('../controllers/ballots.controller');
  *         example: 1
  */
 router.put('/', async (req, res) => {
-  const result = await ballotsController.editBallots(
+  await ballotsController.editBallots(
     req.params.userId,
     req.params.boardId,
     req.body,
   );
-  if (result.includes(1)) {
-    res.status(204).send();
-  } else {
-    res.status(404).send();
-  }
+  res.status(204).send();
 });
 
 module.exports = router;
