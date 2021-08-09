@@ -10,16 +10,16 @@ const createCandidate = async (userId, boardId, newCandidate) => {
   }
   if (Object.keys(newCandidate).length === 0) {
     throw new IncorrectEntryError(`New candidate is not created`);
-  } else if (typeof newCandidate.name !== 'string') {
-    throw new IncorrectEntryError(`Candidate name should be string`);
-  } else {
-    const createNewCandidate = await knex('candidates').insert({
-      boardId,
-      name: newCandidate.name,
-      isBlocked: false,
-    });
-    return createNewCandidate;
   }
+  if (typeof newCandidate.name !== 'string') {
+    throw new IncorrectEntryError(`Candidate name should be string`);
+  }
+  const createNewCandidate = await knex('candidates').insert({
+    boardId,
+    name: newCandidate.name,
+    isBlocked: false,
+  });
+  return createNewCandidate;
 };
 
 module.exports = {
