@@ -6,7 +6,7 @@ const resultsController = require('../controllers/results.controller');
 
 /**
  * @swagger
- * /users/{USER_ID}/boards/{BOARD_ID}/result:
+ * /users/{USER_ID}/boards/{BOARD_ID}/results:
  *  get:
  *    tags:
  *    - Results

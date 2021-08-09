@@ -9,17 +9,24 @@ const getResultsByBoardId = async (userId, boardId) => {
     throw new InvalidIdError('Id should be an integer');
   }
 
+  const boardAuthorizationResult = await knex('members')
+    .where('userId', userId)
+    .andWhere('boardId', boardId)
+    .count('* as count');
+  if (boardAuthorizationResult[0].count === 0) {
+    throw new IncorrectEntryError(
+      `userId: ${userId} has no access to boardId: ${boardId}`,
+    );
+  }
+
   const candidatesName = await knex('candidates')
     .join('results', 'candidates.id', '=', 'results.candidateId')
-    .join('boards', 'boards.id', '=', 'results.boardId')
-    .join('members', 'members.boardId', '=', 'boards.id')
     .where('results.boardId', boardId)
-    .andWhere('members.userId', userId)
-    .select('candidates.name');
+    .select('candidates.name', 'candidates.id', 'results.rank');
 
   if (candidatesName.length === 0) {
     throw new IncorrectEntryError(
-      `incorrect entry with the id of ${userId || boardId}`,
+      `userId: ${userId} or boardId: ${boardId} does not exist!`,
     );
   }
 
