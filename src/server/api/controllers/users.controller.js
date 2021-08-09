@@ -1,7 +1,5 @@
-/* TODO: This is an example controller to illustrate a server side controller.
-Can be deleted as soon as the first real controller is added. */
-
 const knex = require('../../config/db');
+const { IncorrectEntryError } = require('../lib/utils/http-error');
 
 const getUsers = () => {
   return knex('users').select(
@@ -13,6 +11,23 @@ const getUsers = () => {
   );
 };
 
+const getUsersByKeyword = async (searchWord) => {
+  if (!searchWord) {
+    throw new IncorrectEntryError('Use a keyword!', 400);
+  }
+
+  const users = await knex('users').where(
+    'fullname',
+    'like',
+    `%${searchWord}%`,
+  );
+
+  return users;
+};
+
+
+
 module.exports = {
   getUsers,
+    getUsersByKeyword,
 };
