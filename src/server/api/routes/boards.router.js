@@ -72,4 +72,53 @@ router.get('/created', async (req, res) => {
   return res.json(boardsByCreatorId);
 });
 
+/**
+ * @swagger
+ * /users/{ID}/boards:
+ *  post:
+ *    tags:
+ *    - Boards
+ *    summary: Create a board
+ *    description:
+ *      Will create a new board.
+ *    produces: application/json
+ *    parameters:
+ *      - in: path
+ *        name: ID
+ *        description: ID of the user.
+ *      - in: body
+ *        name: board
+ *        description: The board to create.
+ *        schema:
+ *          type: object
+ *          required:
+ *            - title
+ *            - deadline
+ *          properties:
+ *            title:
+ *              type: string
+ *            deadline:
+ *              type: string
+ *              format: date-time
+ *            banner:
+ *              type: binary
+ *    responses:
+ *      201:
+ *        description: Board created
+ *      5XX:
+ *        description: Unexpected error.
+ *      400:
+ *        description: Invalid Id error.
+ *      404:
+ *        description: Incorrect entry error.
+ */
+
+router.post('/', async (req, res) => {
+  const newBoard = await boardsController.createBoard(
+    req.params.userId,
+    req.body,
+  );
+  return res.json(newBoard);
+});
+
 module.exports = router;

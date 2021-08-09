@@ -3,6 +3,28 @@ const {
   IncorrectEntryError,
   InvalidIdError,
 } = require('../lib/utils/http-error');
+const moment = require('moment-timezone');
+
+const createBoard = async (userId, newBoard) => {
+  if (!Number.isInteger(Number(userId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+  if (Object.keys(newBoard).length === 0) {
+    throw new IncorrectEntryError(`New Board is not created`);
+  }
+  if (typeof newBoard.title !== 'string') {
+    throw new IncorrectEntryError(`Board title should be string`);
+  }
+
+  const createNewBoard = await knex('boards').insert({
+    creatorId: userId,
+    title: newBoard.title,
+    deadline: moment(newBoard.deadline).format(),
+    isDeleted: false,
+    banner: newBoard.banner,
+  });
+  return createNewBoard;
+};
 
 const getBoardsByCreatorId = async (id) => {
   if (!Number.isInteger(Number(id))) {
@@ -40,4 +62,5 @@ const getBoardsByMemberId = async (id) => {
 module.exports = {
   getBoardsByMemberId,
   getBoardsByCreatorId,
+  createBoard,
 };
