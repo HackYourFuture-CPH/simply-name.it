@@ -16,8 +16,6 @@ const boardsController = require('../controllers/boards.controller');
  *      Will update a board by owner
  *    produces: application/json
  *    parameters:
- *      - in: path
- *        name: userId
  *
  *      - in: path
  *        name: boardId
@@ -43,7 +41,7 @@ const boardsController = require('../controllers/boards.controller');
  *                  type: blob
  *
  *    responses:
- *      201:
+ *      200:
  *        description: Board updated
  *      5XX:
  *        description: Unexpected error.

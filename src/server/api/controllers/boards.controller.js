@@ -4,8 +4,8 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const editBoard = async (userId, boardId, updatedBoard) => {
-  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+const editBoard = async (boardId, updatedBoard) => {
+  if (!Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('Id should be an integer');
   }
   return knex('boards').where({ id: boardId }).update({
