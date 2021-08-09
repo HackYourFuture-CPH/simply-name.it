@@ -2,25 +2,27 @@ const knex = require('../../config/db');
 const {
   InvalidIdError,
   IncorrectEntryError,
+  InvalidRequestError,
 } = require('../lib/utils/http-error');
 
+const { isInteger } = require('../lib/utils/validators');
+
 const editBallots = async (userId, boardId, candidates) => {
-  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
-    throw new InvalidIdError('userId and boardId should be integers');
+  if (!isInteger(userId) || !isInteger(boardId)) {
+    throw new InvalidIdError('UserId and boardId should be integers');
   }
 
   if (candidates.length === 0) {
-    throw new IncorrectEntryError(`candidates list is empty`);
+    throw new InvalidRequestError(`Candidates array is empty`);
   }
 
   if (
     candidates.some(
       (candidate) =>
-        !Number.isInteger(candidate.candidateId) ||
-        !Number.isInteger(candidate.rank),
+        !isInteger(candidate.candidateId) || !isInteger(candidate.rank),
     )
   ) {
-    throw new IncorrectEntryError(`candidateId and rank should be integers`);
+    throw new InvalidIdError(`CandidateId and rank should be integers`);
   }
 
   return knex.transaction(function (trx) {
@@ -31,7 +33,9 @@ const editBallots = async (userId, boardId, candidates) => {
     });
     return Promise.all(queries).then((results) => {
       if (results.includes(0)) {
-        throw new IncorrectEntryError(`Some candidates could not be updated`);
+        throw new IncorrectEntryError(
+          `Request aborted. Ids matching Board, User or candidate could could not be updated`,
+        );
       }
       return results;
     });

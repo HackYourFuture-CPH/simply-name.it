@@ -41,6 +41,10 @@ const ballotsController = require('../controllers/ballots.controller');
  *    responses:
  *      204:
  *        description: Ballot is updated
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: User, Board or candidates not found
  *      5XX:
  *        description: Unexpected error.
  *
