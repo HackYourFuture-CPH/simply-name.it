@@ -5,17 +5,27 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const getCandidate = ({ candidateId, userId, boardId }) => {
-  return knex('candidates')
-    .join('boards', 'boards.Id', '=', 'candidates.boardId')
-    .where({ boardId, creatorId: userId, 'candidates.id': candidateId });
+const checkUserRole = async ({ userId, boardId }) => {
+  const ifuserIsCreator = await knex('boards')
+    .where('boards.creatorId', userId)
+    .andWhere('boards.id', boardId);
+
+  if (!ifuserIsCreator) {
+    throw new IncorrectEntryError(`Only creator can take that action `);
+  } else {
+    deleteCandidate();
+  }
+  return ifuserIsCreator;
 };
 
-const deleteCandidate = async ({ candidateId }) => {
-  return knex('candidates').where({ id: candidateId }).del();
+const deleteCandidate = async ({ candidateId, userId, boardId }) => {
+  await checkUserRole({ candidateId, userId, boardId });
+  await knex('candidates')
+    .where({ id: candidateId })
+    .update({ isBlocked: true });
 };
 
 module.exports = {
   deleteCandidate,
-  getCandidate,
+  checkUserRole,
 };
