@@ -1,9 +1,6 @@
 const knex = require('../../config/db');
 
-const {
-  IncorrectEntryError,
-  InvalidIdError,
-} = require('../lib/utils/http-error');
+const { IncorrectEntryError } = require('../lib/utils/http-error');
 
 const checkUserRole = async ({ userId, boardId }) => {
   const ifuserIsCreator = await knex('boards')
@@ -11,15 +8,11 @@ const checkUserRole = async ({ userId, boardId }) => {
     .andWhere('boards.id', boardId);
 
   if (!ifuserIsCreator) {
-    throw new IncorrectEntryError(`Only creator can take that action `);
-  } else {
-    deleteCandidate();
+    throw new IncorrectEntryError(`Only creator can take this action `);
   }
-  return ifuserIsCreator;
 };
 
-const deleteCandidate = async ({ candidateId, userId, boardId }) => {
-  await checkUserRole({ candidateId, userId, boardId });
+const deleteCandidate = async ({ candidateId }) => {
   await knex('candidates')
     .where({ id: candidateId })
     .update({ isBlocked: true });

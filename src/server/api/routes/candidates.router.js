@@ -45,10 +45,11 @@ const candidatesController = require('../controllers/candidates.controller');
  */
 
 router.delete('/:candidateId', async (req, res) => {
-  const deleteCandidateByID = await candidatesController.deleteCandidate(
+  const deleteCandidateController = await candidatesController.checkUserRole(
     req.params,
   );
-  return res.json({ deleteCandidateByID });
+  deleteCandidateController.deleteCandidate(req.params);
+  return res.status(204).send();
 });
 
 module.exports = router;
