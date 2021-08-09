@@ -8,7 +8,7 @@ const getAllMembers = async (userId, boardId) => {
   if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('Id should be an integer');
   }
-  const members = await knex('members')
+  const allMembers = await knex('members')
     .join('users', 'members.userId', '=', 'users.id')
     .select(
       'members.userId',
@@ -17,10 +17,10 @@ const getAllMembers = async (userId, boardId) => {
       'users.firebaseUId',
     )
     .where('members.boardId', boardId);
-  if (members.length === 0) {
-    throw new IncorrectEntryError(`incorrect entry with the id of ${boardId}`);
+  if (allMembers.length === 0) {
+    throw new IncorrectEntryError(`This board has no Members`);
   }
-  return members;
+  return allMembers;
 };
 
 module.exports = {
