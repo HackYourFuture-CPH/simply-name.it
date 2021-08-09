@@ -5,8 +5,8 @@ const {
 } = require('../lib/utils/http-error');
 
 const getResultsByBoardId = async (userId, boardId) => {
-  if (!Number.isInteger(Number(userId, boardId))) {
-    throw new InvalidIdError('Id should be an integer');
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('One of the provided id should be an integer');
   }
 
   const boardAuthorizationResult = await knex('members')
