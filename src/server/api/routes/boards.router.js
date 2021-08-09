@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
+const ballotsRouter = require('./ballots.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
@@ -30,7 +31,7 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Unexpected error.
  */
 
-router.delete('/:userId/boards/:boardId', (req, res) => {
+/* router.delete('/:boardId', (req, res) => {
   boardsController
     .deleteBoards(req.params.userId, req.params.boardId)
     .then((result) => {
@@ -41,7 +42,15 @@ router.delete('/:userId/boards/:boardId', (req, res) => {
         res.json({ success: true });
       }
     });
+}); */
+
+router.delete('/:boardId', async (req, res) => {
+  const deleteBoards = await boardsController.deleteBoardsById(
+    req.params.boardId,
+  );
+  res.json(deleteBoards);
 });
+
 /**
  * @swagger
  * /users/{ID}/boards:
@@ -66,12 +75,47 @@ router.delete('/:userId/boards/:boardId', (req, res) => {
  *      5XX:
  *        description: Unexpected error.
  */
+
+/**
+ * @swagger
+ * /users/{ID}/boards/created:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get boards by user ID
+ *    description:
+ *      Will return the boards which creatorId matches with user Id.
+ *    produces: application/json
+ *    parameters:
+ *     - in: path
+ *       name: ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the module to get
+ *
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error.
+ */
+
 router.get('/', async (req, res) => {
   const boardsByMemberId = await boardsController.getBoardsByMemberId(
     req.params.userId,
   );
 
   return res.json(boardsByMemberId);
+});
+router.use('/:boardId/ballots', ballotsRouter);
+
+router.get('/created', async (req, res) => {
+  const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
+    req.params.userId,
+  );
+
+  return res.json(boardsByCreatorId);
 });
 
 module.exports = router;
