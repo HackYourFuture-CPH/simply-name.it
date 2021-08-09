@@ -46,15 +46,17 @@ const candidatesController = require('../controllers/candidates.controller');
  *        description: Unexpected error
  *      400:
  *          Invalid Id error
+ *      404:
+ *        description: Invalid entry error
  */
 
 router.post('/', async (req, res) => {
-  const newCandidate = await candidatesController.createCandidate(
+  await candidatesController.createCandidate(
     req.params.userId,
     req.params.boardId,
     req.body,
   );
-  return res.json(newCandidate);
+  return res.status(201).send();
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
+const ballotsRouter = require('./ballots.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
@@ -65,6 +66,7 @@ router.get('/', async (req, res) => {
 
   return res.json(boardsByMemberId);
 });
+router.use('/:boardId/ballots', ballotsRouter);
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
