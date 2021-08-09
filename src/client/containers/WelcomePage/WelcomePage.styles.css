@@ -24,6 +24,7 @@
   position: absolute;
   display: flex;
   align-items: center;
+  width: 100%;
   flex-direction: column;
   row-gap: 2vh;
   top: 35rem;

@@ -12,7 +12,7 @@ export default function Welcome() {
       <div className="welcome-slogan-container">
         <h1 className="welcome-slogan">Take Tough Decisions Together</h1>
       </div>
-      <div className="sign-in-buttons">
+      <div className="sign-in-buttons-container">
         <GoogleButton className="google-button" />
         <GenericButton
           className="generic-button"
