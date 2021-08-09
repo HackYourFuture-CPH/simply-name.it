@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
+const ballotsRouter = require('./ballots.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
@@ -27,15 +28,12 @@ const boardsController = require('../controllers/boards.controller');
  *          required:
  *            - title
  *            - deadline
- *            - isDeleted
  *          properties:
  *            title:
  *              type: string
  *            deadline:
  *              type: string
  *              format: date-time
- *            isDeleted:
- *              type: boolean
  *            banner:
  *              type: binary
  *    responses:
@@ -45,6 +43,8 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Unexpected error.
  *      400:
  *        description: Invalid Id error.
+ *      404:
+ *        description: Incorrect entry error.
  */
 
 router.post('/', async (req, res) => {
@@ -52,7 +52,6 @@ router.post('/', async (req, res) => {
     req.params.userId,
     req.body,
   );
-
   return res.json(newBoard);
 });
 
@@ -112,6 +111,7 @@ router.get('/', async (req, res) => {
 
   return res.json(boardsByMemberId);
 });
+router.use('/:boardId/ballots', ballotsRouter);
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(

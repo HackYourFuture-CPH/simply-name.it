@@ -9,8 +9,11 @@ const createBoard = async (userId, newBoard) => {
   if (!Number.isInteger(Number(userId))) {
     throw new InvalidIdError('Id should be an integer');
   }
-  if (newBoard.length === 0) {
-    throw new IncorrectEntryError(`Board is not created`);
+  if (Object.keys(newBoard).length === 0) {
+    throw new IncorrectEntryError(`New Board is not created`);
+  }
+  if (typeof newBoard.title !== 'string') {
+    throw new IncorrectEntryError(`Board title should be string`);
   }
 
   const createNewBoard = await knex('boards').insert({
@@ -20,7 +23,6 @@ const createBoard = async (userId, newBoard) => {
     isDeleted: false,
     banner: newBoard.banner,
   });
-
   return createNewBoard;
 };
 
