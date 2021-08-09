@@ -114,11 +114,8 @@ router.get('/created', async (req, res) => {
  */
 
 router.post('/', async (req, res) => {
-  const newBoard = await boardsController.createBoard(
-    req.params.userId,
-    req.body,
-  );
-  return res.json(newBoard);
+  await boardsController.createBoard(req.params.userId, req.body);
+  return res.status(201).send();
 });
 
 module.exports = router;
