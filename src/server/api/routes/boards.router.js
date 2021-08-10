@@ -5,6 +5,10 @@ const router = express.Router({ mergeParams: true });
 // controllers
 const boardsController = require('../controllers/boards.controller');
 
+const resultsRouter = require('./results.router');
+
+router.use('/:boardId/results', resultsRouter);
+
 /**
  * @swagger
  * /users/{ID}/boards:
