@@ -31,21 +31,9 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Unexpected error.
  */
 
-/* router.delete('/:boardId', (req, res) => {
-  boardsController
-    .deleteBoards(req.params.userId, req.params.boardId)
-    .then((result) => {
-      // If result is equal to 0, then that means the module id does not exist
-      if (result === 0) {
-        res.status(404).send('The board ID you provided does not exist.');
-      } else {
-        res.json({ success: true });
-      }
-    });
-}); */
-
 router.delete('/:boardId', async (req, res) => {
   const deleteBoards = await boardsController.deleteBoardsById(
+    req.params.userId,
     req.params.boardId,
   );
   res.json(deleteBoards);
