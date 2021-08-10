@@ -2,6 +2,7 @@ const knex = require('../../config/db');
 const {
   InvalidIdError,
   IncorrectEntryError,
+  InvalidRequestError,
 } = require('../lib/utils/http-error');
 
 const createCandidate = async (userId, boardId, newCandidate) => {
@@ -9,7 +10,9 @@ const createCandidate = async (userId, boardId, newCandidate) => {
     throw new InvalidIdError('Id should be an integer');
   }
   if (Object.keys(newCandidate).length === 0) {
-    throw new IncorrectEntryError(`New candidate is not created`);
+    throw new InvalidRequestError(
+      `key 'name' and value of type 'string' is required`,
+    );
   }
   if (typeof newCandidate.name !== 'string') {
     throw new IncorrectEntryError(`Candidate name should be string`);
