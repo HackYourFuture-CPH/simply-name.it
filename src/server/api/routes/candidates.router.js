@@ -45,10 +45,7 @@ const candidatesController = require('../controllers/candidates.controller');
  */
 
 router.delete('/:candidateId', async (req, res) => {
-  const deleteCandidateController = await candidatesController.checkUserRole(
-    req.params,
-  );
-  deleteCandidateController.deleteCandidate(req.params);
+  await candidatesController.deleteCandidate(req.params);
   return res.status(204).send();
 });
 

@@ -12,7 +12,8 @@ const checkUserRole = async ({ userId, boardId }) => {
   }
 };
 
-const deleteCandidate = async ({ candidateId }) => {
+const deleteCandidate = async ({ candidateId, userId, boardId }) => {
+  await checkUserRole({ userId, boardId });
   await knex('candidates')
     .where({ id: candidateId })
     .update({ isBlocked: true });

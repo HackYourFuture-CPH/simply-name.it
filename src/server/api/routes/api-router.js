@@ -5,7 +5,6 @@ const router = express.Router();
 // Router imports
 
 const usersRouter = require('./users.router');
-const boardsRouter = require('./boards.router');
 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -33,6 +32,5 @@ router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Application routes
 
 router.use('/users', usersRouter);
-router.use('/users', boardsRouter);
 
 module.exports = router;
