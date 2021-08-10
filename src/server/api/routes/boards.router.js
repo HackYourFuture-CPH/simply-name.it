@@ -3,6 +3,10 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const ballotsRouter = require('./ballots.router');
 
+const resultsRouter = require('./results.router');
+
+router.use('/:boardId/results', resultsRouter);
+
 // controllers
 const boardsController = require('../controllers/boards.controller');
 
