@@ -1,12 +1,13 @@
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
+
+// Router imports
 const ballotsRouter = require('./ballots.router');
+const candidatesRouter = require('./candidates.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
-
-const candidatesRouter = require('./candidates.router');
 
 router.use('/:boardId/candidates', candidatesRouter);
 
@@ -59,6 +60,7 @@ router.use('/:boardId/candidates', candidatesRouter);
  *      5XX:
  *        description: Unexpected error.
  */
+
 router.get('/', async (req, res) => {
   const boardsByMemberId = await boardsController.getBoardsByMemberId(
     req.params.userId,
@@ -66,7 +68,6 @@ router.get('/', async (req, res) => {
 
   return res.json(boardsByMemberId);
 });
-router.use('/:boardId/ballots', ballotsRouter);
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
@@ -75,5 +76,9 @@ router.get('/created', async (req, res) => {
 
   return res.json(boardsByCreatorId);
 });
+
+// Application routes
+router.use('/:boardId/ballots', ballotsRouter);
+router.use('/:boardId/candidates', candidatesRouter);
 
 module.exports = router;
