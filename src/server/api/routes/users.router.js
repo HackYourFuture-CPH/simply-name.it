@@ -29,39 +29,6 @@ router.get('/', async (req, res) => {
 
 /**
  * @swagger
- * /users/{ID}:
- *  get:
- *    tags:
- *    - User
- *    summary: Get specific user data  by ID
- *    description:
- *      Will return single user with a matching ID.
- *    produces: application/json
- *    parameters:
- *     - in: path
- *       name: ID
- *       schema:
- *         type: integer
- *         required: true
- *         description: The ID of the user to get
- *
- *    responses:
- *      200:
- *        description: Successful request
- *      5XX:
- *        description: Unexpected error
- *      400:
- *        description: Bad request
- *      404:
- *        description: Not found
- */
-router.get('/:id', async (req, res) => {
-  const userById = await usersController.getUserById(req.params.id);
-  return res.json(userById);
-});
-
-/**
- * @swagger
  * /users/search?fullName=keyword:
  *  get:
  *    tags:
@@ -104,6 +71,39 @@ router.get('/search', async (req, res) => {
   }
 
   return res.json(searchedUsers);
+});
+
+/**
+ * @swagger
+ * /users/{ID}:
+ *  get:
+ *    tags:
+ *    - Users
+ *    summary: Get specific user data  by ID
+ *    description:
+ *      Will return single user with a matching ID.
+ *    produces: application/json
+ *    parameters:
+ *     - in: path
+ *       name: ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the user to get
+ *
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: Not found
+ */
+router.get('/:id', async (req, res) => {
+  const userById = await usersController.getUserById(req.params.id);
+  return res.json(userById);
 });
 
 module.exports = router;
