@@ -25,9 +25,7 @@ const getUsersByKeyword = async (searchWord) => {
   return users;
 };
 
-
-
 module.exports = {
   getUsers,
-    getUsersByKeyword,
+  getUsersByKeyword,
 };

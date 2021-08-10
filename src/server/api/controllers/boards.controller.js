@@ -2,6 +2,7 @@ const knex = require('../../config/db');
 const {
   IncorrectEntryError,
   InvalidIdError,
+  InvalidRequestError,
 } = require('../lib/utils/http-error');
 const moment = require('moment-timezone');
 
@@ -10,10 +11,15 @@ const createBoard = async (userId, newBoard) => {
     throw new InvalidIdError('Id should be an integer');
   }
   if (Object.keys(newBoard).length === 0) {
-    throw new IncorrectEntryError(`New Board is not created`);
+    throw new InvalidRequestError(
+      `key 'title, deadline' and value of type as 'string' is required`,
+    );
   }
   if (typeof newBoard.title !== 'string') {
     throw new IncorrectEntryError(`Board title should be string`);
+  }
+  if (typeof newBoard.deadline !== 'string') {
+    throw new IncorrectEntryError(`Date should be string`);
   }
 
   const createNewBoard = await knex('boards').insert({
