@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowButton from './ArrowButton.component';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, color } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
   title: 'Arrow Button',
@@ -10,20 +10,22 @@ export default {
     backgrounds: {
       values: [
         { name: 'light', value: 'white' },
-        { name: 'black', value: 'black' },
+        {
+          name: 'purple',
+          value: 'linear-gradient(90deg, #9400D3 0%, #4B0082 100%);',
+        },
       ],
     },
   },
 };
 
-export const BlackArrow = () => <ArrowButton onClick={action('clicked')} />;
+export const BlackArrow = () => (
+  <ArrowButton onClick={action('clicked')} color={true} />
+);
 export const WhiteArrow = () => (
-  <ArrowButton
-    backgroundColor={color('color', 'white')}
-    onClick={action('clicked')}
-  />
+  <ArrowButton color={false} onClick={action('clicked')} />
 );
 
 WhiteArrow.parameters = {
-  backgrounds: { default: 'black' },
+  backgrounds: { default: 'purple' },
 };

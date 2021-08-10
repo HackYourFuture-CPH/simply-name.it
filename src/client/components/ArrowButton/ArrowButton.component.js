@@ -2,30 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ArrowButton.styles.css';
 
-const ArrowButton = ({ onClick, backgroundColor }) => {
+const ArrowButton = ({ onClick, color }) => {
+  const getArrowButtonClassName = () => {
+    let buttonClassName = 'arrow-button';
+    buttonClassName += color ? ` black-button` : ` white-button`;
+    return buttonClassName;
+  };
   return (
     <button
-      className="arrow-button-wrapper"
+      className={getArrowButtonClassName()}
       type="button"
       onClick={() => onClick()}
+      color={color}
     >
-      <div className="icon">
-        <div
-          className={`${'arrow'} ${'arrow-background-'}${backgroundColor}`}
-          aria-label="Arrow Button"
-        />
-      </div>
+      &#8592;
     </button>
   );
 };
 
 ArrowButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  backgroundColor: PropTypes.oneOf(['black', 'white']),
+  color: PropTypes.bool,
 };
 
 ArrowButton.defaultProps = {
-  backgroundColor: 'black',
+  color: 'white',
 };
 
 export default ArrowButton;
