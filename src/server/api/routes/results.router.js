@@ -32,7 +32,11 @@ const resultsController = require('../controllers/results.controller');
  *      200:
  *        description: Successful request
  *      5XX:
- *        description: Unexpected error.
+ *        description: Unexpected error
+ *      400:
+ *          Invalid Id error
+ *      404:
+ *        description: Invalid entry error
  */
 router.get('/', async (req, res) => {
   const resultsByBoardId = await resultsController.getResultsByBoardId(
