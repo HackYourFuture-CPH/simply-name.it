@@ -1,16 +1,9 @@
-/* TODO: This is just an example file to illustrate API routing and
-documentation. Can be deleted when the first real route is added. */
-
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
 
 // Controllers
 const usersController = require('../controllers/users.controller');
-
-const boardsRouter = require('./boards.router');
-
-router.use('/:userId/boards', boardsRouter);
 
 /**
  * @swagger
@@ -32,6 +25,39 @@ router.use('/:userId/boards', boardsRouter);
 router.get('/', async (req, res) => {
   const users = await usersController.getUsers();
   return res.json(users);
+});
+
+/**
+ * @swagger
+ * /users/{ID}:
+ *  get:
+ *    tags:
+ *    - User
+ *    summary: Get specific user data  by ID
+ *    description:
+ *      Will return single user with a matching ID.
+ *    produces: application/json
+ *    parameters:
+ *     - in: path
+ *       name: ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the user to get
+ *
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error
+ *      400:
+ *        description: Bad request
+ *      404:
+ *        description: Not found
+ */
+router.get('/:id', async (req, res) => {
+  const userById = await usersController.getUserById(req.params.id);
+  return res.json(userById);
 });
 
 /**
@@ -58,9 +84,9 @@ router.get('/', async (req, res) => {
  *        description: Successful request
  *      5XX:
  *        description: Unexpected error
- * 404:
+ *      404:
  *        description: Not found
- * 400:
+ *      400:
  *        description: Bad request
  *
  *
