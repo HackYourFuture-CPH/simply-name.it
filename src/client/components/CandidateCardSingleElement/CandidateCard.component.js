@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CandidateCard.style.css';
-import DeleteIcon from './SvgIcon.component';
+import TrashIcon from '../../assets/images/delete.svg';
 
 const CardElement = ({ variant, display, dragdisplay, position }) => {
   return (
     <div className={`card-container ${variant}`}>
       <div className={`delete-icon ${display}`}>
-        <DeleteIcon />
+        <img alt="trash" src={TrashIcon} />
       </div>
       <div className={`card-title ${position}`}>
         <p>Eric</p>
