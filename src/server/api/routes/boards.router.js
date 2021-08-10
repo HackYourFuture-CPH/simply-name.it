@@ -9,8 +9,6 @@ const candidatesRouter = require('./candidates.router');
 // controllers
 const boardsController = require('../controllers/boards.controller');
 
-const candidatesRouter = require('./candidates.router');
-
 router.use('/:boardId/candidates', candidatesRouter);
 
 /**
