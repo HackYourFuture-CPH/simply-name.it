@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './CandidateCard.style.css';
+import './CandidateCard.styles.css';
 import TrashIcon from '../../assets/images/delete.svg';
 
 const CardElement = ({ variant, display, dragdisplay, position }) => {
