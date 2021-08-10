@@ -7,6 +7,38 @@ const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
+ * /users/{userId}/boards/{boardId}:
+ *  delete:
+ *    tags:
+ *    - boards
+ *    summary: Delete a board
+ *    description:
+ *      Will delete a board with a given ID.
+ *    produces: application/json
+ *    parameters:
+ *      - in: path
+ *        name: userId
+ *        description: ID of the user.
+ *      - in: path
+ *        name: boardId
+ *        description: ID of the board to delete.
+ *
+ *    responses:
+ *      200:
+ *        description: Board deleted
+ *      5XX:
+ *        description: Unexpected error.
+ */
+router.delete('/:boardId', async (req, res) => {
+  const deleteBoards = await boardsController.deleteBoardsById(
+    req.params.userId,
+    req.params.boardId,
+  );
+  return res.json(deleteBoards);
+});
+
+/**
+ * @swagger
  * /users/{ID}/boards:
  *  get:
  *    tags:

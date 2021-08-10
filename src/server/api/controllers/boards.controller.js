@@ -4,6 +4,14 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
+const deleteBoardsById = async (userId, boardId) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+
+  return knex('boards').where({ creatorId: userId, id: boardId }).del();
+};
+
 const getBoardsByCreatorId = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer!');
@@ -40,4 +48,5 @@ const getBoardsByMemberId = async (id) => {
 module.exports = {
   getBoardsByMemberId,
   getBoardsByCreatorId,
+  deleteBoardsById,
 };
