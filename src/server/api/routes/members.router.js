@@ -39,7 +39,6 @@ const membersController = require('../controllers/members.controller');
  */
 router.get('/', async (req, res) => {
   const membersOfBoard = await membersController.getAllMembers(
-    req.params.userId,
     req.params.boardId,
   );
   return res.json(membersOfBoard);

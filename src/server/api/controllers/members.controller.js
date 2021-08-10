@@ -4,8 +4,8 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const getAllMembers = async (userId, boardId) => {
-  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+const getAllMembers = async (boardId) => {
+  if (!Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('Id should be an integer');
   }
   const allMembers = await knex('members')
