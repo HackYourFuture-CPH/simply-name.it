@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.AddMembers-container {
+  width: 414px;
+  height: 739px;
+  border: solid 1px lightskyblue;
+}
+
+.search-container {
+  border: solid 1px yellow;
+}
+
+.search-input {
+  display: inline-block;
+  width: 252px;
+}
+
+.search-button {
+  display: inline-block;
+  width: 70px;
+  border: solid 1px pink;
+}
