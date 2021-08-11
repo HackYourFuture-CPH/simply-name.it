@@ -34,18 +34,18 @@ router.use('/:boardId/candidates', candidatesRouter);
  *        description: ID of the board to delete.
  *
  *    responses:
- *      200:
+ *      204:
  *        description: Board deleted
  *      5XX:
  *        description: Unexpected error.
  */
 
 router.delete('/:boardId', async (req, res) => {
-  const deleteBoards = await boardsController.deleteBoardsById(
+  await boardsController.deleteBoardsById(
     req.params.userId,
     req.params.boardId,
   );
-  res.json(deleteBoards);
+  return res.status(204).send('Deletion successfull');
 });
 
 /**
