@@ -5,12 +5,7 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const isInteger = (id) => {
-  if (Number.isInteger(Number(id))) {
-    return true;
-  }
-  return false;
-};
+const { isInteger } = require('../lib/utils/validators');
 
 const getUsers = () => {
   return knex('users').select(
