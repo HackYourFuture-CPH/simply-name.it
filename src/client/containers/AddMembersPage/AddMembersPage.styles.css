@@ -22,3 +22,18 @@
   width: 70px;
   border: solid 1px pink;
 }
+
+.users-list-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid pink;
+}
+
+.users-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  border: 1px solid cyan;
+}
