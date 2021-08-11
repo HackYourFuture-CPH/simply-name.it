@@ -35,6 +35,13 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Unexpected error.
  */
 
+router.get('/', async (req, res) => {
+  const boardsByMemberId = await boardsController.getBoardsByMemberId(
+    req.params.userId,
+  );
+  return res.json(boardsByMemberId);
+});
+
 /**
  * @swagger
  * /users/{ID}/boards/created:
@@ -60,19 +67,10 @@ const boardsController = require('../controllers/boards.controller');
  *        description: Unexpected error.
  */
 
-router.get('/', async (req, res) => {
-  const boardsByMemberId = await boardsController.getBoardsByMemberId(
-    req.params.userId,
-  );
-
-  return res.json(boardsByMemberId);
-});
-
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
     req.params.userId,
   );
-
   return res.json(boardsByCreatorId);
 });
 
