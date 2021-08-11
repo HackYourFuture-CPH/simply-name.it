@@ -6,20 +6,50 @@ export default {
   component: CardElement,
 };
 export const CardWithIconsBlue = () => {
-  return <CardElement display="visible" variant="primary-color" />;
-};
-export const CardWithoutDeleteBlue = () => {
-  return <CardElement display="hidden" variant="primary-color" />;
-};
-export const CardWithIconsGray = () => {
-  return <CardElement display="visible" variant="secondary-color" />;
-};
-export const CardWithoutDeleteGray = () => {
-  return <CardElement display="hidden" variant="secondary-color" />;
-};
-export const CardMiddleBlue = () => {
+  const candidate = ['SteveWilson'];
   return (
     <CardElement
+      candidate={candidate}
+      display="visible"
+      variant="primary-color"
+    />
+  );
+};
+export const CardWithoutDeleteBlue = () => {
+  const candidate = ['SteveWilson'];
+  return (
+    <CardElement
+      candidate={candidate}
+      display="hidden"
+      variant="primary-color"
+    />
+  );
+};
+export const CardWithIconsGray = () => {
+  const candidate = ['SteveWilson'];
+  return (
+    <CardElement
+      candidate={candidate}
+      display="visible"
+      variant="secondary-color"
+    />
+  );
+};
+export const CardWithoutDeleteGray = () => {
+  const candidate = ['PeterPeter'];
+  return (
+    <CardElement
+      candidate={candidate}
+      display="hidden"
+      variant="secondary-color"
+    />
+  );
+};
+export const CardMiddleBlue = () => {
+  const candidate = ['SteveWilson'];
+  return (
+    <CardElement
+      candidate={candidate}
       display="hidden"
       variant="primary-color"
       dragdisplay="drag-hidden"
@@ -28,8 +58,10 @@ export const CardMiddleBlue = () => {
   );
 };
 export const CardMiddleGray = () => {
+  const candidate = ['Steve'];
   return (
     <CardElement
+      candidate={candidate}
       display="hidden"
       variant="secondary-color"
       dragdisplay="drag-hidden"
