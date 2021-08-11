@@ -5,11 +5,14 @@ export default function AddCandidate({
   newCandidate,
   //   setNewCandidateName,
 }) {
-  const response = postData('/:boardId/candidates', newCandidate);
-  // console.log(response);
+  const response = postData(
+    `/users/0/boards/${newCandidate.boardId}/candidates`,
+    newCandidate.name,
+  );
+  console.log(response);
 
   if (response) {
-    alert(`New candidate added`);
+    console.log(`New candidate added`);
   } else {
     throw new Error(response.status);
   }

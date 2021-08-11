@@ -8,13 +8,13 @@ import CardList from '../../components/CandidateCard/CandidateCardList.component
 import { candidateListArr } from '../../components/CandidateCard/CandidateListArray';
 import AddButton from '../../components/AddButton/AddButton.component';
 import AddCandidate from './AddCandidate';
-// import { useParams } from "react-router-dom";
 
 export default function Board() {
   const [newCandidateName, setNewCandidateName] = useState('');
+  const candidateList = candidateListArr();
 
   const newCandidate = {
-    // boardId,
+    boardId: candidateList[0].boardId,
     name: newCandidateName,
     isBlocked: false,
   };
@@ -23,7 +23,6 @@ export default function Board() {
     // console.log('you clicked!');
   };
 
-  const candidateList = candidateListArr();
   return (
     <div className="Board-container">
       <div className="Header-component">
@@ -46,7 +45,9 @@ export default function Board() {
           placeholder="Add candidate..."
           theme="dark"
           borderShape="curved"
-          onChange={(e) => setNewCandidateName(e.target.value)}
+          inputValue={newCandidateName}
+          onChange={setNewCandidateName}
+          // onChange={(e) => setNewCandidateName(e.target.value)}
         />
         <AddButton
           onClick={AddCandidate({ newCandidate, setNewCandidateName })}
