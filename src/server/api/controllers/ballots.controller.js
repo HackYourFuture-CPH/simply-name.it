@@ -34,7 +34,7 @@ const editBallots = async (userId, boardId, candidates) => {
     return Promise.all(queries).then((results) => {
       if (results.includes(0)) {
         throw new IncorrectEntryError(
-          `Request aborted. Board, User or candidate matching provided ids could not be updated`,
+          `Request aborted. Candidate matching provided ids could not be updated`,
         );
       }
       return results;
