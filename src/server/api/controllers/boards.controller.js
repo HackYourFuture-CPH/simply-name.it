@@ -88,9 +88,6 @@ const getBoardsByMemberId = async (id) => {
 module.exports = {
   getBoardsByMemberId,
   getBoardsByCreatorId,
-<<<<<<< HEAD
   editBoard,
-=======
   createBoard,
->>>>>>> 01d2e6e3c5a233368ca417edf0de0b9e6dfb3064
 };
