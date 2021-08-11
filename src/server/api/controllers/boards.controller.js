@@ -32,6 +32,26 @@ const createBoard = async (userId, newBoard) => {
   return createNewBoard;
 };
 
+const editBoard = async (userId, boardId, updatedBoard) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+
+  const tableOwner = await knex('boards')
+    .select('creatorId')
+    .where({ id: boardId });
+
+  if (Number(userId) !== tableOwner[0].creatorId) {
+    throw new IncorrectEntryError(`Only board owner can update the board`);
+  }
+
+  await knex('boards').where({ id: boardId }).update({
+    title: updatedBoard.title,
+    deadline: updatedBoard.deadline,
+    banner: updatedBoard.banner,
+  });
+};
+
 const getBoardsByCreatorId = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer!');
@@ -68,5 +88,6 @@ const getBoardsByMemberId = async (id) => {
 module.exports = {
   getBoardsByMemberId,
   getBoardsByCreatorId,
+  editBoard,
   createBoard,
 };
