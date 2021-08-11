@@ -1,3 +1,26 @@
 * {
   box-sizing: border-box;
 }
+
+.main-container {
+  margin: 15px 30px;
+  border: 1px solid black;
+}
+
+.sub-container {
+  padding: 30px;
+}
+
+.arrow-button-container {
+  position: relative;
+}
+
+.arrow-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+li {
+  list-style-type: none;
+}
