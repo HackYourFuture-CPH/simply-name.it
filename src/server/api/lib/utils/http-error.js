@@ -38,10 +38,11 @@ class HttpError extends Error {
     this.body = body; // If defined, this'll be the response body
   }
 }
+
 class IncorrectEntryError extends HttpError {
   constructor(message, body = null) {
     super(message);
-    this.message = `Incorrect entry Error.  ${message}`;
+    this.message = `Incorrect entry Error + ${message}`;
     this.httpStatus = 404;
     this.body = body; // If defined, this'll be the response body
   }
@@ -50,16 +51,7 @@ class IncorrectEntryError extends HttpError {
 class InvalidIdError extends HttpError {
   constructor(message, body = null) {
     super(message);
-    this.message = `Invalid Id Error. ${message}`;
-    this.httpStatus = 400;
-    this.body = body; // If defined, this'll be the response body
-  }
-}
-
-class InvalidRequestError extends HttpError {
-  constructor(message, body = null) {
-    super(message);
-    this.message = `Invalid request Error. ${message}`;
+    this.message = `Invalid Id Error + ${message}`;
     this.httpStatus = 400;
     this.body = body; // If defined, this'll be the response body
   }
@@ -69,5 +61,4 @@ module.exports = {
   HttpError,
   IncorrectEntryError,
   InvalidIdError,
-  InvalidRequestError,
 };
