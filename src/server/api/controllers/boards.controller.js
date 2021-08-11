@@ -4,11 +4,20 @@ const {
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
-const editBoard = async (boardId, updatedBoard) => {
-  if (!Number.isInteger(Number(boardId))) {
+const editBoard = async (userId, boardId, updatedBoard) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('Id should be an integer');
   }
-  return knex('boards').where({ id: boardId }).update({
+
+  const tableOwner = await knex('boards')
+    .select('creatorId')
+    .where({ id: boardId });
+
+  if (Number(userId) !== tableOwner[0].creatorId) {
+    throw new IncorrectEntryError(`Only board owner can update the board`);
+  }
+
+  await knex('boards').where({ id: boardId }).update({
     title: updatedBoard.title,
     deadline: updatedBoard.deadline,
     banner: updatedBoard.banner,

@@ -18,6 +18,11 @@ const boardsController = require('../controllers/boards.controller');
  *    parameters:
  *
  *      - in: path
+ *        name: userId
+ *        required: true
+ *        description: Id of the board owner
+ *
+ *      - in: path
  *        name: boardId
  *        required: true
  *        description: Id of the board to update
@@ -25,6 +30,7 @@ const boardsController = require('../controllers/boards.controller');
  *      - in: body
  *        name: board
  *        description: The board to create.
+ *
  *        schema:
  *          type: object
  *          required:
@@ -41,17 +47,20 @@ const boardsController = require('../controllers/boards.controller');
  *                  type: blob
  *
  *    responses:
- *      200:
+ *      204:
  *        description: Board updated
+ *      400:
+ *        description: Invalid Id
  *      5XX:
  *        description: Unexpected error.
  */
 router.put('/:boardId', async (req, res) => {
-  const editBoard = await boardsController.editBoard(
+  await boardsController.editBoard(
+    req.params.userId,
     req.params.boardId,
     req.body,
   );
-  return res.json(editBoard);
+  return res.status(204).send();
 });
 
 /**
