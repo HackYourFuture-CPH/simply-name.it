@@ -43,6 +43,6 @@
 }
 
 .position {
-  text-align: center;
-  margin-left: 80px;
+  text-align: auto;
+  margin-left: auto;
 }
