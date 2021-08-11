@@ -12,7 +12,7 @@ const ArrowButton = ({ onClick, color }) => {
     <button
       className={getArrowButtonClassName()}
       type="button"
-      onClick={() => onClick()}
+      onClick={onClick}
       color={color}
     >
       &#8592;
