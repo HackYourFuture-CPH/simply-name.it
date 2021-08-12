@@ -65,7 +65,7 @@ export function SortableItem({ children, id }) {
 DragAndSortAdapter.propTypes = {
   children: PropTypes.node.isRequired,
   onDragEndHandler: PropTypes.func.isRequired,
-  items: PropTypes.node.isRequired,
+  items: PropTypes.instanceOf(Array).isRequired,
 };
 
 SortableItem.propTypes = {
