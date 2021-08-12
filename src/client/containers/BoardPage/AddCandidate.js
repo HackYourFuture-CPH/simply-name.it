@@ -1,12 +1,15 @@
 // import React, { useState } from 'react';
 import postData from './postData';
 
-export default function AddCandidate(
-  newCandidate,
-  //   setNewCandidateName,
-) {
+export default function AddCandidate(newCandidate, userId, boardId) {
   console.log(newCandidate);
-  const response = postData(`/users/2/boards/1/candidates`, newCandidate.name);
+
+  const response = postData(
+    `/api/users/${userId}/boards/${boardId}/candidates`,
+    {
+      name: newCandidate.name,
+    },
+  );
   console.log(response);
 
   if (response) {
@@ -14,9 +17,4 @@ export default function AddCandidate(
   } else {
     throw new Error(response.status);
   }
-  //   setStateEmpty();
 }
-
-// const setStateEmpty = () => {
-//   setNewCandidateName('');
-// };

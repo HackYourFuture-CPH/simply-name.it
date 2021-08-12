@@ -7,6 +7,7 @@ import AddCandidate from './AddCandidate';
 export default function Board() {
   const [newCandidateName, setNewCandidateName] = useState('');
   console.log(newCandidateName);
+  const userId = 2;
 
   const newCandidate = {
     boardId: 1,
@@ -31,7 +32,10 @@ export default function Board() {
         <div>
           <button
             type="button"
-            onClick={AddCandidate(newCandidate, setNewCandidateName)}
+            onClick={() => {
+              AddCandidate(newCandidate, userId, newCandidate.boardId);
+              setNewCandidateName('');
+            }}
           >
             +
           </button>
