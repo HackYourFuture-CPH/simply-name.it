@@ -4,10 +4,10 @@ import { action } from '@storybook/addon-actions';
 
 export default { title: 'Components / AddButton' };
 
-export const DisabledButtonExample = () => (
+export const AddButtonExample = () => (
   <AddButton onClick={action('Add button clicked')} buttonDisabled={true} />
 );
 
-export const AddButtonExample = () => (
+export const DisabledButtonExample = () => (
   <AddButton onClick={action('Add button clicked')} buttonDisabled={false} />
 );

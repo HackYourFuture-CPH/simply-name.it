@@ -5,7 +5,7 @@ import './AddButton.styles.css';
 const AddButton = ({ buttonDisabled, onClick }) => {
   const getAddButtonClassName = () => {
     let buttonClassName = 'add-button';
-    buttonClassName += buttonDisabled ? ` disabled-button` : ` active-button`;
+    buttonClassName += buttonDisabled ? ` active-button` : ` disabled-button`;
     return buttonClassName;
   };
 
