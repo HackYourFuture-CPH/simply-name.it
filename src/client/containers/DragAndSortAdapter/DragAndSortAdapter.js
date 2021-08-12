@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   DndContext,
   closestCenter,
@@ -60,3 +61,14 @@ export function SortableItem({ children, id }) {
     </div>
   );
 }
+
+DragAndSortAdapter.propTypes = {
+  children: PropTypes.node.isRequired,
+  onDragEndHandler: PropTypes.func.isRequired,
+  items: PropTypes.node.isRequired,
+};
+
+SortableItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  id: PropTypes.number.isRequired,
+};
