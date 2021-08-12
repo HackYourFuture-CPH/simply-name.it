@@ -116,7 +116,7 @@ router.get('/', async (req, res) => {
  * /users/{userId}/boards/{boardId}/candidates:
  *  get:
  *    tags:
- *    - candidates
+ *    - Candidates
  *    summary: Get all candidates of a specific board
  *    description:
  *      Get all candidates of a specific board
