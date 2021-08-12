@@ -22,7 +22,7 @@ const ArrowButton = ({ onClick, color }) => {
 
 ArrowButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.bool,
+  color: PropTypes.oneOf(['black', 'white']),
 };
 
 ArrowButton.defaultProps = {

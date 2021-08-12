@@ -12,5 +12,5 @@ export const BlackArrow = () => (
   <ArrowButton onClick={action('clicked')} color={true} />
 );
 export const WhiteArrow = () => (
-  <ArrowButton color={false} onClick={action('clicked')} />
+  <ArrowButton onClick={action('clicked')} color={false} />
 );
