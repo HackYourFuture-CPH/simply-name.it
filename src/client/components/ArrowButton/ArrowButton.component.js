@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import './ArrowButton.styles.css';
 
 const ArrowButton = ({ onClick, color }) => {
-  const getArrowButtonClassName = () => {
-    let buttonClassName = 'arrow-button';
-    buttonClassName += color ? ` black-button` : ` white-button`;
-    return buttonClassName;
-  };
   return (
     <button
-      className={getArrowButtonClassName()}
+      className={`arrow-button-${color}`}
       type="button"
       onClick={onClick}
       color={color}
