@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React from 'react';
 import {
   DndContext,
   closestCenter,
@@ -9,16 +9,17 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import {
-  arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
   useSortable,
 } from '@dnd-kit/sortable';
 
+// Apparently this package comes with one of the other dnd-kits
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { CSS } from '@dnd-kit/utilities';
 
-export function DragAndSortAdapter({ children, handleDragEnd, items }) {
+export function DragAndSortAdapter({ children, onDragEndHandler, items }) {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -30,7 +31,7 @@ export function DragAndSortAdapter({ children, handleDragEnd, items }) {
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
+      onDragEnd={onDragEndHandler}
     >
       <SortableContext items={items} strategy={verticalListSortingStrategy}>
         {children}

@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import { CardItemDecorator } from './CandidateCardItem.component';
 import { candidateListArr } from './CandidateListArray.js';
+import { CandidateCardDragEndHandler } from './CandidateCardDragEndHandler';
 import {
   DragAndSortAdapter,
   SortableItem,
 } from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
-
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
 
 export default {
   title: 'Components / Candidate Card List Component',
@@ -24,9 +19,9 @@ export const CardListExample = () => {
       {candidateList.map((item) => (
         <CardItemDecorator
           key={item.id}
-          variant="primary-color"
+          colorVariant="primary-color"
           candidateName={item.name}
-          display="visible"
+          displayDeleteIcon="visible"
         />
       ))}
     </>
@@ -39,9 +34,9 @@ export const CardListExampleGray = () => {
       {candidateList.map((item) => (
         <CardItemDecorator
           key={item.id}
-          variant="secondary-color"
+          colorVariant="secondary-color"
           candidateName=""
-          display="hidden"
+          displayDeleteIcon="hidden"
         />
       ))}
     </>
@@ -54,9 +49,9 @@ export const CardListExampleMemberGray = () => {
       {candidateList.map((item) => (
         <CardItemDecorator
           key={item.id}
-          variant="secondary-color"
+          colorVariant="secondary-color"
           candidateName={item.name}
-          display="hidden"
+          displayDeleteIcon="hidden"
         />
       ))}
     </>
@@ -70,9 +65,9 @@ export const CardListExampleMember = () => {
       {candidateList.map((item) => (
         <CardItemDecorator
           key={item.id}
-          variant="primary-color"
+          colorVariant="primary-color"
           candidateName={item.name}
-          display="hidden"
+          displayDeleteIcon="hidden"
         />
       ))}
     </>
@@ -80,32 +75,20 @@ export const CardListExampleMember = () => {
 };
 
 export const CardListExampleDraggable = () => {
-  const candidateList = candidateListArr();
-
-  const [items, setItems] = useState(candidateList);
-
-  function handleDragEnd(event) {
-    const { active, over } = event;
-
-    if (active.id !== over.id) {
-      setItems((draggedItems) => {
-        const oldIndex = draggedItems.findIndex((x) => x.id === active.id);
-        const newIndex = draggedItems.findIndex((x) => x.id === over.id);
-
-        return arrayMove(draggedItems, oldIndex, newIndex);
-      });
-    }
-  }
+  const [candidates, setCandidates] = useState(candidateListArr());
 
   return (
-    <DragAndSortAdapter handleDragEnd={handleDragEnd} items={items}>
-      {items.map((item) => {
+    <DragAndSortAdapter
+      onDragEndHandler={CandidateCardDragEndHandler(setCandidates)}
+      items={candidates}
+    >
+      {candidates.map((candidate) => {
         return (
-          <SortableItem key={item.id} id={item.id}>
+          <SortableItem key={candidate.id} id={candidate.id}>
             <CardItemDecorator
-              variant="primary-color"
-              candidateName={item.name}
-              display="hidden"
+              colorVariant="primary-color"
+              candidateName={candidate.name}
+              displayDeleteIcon="hidden"
             />
           </SortableItem>
         );

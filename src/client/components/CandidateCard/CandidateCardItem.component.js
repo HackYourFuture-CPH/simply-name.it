@@ -20,10 +20,14 @@ export const CardListItem = ({ candidateName }) => {
   );
 };
 
-export const CardItemDecorator = ({ variant, display, candidateName }) => {
+export const CardItemDecorator = ({
+  colorVariant,
+  displayDeleteIcon,
+  candidateName,
+}) => {
   return (
-    <div className={`card-display ${variant}`}>
-      <div className={`delete-icon-display ${display}`}>
+    <div className={`card-display ${colorVariant}`}>
+      <div className={`delete-icon-display ${displayDeleteIcon}`}>
         <DeleteIcon />
       </div>
       <CardListItem candidateName={candidateName} />
@@ -45,6 +49,6 @@ CardItemDecorator.defaultProps = {
 
 CardItemDecorator.propTypes = {
   candidateName: PropTypes.string,
-  variant: PropTypes.string.isRequired,
-  display: PropTypes.string.isRequired,
+  colorVariant: PropTypes.string.isRequired,
+  displayDeleteIcon: PropTypes.string.isRequired,
 };
