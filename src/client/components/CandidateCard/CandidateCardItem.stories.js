@@ -98,20 +98,18 @@ export const CardListExampleDraggable = () => {
   }
 
   return (
-    <DragAndSortAdapter handleDragEnd={handleDragEnd}>
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {items.map((item) => {
-          return (
-            <SortableItem key={item.id} id={item.id}>
-              <CardItemDecorator
-                variant="primary-color"
-                candidateName={item.name}
-                display="hidden"
-              />
-            </SortableItem>
-          );
-        })}
-      </SortableContext>
+    <DragAndSortAdapter handleDragEnd={handleDragEnd} items={items}>
+      {items.map((item) => {
+        return (
+          <SortableItem key={item.id} id={item.id}>
+            <CardItemDecorator
+              variant="primary-color"
+              candidateName={item.name}
+              display="hidden"
+            />
+          </SortableItem>
+        );
+      })}
     </DragAndSortAdapter>
   );
 };

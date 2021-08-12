@@ -18,7 +18,7 @@ import {
 
 import { CSS } from '@dnd-kit/utilities';
 
-export function DragAndSortAdapter({ children, handleDragEnd }) {
+export function DragAndSortAdapter({ children, handleDragEnd, items }) {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -32,7 +32,9 @@ export function DragAndSortAdapter({ children, handleDragEnd }) {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      {children}
+      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+        {children}
+      </SortableContext>
     </DndContext>
   );
 }
