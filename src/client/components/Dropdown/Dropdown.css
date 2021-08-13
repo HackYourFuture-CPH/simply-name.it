@@ -1,0 +1,47 @@
+.dropdown-container {
+  display: inline-block;
+  position: relative;
+  width: 175px;
+}
+
+button.dark {
+  color: #fff;
+}
+
+button.light {
+  color: #000;
+}
+
+div.dark {
+  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
+  color: #fff;
+}
+
+div.light {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropdown-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+}
+
+.options-container {
+  display: inline-block;
+  min-width: 50px;
+  position: absolute;
+  top: 0;
+  padding: 0.25rem;
+  right: 1.25rem;
+  margin: 5px 5px 0 0;
+  line-height: 1.6em;
+}

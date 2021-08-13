@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+.page-title-container {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-title-black-large {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.page-title-black {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+}
