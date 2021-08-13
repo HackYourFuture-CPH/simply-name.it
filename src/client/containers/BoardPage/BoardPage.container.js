@@ -10,8 +10,8 @@ import { candidateCardSorting } from '../../components/CandidateCard/CandidateCa
 import {
   DragAndSortAdapter,
   SortableItem,
-} from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
-import { onDragEnd } from '../../containers/DragAndSortAdapter/OnDragEnd';
+} from '../DragAndSortAdapter/DragAndSortAdapter';
+import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 
 export default function Board() {
   const userRole = 'owner';
@@ -24,7 +24,6 @@ export default function Board() {
   const onChange = () => {
     // console.log('you clicked!');
   };
-  const candidateList = candidateListArr();
 
   if (userRole === 'owner' && today > deadlineDate) {
     return (
