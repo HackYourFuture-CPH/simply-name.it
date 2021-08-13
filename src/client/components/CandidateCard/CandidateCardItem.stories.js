@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { CardItemDecorator } from './CandidateCardItem.component';
 import { candidateListArr } from './CandidateListArray.js';
-import { CandidateCardDragEndHandler } from './CandidateCardDragEndHandler';
+import { candidateCardSorting } from './candidateCardSorting';
 import {
   DragAndSortAdapter,
   SortableItem,
 } from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
+
+import { dragEndHandler } from '../../containers/DragAndSortAdapter/dragEndHandler';
 
 export default {
   title: 'Components / Candidate Card List Component',
@@ -79,7 +81,7 @@ export const CardListExampleDraggable = () => {
 
   return (
     <DragAndSortAdapter
-      onDragEndHandler={CandidateCardDragEndHandler(setCandidates)}
+      onDragEndHandler={dragEndHandler(setCandidates, candidateCardSorting)}
       items={candidates}
     >
       {candidates.map((candidate) => {
