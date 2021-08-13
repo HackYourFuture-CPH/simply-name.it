@@ -36,3 +36,11 @@
 .Result button {
   float: right;
 }
+
+.errorMessageContainer {
+  color: red;
+}
+
+.successMessageContainer {
+  color: green;
+}

@@ -12,7 +12,7 @@ const candidateListArray = [
   {
     id: 3,
     boardId: 1,
-    name: 'Robert     ',
+    name: 'Robert',
   },
   {
     id: 4,
