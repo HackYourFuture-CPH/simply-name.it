@@ -12,6 +12,64 @@ const boardsController = require('../controllers/boards.controller');
 
 /**
  * @swagger
+ * /users/{userId}/boards/{boardId}:
+ *  put:
+ *    tags:
+ *    - Boards
+ *    summary: Updates board by the owner
+ *    description:
+ *      Will update a board by owner
+ *    produces: application/json
+ *    parameters:
+ *
+ *      - in: path
+ *        name: userId
+ *        required: true
+ *        description: Id of the board owner
+ *
+ *      - in: path
+ *        name: boardId
+ *        required: true
+ *        description: Id of the board to update
+ *
+ *      - in: body
+ *        name: board
+ *        description: The board to create.
+ *
+ *        schema:
+ *          type: object
+ *          required:
+ *                - title
+ *                - deadline
+ *                - banner
+ *          properties:
+ *                title:
+ *                  type: string
+ *                deadline:
+ *                  type: string
+ *                  format: date-time
+ *                banner:
+ *                  type: blob
+ *
+ *    responses:
+ *      204:
+ *        description: Board updated
+ *      400:
+ *        description: Invalid Id
+ *      5XX:
+ *        description: Unexpected error.
+ */
+router.put('/:boardId', async (req, res) => {
+  await boardsController.editBoard(
+    req.params.userId,
+    req.params.boardId,
+    req.body,
+  );
+  return res.status(204).send();
+});
+
+/**
+ * @swagger
  * /users/{ID}/boards:
  *  get:
  *    tags:

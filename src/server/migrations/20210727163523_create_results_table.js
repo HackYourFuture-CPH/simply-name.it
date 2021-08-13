@@ -5,7 +5,8 @@ exports.up = function (knex) {
       .integer('candidateId')
       .unsigned()
       .notNullable()
-      .references('candidates.id');
+      .references('candidates.id')
+      .onDelete('CASCADE');
     table.primary(['boardId', 'candidateId']);
     table.integer('rank').unsigned().notNullable();
   });
