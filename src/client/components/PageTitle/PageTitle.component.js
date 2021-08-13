@@ -5,7 +5,7 @@ import './PageTitle.style.css';
 export default function PageTitle({ title, variant }) {
   return (
     <div className="page-title-container">
-      <div className={`page-title-${variant}`}> {title} </div>;
+      <div className={`page-title-${variant}`}> {title} </div>
     </div>
   );
 }
