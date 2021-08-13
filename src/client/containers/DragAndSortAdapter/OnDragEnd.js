@@ -1,6 +1,6 @@
 import { arrayMove } from '@dnd-kit/sortable';
 
-export function dragEndHandler(setItems, sortFunction) {
+export function onDragEnd(setItems, sortFunction) {
   return function (event) {
     const { active, over } = event;
 
