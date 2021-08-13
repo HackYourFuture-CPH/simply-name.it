@@ -1,29 +1,30 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useAuthentication } from '../../hooks/useAuthentication';
 import { Redirect, Route } from 'react-router-dom';
 
-import { useAuthentication } from '../../hooks/useAuthentication';
-
 function AuthenticatedRoute({ children, ...rest }) {
-  const { isAuthenticated } = useAuthentication();
-
+  const { isAuthenticated, isWorking } = useAuthentication();
   return (
-    <Route
-      // (we need to spread)
-      {...rest} // eslint-disable-line
-      render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/sign-in',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+    <div>
+      {console.log(isAuthenticated, ' on router')}
+      <Route
+        // (we need to spread)
+        {...rest} // eslint-disable-line
+        render={({ location }) =>
+          isWorking ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/welcome',
+                state: { from: location },
+              }}
+            />
+          )
+        }
+      />
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ import 'firebase/database';
 import 'firebase/firestore';
 import 'firebase/functions';
 import 'firebase/messaging';
+import 'firebase/storage';
 import config from './config';
 
 const configuration = {
@@ -21,10 +22,10 @@ export function initFirebase() {
     firebase.initializeApp(configuration);
   }
 
+  const storage = firebase.storage();
   const auth = firebase.auth();
   const db = firebase.database();
   const firestore = firebase.firestore();
-
   /**
    * Connect to firestore emulator if running locally
    */
@@ -39,5 +40,6 @@ export function initFirebase() {
     auth,
     db,
     firestore,
+    storage,
   };
 }
