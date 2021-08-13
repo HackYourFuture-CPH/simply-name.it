@@ -10,30 +10,23 @@ export default async function AddCandidate(
   setAddCandidateError,
   setAddCandidateSuccess,
 ) {
-  console.log(newCandidate);
-
   try {
     if (!newCandidate.name) {
       setAddCandidateError('Please put a candidate name');
       return;
     }
-    console.log(typeof newCandidate.name);
+
     if (!isNaN(newCandidate.name)) {
       setAddCandidateError('Candidate name can not be number');
       return;
     }
 
-    const response = postData(
-      `/api/users/${userId}/boards/${boardId}/candidates`,
-      {
-        name: newCandidate.name,
-      },
-    );
+    postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
+      name: newCandidate.name,
+    });
     setAddCandidateSuccess(true);
     setAddCandidateError(null);
-    console.log(response);
 
-    console.log(`New candidate added`);
     setcandidateCardList((prev) => {
       const addNewCandidate = {
         id:
@@ -43,7 +36,7 @@ export default async function AddCandidate(
         boardId,
         name: newCandidate.name,
       };
-      console.log(candidateCardList);
+
       return [...prev, addNewCandidate];
     });
   } catch (error) {
