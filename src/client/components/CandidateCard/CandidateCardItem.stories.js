@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { CardItemDecorator } from './CandidateCardItem.component';
 import { candidateListArr } from './CandidateListArray.js';
-import { candidateCardSorting } from './candidateCardSorting';
+import { candidateCardSorting } from './CandidateCardSorting';
 import {
   DragAndSortAdapter,
   SortableItem,
 } from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
 
-import { dragEndHandler } from '../../containers/DragAndSortAdapter/dragEndHandler';
+import { dragEndHandler } from '../../containers/DragAndSortAdapter/DragEndHandler';
 
 export default {
   title: 'Components / Candidate Card List Component',
