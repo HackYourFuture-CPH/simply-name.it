@@ -7,7 +7,7 @@ import {
   SortableItem,
 } from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
 
-import { dragEndHandler } from '../../containers/DragAndSortAdapter/DragEndHandler';
+import { onDragEnd } from '../../containers/DragAndSortAdapter/OnDragEnd';
 
 export default {
   title: 'Components / Candidate Card List Component',
@@ -81,7 +81,7 @@ export const CardListExampleDraggable = () => {
 
   return (
     <DragAndSortAdapter
-      onDragEndHandler={dragEndHandler(setCandidates, candidateCardSorting)}
+      onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
       items={candidates}
     >
       {candidates.map((candidate) => {
