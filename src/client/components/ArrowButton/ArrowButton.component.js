@@ -4,12 +4,7 @@ import './ArrowButton.styles.css';
 
 const ArrowButton = ({ onClick, color }) => {
   return (
-    <button
-      className={`arrow-button-${color}`}
-      type="button"
-      onClick={onClick}
-      color={color}
-    >
+    <button className={`arrow-button-${color}`} type="button" onClick={onClick}>
       &#8592;
     </button>
   );
