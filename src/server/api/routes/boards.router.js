@@ -217,7 +217,6 @@ router.get('/:boardId', async (req, res) => {
     req.params.userId,
     req.params.boardId,
   );
-  console.log('this board:', board);
   return res.json(board);
 });
 
