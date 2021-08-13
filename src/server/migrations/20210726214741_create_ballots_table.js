@@ -3,7 +3,12 @@
 exports.up = function (knex) {
   return knex.schema.createTable('ballots', (table) => {
     table.integer('userId').unsigned().notNullable().references('users.id');
-    table.integer('boardId').unsigned().notNullable().references('boards.id');
+    table
+      .integer('boardId')
+      .unsigned()
+      .notNullable()
+      .references('boards.id')
+      .onDelete('CASCADE');
     table
       .integer('candidateId')
       .unsigned()
