@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './BoardPage.style.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import BoardImg from '../../assets/images/demo-boards-photos/Board1.jpg';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Input from '../../components/InputComponent/InputComponent';
-import CardList from '../../components/CandidateCard/CandidateCardList.component';
 import { candidateListArr } from '../../components/CandidateCard/CandidateListArray';
+import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
+import { candidateCardSorting } from '../../components/CandidateCard/CandidateCardSorting';
+import {
+  DragAndSortAdapter,
+  SortableItem,
+} from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
+import { onDragEnd } from '../../containers/DragAndSortAdapter/OnDragEnd';
 
 export default function Board() {
   const userRole = 'owner';
   const deadlineDate = new Date('2021-08-27');
   const today = new Date();
-
+  const [candidates, setCandidates] = useState(candidateListArr());
   const onClick = () => {
     // console.log('you clicked!');
   };
@@ -47,11 +53,22 @@ export default function Board() {
           />
         </div>
         <div className="CandidateCard-component">
-          <CardList
-            variant="secondary-color"
-            candidateList={candidateList}
-            display="visible"
-          />
+          <DragAndSortAdapter
+            onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+            items={candidates}
+          >
+            {candidates.map((candidate) => {
+              return (
+                <SortableItem key={candidate.id} id={candidate.id}>
+                  <CardItemDecorator
+                    colorVariant="primary-color"
+                    candidateName={candidate.name}
+                    displayDeleteIcon="visible"
+                  />
+                </SortableItem>
+              );
+            })}
+          </DragAndSortAdapter>
         </div>
         <div className="Result">
           <GenericButton
@@ -84,11 +101,22 @@ export default function Board() {
           />
         </div>
         <div className="CandidateCard-component">
-          <CardList
-            variant="secondary-color"
-            candidateList={candidateList}
-            display="hidden"
-          />
+          <DragAndSortAdapter
+            onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+            items={candidates}
+          >
+            {candidates.map((candidate) => {
+              return (
+                <SortableItem key={candidate.id} id={candidate.id}>
+                  <CardItemDecorator
+                    colorVariant="primary-color"
+                    candidateName={candidate.name}
+                    displayDeleteIcon="visible"
+                  />
+                </SortableItem>
+              );
+            })}
+          </DragAndSortAdapter>
         </div>
         <div className="Result">
           <GenericButton
@@ -130,11 +158,22 @@ export default function Board() {
           />
         </div>
         <div className="CandidateCard-component">
-          <CardList
-            variant="primary-color"
-            candidateList={candidateList}
-            display="visible"
-          />
+          <DragAndSortAdapter
+            onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+            items={candidates}
+          >
+            {candidates.map((candidate) => {
+              return (
+                <SortableItem key={candidate.id} id={candidate.id}>
+                  <CardItemDecorator
+                    colorVariant="primary-color"
+                    candidateName={candidate.name}
+                    displayDeleteIcon="visible"
+                  />
+                </SortableItem>
+              );
+            })}
+          </DragAndSortAdapter>
         </div>
         <div className="Result">
           <GenericButton
@@ -167,11 +206,22 @@ export default function Board() {
           />
         </div>
         <div className="CandidateCard-component">
-          <CardList
-            variant="primary-color"
-            candidateList={candidateList}
-            display="hidden"
-          />
+          <DragAndSortAdapter
+            onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+            items={candidates}
+          >
+            {candidates.map((candidate) => {
+              return (
+                <SortableItem key={candidate.id} id={candidate.id}>
+                  <CardItemDecorator
+                    colorVariant="primary-color"
+                    candidateName={candidate.name}
+                    displayDeleteIcon="hidden"
+                  />
+                </SortableItem>
+              );
+            })}
+          </DragAndSortAdapter>
         </div>
         <div className="Result">
           <GenericButton
