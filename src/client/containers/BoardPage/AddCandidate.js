@@ -5,8 +5,8 @@ export default async function AddCandidate(
   newCandidate,
   userId,
   boardId,
-  setcandidateList,
-  candidateList,
+  setcandidateCardList,
+  candidateCardList,
   setAddCandidateError,
   setAddCandidateSuccess,
 ) {
@@ -34,16 +34,16 @@ export default async function AddCandidate(
     console.log(response);
 
     console.log(`New candidate added`);
-    setcandidateList((prev) => {
+    setcandidateCardList((prev) => {
       const addNewCandidate = {
         id:
-          candidateList.length > 0
-            ? candidateList[candidateList.length - 1].id + 1
+          candidateCardList.length > 0
+            ? candidateCardList[candidateCardList.length - 1].id + 1
             : 1,
         boardId,
         name: newCandidate.name,
       };
-      console.log(candidateList);
+      console.log(candidateCardList);
       return [...prev, addNewCandidate];
     });
   } catch (error) {
