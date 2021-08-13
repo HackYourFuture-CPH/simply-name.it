@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 
-import { resetPassword, signIn, signOut, signUp } from './auth';
+import { signIn, signOut } from './googleAuth';
 import { initFirebase } from './configure';
 
 const FirebaseContext = createContext();
@@ -36,11 +36,10 @@ export function FirebaseProvider({ children, initialAuth }) {
   const value = useMemo(
     () => ({
       auth,
+      setAuth,
       isInitialized: !!auth,
-      signIn: (data) => signIn(auth, data),
-      signUp: (data) => signUp(auth, data),
-      signOut: () => signOut(auth),
-      resetPassword: (data) => resetPassword(auth, data),
+      signIn: () => signIn(),
+      signOut: () => signOut(),
     }),
     [auth],
   );
