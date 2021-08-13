@@ -4,7 +4,7 @@ import { useAuthentication } from '../../hooks/useAuthentication';
 import { Redirect, Route } from 'react-router-dom';
 
 function AuthenticatedRoute({ children, ...rest }) {
-  const { isAuthenticated, isWorking } = useAuthentication();
+  const { isAuthenticated } = useAuthentication();
   return (
     <div>
       {console.log(isAuthenticated, ' on router')}
@@ -12,7 +12,7 @@ function AuthenticatedRoute({ children, ...rest }) {
         // (we need to spread)
         {...rest} // eslint-disable-line
         render={({ location }) =>
-          isWorking ? (
+          isAuthenticated ? (
             children
           ) : (
             <Redirect
