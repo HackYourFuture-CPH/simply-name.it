@@ -1,9 +1,21 @@
+const { Client } = require('@elastic/elasticsearch');
+const client = new Client({
+  cloud: {
+    id:
+      'dolphin-project:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo5MjQzJDY2NDU1MWJhNzM0NjQzNTVhMmE5MGZkMTVkZTYxYTM3JDZiNDQ2MjA2YjgyNjRmOTliZTJhNzZiZTcwMjk4Zjdl',
+  },
+  auth: {
+    apiKey: 'WkJ4ZlJuc0IwSmlZa0xsa1QxeW86R3BfWXl3SEhTX2lrZ29URnk4M1J5Zw==',
+  },
+});
 const express = require('express');
 
 const router = express.Router({ mergeParams: true });
 
 // Controllers
 const usersController = require('../controllers/users.controller');
+
+const index = 'dolphins';
 
 /**
  * @swagger
@@ -23,8 +35,54 @@ const usersController = require('../controllers/users.controller');
  */
 
 router.get('/', async (req, res) => {
-  const users = await usersController.getUsers();
-  return res.json(users);
+  let query;
+
+  if ('fullName' in req.query) {
+    query = {
+      match: { name: req.query.fullName || '' },
+    };
+  } else {
+    console.log(woops);
+    query = {
+      match_all: {},
+    };
+  }
+
+  const result = await client.search({
+    index: index,
+    body: {
+      query: query,
+      size: 20,
+    },
+  });
+
+  return res.json(
+    result.body.hits.hits.map((hit) => ({ name: hit._source.name })),
+  );
+
+  // const users = await usersController.getUsers();
+  // return res.json(users);
+});
+
+const createUser = async (document) => {
+  // TODO: Create student in DB
+  // const dbResult = await knex('students').insert(document, 'id')
+
+  // Create student in ES
+  const esResult = await client.index({
+    // id: dbResult.id, // TODO: set this to the ID from the DB
+    index: index,
+    body: document,
+  });
+
+  console.log('esResult', esResult);
+};
+
+router.post('/', async (req, res) => {
+  const userDoc = { name: req.body.name };
+  await createUser(userDoc);
+
+  res.json({ created: true });
 });
 
 /**
@@ -107,3 +165,27 @@ router.get('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+/// -----------
+
+// Parse URL-encoded bodies (as sent by HTML forms)
+router.use(express.urlencoded({ extended: true }));
+// Parse JSON bodies (as sent by API clients)
+router.use(express.json());
+
+// app.put('/students/:id', async (req, res) => {
+//   const studentDocument = { name: req.body.name };
+
+//   // TODO: Update student in DB
+
+//   // Update student in ES
+//   const esResult = await client.index({
+//     id: req.params.id,
+//     index: index,
+//     body: studentDocument,
+//   });
+
+//   console.log('esResult', esResult);
+
+//   res.json({ updated: true });
+// });
