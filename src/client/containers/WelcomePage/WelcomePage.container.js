@@ -10,14 +10,8 @@ export default function Welcome() {
   const [userProfile, setUserProfile] = useState();
   const { signIn } = useFirebase();
 
-  const onClick = () => {
-    console.log('?');
-  };
-
   const signInUser = async () => {
-    console.log('google clicked');
     const userData = await signIn();
-    console.log(userData.user.uid, userData.user.displayName);
     setUserProfile(() => {
       return {
         userFirebase: userData.user.uid,
@@ -37,7 +31,7 @@ export default function Welcome() {
         <h1 className="welcome-slogan">Take Tough Decisions Together</h1>
       </div>
       <div className="sign-in-buttons-container">
-        <GoogleButton className="google-button" onClick={onClick} />
+        <GoogleButton className="google-button" onClickHandler={signInUser} />
         <GenericButton
           className="generic-button"
           buttonLabel="Log in"

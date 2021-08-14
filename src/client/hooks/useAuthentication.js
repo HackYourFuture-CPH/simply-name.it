@@ -19,12 +19,10 @@ function useAuthentication() {
     auth.onAuthStateChanged(async (user) => {
       // if user exists it means authenticated
       if (user) {
-        console.log('auth works and user exists on auth hook');
         setIsAuthenticated(true);
         setIsLoading(false);
         // eslint-disable-next-line no-else-return
       } else {
-        console.log('now there is no user on auth');
         setIsAuthenticated(false);
         setIsLoading(false);
         // eslint-disable-next-line no-return-assign
