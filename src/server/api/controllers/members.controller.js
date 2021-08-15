@@ -10,7 +10,6 @@ const userIsMember = async (userId, boardId) => {
     .select('*')
     .where('members.boardId', boardId)
     .andWhere('members.userId', userId);
-  console.log(ifIsMember);
   if (ifIsMember.length === 0) {
     throw new UnauthorizedError(`Only Members can take this action `);
   }
