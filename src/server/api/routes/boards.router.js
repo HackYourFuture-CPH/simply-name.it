@@ -6,9 +6,6 @@ const router = express.Router({ mergeParams: true });
 const ballotsRouter = require('./ballots.router');
 const candidatesRouter = require('./candidates.router');
 const resultsRouter = require('./results.router');
-
-router.use('/:boardId/results', resultsRouter);
-
 const membersRouter = require('./members.router');
 
 // controllers
@@ -136,8 +133,6 @@ router.get('/', async (req, res) => {
 
   return res.json(boardsByMemberId);
 });
-router.use('/:boardId/members', membersRouter);
-router.use('/:boardId/ballots', ballotsRouter);
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
@@ -238,5 +233,6 @@ router.get('/:boardId', async (req, res) => {
 router.use('/:boardId/ballots', ballotsRouter);
 router.use('/:boardId/candidates', candidatesRouter);
 router.use('/:boardId/results', resultsRouter);
+router.use('/:boardId/members', membersRouter);
 
 module.exports = router;
