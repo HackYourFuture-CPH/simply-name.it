@@ -7,20 +7,28 @@ import { Redirect } from 'react-router-dom';
 
 export default function Welcome() {
   const [redirect, setRedirect] = useState();
-  const [userProfile, setUserProfile] = useState();
   const { signIn } = useFirebase();
 
+  function addUser(user) {
+    (async () => {
+      await fetch('http://localhost:3000/api/users', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+    })();
+  }
+
   const signInUser = async () => {
-    const userData = await signIn();
-    setUserProfile(() => {
-      return {
-        userFirebase: userData.user.uid,
-        userName: userData.user.displayName,
-      };
-    });
+    const user = await signIn();
+    if (user) {
+      addUser(user);
+    }
     setRedirect('/profile');
   };
-  console.log(userProfile);
 
   if (redirect) {
     return <Redirect to={redirect} />;

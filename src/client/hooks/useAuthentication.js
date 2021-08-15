@@ -21,15 +21,12 @@ function useAuthentication() {
       if (user) {
         setIsAuthenticated(true);
         setIsLoading(false);
-        // eslint-disable-next-line no-else-return
       } else {
         setIsAuthenticated(false);
         setIsLoading(false);
-        // eslint-disable-next-line no-return-assign
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [auth]);
 
   return { isAuthenticated, isLoading };
 }
