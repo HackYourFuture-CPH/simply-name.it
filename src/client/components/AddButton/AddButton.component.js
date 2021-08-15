@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './AddButton.styles.css';
 
-const AddButton = ({ buttonDisabled, onClick }) => {
+const AddButton = ({ onClick, disabled }) => {
   const getAddButtonClassName = () => {
     let buttonClassName = 'add-button';
-    buttonClassName += buttonDisabled ? ` active-button` : ` disabled-button`;
+    buttonClassName += disabled ? ` disabled-button` : ` active-button`;
     return buttonClassName;
   };
 
@@ -15,7 +15,7 @@ const AddButton = ({ buttonDisabled, onClick }) => {
         className={getAddButtonClassName()}
         type="button"
         onClick={onClick}
-        buttonDisabled={buttonDisabled}
+        disabled={disabled}
         aria-label="Add Button"
       >
         &#43;
@@ -26,10 +26,10 @@ const AddButton = ({ buttonDisabled, onClick }) => {
 
 AddButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  buttonDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 AddButton.defaultProps = {
-  buttonDisabled: false,
+  disabled: false,
 };
 export default AddButton;
