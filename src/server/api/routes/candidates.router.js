@@ -103,14 +103,6 @@ router.post('/', async (req, res) => {
   return res.status(201).send();
 });
 
-router.get('/', async (req, res) => {
-  const boardCandidates = await candidatesController.getCandidates(
-    req.params.userId,
-    req.params.boardId,
-  );
-  return res.json(boardCandidates);
-});
-
 /**
  * @swagger
  * /users/{userId}/boards/{boardId}/candidates:
@@ -145,5 +137,13 @@ router.get('/', async (req, res) => {
  *      404:
  *        description: Invalid entry error
  */
+
+router.get('/', async (req, res) => {
+  const boardCandidates = await candidatesController.getCandidates(
+    req.params.userId,
+    req.params.boardId,
+  );
+  return res.json(boardCandidates);
+});
 
 module.exports = router;

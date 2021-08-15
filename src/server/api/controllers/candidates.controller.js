@@ -44,6 +44,9 @@ const createCandidate = async (userId, boardId, newCandidate) => {
 };
 
 const getCandidates = async (userId, boardId) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
   const candidates = await knex('candidates')
     .join('boards', 'candidates.boardId', '=', 'boards.id')
     .join('ballots', 'ballots.candidateId', '=', 'candidates.id')
@@ -51,6 +54,9 @@ const getCandidates = async (userId, boardId) => {
     .where('candidates.boardId', boardId)
     .where('ballots.userId', userId);
 
+  if (candidates.length === 0) {
+    throw new InvalidIdError(`Board not found`);
+  }
   return candidates;
 };
 
