@@ -37,8 +37,10 @@ const membersController = require('../controllers/members.controller');
  *      400:
  *          Bad Request
  */
+
 router.get('/', async (req, res) => {
   const membersOfBoard = await membersController.getAllMembers(
+    req.params.userId,
     req.params.boardId,
   );
   return res.json(membersOfBoard);
