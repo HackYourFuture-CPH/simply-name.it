@@ -5,7 +5,7 @@ const GoogleButton = (onClickHandler) => {
   return (
     <div
       id="g-button"
-      onClick={() => onClickHandler}
+      onClick={onClickHandler}
       role="button"
       tabIndex={0}
       onKeyUp={onClickHandler}
