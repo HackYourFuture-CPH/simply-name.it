@@ -85,9 +85,36 @@ const getBoardsByMemberId = async (id) => {
   return boards;
 };
 
+const getBoardById = async (userId, boardId) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('The provided ids should be integer');
+  }
+
+  const boardInfoById = await knex('boards')
+    .join('members', 'boards.id', '=', 'members.boardId')
+    .select(
+      'boards.id',
+      'boards.creatorId',
+      'boards.createdOn',
+      'boards.title',
+      'boards.deadline',
+      'boards.isDeleted',
+      'boards.banner',
+    )
+    .where('userId', userId)
+    .andWhere('boardId', boardId);
+  if (boardInfoById.length === 0) {
+    throw new IncorrectEntryError(
+      `userId: ${userId} or boardId: ${boardId} does not exist!`,
+    );
+  }
+  return boardInfoById;
+};
+
 module.exports = {
   getBoardsByMemberId,
   getBoardsByCreatorId,
   editBoard,
   createBoard,
+  getBoardById,
 };

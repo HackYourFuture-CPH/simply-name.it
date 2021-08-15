@@ -4,6 +4,8 @@ const router = express.Router({ mergeParams: true });
 
 // Controllers
 const usersController = require('../controllers/users.controller');
+// Router imports
+const boardsRouter = require('./boards.router');
 
 /**
  * @swagger
@@ -105,5 +107,8 @@ router.get('/:id', async (req, res) => {
   const userById = await usersController.getUserById(req.params.id);
   return res.json(userById);
 });
+
+// Application routes
+router.use('/:userId/boards', boardsRouter);
 
 module.exports = router;
