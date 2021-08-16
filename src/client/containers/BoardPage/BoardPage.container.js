@@ -61,6 +61,7 @@ export default function Board() {
           />
           <AddButton
             type="button"
+            disabled={true}
             className="add-button"
             onClick={() => {
               AddCandidate(
