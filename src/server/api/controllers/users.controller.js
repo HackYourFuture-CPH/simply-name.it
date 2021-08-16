@@ -1,5 +1,17 @@
 const knex = require('../../config/db');
 
+const { Client } = require('@elastic/elasticsearch');
+const client = new Client({
+  cloud: {
+    id:
+      'dolphin-project:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo5MjQzJDY2NDU1MWJhNzM0NjQzNTVhMmE5MGZkMTVkZTYxYTM3JDZiNDQ2MjA2YjgyNjRmOTliZTJhNzZiZTcwMjk4Zjdl',
+  },
+  auth: {
+    apiKey: 'WkJ4ZlJuc0IwSmlZa0xsa1QxeW86R3BfWXl3SEhTX2lrZ29URnk4M1J5Zw==',
+  },
+});
+const index = 'dolphins';
+
 const {
   IncorrectEntryError,
   InvalidIdError,
@@ -7,14 +19,47 @@ const {
 
 const { isInteger } = require('../lib/utils/validators');
 
+const createIndex = () => {};
+
+const createStudent = (document) => {
+  // TODO: Create student in DB
+  // const dbResult = await knex('students').insert(document, 'id')
+
+  // Create student in ES
+
+  client.index({
+    // id: dbResult.id, // TODO: set this to the ID from the DB
+    index: index,
+    body: document,
+  });
+};
+
 const getUsers = () => {
-  return knex('users').select(
-    'users.id',
-    'users.fullname',
-    'users.email',
-    'users.createdOn',
-    'users.firebaseUId',
+  const studentDocument = { name: 'hehe' };
+  createStudent(studentDocument);
+
+  const result = client.search({
+    index: index,
+    body: {
+      query: {
+        match_all: {},
+      },
+      size: 20,
+    },
+  });
+
+  return result.body.hits.hits.map((hit) => ({ name: hit._source.name }));
+
+  return res.json(
+    result.body.hits.hits.map((hit) => ({ name: hit._source.name })),
   );
+  // return knex('users').select(
+  //   'users.id',
+  //   'users.fullname',
+  //   'users.email',
+  //   'users.createdOn',
+  //   'users.firebaseUId',
+  // );
 };
 
 const getUserById = async (id) => {
