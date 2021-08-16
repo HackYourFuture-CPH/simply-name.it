@@ -9,12 +9,12 @@ html {
 
 .Board-container {
   position: relative;
-  max-height: 739px;
+  height: 739px;
   max-width: 414px;
 }
 
 .Header-component {
-  height: 150px;
+  height: 200px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
@@ -25,6 +25,17 @@ html {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  margin-left: 20px;
+}
+
+.title {
+  width: 90%;
+}
+
+.Input-component {
+  width: 70%;
+  margin-left: 20px;
+  height: 50px;
 }
 
 .CandidateCard-component {
@@ -33,4 +44,5 @@ html {
 
 .Result button {
   float: right;
+  margin-right: 20px;
 }
