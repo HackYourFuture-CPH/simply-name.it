@@ -15,6 +15,31 @@ import {
 } from '../DragAndSortAdapter/DragAndSortAdapter';
 import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 
+// const { userId, boardId } = useParams();
+const userId = 1;
+const boardId = 1;
+const [boardInfo, setBoardInfo] = useState([]);
+
+const fetchingBoardApi = async () => {
+  const API_URL = `/api//users/${userId}/boards/${boardId}`;
+  const apiResponse = await fetch(API_URL);
+  const apiData = await apiResponse.json();
+  apiData;
+};
+
+fetchingBoardApi();
+
+function checkUserRole() {
+  return (
+    <div>
+      {userId === boardInfo.creatorId ? (
+        <OwnerBoardPage />
+      ) : (
+        <MemberBoardPage />
+      )}
+    </div>
+  );
+}
 export default function Board() {
   const userRole = 'owner';
   const deadlineDate = new Date('2021-09-12');
