@@ -39,6 +39,11 @@ html {
   height: 50px;
 }
 
+.add-button {
+  cursor: pointer;
+  margin-left: 10%;
+}
+
 .CandidateCard-component {
   position: relative;
 }
@@ -46,4 +51,12 @@ html {
 .Result button {
   float: right;
   margin-right: 20px;
+}
+
+.errorMessageContainer {
+  color: red;
+}
+
+.successMessageContainer {
+  color: green;
 }
