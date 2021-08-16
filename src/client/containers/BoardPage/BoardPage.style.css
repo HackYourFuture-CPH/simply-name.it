@@ -11,10 +11,11 @@ html {
   position: relative;
   height: 739px;
   max-width: 414px;
+  margin-left: 100px;
 }
 
 .Header-component {
-  height: 200px;
+  max-height: 150px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
