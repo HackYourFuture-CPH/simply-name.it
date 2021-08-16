@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './WelcomePage.styles.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import GoogleButton from '../../components/GoogleButton/GoogleButton.component';
@@ -8,11 +8,12 @@ import { Redirect } from 'react-router-dom';
 export default function Welcome() {
   const [redirect, setRedirect] = useState();
   const { signIn, auth } = useFirebase();
+  const [error, setError] = useState();
 
-  function addUser() {
-    (async () => {
+  useEffect(() => {
+    async function addUser() {
       const token = await auth.currentUser.getIdToken();
-      await fetch('/api/users', {
+      const response = await fetch('/api/users', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -20,17 +21,29 @@ export default function Welcome() {
           authorization: `Bearer ${token}`,
         },
       });
-    })();
-  }
+      if (response.ok) {
+        setRedirect('/profile');
+        const userData = await response.json();
+        localStorage.setItem('id', userData);
+      } else {
+        setError(
+          `Error adding user: ${response.status}. ${response.statusText}`,
+        );
+      }
+    }
+
+    addUser();
+  }, [auth.currentUser]);
 
   const signInUser = async () => {
     await signIn();
-    addUser();
-    setRedirect('/profile');
   };
 
   if (redirect) {
     return <Redirect to={redirect} />;
+  }
+  if (error) {
+    console.log(error);
   }
   return (
     <div className="sign-in-container">

@@ -29,7 +29,6 @@ const FIREBASE_ERROR_CODES = {
 
 export async function signIn() {
   try {
-    console.log('it starts to signin with google');
     const googleAuth = await firebase.auth().signInWithPopup(googleProvider);
     return googleAuth;
   } catch (error) {
