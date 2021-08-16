@@ -4,6 +4,7 @@ const {
   InvalidIdError,
   IncorrectEntryError,
   InvalidRequestError,
+  InvalidEntryError,
 } = require('../lib/utils/http-error');
 
 const checkUserRole = async ({ userId, boardId }) => {
@@ -45,17 +46,16 @@ const createCandidate = async (userId, boardId, newCandidate) => {
 
 const getCandidates = async (userId, boardId) => {
   if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
-    throw new InvalidIdError('Id should be an integer');
+    throw new InvalidEntryError('Id should be an integer');
   }
   const candidates = await knex('candidates')
-    .join('boards', 'candidates.boardId', '=', 'boards.id')
     .join('ballots', 'ballots.candidateId', '=', 'candidates.id')
-    .select('candidates.name', 'ballots.rank')
+    .select('candidates.name', 'ballots.rank', 'candidateId')
     .where('candidates.boardId', boardId)
     .where('ballots.userId', userId);
 
   if (candidates.length === 0) {
-    throw new InvalidIdError(`Board not found`);
+    throw new InvalidEntryError(`Board not found`);
   }
   return candidates;
 };
