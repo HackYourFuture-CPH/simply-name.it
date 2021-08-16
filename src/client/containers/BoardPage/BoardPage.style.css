@@ -27,6 +27,11 @@ html {
   margin-bottom: 25px;
 }
 
+.add-button {
+  cursor: pointer;
+  margin-left: 10%;
+}
+
 .CandidateCard-component {
   position: relative;
 }

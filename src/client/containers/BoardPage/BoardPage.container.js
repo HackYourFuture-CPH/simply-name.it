@@ -3,6 +3,7 @@ import './BoardPage.style.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import BoardImg from '../../assets/images/demo-boards-photos/Board1.jpg';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
+import AddButton from '../../components/AddButton/AddButton.component';
 import Input from '../../components/InputComponent/InputComponent';
 import { candidateListArr } from '../../components/CandidateCard/CandidateListArray';
 import AddCandidate from './AddCandidate';
@@ -58,8 +59,9 @@ export default function Board() {
             inputValue={newCandidateName}
             onChange={setNewCandidateName}
           />
-          <button
+          <AddButton
             type="button"
+            className="add-button"
             onClick={() => {
               AddCandidate(
                 newCandidate,
@@ -72,21 +74,15 @@ export default function Board() {
               );
               setNewCandidateName('');
             }}
-          >
-            Add
-          </button>
+          />
         </div>
         <div>
           {addCandidateError !== null && (
-            <div className="errorMessageContainer">
-              {addCandidateError}
-              <br />
-            </div>
+            <div className="errorMessageContainer">{addCandidateError}</div>
           )}
           {addCandidateError === null && addCandidateSuccess && (
             <div className="successMessageContainer">
               The new candidate was stored successfully!
-              <br />
             </div>
           )}
         </div>
@@ -195,7 +191,7 @@ export default function Board() {
             inputValue={newCandidateName}
             onChange={setNewCandidateName}
           />
-          <button
+          <AddButton
             type="button"
             onClick={() => {
               AddCandidate(
@@ -209,9 +205,7 @@ export default function Board() {
               );
               setNewCandidateName('');
             }}
-          >
-            Add
-          </button>
+          />
         </div>
         <div>
           {addCandidateError !== null && (
