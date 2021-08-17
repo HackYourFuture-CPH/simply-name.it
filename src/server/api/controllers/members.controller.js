@@ -15,6 +15,19 @@ const userIsMember = async (userId, boardId) => {
   }
   return ifIsMember;
 };
+
+const userIsOwner = async (userId, boardId) => {
+  const isOwner = await knex('members')
+    .select('*')
+    .where('members.userId', userId)
+    .andWhere('members.boardId', boardId)
+    .andWhere('members.role', 'owner');
+  if (isOwner.length === 0) {
+    throw new UnauthorizedError(`Only owner can add a member to a board `);
+  }
+  return isOwner;
+};
+
 const getAllMembers = async (userId, boardId) => {
   if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
     throw new InvalidIdError('Id should be an integer');
@@ -34,6 +47,29 @@ const getAllMembers = async (userId, boardId) => {
   }
   return allMembers;
 };
+
+const addMember = async (userId, boardId, memberId) => {
+  if (
+    !Number.isInteger(Number(userId)) ||
+    !Number.isInteger(Number(boardId)) ||
+    !Number.isInteger(Number(memberId))
+  ) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+  const isOwner = await userIsOwner(userId, boardId);
+  if (isOwner.length === 0) {
+    throw new UnauthorizedError(`Only owner can add a member to a board `);
+  }
+
+  const addNewMember = await knex('members').insert({
+    boardId,
+    userId: memberId,
+    role: 'basic',
+  });
+  return addNewMember;
+};
+
 module.exports = {
   getAllMembers,
+  addMember,
 };
