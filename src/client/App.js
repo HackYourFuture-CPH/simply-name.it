@@ -10,6 +10,7 @@ import { useAuthentication } from './hooks/useAuthentication';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
+import CreateBoardPage from './containers/CreateBoardPage/CreateBoardPage.container';
 
 function App() {
   const { isLoading } = useAuthentication();
@@ -31,6 +32,7 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
+        <CreateBoardPage exact path="/new-board" />
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute exact path="/profile">

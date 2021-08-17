@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.result-container {
+  background:
+    url('../../assets/images/pages-background/create-board.svg')
+    no-repeat;
+  margin: 10px 30px;
+  padding: 10px 20px;
+}
+
+label {
+  display: block;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+}
+
+.input-name-container {
+  width: 40%;
+}
