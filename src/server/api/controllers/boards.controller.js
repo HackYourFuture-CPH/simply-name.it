@@ -1,4 +1,5 @@
 const knex = require('../../config/db');
+
 const {
   IncorrectEntryError,
   InvalidIdError,
@@ -52,6 +53,30 @@ const editBoard = async (userId, boardId, updatedBoard) => {
   });
 };
 
+const checkUserRole = async ({ userId, boardId }) => {
+  const ifuserIsCreator = await knex('boards')
+    .where('boards.creatorId', userId)
+    .andWhere('boards.id', boardId);
+
+  if (!ifuserIsCreator) {
+    throw new IncorrectEntryError(`Only creator can take this action `);
+  }
+};
+
+const deleteCandidate = async ({ candidateId, userId, boardId }) => {
+  await checkUserRole({ userId, boardId });
+  await knex('candidates')
+    .where({ id: candidateId })
+    .update({ isBlocked: true });
+};
+
+const deleteBoardsById = async (userId, boardId) => {
+  if (!Number.isInteger(Number(boardId)) || !Number.isInteger(Number(userId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+  return knex('boards').where({ creatorId: userId, id: boardId }).del();
+};
+
 const getBoardsByCreatorId = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer!');
@@ -85,9 +110,38 @@ const getBoardsByMemberId = async (id) => {
   return boards;
 };
 
+const getBoardById = async (userId, boardId) => {
+  if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
+    throw new InvalidIdError('The provided ids should be integer');
+  }
+
+  const boardInfoById = await knex('boards')
+    .join('members', 'boards.id', '=', 'members.boardId')
+    .select(
+      'boards.id',
+      'boards.creatorId',
+      'boards.createdOn',
+      'boards.title',
+      'boards.deadline',
+      'boards.isDeleted',
+      'boards.banner',
+    )
+    .where('userId', userId)
+    .andWhere('boardId', boardId);
+  if (boardInfoById.length === 0) {
+    throw new IncorrectEntryError(
+      `userId: ${userId} or boardId: ${boardId} does not exist!`,
+    );
+  }
+  return boardInfoById;
+};
+
 module.exports = {
   getBoardsByMemberId,
+  deleteBoardsById,
   getBoardsByCreatorId,
+  deleteCandidate,
   editBoard,
   createBoard,
+  getBoardById,
 };

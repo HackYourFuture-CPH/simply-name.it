@@ -1,29 +1,14 @@
 import React from 'react';
 import ArrowButton from './ArrowButton.component';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, color } from '@storybook/addon-knobs';
 
 export default {
   title: 'Arrow Button',
-  decorators: [withKnobs],
-  parameters: {
-    backgrounds: {
-      values: [
-        { name: 'light', value: 'white' },
-        { name: 'black', value: 'black' },
-      ],
-    },
-  },
 };
 
-export const BlackArrow = () => <ArrowButton onClick={action('clicked')} />;
-export const WhiteArrow = () => (
-  <ArrowButton
-    backgroundColor={color('color', 'white')}
-    onClick={action('clicked')}
-  />
+export const BlackArrow = () => (
+  <ArrowButton onClick={action('clicked')} color="black" />
 );
-
-WhiteArrow.parameters = {
-  backgrounds: { default: 'black' },
-};
+export const WhiteArrow = () => (
+  <ArrowButton onClick={action('clicked')} color="white" />
+);
