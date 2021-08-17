@@ -16,7 +16,7 @@ function useAuthentication() {
       setIsLoading(false);
       return;
     }
-    auth.onAuthStateChanged(async (user) => {
+    auth.onAuthStateChanged((user) => {
       // if user exists it means authenticated
       if (user) {
         setIsAuthenticated(true);
