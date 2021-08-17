@@ -6,6 +6,7 @@ const router = express.Router({ mergeParams: true });
 const ballotsRouter = require('./ballots.router');
 const candidatesRouter = require('./candidates.router');
 const resultsRouter = require('./results.router');
+const membersRouter = require('./members.router');
 
 // controllers
 const boardsController = require('../controllers/boards.controller');
@@ -125,6 +126,14 @@ router.get('/', async (req, res) => {
  *        description: Unexpected error.
  */
 
+router.get('/', async (req, res) => {
+  const boardsByMemberId = await boardsController.getBoardsByMemberId(
+    req.params.userId,
+  );
+
+  return res.json(boardsByMemberId);
+});
+
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
     req.params.userId,
@@ -178,9 +187,52 @@ router.post('/', async (req, res) => {
   return res.status(201).send();
 });
 
+/**
+ * @swagger
+ * /users/{USER_ID}/boards/{BOARD_ID}:
+ *  get:
+ *    tags:
+ *    - Board
+ *    summary: Get board by user ID
+ *    description:
+ *      Will return a board created by a certain user.
+ *    produces: application/json
+ *    parameters:
+ *     - in: path
+ *       name: USER_ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the board creator
+ *     - in: path
+ *       name: BOARD_ID
+ *       schema:
+ *         type: integer
+ *         required: true
+ *         description: The ID of the board
+ *
+ *    responses:
+ *      200:
+ *        description: Successful request
+ *      5XX:
+ *        description: Unexpected error
+ *      400:
+ *          Invalid Id error
+ *      404:
+ *        description: Invalid entry error
+ */
+router.get('/:boardId', async (req, res) => {
+  const board = await boardsController.getBoardById(
+    req.params.userId,
+    req.params.boardId,
+  );
+  return res.json(board);
+});
+
 // Application routes
 router.use('/:boardId/ballots', ballotsRouter);
 router.use('/:boardId/candidates', candidatesRouter);
 router.use('/:boardId/results', resultsRouter);
+router.use('/:boardId/members', membersRouter);
 
 module.exports = router;

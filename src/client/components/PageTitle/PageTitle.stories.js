@@ -10,6 +10,6 @@ export default {
 export const TestTitle = () => (
   <PageTitle
     title={text('Title', ' Welcome ')}
-    variant={select('Text color', ['white', 'black', 'black-large'])}
+    variant={select('Text color', ['black', 'black-large'])}
   />
 );
