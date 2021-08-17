@@ -7,41 +7,48 @@ import React, {
   useState,
 } from 'react';
 
-import { signIn, signOut } from './googleAuth';
-import { initFirebase } from './configure';
+import { signIn, signOut, getUserToken } from './googleAuth';
+import { auth } from './configure';
 
 const FirebaseContext = createContext();
 
 export function FirebaseProvider({ children, initialAuth }) {
-  const [auth, setAuth] = useState(initialAuth);
+  const [authUser, setAuthUser] = useState(initialAuth);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // default is loading
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (auth) {
-      // Don't initialize twice
+    if (!auth) {
+      setIsLoading(false);
       return;
     }
-
-    try {
-      const r = initFirebase();
-      setAuth(r.auth);
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Unable to initialize firebase, check console for errors',
-        e,
-      );
-    }
-  }, [auth]);
+    auth.onAuthStateChanged((user) => {
+      // if user exists it means authenticated
+      if (user) {
+        setIsAuthenticated(true);
+        setIsLoading(false);
+        setAuthUser(user);
+      } else {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        setAuthUser(null);
+      }
+    });
+  }, [authUser]);
 
   const value = useMemo(
     () => ({
-      auth,
-      setAuth,
+      authUser,
+      isAuthenticated,
+      isLoading,
+      getUserToken,
       isInitialized: !!auth,
       signIn: () => signIn(),
       signOut: () => signOut(),
     }),
-    [auth],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [authUser],
   );
 
   return (
