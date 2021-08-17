@@ -15,8 +15,9 @@ export default function AddMembers() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [users, setUsers] = useState([]);
-
   const history = useHistory();
+
+  let APIurl = `/api/users/search?fullName=${searchInput}`;
 
   const onClick = () => {
     const path = '/create-board';
@@ -42,7 +43,7 @@ export default function AddMembers() {
   // }, []);
   const handleInput = (e) => {
     console.log(searchInput);
-    searchInput === '' ? setSearchInput('_') : setSearchInput(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const cleanUp = (id) => {
@@ -52,14 +53,25 @@ export default function AddMembers() {
   useEffect(() => {
     setLoading(true);
     // debouncing
+
     const id = setTimeout(async () => {
       try {
-        const result = await fetch(`/api/users/search?fullName=${searchInput}`);
+        searchInput === ''
+          ? (APIurl = `/api/users`)
+          : (APIurl = `/api/users/search?fullName=${searchInput}`);
+        const result = await fetch(APIurl);
         const fetchedData = await result.json();
-        result.ok ? setUsers(fetchedData) : setUsers([]);
+        console.log(fetchedData);
+        console.log('is array', Array.isArray(fetchedData));
+        console.log(result.ok);
+        result.ok && Array.isArray(fetchedData)
+          ? setUsers(fetchedData)
+          : setUsers([]);
         setLoading(false);
+        setError(false);
       } catch (error) {
-        setError(error);
+        error = JSON.parse(JSON.stringify(error));
+        setError(true);
         console.log(error);
       }
     }, 2000);
@@ -84,7 +96,7 @@ export default function AddMembers() {
                   handleInput(e);
                 }}
               ></input>
-              <InputComponent
+              {/* <InputComponent
                 placeholder="Search"
                 borderShape="round"
                 theme="light"
@@ -92,9 +104,9 @@ export default function AddMembers() {
                 onChange={(e) => {
                   handleInput(e);
                 }}
-              />
+              /> */}
             </div>
-            <div className="search-button">
+            {/* <div className="search-button">
               <GenericButton
                 buttonLabel="&#128269;"
                 buttonSize="small"
@@ -102,13 +114,13 @@ export default function AddMembers() {
                 buttonDisabled={false}
                 onClick={console.log('searching')}
               />
-            </div>
+            </div> */}
           </div>
           <div className="users-list-container">
             {loading && <p>loading....</p>}
             {!loading && (
               <>
-                {users.length === 0 ? (
+                {users.length === 0 && searchInput != '' ? (
                   <p>Nothing found :(</p>
                 ) : (
                   <>
