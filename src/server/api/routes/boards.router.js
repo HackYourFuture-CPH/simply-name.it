@@ -73,6 +73,14 @@ router.delete('/:boardId', async (req, res) => {
  *        description: Unexpected error.
  */
 
+router.get('/', async (req, res) => {
+  const boardsByMemberId = await boardsController.getBoardsByMemberId(
+    req.params.userId,
+  );
+
+  return res.json(boardsByMemberId);
+});
+
 /**
  * @swagger
  * /users/{ID}/boards/created:
@@ -97,14 +105,6 @@ router.delete('/:boardId', async (req, res) => {
  *      5XX:
  *        description: Unexpected error.
  */
-
-router.get('/', async (req, res) => {
-  const boardsByMemberId = await boardsController.getBoardsByMemberId(
-    req.params.userId,
-  );
-
-  return res.json(boardsByMemberId);
-});
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
