@@ -1,0 +1,18 @@
+ul {
+  margin: 0;
+}
+
+strong {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.dropzone {
+  width: 20%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px dashed #6d04b3;
+  background-color: #fff;
+  color: #000;
+}
