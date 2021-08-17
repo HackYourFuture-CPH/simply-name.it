@@ -8,15 +8,15 @@ import { useUser } from '../../firebase/UserContext';
 
 export default function Welcome() {
   const [redirect, setRedirect] = useState();
-  const { signIn, isAuthenticated } = useFirebase();
+  const { signIn } = useFirebase();
   const { user } = useUser();
 
   useEffect(() => {
     console.log('gets to here');
-    if (isAuthenticated) {
+    if (user) {
       setRedirect('/profile');
     }
-  }, [isAuthenticated]);
+  }, [user]);
 
   if (redirect) {
     return <Redirect to={redirect} />;
