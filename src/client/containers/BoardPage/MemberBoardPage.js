@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BoardPage.style.css';
+import PropTypes from 'prop-types';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import BoardImg from '../../assets/images/demo-boards-photos/Board1.jpg';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
@@ -12,22 +13,24 @@ import {
 } from '../DragAndSortAdapter/DragAndSortAdapter';
 import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 
-export default function OwnerBoardPage() {
+export default function MemberBoardPage({ boardInfo }) {
+  console.log(boardInfo);
   const [candidates, setCandidates] = useState(candidateListArr());
-  const deadlineDate = new Date('2021-09-12');
+  const deadlineDate = new Date(boardInfo.deadline);
+  // const deadlineDate = new Date('2021-09-12');
   const today = new Date();
 
   const onClick = () => {
     // console.log('you clicked!');
   };
-
+  console.log(boardInfo.title);
   return (
     <div className="Board-container">
       <div className="Header-component">
         <img src={BoardImg} alt="BoardImg" width="100%" />
       </div>
       <div className="title">
-        <PageTitle title="Baby name" />
+        <PageTitle title={boardInfo.title} />
         <GenericButton
           className="generic-button"
           buttonSize="small"
@@ -37,7 +40,7 @@ export default function OwnerBoardPage() {
           buttonLabel="Members"
         />
       </div>
-      {today > deadlineDate && (
+      {today > deadlineDate ? (
         <div>
           <div className="CandidateCard-component">
             <DragAndSortAdapter
@@ -48,9 +51,9 @@ export default function OwnerBoardPage() {
                 return (
                   <SortableItem key={candidate.id} id={candidate.id}>
                     <CardItemDecorator
-                      colorVariant="primary-color"
+                      colorVariant="secondary-color"
                       candidateName={candidate.name}
-                      displayDeleteIcon="visible"
+                      displayDeleteIcon="hidden"
                     />
                   </SortableItem>
                 );
@@ -68,35 +71,42 @@ export default function OwnerBoardPage() {
             />
           </div>
         </div>
+      ) : (
+        <div>
+          <div className="CandidateCard-component">
+            <DragAndSortAdapter
+              onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+              items={candidates}
+            >
+              {candidates.map((candidate) => {
+                return (
+                  <SortableItem key={candidate.id} id={candidate.id}>
+                    <CardItemDecorator
+                      colorVariant="primary-color"
+                      candidateName={candidate.name}
+                      displayDeleteIcon="hidden"
+                    />
+                  </SortableItem>
+                );
+              })}
+            </DragAndSortAdapter>
+          </div>
+          <div className="Result">
+            <GenericButton
+              className="Result-button"
+              buttonLabel="Result"
+              buttonSize="medium"
+              buttonType="primary"
+              buttonDisabled={true}
+              onClick={onClick}
+            />
+          </div>
+        </div>
       )}
-      <div className="CandidateCard-component">
-        <DragAndSortAdapter
-          onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
-          items={candidates}
-        >
-          {candidates.map((candidate) => {
-            return (
-              <SortableItem key={candidate.id} id={candidate.id}>
-                <CardItemDecorator
-                  colorVariant="primary-color"
-                  candidateName={candidate.name}
-                  displayDeleteIcon="hidden"
-                />
-              </SortableItem>
-            );
-          })}
-        </DragAndSortAdapter>
-      </div>
-      <div className="Result">
-        <GenericButton
-          className="Result-button"
-          buttonLabel="Result"
-          buttonSize="medium"
-          buttonType="primary"
-          buttonDisabled={true}
-          onClick={onClick}
-        />
-      </div>
     </div>
   );
 }
+
+MemberBoardPage.PropsTypes = {
+  boardInfo: PropTypes.object,
+};
