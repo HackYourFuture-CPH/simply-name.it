@@ -71,6 +71,39 @@ router.put('/:boardId', async (req, res) => {
 
 /**
  * @swagger
+ * /users/{userId}/boards/{boardId}:
+ *  delete:
+ *    tags:
+ *    - boards
+ *    summary: Delete a board
+ *    description:
+ *      Will delete a board with a given ID.
+ *    produces: application/json
+ *    parameters:
+ *      - in: path
+ *        name: userId
+ *        description: ID of the user.
+ *      - in: path
+ *        name: boardId
+ *        description: ID of the board to delete.
+ *
+ *    responses:
+ *      204:
+ *        description: Board deleted
+ *      5XX:
+ *        description: Unexpected error.
+ */
+
+router.delete('/:boardId', async (req, res) => {
+  await boardsController.deleteBoardsById(
+    req.params.userId,
+    req.params.boardId,
+  );
+  return res.status(204).send('Deletion successfull');
+});
+
+/**
+ * @swagger
  * /users/{ID}/boards:
  *  get:
  *    tags:
@@ -125,14 +158,6 @@ router.get('/', async (req, res) => {
  *      5XX:
  *        description: Unexpected error.
  */
-
-router.get('/', async (req, res) => {
-  const boardsByMemberId = await boardsController.getBoardsByMemberId(
-    req.params.userId,
-  );
-
-  return res.json(boardsByMemberId);
-});
 
 router.get('/created', async (req, res) => {
   const boardsByCreatorId = await boardsController.getBoardsByCreatorId(
