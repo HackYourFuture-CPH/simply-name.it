@@ -130,7 +130,7 @@ export default function OwnerBoardPage({ boardInfo }) {
             />
             <AddButton
               type="button"
-              disabled={true}
+              disabled={false}
               onClick={() => {
                 AddCandidate(
                   newCandidate,
