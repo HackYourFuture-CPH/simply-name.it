@@ -62,7 +62,7 @@ const getBoardsByCreatorId = async (id) => {
     .select('boards.id', 'boards.createdOn', 'boards.deadline', 'boards.banner')
     .where({
       creatorId: id,
-      'boards.isDeleted': false,
+      isDeleted: false,
     });
   if (boards.length === 0) {
     throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
