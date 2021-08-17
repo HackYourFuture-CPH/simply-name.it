@@ -34,11 +34,12 @@ const createStudent = (document) => {
   });
 };
 
-const getUsers = () => {
-  const studentDocument = { name: 'hehe' };
+const getUsers = async () => {
+  let i = Math.floor(Math.random() * 99);
+  const studentDocument = { name: `hehe${i}` };
   createStudent(studentDocument);
 
-  const result = client.search({
+  const result = await client.search({
     index: index,
     body: {
       query: {
@@ -50,9 +51,9 @@ const getUsers = () => {
 
   return result.body.hits.hits.map((hit) => ({ name: hit._source.name }));
 
-  return res.json(
-    result.body.hits.hits.map((hit) => ({ name: hit._source.name })),
-  );
+  // return res.json(
+  //   result.body.hits.hits.map((hit) => ({ name: hit._source.name })),
+  // );
   // return knex('users').select(
   //   'users.id',
   //   'users.fullname',
