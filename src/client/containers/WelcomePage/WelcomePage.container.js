@@ -12,7 +12,6 @@ export default function Welcome() {
   const { user } = useUser();
 
   useEffect(() => {
-    console.log('gets to here');
     if (user) {
       setRedirect('/profile');
     }
