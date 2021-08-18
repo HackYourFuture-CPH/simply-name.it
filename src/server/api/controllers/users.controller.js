@@ -65,6 +65,25 @@ const createESuser = async (document, id) => {
   });
 };
 
+const deleteESuser = async (id) => {
+  await client.deleteByQuery({
+    index,
+    body: {
+      query: {
+        match: { id: id }, // THIS IS WRONG
+      },
+    },
+  });
+};
+
+const deleteDBuser = async (id) => {
+  if (!Number.isInteger(Number(id))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+  deleteESuser(id);
+  return knex('users').where({ id: id }).del();
+};
+
 const moveUSersfromDBtoES = async () => {
   const DBusers = await knex('users').select(
     'users.id',
@@ -137,4 +156,5 @@ module.exports = {
   getUsersByKeyword,
   createDBuser,
   createESuser,
+  deleteDBuser,
 };

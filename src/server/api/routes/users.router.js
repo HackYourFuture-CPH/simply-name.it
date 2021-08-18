@@ -149,6 +149,33 @@ router.post('/', async (req, res) => {
   return res.status(201).send();
 });
 
+/**
+ * @swagger
+ * /users/{userId}:
+ *  delete:
+ *    tags:
+ *    - Users
+ *    summary: Delete a user
+ *    description:
+ *      Will delete the user with the given ID.
+ *    produces: application/json
+ *    parameters:
+ *      - in: path
+ *        name: userId
+ *        description: ID of the user.
+ *    responses:
+ *      204:
+ *        description: User deleted
+ *      5XX:
+ *        description: Unexpected error.
+ */
+
+router.delete('/:userId', async (req, res) => {
+  await usersController.deleteDBuser(req.params.userId);
+  console.log(req.params.userId);
+  return res.status(204).send('Deletion successfull');
+});
+
 // Application routes
 router.use('/:userId/boards', boardsRouter);
 
