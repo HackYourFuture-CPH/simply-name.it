@@ -17,9 +17,16 @@ export default function MemberBoardPage({ boardInfo }) {
   console.log(boardInfo);
   const [candidates, setCandidates] = useState(candidateListArr());
   const deadlineDate = new Date(boardInfo.deadline);
+  const [visibility, setVisibility] = useState(false);
   // const deadlineDate = new Date('2021-09-12');
   const today = new Date();
-
+  const closeDropdown = () => {
+    if (visibility === false) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+  };
   const onClick = () => {
     // console.log('you clicked!');
   };
@@ -27,7 +34,16 @@ export default function MemberBoardPage({ boardInfo }) {
   return (
     <div className="Board-container">
       <div className="Header-component">
-        <img src={BoardImg} alt="BoardImg" width="100%" />
+        <HeaderComponent>
+          <ArrowButton onClick={onClick} />
+          <Dropdown variant="dark" visible={visibility} onClick={closeDropdown}>
+            <ul>
+              <li>Option 1</li>
+              <li>Option 2</li>
+              <li>Option 3</li>
+            </ul>
+          </Dropdown>
+        </HeaderComponent>
       </div>
       <div className="title">
         <PageTitle title={boardInfo.title} />
