@@ -21,35 +21,47 @@ const { isInteger } = require('../lib/utils/validators');
 
 const createIndex = () => {};
 
-const createUser = async (document) => {
+const createDBuser = async (document) => {
   // Create user in DB
-
-  if (Object.keys(newUser).length === 0) {
+  let newUserID;
+  if (Object.keys(document).length === 0) {
     throw new InvalidRequestError(
       `key 'fullName, email, firebaseUId and value of type 'string' is required`,
     );
   }
-  if (typeof newUser.fullName !== 'string') {
+  if (typeof document.fullname !== 'string') {
     throw new IncorrectEntryError(`fullName should be string`);
   }
-  if (typeof newUser.email !== 'string') {
+  if (typeof document.email !== 'string') {
     throw new IncorrectEntryError(`email should be string`);
   }
-  if (typeof newUser.firebaseUId !== 'string') {
-    throw new IncorrectEntryError(`firebaseUId should be string`);
-  }
-  const createNewUser = await knex('users').insert({
-    fullName: newUser.fullName || 'ANONYMOUS',
-    email: newUser.email,
-    firebaseUId: newUser.firebaseUId || 'anonymous',
-  });
 
+  const createNewDBuser = await knex('users')
+    .insert(
+      {
+        fullName: document.fullname,
+        email: document.email,
+        firebaseUId: 'whatever',
+      },
+      'id',
+    )
+    .then(function (result) {
+      newUserID = result;
+    });
+
+  createESuser(document, newUserID);
+};
+
+const createESuser = async (document, id) => {
   // Create user in ES
-
+  const newESuser = {
+    name: document.fullname,
+    email: document.email,
+  };
   await client.index({
-    // id: dbResult.id, // TODO: set this to the ID from the DB
+    id, // id here?
     index: index,
-    body: document,
+    body: newESuser,
   });
 };
 
@@ -61,13 +73,13 @@ const moveUSersfromDBtoES = async () => {
     'users.createdOn',
     'users.firebaseUId',
   );
-
   DBusers.map((user) => {
     const DBuserDocument = {
-      name: user.fullname,
+      id: user.id,
+      fullname: user.fullname,
       email: user.email,
     };
-    createUser(DBuserDocument);
+    createESuser(DBuserDocument, user.id);
   });
 };
 
@@ -83,16 +95,7 @@ const getUsers = async () => {
       size: 50,
     },
   });
-
   return result.body.hits.hits.map((hit) => hit._source);
-
-  // return knex('users').select(
-  //   'users.id',
-  //   'users.fullname',
-  //   'users.email',
-  //   'users.createdOn',
-  //   'users.firebaseUId',
-  // );
 };
 
 const getUserById = async (id) => {
@@ -115,11 +118,6 @@ const getUsersByKeyword = async (searchWord) => {
     throw new IncorrectEntryError('Use a keyword!', 400);
   }
 
-  // const users = await knex('users').where(
-  //   'fullname',
-  //   'like',
-  //   `%${searchWord}%`,
-  // );
   const users = await client.search({
     index: index,
     body: {
@@ -137,4 +135,6 @@ module.exports = {
   getUsers,
   getUserById,
   getUsersByKeyword,
+  createDBuser,
+  createESuser,
 };

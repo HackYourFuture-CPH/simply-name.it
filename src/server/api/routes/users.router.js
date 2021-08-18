@@ -109,6 +109,46 @@ router.get('/:id', async (req, res) => {
   return res.json(userById);
 });
 
+/**
+ * @swagger
+ * /users:
+ *  post:
+ *    tags:
+ *    - Users
+ *    summary: Create a user
+ *    description:
+ *      Will create a new user.
+ *    produces: application/json
+ *    parameters:
+ *      - in: body
+ *        name: user
+ *        description: The user to create.
+ *        schema:
+ *          type: object
+ *          required:
+ *            - fullname
+ *            - email
+ *          properties:
+ *            fullname:
+ *              type: string
+ *            email:
+ *              type: string
+ *
+ *    responses:
+ *      201:
+ *        description: User created
+ *      5XX:
+ *        description: Unexpected error.
+ *      400:
+ *        description: Bad request.
+ *      404:
+ *        description: Not found.
+ */
+router.post('/', async (req, res) => {
+  await usersController.createDBuser(req.body);
+  return res.status(201).send();
+});
+
 // Application routes
 router.use('/:userId/boards', boardsRouter);
 
