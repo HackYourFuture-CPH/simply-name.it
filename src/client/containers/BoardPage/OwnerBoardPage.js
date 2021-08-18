@@ -25,12 +25,31 @@ export default function OwnerBoardPage({ boardInfo }) {
   const [addCandidateSuccess, setAddCandidateSuccess] = useState(false);
   const [candidates, setCandidates] = useState(candidateListArr());
   const [visibility, setVisibility] = useState(false);
+  const [saveState, setSaveState] = useState(false);
   // const deadlineDate = new Date(boardInfo.deadline);
   const deadlineDate = new Date('2021-09-12');
   const today = new Date();
   const userId = 2;
   const onClick = () => {
     // console.log('clicked');
+  };
+  const saveCandidate = (e) => {
+    setSaveState(true);
+    e.preventDefault();
+    AddCandidate(
+      newCandidate,
+      userId,
+      newCandidate.boardId,
+      setCandidates,
+      candidates,
+      setAddCandidateError,
+      setAddCandidateSuccess,
+    );
+    setNewCandidateName('');
+    const timerId = setTimeout(async () => {
+      setSaveState(false);
+    }, 2000);
+    return () => clearTimeout(timerId);
   };
   const closeDropdown = () => {
     if (visibility === false) {
@@ -87,33 +106,20 @@ export default function OwnerBoardPage({ boardInfo }) {
               inputValue={newCandidateName}
               onChange={setNewCandidateName}
             />
-            <AddButton
-              type="button"
-              disabled={true}
-              onClick={() => {
-                AddCandidate(
-                  newCandidate,
-                  userId,
-                  newCandidate.boardId,
-                  setCandidates,
-                  candidates,
-                  setAddCandidateError,
-                  setAddCandidateSuccess,
-                );
-                setNewCandidateName('');
-              }}
-            />
+            <AddButton type="button" disabled={true} onClick={saveCandidate} />
           </div>
-          <div>
-            {addCandidateError !== null && (
-              <div className="errorMessageContainer">{addCandidateError}</div>
-            )}
-            {addCandidateError === null && addCandidateSuccess && (
-              <div className="successMessageContainer">
-                The new candidate was stored successfully!
-              </div>
-            )}
-          </div>
+          {saveState && (
+            <div>
+              {addCandidateError !== null && (
+                <div className="errorMessageContainer">{addCandidateError}</div>
+              )}
+              {addCandidateError === null && addCandidateSuccess && (
+                <div className="successMessageContainer">
+                  The new candidate was stored successfully!
+                </div>
+              )}
+            </div>
+          )}
           <div className="CandidateCard-component">
             <DragAndSortAdapter
               onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
@@ -154,33 +160,20 @@ export default function OwnerBoardPage({ boardInfo }) {
               inputValue={newCandidateName}
               onChange={setNewCandidateName}
             />
-            <AddButton
-              type="button"
-              disabled={false}
-              onClick={() => {
-                AddCandidate(
-                  newCandidate,
-                  userId,
-                  newCandidate.boardId,
-                  setCandidates,
-                  candidates,
-                  setAddCandidateError,
-                  setAddCandidateSuccess,
-                );
-                setNewCandidateName('');
-              }}
-            />
+            <AddButton type="button" disabled={false} onClick={saveCandidate} />
           </div>
-          <div>
-            {addCandidateError !== null && (
-              <div className="errorMessageContainer">{addCandidateError}</div>
-            )}
-            {addCandidateError === null && addCandidateSuccess && (
-              <div className="successMessageContainer">
-                The new candidate was stored successfully!
-              </div>
-            )}
-          </div>
+          {saveState && (
+            <div>
+              {addCandidateError !== null && (
+                <div className="errorMessageContainer">{addCandidateError}</div>
+              )}
+              {addCandidateError === null && addCandidateSuccess && (
+                <div className="successMessageContainer">
+                  The new candidate was stored successfully!
+                </div>
+              )}
+            </div>
+          )}
           <div className="CandidateCard-component">
             <DragAndSortAdapter
               onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
