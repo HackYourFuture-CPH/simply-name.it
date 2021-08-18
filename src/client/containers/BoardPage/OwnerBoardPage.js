@@ -29,7 +29,9 @@ export default function OwnerBoardPage({ boardInfo }) {
   const deadlineDate = new Date('2021-09-12');
   const today = new Date();
   const userId = 2;
-  const onClick = () => {};
+  const onClick = () => {
+    // console.log('clicked');
+  };
   const closeDropdown = () => {
     if (visibility === false) {
       setVisibility(true);
@@ -47,7 +49,7 @@ export default function OwnerBoardPage({ boardInfo }) {
     <div className="Board-container">
       <div className="Header-component">
         <HeaderComponent>
-          <Link to={`/profile`}>
+          <Link to="/profile">
             <ArrowButton className="arrow-button-white" onClick={onClick} />
           </Link>
           <Dropdown

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './BoardPage.style.css';
 import PropTypes from 'prop-types';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
-import BoardImg from '../../assets/images/demo-boards-photos/Board1.jpg';
+import HeaderComponent from '../../components/HeaderComponent/Header.component.js';
+import Dropdown from '../../components/Dropdown/Dropdown.component';
+import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import { candidateListArr } from '../../components/CandidateCard/CandidateListArray';
 import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
@@ -14,7 +16,6 @@ import {
 import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 
 export default function MemberBoardPage({ boardInfo }) {
-  console.log(boardInfo);
   const [candidates, setCandidates] = useState(candidateListArr());
   const deadlineDate = new Date(boardInfo.deadline);
   const [visibility, setVisibility] = useState(false);
@@ -30,7 +31,7 @@ export default function MemberBoardPage({ boardInfo }) {
   const onClick = () => {
     // console.log('you clicked!');
   };
-  console.log(boardInfo.title);
+
   return (
     <div className="Board-container">
       <div className="Header-component">
