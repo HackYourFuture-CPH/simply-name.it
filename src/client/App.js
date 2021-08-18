@@ -38,9 +38,6 @@ function App() {
         <AuthenticatedRoute exact path="/profile">
           <ProfilePage />
         </AuthenticatedRoute>
-        {/* <AuthenticatedRoute exact path="/BoardPage">
-          <BoardPage />
-        </AuthenticatedRoute> */}
       </Switch>
     </Router>
   );
