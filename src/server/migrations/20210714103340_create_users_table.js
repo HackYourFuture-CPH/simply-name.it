@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.string('email').unique().notNullable().index();
     table.datetime('createdOn').defaultTo(knex.fn.now()).notNullable();
     table.string('firebaseUId').notNullable();
+    table.string('photoUrl');
   });
 };
 
