@@ -7,6 +7,7 @@ const UserContext = createContext();
 export function UserProvider({ children }) {
   const { isAuthenticated, getUserToken, authUser } = useFirebase();
   const [user, setUser] = useState();
+  const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -32,15 +33,17 @@ export function UserProvider({ children }) {
     }
 
     if (isAuthenticated) {
-      console.log('authenticated');
-      addUser();
+      (async () => {
+        await addUser();
+        setIsFetching(false);
+      })();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   return (
-    <UserContext.Provider value={{ user, error }}>
+    <UserContext.Provider value={{ user, error, isFetching }}>
       {children}
     </UserContext.Provider>
   );
