@@ -35,11 +35,21 @@ const createCandidate = async (userId, boardId, newCandidate) => {
   if (typeof newCandidate.name !== 'string') {
     throw new IncorrectEntryError(`Candidate name should be string`);
   }
-  const createNewCandidate = await knex('candidates').insert({
-    boardId,
-    name: newCandidate.name,
-    isBlocked: false,
-  });
+  await checkUserRole({ userId, boardId });
+  const createNewCandidate = await knex('candidates')
+    .insert({
+      boardId,
+      name: newCandidate.name,
+      isBlocked: false,
+    })
+    .then(function (response) {
+      return knex('ballots').insert({
+        boardId,
+        userId,
+        candidateId: response[0],
+        rank: -1,
+      });
+    });
   return createNewCandidate;
 };
 
