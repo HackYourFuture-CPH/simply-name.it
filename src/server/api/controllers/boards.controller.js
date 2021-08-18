@@ -59,7 +59,13 @@ const getBoardsByCreatorId = async (id) => {
 
   const boards = await knex('users')
     .join('boards', 'users.id', '=', 'boards.creatorId')
-    .select('boards.id', 'boards.createdOn', 'boards.deadline', 'boards.banner')
+    .select(
+      'boards.id',
+      'boards.title',
+      'boards.createdOn',
+      'boards.deadline',
+      'boards.banner',
+    )
     .where({
       creatorId: id,
       isDeleted: false,
