@@ -28,7 +28,14 @@ export function FirebaseProvider({ children, initialAuth }) {
       if (user) {
         setIsAuthenticated(true);
         setIsLoading(false);
-        setAuthUser(user);
+        setAuthUser(() => {
+          return {
+            fullName: user.displayName,
+            email: user.email,
+            firebaseUId: user.uid,
+            profilePicture: user.photoURL,
+          };
+        });
       } else {
         setIsAuthenticated(false);
         setIsLoading(false);

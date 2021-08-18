@@ -12,7 +12,6 @@ export function UserProvider({ children }) {
   useEffect(() => {
     async function addUser() {
       const token = await getUserToken();
-      console.log(token, 'context');
       const response = await fetch('/api/users', {
         method: 'POST',
         mode: 'cors',
