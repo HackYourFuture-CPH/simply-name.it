@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.sign-in-container {
+  height: 100vh;
+  max-width: 414px;
+  background: url('../../assets/images/pages-background/Login.svg') no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-slogan-container {
+  max-width: 18rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8em;
+  text-transform: capitalize;
+  line-height: 4.8rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin-left: 1.2em;
+  margin-top: 0.5em;
+}
+
+.sign-in-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 40%;
+  row-gap: 1em;
+  align-self: center;
+}

@@ -1,4 +1,5 @@
 const knex = require('../../config/db');
+
 const {
   IncorrectEntryError,
   InvalidIdError,
@@ -50,6 +51,30 @@ const editBoard = async (userId, boardId, updatedBoard) => {
     deadline: updatedBoard.deadline,
     banner: updatedBoard.banner,
   });
+};
+
+const checkUserRole = async ({ userId, boardId }) => {
+  const ifuserIsCreator = await knex('boards')
+    .where('boards.creatorId', userId)
+    .andWhere('boards.id', boardId);
+
+  if (!ifuserIsCreator) {
+    throw new IncorrectEntryError(`Only creator can take this action `);
+  }
+};
+
+const deleteCandidate = async ({ candidateId, userId, boardId }) => {
+  await checkUserRole({ userId, boardId });
+  await knex('candidates')
+    .where({ id: candidateId })
+    .update({ isBlocked: true });
+};
+
+const deleteBoardsById = async (userId, boardId) => {
+  if (!Number.isInteger(Number(boardId)) || !Number.isInteger(Number(userId))) {
+    throw new InvalidIdError('Id should be an integer');
+  }
+  return knex('boards').where({ creatorId: userId, id: boardId }).del();
 };
 
 const getBoardsByCreatorId = async (id) => {
@@ -122,7 +147,9 @@ const getBoardById = async (userId, boardId) => {
 
 module.exports = {
   getBoardsByMemberId,
+  deleteBoardsById,
   getBoardsByCreatorId,
+  deleteCandidate,
   editBoard,
   createBoard,
   getBoardById,
