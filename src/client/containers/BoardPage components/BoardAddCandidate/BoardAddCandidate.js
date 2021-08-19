@@ -12,7 +12,6 @@ export default function BoardAddCandidate() {
   const [saveState, setSaveState] = useState(false);
   const [candidates, setCandidates] = useState(candidateListArr());
 
-  // const { userId, boardId } = useParams();
   const userId = 2;
   const newCandidate = {
     boardId: 1,
