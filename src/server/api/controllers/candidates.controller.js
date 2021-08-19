@@ -45,7 +45,7 @@ const createCandidate = async (userId, boardId, newCandidate) => {
 
 const getCandidates = async (userId, boardId) => {
   if (!Number.isInteger(Number(userId)) || !Number.isInteger(Number(boardId))) {
-    throw new IncorrectEntryError('Id should be an integer');
+    throw new InvalidIdError('Id should be an integer');
   }
   const candidates = await knex('candidates')
     .join('ballots', 'ballots.candidateId', '=', 'candidates.id')
