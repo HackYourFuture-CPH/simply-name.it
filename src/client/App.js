@@ -7,8 +7,8 @@ import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Board from './containers/BoardPage/BoardPage.container';
-import Welcome from './containers/WelcomePage/WelcomePage.container';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
+import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 
 function App() {
