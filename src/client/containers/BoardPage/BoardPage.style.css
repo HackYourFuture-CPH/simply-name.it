@@ -11,14 +11,14 @@ html {
   position: relative;
   height: 739px;
   max-width: 414px;
-  margin-left: 100px;
 }
 
 .Header-component {
   max-height: 150px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 220px;
+  margin-bottom: 160px;
+  margin-top: -80px;
 }
 
 .option-list li {
@@ -31,7 +31,16 @@ html {
 }
 
 .arrow-button-white {
-  margin-top: -10px;
+  margin-top: 50px;
+}
+
+.dropdown-button {
+  margin-top: 60px;
+}
+
+.options-container .dark {
+  margin-top: 61px;
+  margin-right: -20px;
 }
 
 .title,
