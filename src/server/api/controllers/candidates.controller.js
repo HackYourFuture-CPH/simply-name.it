@@ -1,4 +1,5 @@
 const knex = require('../../config/db');
+const getMembers = require('./members.controller.js');
 
 const {
   InvalidIdError,
@@ -36,20 +37,24 @@ const createCandidate = async (userId, boardId, newCandidate) => {
     throw new IncorrectEntryError(`Candidate name should be string`);
   }
   await checkUserRole({ userId, boardId });
-  const createNewCandidate = await knex('candidates')
-    .insert({
-      boardId,
-      name: newCandidate.name,
-      isBlocked: false,
-    })
-    .then(function (response) {
-      return knex('ballots').insert({
+  const createNewCandidate = await knex('candidates').returning('id').insert({
+    boardId,
+    name: newCandidate.name,
+    isBlocked: false,
+  });
+  const getAllMembersOfBoard = await getMembers.getAllMembers(userId, boardId);
+  const allMembersId = getAllMembersOfBoard.map((member) => member.userId);
+  allMembersId.forEach((id) => {
+    const newBallot = async () => {
+      await knex('ballots').insert({
         boardId,
-        userId,
-        candidateId: response[0],
+        userId: id,
+        candidateId: createNewCandidate[0],
         rank: -1,
       });
-    });
+    };
+    newBallot();
+  });
   return createNewCandidate;
 };
 
