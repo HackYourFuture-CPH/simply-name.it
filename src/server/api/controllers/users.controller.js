@@ -19,7 +19,10 @@ const {
 
 const { isInteger } = require('../lib/utils/validators');
 
-const createIndex = () => {};
+const createIndex = () => {
+  //does the index exist? move
+  //if not, create and move
+};
 
 const createDBuser = async (document) => {
   // Create user in DB
@@ -36,43 +39,39 @@ const createDBuser = async (document) => {
     throw new IncorrectEntryError(`email should be string`);
   }
 
-  const createNewDBuser = await knex('users')
-    .insert(
-      {
-        fullName: document.fullname,
-        email: document.email,
-        firebaseUId: 'whatever',
-      },
-      'id',
-    )
-    .then(function (result) {
-      newUserID = result;
-    });
+  const createNewDBuser = await knex('users').insert(
+    // create user
+    {
+      fullName: document.fullname,
+      email: document.email,
+      firebaseUId: 'whatever',
+    },
+    'id',
+  );
+  // .then(function (result) {
+  //   newUserID = result;
+  // });
 
-  createESuser(document, newUserID);
+  await createESuser(document, createNewDBuser);
 };
 
 const createESuser = async (document, id) => {
   // Create user in ES
   const newESuser = {
-    name: document.fullname,
+    name: document.fullname, // fullname
     email: document.email,
   };
   await client.index({
-    id, // id here?
+    id,
     index: index,
     body: newESuser,
   });
 };
 
 const deleteESuser = async (id) => {
-  await client.deleteByQuery({
+  await client.delete({
     index,
-    body: {
-      query: {
-        match: { id: id }, // THIS IS WRONG
-      },
-    },
+    id,
   });
 };
 
@@ -80,8 +79,8 @@ const deleteDBuser = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer');
   }
-  deleteESuser(id);
-  return knex('users').where({ id: id }).del();
+  await knex('users').where({ id: id }).del();
+  await deleteESuser(id);
 };
 
 const moveUSersfromDBtoES = async () => {
@@ -112,9 +111,10 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
+      sort: ['name.keyword'],
     },
   });
-  return result.body.hits.hits.map((hit) => hit._source);
+  return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 };
 
 const getUserById = async (id) => {
@@ -137,6 +137,7 @@ const getUsersByKeyword = async (searchWord) => {
     throw new IncorrectEntryError('Use a keyword!', 400);
   }
 
+  // should I connect
   const users = await client.search({
     index: index,
     body: {
@@ -147,7 +148,7 @@ const getUsersByKeyword = async (searchWord) => {
     },
   });
 
-  return users.body.hits.hits.map((hit) => hit._source);
+  return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 };
 
 module.exports = {

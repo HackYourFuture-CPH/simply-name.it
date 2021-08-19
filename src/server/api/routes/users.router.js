@@ -26,7 +26,6 @@ const boardsRouter = require('./boards.router');
 
 router.get('/', async (req, res) => {
   const users = await usersController.getUsers();
-
   return res.json(users);
 });
 
@@ -172,7 +171,6 @@ router.post('/', async (req, res) => {
 
 router.delete('/:userId', async (req, res) => {
   await usersController.deleteDBuser(req.params.userId);
-  console.log(req.params.userId);
   return res.status(204).send('Deletion successfull');
 });
 
