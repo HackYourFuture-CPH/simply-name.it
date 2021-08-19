@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './BoardPage.style.css';
 import OwnerBoardPage from './OwnerBoardPage';
 import MemberBoardPage from './MemberBoardPage';
+import useUser from '../../firebase/UserContext';
 
+const users = useUser();
+console.log(users);
 export default function Board() {
   const [boardInfo, setBoardInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
