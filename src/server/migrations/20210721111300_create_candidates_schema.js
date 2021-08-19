@@ -6,7 +6,8 @@ exports.up = function (knex) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('boards');
+      .inTable('boards')
+      .onDelete('CASCADE');
     table.string('name').notNullable();
     table.boolean('isBlocked').notNullable().defaultTo(false);
   });

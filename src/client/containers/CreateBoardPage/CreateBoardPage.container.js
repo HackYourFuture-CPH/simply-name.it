@@ -5,26 +5,12 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import InputComponent from '../../components/InputComponent/InputComponent';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
-export function minMaxLength(text, minLength, maxLength) {
-  let result = !text || text.length < minLength;
-  if (maxLength) result = result || text.length < minLength;
-  return result;
-}
-
 export default function CreateBoard() {
   const [inputValue, setInputValue] = useState('');
-  const createButtonOnClick = () => {
-    if (minMaxLength(value, 3)) {
-      currentFormErrors[name] = `First Name should have minimum 3 characters`;
-    } else {
-      delete currentFormErrors[name];
-    }
-  };
 
   return (
     <div className="result-container">
-      {/* <img className="svg-image" src={CreateBoardImage} alt="a svg file" /> */}
-      <ArrowButton />
+      <ArrowButton onClick={() => console.log('clicked')} color="black" />
       <PageTitle title="New board" variant="black-large" />
       <label>Name</label>
       <div className="input-name-container">
@@ -68,7 +54,7 @@ export default function CreateBoard() {
         buttonSize="medium"
         buttonType="primary"
         buttonDisabled={false}
-        onClick={createButtonOnClick}
+        onClick={() => console.log('clicked')}
       />
     </div>
   );
