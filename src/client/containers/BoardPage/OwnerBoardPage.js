@@ -72,15 +72,17 @@ export default function OwnerBoardPage({ boardInfo }) {
             <ArrowButton className="arrow-button-white" onClick={onClick} />
           </Link>
           <Dropdown
-            className="dropdown-button"
+            className="dropdown-button options-container dark"
             variant="dark"
             visible={visibility}
             onClick={closeDropdown}
           >
-            <ul className="option-list">
-              <li>Edit Board</li>
-              <li>Delete Board</li>
-            </ul>
+            <div className="options-container dark">
+              <ul className="option-list">
+                <li>Edit Board</li>
+                <li>Delete Board</li>
+              </ul>
+            </div>
           </Dropdown>
         </HeaderComponent>
       </div>
