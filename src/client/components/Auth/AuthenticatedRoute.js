@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useAuthentication } from '../../hooks/useAuthentication';
 import { Redirect, Route } from 'react-router-dom';
 import Loader from '../Loader';
 
-function AuthenticatedRoute({ children, ...rest }) {
-  const { isAuthenticated, isLoading } = useAuthentication();
+function AuthenticatedRoute({ children, isAuthenticated, isLoading }) {
   if (isLoading) return <Loader />;
   return (
     <div>
       <Route
-        // (we need to spread)
-        {...rest} // eslint-disable-line
         render={({ location }) =>
           isAuthenticated ? (
             children
@@ -33,4 +29,6 @@ export default AuthenticatedRoute;
 
 AuthenticatedRoute.propTypes = {
   children: PropTypes.element.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
