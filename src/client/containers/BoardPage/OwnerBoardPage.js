@@ -18,6 +18,7 @@ import HeaderComponent from '../../components/HeaderComponent/Header.component.j
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
+import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModalconatiner';
 
 export default function OwnerBoardPage({ boardInfo }) {
   const [newCandidateName, setNewCandidateName] = useState('');
@@ -25,6 +26,7 @@ export default function OwnerBoardPage({ boardInfo }) {
   const [addCandidateSuccess, setAddCandidateSuccess] = useState(false);
   const [candidates, setCandidates] = useState(candidateListArr());
   const [visibility, setVisibility] = useState(false);
+  const [modalVisibility, setModalVisibility] = useState(false);
   // const deadlineDate = new Date(boardInfo.deadline);
   const deadlineDate = new Date('2021-09-12');
   const today = new Date();
@@ -38,6 +40,11 @@ export default function OwnerBoardPage({ boardInfo }) {
     } else {
       setVisibility(false);
     }
+  };
+
+  const deleteBoard = () => {
+    setModalVisibility(true);
+    console.log('clicked');
   };
   const newCandidate = {
     boardId: 1,
@@ -60,11 +67,19 @@ export default function OwnerBoardPage({ boardInfo }) {
           >
             <ul className="option-list">
               <li>Edit Board</li>
-              <li>Delete Board</li>
+              <li onClick={() => deleteBoard()}>Delete Board</li>
             </ul>
           </Dropdown>
         </HeaderComponent>
       </div>
+      {modalVisibility && (
+        <DeleteBoardModal
+          boardInfo={boardInfo}
+          modalVisibility={modalVisibility}
+          setModalVisibility={setModalVisibility}
+        />
+      )}
+
       <div className="title">
         <PageTitle title={boardInfo.title} />
         <GenericButton
@@ -104,6 +119,7 @@ export default function OwnerBoardPage({ boardInfo }) {
               }}
             />
           </div>
+
           <div>
             {addCandidateError !== null && (
               <div className="errorMessageContainer">{addCandidateError}</div>

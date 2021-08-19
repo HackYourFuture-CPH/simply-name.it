@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.close-btn-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.2em;
+  padding-top: 1.5em;
+}
+
+.delete-board-container {
+  border: 1px solid grey;
+  width: 414px;
+  height: 328px;
+  background: #fff;
+  border-radius: 30px 30px 0 0;
+}
+
+.circle-exclamation {
+  border: 3px solid #5d0096;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid green;
+}
+
+.circle-exclamation p {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 900;
+  color: #5d0096;
+  display: block;
+}
