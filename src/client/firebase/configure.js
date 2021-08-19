@@ -17,29 +17,20 @@ const configuration = {
   storageBucket: config.FIREBASE_APP_STORAGE_BUCKET,
 };
 
-export function initFirebase() {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(configuration);
-  }
+firebase.initializeApp(configuration);
 
-  const storage = firebase.storage();
-  const auth = firebase.auth();
-  const db = firebase.database();
-  const firestore = firebase.firestore();
-  /**
-   * Connect to firestore emulator if running locally
-   */
-  if (window.location.hostname === 'localhost') {
-    firestore.settings({
-      host: 'localhost:8080',
-      ssl: false,
-    });
-  }
-
-  return {
-    auth,
-    db,
-    firestore,
-    storage,
-  };
+const storage = firebase.storage();
+const auth = firebase.auth();
+const db = firebase.database();
+const firestore = firebase.firestore();
+/**
+ * Connect to firestore emulator if running locally
+ */
+if (window.location.hostname === 'localhost') {
+  firestore.settings({
+    host: 'localhost:8080',
+    ssl: false,
+  });
 }
+
+export { auth, db, firestore, storage };
