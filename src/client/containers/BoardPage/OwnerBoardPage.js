@@ -18,6 +18,8 @@ import HeaderComponent from '../../components/HeaderComponent/Header.component.j
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
+import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
+import members from '../../components/ModalViewComponent/membersData.json';
 
 export default function OwnerBoardPage({ boardInfo }) {
   const [newCandidateName, setNewCandidateName] = useState('');
@@ -26,6 +28,8 @@ export default function OwnerBoardPage({ boardInfo }) {
   const [candidates, setCandidates] = useState(candidateListArr());
   const [visibility, setVisibility] = useState(false);
   const [saveState, setSaveState] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(false);
   // const deadlineDate = new Date(boardInfo.deadline);
   const deadlineDate = new Date('2021-09-12');
   const today = new Date();
@@ -65,145 +69,174 @@ export default function OwnerBoardPage({ boardInfo }) {
   };
 
   return (
-    <div className="Board-container">
-      <div className="Header-component">
-        <HeaderComponent>
-          <Link to="/profile">
-            <ArrowButton className="arrow-button-white" onClick={onClick} />
-          </Link>
-          <Dropdown
-            className="dropdown-button"
-            variant="dark"
-            visible={visibility}
-            onClick={closeDropdown}
-          >
-            <ul className="option-list">
-              <li>Edit Board</li>
-              <li>Delete Board</li>
-            </ul>
-          </Dropdown>
-        </HeaderComponent>
-      </div>
-      <div className="title">
-        <PageTitle title={boardInfo.title} />
-        <GenericButton
-          className="generic-button"
-          buttonSize="small"
-          buttonType="secondary"
-          buttonDisabled={false}
-          onClick={onClick}
-          buttonLabel="Members"
+    <div className="ModalView">
+      {showModal && (
+        <div
+          onClick={closeModal}
+          onKeyDown={closeModal}
+          className="back-drop"
+          aria-hidden="true"
         />
-      </div>
-      {today > deadlineDate ? (
-        <div>
-          <div className="Input-component">
-            <Input
-              type="text"
-              placeholder="Add candidate..."
-              theme="light"
-              borderShape="curved"
-              inputValue={newCandidateName}
-              onChange={setNewCandidateName}
-            />
-            <AddButton type="button" disabled={true} onClick={saveCandidate} />
-          </div>
-          {saveState && (
-            <div>
-              {addCandidateError !== null && (
-                <div className="errorMessageContainer">{addCandidateError}</div>
-              )}
-              {addCandidateError === null && addCandidateSuccess && (
-                <div className="successMessageContainer">
-                  The new candidate was stored successfully!
-                </div>
-              )}
-            </div>
-          )}
-          <div className="CandidateCard-component">
-            <DragAndSortAdapter
-              onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
-              items={candidates}
-            >
-              {candidates.map((candidate) => {
-                return (
-                  <SortableItem key={candidate.id} id={candidate.id}>
-                    <CardItemDecorator
-                      colorVariant="secondary-color"
-                      candidateName={candidate.name}
-                      displayDeleteIcon="visible"
-                    />
-                  </SortableItem>
-                );
-              })}
-            </DragAndSortAdapter>
-          </div>
-          <div className="Result">
-            <GenericButton
-              className="Result-button"
-              buttonLabel="Result"
-              buttonSize="medium"
-              buttonType="primary"
-              buttonDisabled={false}
-              onClick={onClick}
-            />
-          </div>
-        </div>
-      ) : (
-        <div>
-          <div className="Input-component">
-            <Input
-              type="text"
-              placeholder="Add candidate..."
-              theme="dark"
-              borderShape="curved"
-              inputValue={newCandidateName}
-              onChange={setNewCandidateName}
-            />
-            <AddButton type="button" disabled={false} onClick={saveCandidate} />
-          </div>
-          {saveState && (
-            <div>
-              {addCandidateError !== null && (
-                <div className="errorMessageContainer">{addCandidateError}</div>
-              )}
-              {addCandidateError === null && addCandidateSuccess && (
-                <div className="successMessageContainer">
-                  The new candidate was stored successfully!
-                </div>
-              )}
-            </div>
-          )}
-          <div className="CandidateCard-component">
-            <DragAndSortAdapter
-              onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
-              items={candidates}
-            >
-              {candidates.map((candidate) => {
-                return (
-                  <SortableItem key={candidate.id} id={candidate.id}>
-                    <CardItemDecorator
-                      colorVariant="primary-color"
-                      candidateName={candidate.name}
-                      displayDeleteIcon="visible"
-                    />
-                  </SortableItem>
-                );
-              })}
-            </DragAndSortAdapter>
-          </div>
-          <div className="Result">
-            <GenericButton
-              className="Result-button"
-              buttonLabel="Result"
-              buttonSize="medium"
-              buttonType="primary"
-              buttonDisabled={true}
-              onClick={onClick}
-            />
-          </div>
-        </div>
       )}
+      <div className="Board-container">
+        <div className="Header-component">
+          <HeaderComponent>
+            <Link to="/profile">
+              <ArrowButton className="arrow-button-white" onClick={onClick} />
+            </Link>
+            <Dropdown
+              className="dropdown-button"
+              variant="dark"
+              visible={visibility}
+              onClick={closeDropdown}
+            >
+              <ul className="option-list">
+                <li>Edit Board</li>
+                <li>Delete Board</li>
+              </ul>
+            </Dropdown>
+          </HeaderComponent>
+        </div>
+        <MembersModal show={showModal} close={closeModal} members={members} />
+        <div className="title">
+          <PageTitle title={boardInfo.title} />
+          <GenericButton
+            className="generic-button"
+            buttonSize="small"
+            buttonType="secondary"
+            buttonDisabled={false}
+            onClick={() => setShowModal(true)}
+            buttonLabel="Members"
+          />
+        </div>
+        {today > deadlineDate ? (
+          <div>
+            <div className="Input-component">
+              <Input
+                type="text"
+                placeholder="Add candidate..."
+                theme="light"
+                borderShape="curved"
+                inputValue={newCandidateName}
+                onChange={setNewCandidateName}
+              />
+              <AddButton
+                type="button"
+                disabled={true}
+                onClick={saveCandidate}
+              />
+            </div>
+            {saveState && (
+              <div>
+                {addCandidateError !== null && (
+                  <div className="errorMessageContainer">
+                    {addCandidateError}
+                  </div>
+                )}
+                {addCandidateError === null && addCandidateSuccess && (
+                  <div className="successMessageContainer">
+                    The new candidate was stored successfully!
+                  </div>
+                )}
+              </div>
+            )}
+            <div className="CandidateCard-component">
+              <DragAndSortAdapter
+                onDragEndHandler={onDragEnd(
+                  setCandidates,
+                  candidateCardSorting,
+                )}
+                items={candidates}
+              >
+                {candidates.map((candidate) => {
+                  return (
+                    <SortableItem key={candidate.id} id={candidate.id}>
+                      <CardItemDecorator
+                        colorVariant="secondary-color"
+                        candidateName={candidate.name}
+                        displayDeleteIcon="visible"
+                      />
+                    </SortableItem>
+                  );
+                })}
+              </DragAndSortAdapter>
+            </div>
+            <div className="Result">
+              <GenericButton
+                className="Result-button"
+                buttonLabel="Result"
+                buttonSize="medium"
+                buttonType="primary"
+                buttonDisabled={false}
+                onClick={onClick}
+              />
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="Input-component">
+              <Input
+                type="text"
+                placeholder="Add candidate..."
+                theme="dark"
+                borderShape="curved"
+                inputValue={newCandidateName}
+                onChange={setNewCandidateName}
+              />
+              <AddButton
+                type="button"
+                disabled={false}
+                onClick={saveCandidate}
+              />
+            </div>
+            {saveState && (
+              <div>
+                {addCandidateError !== null && (
+                  <div className="errorMessageContainer">
+                    {addCandidateError}
+                  </div>
+                )}
+                {addCandidateError === null && addCandidateSuccess && (
+                  <div className="successMessageContainer">
+                    The new candidate was stored successfully!
+                  </div>
+                )}
+              </div>
+            )}
+            <div className="CandidateCard-component">
+              <DragAndSortAdapter
+                onDragEndHandler={onDragEnd(
+                  setCandidates,
+                  candidateCardSorting,
+                )}
+                items={candidates}
+              >
+                {candidates.map((candidate) => {
+                  return (
+                    <SortableItem key={candidate.id} id={candidate.id}>
+                      <CardItemDecorator
+                        colorVariant="primary-color"
+                        candidateName={candidate.name}
+                        displayDeleteIcon="visible"
+                      />
+                    </SortableItem>
+                  );
+                })}
+              </DragAndSortAdapter>
+            </div>
+            <div className="Result">
+              <GenericButton
+                className="Result-button"
+                buttonLabel="Result"
+                buttonSize="medium"
+                buttonType="primary"
+                buttonDisabled={true}
+                onClick={onClick}
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
