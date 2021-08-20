@@ -9,9 +9,9 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
   // const { userId } = useParams();
 
   const userId = 2;
-
-  const deleteBoard = async (id) => {
-    const API_URL = `/api/users/${userId}/boards/${id}`;
+  const boardId = 1;
+  const deleteBoard = async (boardId) => {
+    const API_URL = `/api/users/${userId}/boards/${boardId}}`;
     try {
       await fetch(API_URL, { method: 'DELETE' });
       alert('Data deleted');
@@ -29,10 +29,11 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
         <div className="circle-exclamation">
           <p>!</p>
         </div>
-        {boardInfo && (
+        {/*  {boardInfo && (
           <PageTitle title={`Delete '${boardInfo.title}' board?`} />
-        )}
-        <p>You won`&apos;`t be able to recover the board</p>
+        )}*/}
+        <PageTitle title={`Delete 'What should I name my pet' board?`} />
+        <p>You won&apos;t be able to recover the board</p>
         <div className="delete-btn-container">
           <GenericButton
             buttonLabel="Cancel"
@@ -48,7 +49,7 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
             buttonSize="medium"
             buttonType="primary"
             buttonDisabled={false}
-            onClick={() => deleteBoard(boardInfo.id)}
+            onClick={() => deleteBoard(boardId)} //boardInfo.id
           />
         </div>
       </div>
@@ -62,13 +63,6 @@ DeleteBoardModal.propTypes = {
     title: PropTypes.string,
   }),
   setModalVisibility: PropTypes.func.isRequired,
-};
-
-DeleteBoardModal.defaultProps = {
-  boardInfo: PropTypes.shape({
-    id: 2,
-    title: 'Enter a board Name',
-  }),
 };
 
 export default DeleteBoardModal;
