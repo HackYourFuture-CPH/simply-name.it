@@ -6,18 +6,14 @@ import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
-import { useAuthentication } from './hooks/useAuthentication';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
-import Loader from './components/Loader';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import DeleteBoardModal from './containers/DeleteBoardModal/DeleteBoardModal.container';
-function App() {
-  const { isLoading } = useAuthentication();
+import { useFirebase } from './firebase/FirebaseContext';
 
-  if (isLoading) {
-    return <Loader />;
-  }
+function App() {
+  const { isLoading, isAuthenticated } = useFirebase();
 
   return (
     <Router>
@@ -32,10 +28,16 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <Welcome exact path="/welcome" />
         <DeleteBoardModal exact path="/deleteBoard" />
+        <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
+
         {/* All routes below are authenticated routes - a user must login first */}
-        <AuthenticatedRoute exact path="/profile">
+        <AuthenticatedRoute
+          exact
+          path="/profile"
+          isAuthenticated={isAuthenticated}
+          isLoading={isLoading}
+        >
           <ProfilePage />
         </AuthenticatedRoute>
       </Switch>

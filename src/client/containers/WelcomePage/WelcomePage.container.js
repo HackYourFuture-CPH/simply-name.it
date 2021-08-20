@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './WelcomePage.styles.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import GoogleButton from '../../components/GoogleButton/GoogleButton.component';
 import { useFirebase } from '../../firebase/FirebaseContext';
 import { Redirect } from 'react-router-dom';
+import { useUser } from '../../firebase/UserContext';
 
 export default function Welcome() {
   const [redirect, setRedirect] = useState();
   const { signIn } = useFirebase();
+  const { user } = useUser();
 
-  const signInUser = async () => {
-    await signIn();
-    setRedirect('/profile');
-  };
+  useEffect(() => {
+    if (user) {
+      setRedirect('/profile');
+    }
+  }, [user]);
 
   if (redirect) {
     return <Redirect to={redirect} />;
@@ -24,14 +27,14 @@ export default function Welcome() {
         <h1 className="welcome-slogan">Take Tough Decisions Together</h1>
       </div>
       <div className="sign-in-buttons-container">
-        <GoogleButton className="google-button" onClickHandler={signInUser} />
+        <GoogleButton className="google-button" onClickHandler={signIn} />
         <GenericButton
           className="generic-button"
           buttonLabel="Log in"
           buttonSize="large"
           buttonType="secondary"
           buttonDisabled={false}
-          onClick={signInUser}
+          onClick={signIn}
         />
       </div>
     </div>
