@@ -1,14 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './DeleteBoardModal.style.css';
 import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
-const DeleteBoardModal = ({
-  boardInfo,
-  modalVisibilty,
-  setModalVisibility,
-}) => {
+const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
   // const { userId } = useParams();
 
   const userId = 2;
@@ -24,7 +21,7 @@ const DeleteBoardModal = ({
   };
   return (
     <div className="delete-board-container">
-      <div className="greyLine"></div>
+      <div className="greyLine" />
       <div className="close-btn-div">
         <CloseButton onClick={() => setModalVisibility(false)} />
       </div>
@@ -35,7 +32,7 @@ const DeleteBoardModal = ({
         {boardInfo && (
           <PageTitle title={`Delete '${boardInfo.title}' board?`} />
         )}
-        <p>You won't be able to recover the board</p>
+        <p>You won`&apos;`t be able to recover the board</p>
         <div className="delete-btn-container">
           <GenericButton
             buttonLabel="Cancel"
@@ -57,6 +54,21 @@ const DeleteBoardModal = ({
       </div>
     </div>
   );
+};
+
+DeleteBoardModal.propTypes = {
+  boardInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+  }),
+  setModalVisibility: PropTypes.func.isRequired,
+};
+
+DeleteBoardModal.defaultProps = {
+  boardInfo: PropTypes.shape({
+    id: 2,
+    title: 'Enter a board Name',
+  }),
 };
 
 export default DeleteBoardModal;

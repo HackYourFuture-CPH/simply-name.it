@@ -11,7 +11,7 @@ import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
-
+import DeleteBoardModal from './containers/DeleteBoardModal/DeleteBoardModal.container';
 function App() {
   const { isLoading } = useAuthentication();
 
@@ -33,7 +33,7 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
         <Welcome exact path="/welcome" />
-
+        <DeleteBoardModal exact path="/deleteBoard" />
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute exact path="/profile">
           <ProfilePage />
