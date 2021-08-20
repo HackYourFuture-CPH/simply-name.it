@@ -6,20 +6,6 @@
   right: 0;
 }
 
-.sub-container {
-  padding: 30px;
-}
-
-.arrow-button-container {
-  position: relative;
-}
-
-.icon {
-  position: absolute;
-  top: 5px;
-  left: 25px;
-}
-
 ul {
   display: flex;
   flex-direction: column;
@@ -32,11 +18,24 @@ li {
   list-style-type: none;
 }
 
-.card-container {
-  margin: 1vh auto 1vh auto;
-  width: 90%;
+.page-title-black-large {
+  margin: 6vh 6vw 5vh;
 }
 
-.page-title-black-large {
-  margin: 7vh 0 5vh;
+@media only screen and (min-width: 700px) {
+  .confetti-animation {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  div.card-display {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  ul {
+    margin-top: 10vh;
+  }
 }
