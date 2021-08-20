@@ -1,5 +1,4 @@
 .card-container {
-  padding-right: 80px;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -7,10 +6,6 @@
   color: white;
   align-items: center;
   margin: 20px;
-  width: 368px;
-  height: 52px;
-  left: 23px;
-  top: 248px;
 }
 
 .card-container > * {
@@ -18,7 +13,6 @@
 }
 
 .card-display {
-  padding-right: 325px;
   list-style-type: none;
   border-radius: 10px;
   display: flex;
@@ -29,12 +23,10 @@
   margin: 20px;
   width: 368px;
   height: 52px;
-  left: 23px;
-  top: 248px;
 }
 
 .delete-icon-display {
-  padding-right: 10px;
+  padding-left: 20px;
 }
 
 .primary-color {
@@ -47,7 +39,7 @@
 
 .card-title {
   padding-left: 0;
-  padding-right: 100px;
+  padding-right: 260px;
   padding-top: 0;
 }
 
