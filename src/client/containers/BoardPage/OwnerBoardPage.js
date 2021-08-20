@@ -18,7 +18,7 @@ import HeaderComponent from '../../components/HeaderComponent/Header.component.j
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
-import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModalconatiner';
+import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
 
 export default function OwnerBoardPage({ boardInfo }) {
   const [newCandidateName, setNewCandidateName] = useState('');
@@ -42,18 +42,15 @@ export default function OwnerBoardPage({ boardInfo }) {
     }
   };
 
-  const deleteBoard = () => {
-    setModalVisibility(true);
-    console.log('clicked');
-  };
   const newCandidate = {
     boardId: 1,
     name: newCandidateName,
     isBlocked: false,
   };
-
   return (
-    <div className="Board-container">
+    <div
+      className={`Board-container ${modalVisibility ? 'board-overlay' : ''}`}
+    >
       <div className="Header-component">
         <HeaderComponent>
           <Link to="/profile">
@@ -67,7 +64,13 @@ export default function OwnerBoardPage({ boardInfo }) {
           >
             <ul className="option-list">
               <li>Edit Board</li>
-              <li onClick={() => deleteBoard()}>Delete Board</li>
+              <li
+                onClick={() => {
+                  setModalVisibility(true);
+                }}
+              >
+                Delete Board
+              </li>
             </ul>
           </Dropdown>
         </HeaderComponent>
@@ -147,16 +150,6 @@ export default function OwnerBoardPage({ boardInfo }) {
                 );
               })}
             </DragAndSortAdapter>
-          </div>
-          <div className="Result">
-            <GenericButton
-              className="Result-button"
-              buttonLabel="Result"
-              buttonSize="medium"
-              buttonType="primary"
-              buttonDisabled={false}
-              onClick={onClick}
-            />
           </div>
         </div>
       ) : (

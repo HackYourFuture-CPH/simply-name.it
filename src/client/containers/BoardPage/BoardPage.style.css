@@ -7,6 +7,10 @@ html {
   justify-content: center;
 }
 
+.board-overlay {
+  background-color: rgba(122, 122, 122, 0.54);
+}
+
 .Board-container {
   position: relative;
   height: 739px;
