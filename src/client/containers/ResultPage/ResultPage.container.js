@@ -47,7 +47,7 @@ export default function Result() {
             <ArrowButton
               className="arrow-button"
               onClick={onClick}
-              backgroundColor="black"
+              color="black"
             />
           </div>
           <PageTitle title="Result" variant="black-large" />
