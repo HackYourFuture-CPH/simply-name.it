@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './BoardPage.style.css';
 import OwnerBoardPage from './OwnerBoardPage';
 import MemberBoardPage from './MemberBoardPage';
-import useUser from '../../firebase/UserContext';
+import { useUser } from '../../firebase/UserContext';
+import { useBoard } from './BoardProvider';
 
-const users = useUser();
-console.log(users);
-export default function Board() {
+export default function BoardPage() {
+  const boardContext = useBoard();
   const [boardInfo, setBoardInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const userInfo = useUser();
+  console.log(userInfo);
   // const { userId, boardId } = useParams();
   const userId = 2;
   const boardId = 1;
@@ -21,7 +21,7 @@ export default function Board() {
         const apiResponse = await fetch(API_URL);
         const apiData = await apiResponse.json();
         setBoardInfo(apiData[0]);
-        setIsLoading(false);
+        boardContext.setIsLoading(false);
       } catch (error) {
         throw new Error(error);
       }
@@ -29,13 +29,13 @@ export default function Board() {
     fetchingBoardApi();
   }, []);
 
-  if (isLoading) {
+  if (boardContext.isLoading) {
     return <div>LOADING....</div>;
   }
 
   return userId === boardInfo.creatorId ? (
-    <OwnerBoardPage boardInfo={boardInfo} />
+    <OwnerBoardPage boardInfo={boardInfo} userInfo={userInfo} />
   ) : (
-    <MemberBoardPage boardInfo={boardInfo} />
+    <MemberBoardPage boardInfo={boardInfo} userInfo={userInfo} />
   );
 }
