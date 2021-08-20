@@ -9,8 +9,7 @@ const DeleteBoardModal = ({
   modalVisibilty,
   setModalVisibility,
 }) => {
-  console.log(boardInfo);
-  console.log(modalVisibilty);
+  // const { userId } = useParams();
 
   const userId = 2;
 
@@ -18,7 +17,7 @@ const DeleteBoardModal = ({
     const API_URL = `/api/users/${userId}/boards/${id}`;
     try {
       await fetch(API_URL, { method: 'DELETE' });
-      console.log('Data deleted');
+      alert('Data deleted');
     } catch (error) {
       throw new Error(error);
     }
