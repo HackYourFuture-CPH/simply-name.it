@@ -46,10 +46,12 @@ const getUsersByKeyword = async (searchWord) => {
 
   return users;
 };
-const userExists = async (firebaseUId) => {
-  const isUser = await knex('users').select('*').where({ firebaseUId });
-  return isUser;
+
+const getUser = async (firebaseUId) => {
+  const user = await knex('users').select('*').where({ firebaseUId });
+  return user;
 };
+
 const createUser = async (newUser) => {
   if (Object.keys(newUser).length === 0) {
     throw new InvalidRequestError(
@@ -65,16 +67,18 @@ const createUser = async (newUser) => {
   if (typeof newUser.firebaseUId !== 'string') {
     throw new IncorrectEntryError(`firebaseUId should be string`);
   }
-  const isUser = await userExists(newUser.firebaseUId);
-  if (isUser.length === 0) {
-    await knex('users').insert({
-      fullName: newUser.fullName,
-      email: newUser.email,
-      firebaseUId: newUser.firebaseUId,
-    });
-  } else {
-    throw new IncorrectEntryError(`user already exists `);
+  const user = await getUser(newUser.firebaseUId);
+
+  if (user.length) {
+    return user;
   }
+
+  const createdUserId = await knex('users').insert({
+    fullName: newUser.fullName,
+    email: newUser.email,
+    firebaseUId: newUser.firebaseUId,
+  });
+  return knex('users').where({ id: createdUserId });
 };
 
 module.exports = {

@@ -149,9 +149,9 @@ router.use('/:userId/boards', boardsRouter);
  *      404:
  *        description: Not found.
  */
-router.post('/', authenticate, async (req, res) => {
-  await usersController.createUser(req.body);
-  return res.status(201).send();
+router.post('/', async (req, res) => {
+  const user = await usersController.createUser(req.body);
+  return res.json(user);
 });
 
 module.exports = router;
