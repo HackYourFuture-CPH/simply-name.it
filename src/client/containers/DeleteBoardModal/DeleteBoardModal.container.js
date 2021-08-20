@@ -24,6 +24,7 @@ const DeleteBoardModal = ({
   };
   return (
     <div className="delete-board-container">
+      <div className="greyLine"></div>
       <div className="close-btn-div">
         <CloseButton onClick={() => setModalVisibility(false)} />
       </div>

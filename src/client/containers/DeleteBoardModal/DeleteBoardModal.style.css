@@ -9,6 +9,15 @@
   padding-top: 0.9em;
 }
 
+.greyLine {
+  height: 5px;
+  width: 86px;
+  border: 1px solid #e5e5e5;
+  background-color: rgb(228, 222, 222);
+  border-radius: 5px;
+  margin: auto;
+}
+
 .delete-board-container {
   width: 414px;
   height: 328px;
