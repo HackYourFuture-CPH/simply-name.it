@@ -1,32 +1,30 @@
 [
   {
-    "id": 1,
-    "photo": "https://randomuser.me/api/portraits/women/80.jpg",
-    "name": "Darrell Steward",
-    "role": "Member"
+    "userId": 1,
+    "role": "basic",
+    "fullName": "Darrell Steward",
+    "firebaseUId": "supersecret1",
+    "photoUrl": "/member1.jpg"
   },
   {
-    "id": 2,
-    "photo": "https://randomuser.me/api/portraits/women/81.jpg",
-    "name": "Kristin Watson",
-    "role": "Member"
+    "userId": 2,
+    "role": "basic",
+    "fullName": "Kristin Watson",
+    "firebaseUId": "supersecret2",
+    "photoUrl": "/member2.png"
   },
   {
-    "id": 3,
-    "photo": "https://randomuser.me/api/portraits/men/80.jpg",
-    "name": "Theresa Webb",
-    "role": "Member"
+    "userId": 3,
+    "role": "owner",
+    "fullName": "Theresa Webb",
+    "firebaseUId": "supersecret3",
+    "photoUrl": "/member3.png"
   },
   {
-    "id": 4,
-    "photo": "https://randomuser.me/api/portraits/women/82.jpg",
-    "name": "Dianne Russell",
-    "role": "Member"
-  },
-  {
-    "id": 5,
-    "photo": "https://randomuser.me/api/portraits/men/83.jpg",
-    "name": "Arlene McCoy",
-    "role": "Member"
+    "userId": 4,
+    "role": "basic",
+    "fullName": "Dianne Russell",
+    "firebaseUId": "supersecret4",
+    "photoUrl": "/member4.png"
   }
 ]

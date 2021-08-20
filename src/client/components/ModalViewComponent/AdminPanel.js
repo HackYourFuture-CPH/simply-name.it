@@ -1,19 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function AdminPanel() {
+export default function AdminPanel({ owner }) {
   return (
     <div className="modal-content">
       <div className="modal-body">
         <img
           className="round"
-          src="https://randomuser.me/api/portraits/men/79.jpg"
-          alt="member"
+          src={require(`../../assets/images/demo-members-photos${owner.photoUrl}`)}
+          alt="owner"
         />
         <div className="profile">
-          <h3>Jacop Jones</h3>
-          <p className="caption">Admin</p>
+          <h4>{owner.fullName}</h4>
+          <p className="caption">{owner.role}</p>
         </div>
       </div>
     </div>
   );
 }
+
+AdminPanel.propTypes = {
+  owner: PropTypes.instanceOf(Object).isRequired,
+};
