@@ -65,9 +65,19 @@ class InvalidRequestError extends HttpError {
   }
 }
 
+class UnauthorizedError extends HttpError {
+  constructor(message, body = null) {
+    super(message);
+    this.message = `Invalid authentication Error. ${message}`;
+    this.httpStatus = 401;
+    this.body = body; // If defined, this'll be the response body
+  }
+}
+
 module.exports = {
   HttpError,
   IncorrectEntryError,
   InvalidIdError,
   InvalidRequestError,
+  UnauthorizedError,
 };

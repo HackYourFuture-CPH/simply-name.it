@@ -6,18 +6,15 @@ import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
-import { useAuthentication } from './hooks/useAuthentication';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
 import AddMembers from './containers/AddMembersPage/AddMembersPage.container';
+import Welcome from './containers/WelcomePage/WelcomePage.container';
+import { useFirebase } from './firebase/FirebaseContext';
 
 function App() {
-  const { isLoading } = useAuthentication();
-
-  if (isLoading) {
-    return <Loader />;
-  }
+  const { isLoading, isAuthenticated } = useFirebase();
 
   return (
     <Router>
@@ -33,9 +30,15 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
         <AddMembers exact path="/add-members" />
+        <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
         {/* All routes below are authenticated routes - a user must login first */}
-        <AuthenticatedRoute exact path="/profile">
+        <AuthenticatedRoute
+          exact
+          path="/profile"
+          isAuthenticated={isAuthenticated}
+          isLoading={isLoading}
+        >
           <ProfilePage />
         </AuthenticatedRoute>
       </Switch>
