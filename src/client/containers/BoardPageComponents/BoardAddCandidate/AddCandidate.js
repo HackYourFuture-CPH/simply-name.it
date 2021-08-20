@@ -13,7 +13,7 @@ export default async function AddCandidate(newCandidate, userId, boardId) {
       return;
     }
 
-    postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
+    await postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
       name: newCandidate.name,
     });
   } catch (error) {
