@@ -10,13 +10,3 @@
   cursor: pointer;
   margin-left: 10%;
 }
-
-.errorMessageContainer {
-  color: red;
-  margin-left: 20px;
-}
-
-.successMessageContainer {
-  color: green;
-  margin-left: 20px;
-}
