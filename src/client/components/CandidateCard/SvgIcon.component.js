@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 function DeleteIcon({ onClick }) {
   return (
     <svg
-      height="15pt"
+      height="25px"
       viewBox="-40 0 427 427.00131"
-      width="55pt"
+      width="25px"
       fill="white"
       xmlns="http://www.w3.org/2000/svg"
       onClick={onClick}
