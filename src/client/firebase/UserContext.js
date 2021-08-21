@@ -11,6 +11,10 @@ export function UserProvider({ children }) {
   const [error, setError] = useState();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      setUser(null);
+      localStorage.removeItem('currentUser');
+    }
     async function addUser() {
       const token = await getUserToken();
       const response = await fetch('/api/users', {
@@ -25,6 +29,7 @@ export function UserProvider({ children }) {
       if (response.ok) {
         const userData = await response.json();
         setUser(userData);
+        localStorage.setItem('currentUser', userData);
       } else {
         setError(
           `Error adding user: ${response.status}. ${response.statusText}`,
@@ -38,7 +43,6 @@ export function UserProvider({ children }) {
         setIsFetching(false);
       })();
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
