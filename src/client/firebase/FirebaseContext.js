@@ -19,6 +19,10 @@ export function FirebaseProvider({ children, initialAuth }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    if (authUser) {
+      return;
+    }
+
     if (!auth) {
       setIsLoading(false);
       return;
