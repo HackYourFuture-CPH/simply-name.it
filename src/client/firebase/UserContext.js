@@ -14,6 +14,7 @@ export function UserProvider({ children }) {
     if (!isAuthenticated) {
       setUser(null);
       localStorage.removeItem('currentUser');
+      return;
     }
 
     async function addUser() {
