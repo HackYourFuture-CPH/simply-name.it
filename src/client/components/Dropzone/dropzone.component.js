@@ -1,6 +1,7 @@
 import React from 'react';
 import './dropzone.styles.css';
 import { useDropzone } from 'react-dropzone';
+import AddImageIcon from './AddImageIcon.component';
 
 export default function DropzoneComp() {
   const onDrop = (acceptedFiles) => acceptedFiles.map((file) => file.name);
@@ -10,7 +11,9 @@ export default function DropzoneComp() {
       <useDropzone>
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
-          <p>Upload</p>
+          <p>
+            <AddImageIcon /> Upload{' '}
+          </p>
         </div>
       </useDropzone>
     </div>
