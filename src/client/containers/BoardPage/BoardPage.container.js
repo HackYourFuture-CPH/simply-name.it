@@ -9,7 +9,7 @@ export default function BoardPage() {
   const boardContext = useBoard();
   const [boardInfo, setBoardInfo] = useState([]);
   const userInfo = useUser();
-  console.log(userInfo);
+
   // const { userId, boardId } = useParams();
   const userId = 2;
   const boardId = 1;
@@ -21,7 +21,7 @@ export default function BoardPage() {
         const apiResponse = await fetch(API_URL);
         const apiData = await apiResponse.json();
         setBoardInfo(apiData[0]);
-        boardContext.setIsLoading(false);
+        boardContext.setLoading(false);
       } catch (error) {
         throw new Error(error);
       }
@@ -29,7 +29,7 @@ export default function BoardPage() {
     fetchingBoardApi();
   }, []);
 
-  if (boardContext.isLoading) {
+  if (boardContext.Loading) {
     return <div>LOADING....</div>;
   }
 

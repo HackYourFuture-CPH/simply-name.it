@@ -1,14 +1,21 @@
 import React, { useState, createContext, useContext } from 'react';
-import BoardPage from './BoardPage.container';
 import './BoardPage.style.css';
 
 const BoardContext = createContext();
 
 export default function BoardProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [Loading, setLoading] = useState(true);
+  const [CandidateListLoading, setCandidateListLoading] = useState(true);
 
   return (
-    <BoardContext.Provider value={{ isLoading, setIsLoading }}>
+    <BoardContext.Provider
+      value={{
+        Loading,
+        setLoading,
+        CandidateListLoading,
+        setCandidateListLoading,
+      }}
+    >
       {children}
     </BoardContext.Provider>
   );
