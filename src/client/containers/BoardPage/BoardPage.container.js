@@ -27,7 +27,7 @@ export default function BoardPage() {
       }
     };
     fetchingBoardApi();
-  }, []);
+  }, [boardContext]);
 
   if (boardContext.Loading) {
     return <div>LOADING....</div>;
