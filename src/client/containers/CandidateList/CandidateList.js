@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCandidates } from '../UseHooks/useCandidates';
-import { useUpdateBallots } from '../UseHooks/useUpdateBallots';
+import { updateBallots } from './updateBallots';
 import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
 import { candidateCardSorting } from '../../components/CandidateCard/CandidateCardSorting';
 import {
@@ -13,11 +13,10 @@ import PropTypes from 'prop-types';
 export default function CandidateList({ userId, boardId }) {
   const { candidates, error } = useCandidates(userId, boardId);
   const [updatedCandidates, setUpdatedCandidates] = useState(candidates);
-  const { error: updateError } = useUpdateBallots(
-    userId,
-    boardId,
-    updatedCandidates,
-  );
+
+  useEffect(() => {
+    updateBallots(userId, boardId, updatedCandidates);
+  }, [updatedCandidates]);
 
   const onClick = () => {
     console.log('clicked');
@@ -25,8 +24,8 @@ export default function CandidateList({ userId, boardId }) {
 
   return (
     <div className="CandidateCard-component">
-      {error && updateError ? (
-        <h2 className="showups">{error || updateError}</h2>
+      {error ? (
+        <h2 className="showups">{error}</h2>
       ) : (
         <DragAndSortAdapter
           onDragEndHandler={onDragEnd(
