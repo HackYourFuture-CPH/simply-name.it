@@ -14,6 +14,8 @@ export default function Welcome() {
   useEffect(() => {
     if (user) {
       setRedirect('/profile');
+    } else {
+      setRedirect(null);
     }
   }, [user]);
 
