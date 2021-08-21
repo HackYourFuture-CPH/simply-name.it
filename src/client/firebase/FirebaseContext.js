@@ -59,7 +59,7 @@ export function FirebaseProvider({ children, initialAuth }) {
       signOut: () => signOut(),
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [authUser],
+    [authUser, isLoading],
   );
 
   return (
@@ -84,12 +84,13 @@ FirebaseProvider.defaultProps = {
  * Gets the current value for FirebaseContext
  *
  * @typedef {object} FirebaseContextType
- * @property {firebase.auth.Auth} auth - Firebase auth provider
+ * @property {object} authUser - Passes the info of the user
+ * @property {boolean} isAuthenticated True when user is authenticated
+ * @property {boolean} isLoading - False when authentication ends
+ * @property {() => Promise<void>} getUserToken - gets the user token
  * @property {boolean} isInitialized - True if Firebase is initialized
- * @property {({email, password}) => Promise<void>} signIn - Signs in the user
- * @property {({email, password}) => Promise<void>} signUp - Signs in the user
+ * @property {() => Promise<void>} signIn - Signs in the user
  * @property {() => Promise<void>} signOut - Signs out the user
- * @property {({email}) => Promise<void>} resetPassword - Resets the password for the user with the specified e-mail
  *
  * @returns {FirebaseContextType}
  */
