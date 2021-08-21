@@ -23,10 +23,6 @@ export function FirebaseProvider({ children, initialAuth }) {
       return;
     }
 
-    if (!auth) {
-      setIsLoading(false);
-      return;
-    }
     auth.onAuthStateChanged((user) => {
       // if user exists it means authenticated
       if (user) {
@@ -46,7 +42,7 @@ export function FirebaseProvider({ children, initialAuth }) {
         setAuthUser(null);
       }
     });
-  }, [authUser]);
+  }, []);
 
   const value = useMemo(
     () => ({

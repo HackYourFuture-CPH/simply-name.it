@@ -39,7 +39,7 @@ export function UserProvider({ children }) {
       }
     }
 
-    if (isAuthenticated) {
+    if (authUser) {
       (async () => {
         await addUser();
         setIsFetching(false);
@@ -47,7 +47,7 @@ export function UserProvider({ children }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
+  }, [authUser]);
 
   return (
     <UserContext.Provider value={{ user, error, isFetching }}>
