@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { HttpError } = require('./api/lib/utils/http-error');
-const serviceAccount = require('../../googleServiceAccount.json');
 
 const buildPath = path.join(__dirname, '../../dist');
 
@@ -18,13 +17,7 @@ const apiRouter = require('./api/routes/api-router');
 
 require('./config/db');
 
-try {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
-} catch (error) {
-  console.log(error);
-}
+admin.initializeApp(); // Might need to add service key env.
 
 const app = express();
 
