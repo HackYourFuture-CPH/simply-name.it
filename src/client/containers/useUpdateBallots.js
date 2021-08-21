@@ -18,7 +18,7 @@ export function useUpdateBallots(userId, boardId, candidatesBody) {
       );
       if (!response.ok) {
         setError(
-          `Error fetching candidates: ${response.status}. ${response.statusText}`,
+          `Error updating ballot: ${response.status}. ${response.statusText}`,
         );
       }
     })();
