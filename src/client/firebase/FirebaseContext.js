@@ -42,6 +42,7 @@ export function FirebaseProvider({ children, initialAuth }) {
         setAuthUser(null);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = useMemo(
