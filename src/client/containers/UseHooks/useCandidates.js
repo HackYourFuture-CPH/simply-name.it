@@ -14,7 +14,7 @@ export function useCandidates(userId, boardId) {
         setCandidates(candidatesData);
       } else {
         setError(
-          `Error adding user: ${response.status}. ${response.statusText}`,
+          `Error fetching candidates: ${response.status}. ${response.statusText}`,
         );
       }
     })();
