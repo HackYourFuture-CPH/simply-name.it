@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './BoardPage.style.css';
 import OwnerBoardPage from './OwnerBoardPage';
 import MemberBoardPage from './MemberBoardPage';
-// import { useUser } from '../../firebase/UserContext';
+import { useUser } from '../../firebase/UserContext';
 import { useBoard } from './BoardProvider';
 
 export default function BoardPage() {
   const { isBoardLoading } = useBoard();
   const { setBoardLoading } = useBoard();
-  // const {user} = useUser();
-  // console.log('user', user[0].id);
+  const { user } = useUser();
+  console.log('user', user);
   const [boardInfo, setBoardInfo] = useState([]);
 
   // const { userId, boardId } = useParams();
