@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { auth } from './configure';
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -38,4 +39,9 @@ export async function signIn() {
 
 export function signOut() {
   firebase.auth().signOut();
+}
+
+export async function getUserToken() {
+  const token = await auth.currentUser.getIdToken();
+  return token;
 }

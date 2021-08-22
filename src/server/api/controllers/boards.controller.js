@@ -84,8 +84,17 @@ const getBoardsByCreatorId = async (id) => {
 
   const boards = await knex('users')
     .join('boards', 'users.id', '=', 'boards.creatorId')
-    .select('*')
-    .where('creatorId', id);
+    .select(
+      'boards.id',
+      'boards.title',
+      'boards.createdOn',
+      'boards.deadline',
+      'boards.banner',
+    )
+    .where({
+      creatorId: id,
+      isDeleted: false,
+    });
   if (boards.length === 0) {
     throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
   }
