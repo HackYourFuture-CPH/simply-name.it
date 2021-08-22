@@ -3,11 +3,13 @@ import './BoardAddCandidate.style.css';
 import Input from '../../../components/InputComponent/InputComponent';
 import AddButton from '../../../components/AddButton/AddButton.component';
 import AddCandidate from './AddCandidate';
+import { useUser } from '../../firebase/UserContext';
 
 export default function BoardAddCandidate() {
   const [newCandidateName, setNewCandidateName] = useState('');
+  const { user } = useUser();
+  const userId = user[0].id;
 
-  const userId = 2;
   const newCandidate = {
     boardId: 1,
     name: newCandidateName,
