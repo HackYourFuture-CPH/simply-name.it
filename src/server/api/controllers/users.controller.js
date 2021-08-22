@@ -2,6 +2,7 @@ const knex = require('../../config/db');
 
 const {
   IncorrectEntryError,
+  InvalidRequestError,
   InvalidIdError,
 } = require('../lib/utils/http-error');
 
@@ -46,8 +47,43 @@ const getUsersByKeyword = async (searchWord) => {
   return users;
 };
 
+const getUser = async (firebaseUId) => {
+  const user = await knex('users').select('*').where({ firebaseUId });
+  return user;
+};
+
+const createUser = async (newUser) => {
+  if (Object.keys(newUser).length === 0) {
+    throw new InvalidRequestError(
+      `key 'fullName, email, firebaseUId and value of type as 'string' is required`,
+    );
+  }
+  if (typeof newUser.fullName !== 'string') {
+    throw new IncorrectEntryError(`fullName should be string`);
+  }
+  if (typeof newUser.email !== 'string') {
+    throw new IncorrectEntryError(`email should be string`);
+  }
+  if (typeof newUser.firebaseUId !== 'string') {
+    throw new IncorrectEntryError(`firebaseUId should be string`);
+  }
+  const user = await getUser(newUser.firebaseUId);
+
+  if (user.length) {
+    return user;
+  }
+
+  const createdUserId = await knex('users').insert({
+    fullName: newUser.fullName,
+    email: newUser.email,
+    firebaseUId: newUser.firebaseUId,
+  });
+  return knex('users').where({ id: createdUserId });
+};
+
 module.exports = {
   getUsers,
   getUserById,
   getUsersByKeyword,
+  createUser,
 };
