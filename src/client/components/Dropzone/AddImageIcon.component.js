@@ -1,4 +1,5 @@
 import React from 'react';
+import './dropzone.styles.css';
 
 function AddImageIcon() {
   return (

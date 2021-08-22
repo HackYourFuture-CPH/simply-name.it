@@ -1,6 +1,7 @@
 .dropzone {
   display: flexbox;
-  width: 40%;
+  width: 325px;
+  height: 200px;
   text-align: center;
   border-radius: 10px;
   padding: 60px;
@@ -15,4 +16,9 @@ p {
 
 .dropzone:hover {
   border: 2px solid #5d0096;
+  color: #5d0096;
+}
+
+.dropzone:hover svg {
+  fill: #5d0096;
 }
