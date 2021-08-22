@@ -57,9 +57,6 @@ const addMember = async (userId, boardId, memberId) => {
     throw new InvalidIdError('Id should be an integer');
   }
   const isOwner = await userIsOwner(userId, boardId);
-  if (isOwner.length === 0) {
-    throw new UnauthorizedError(`Only owner can add a member to a board `);
-  }
 
   const addNewMember = await knex('members').insert({
     boardId,
