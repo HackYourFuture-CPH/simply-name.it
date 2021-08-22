@@ -25,7 +25,7 @@ export function useCandidates(userId, boardId) {
         );
       }
     })();
-  }, []);
+  }, [userId, boardId]);
 
   return { candidates, setCandidates, error };
 }
