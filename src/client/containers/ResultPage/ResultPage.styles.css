@@ -31,7 +31,7 @@ li {
     transform: translateX(-50%);
   }
 
-  div.card-display {
+  div.card-container {
     margin-right: auto;
     margin-left: auto;
   }
