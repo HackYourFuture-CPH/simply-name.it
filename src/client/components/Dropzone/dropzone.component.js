@@ -9,7 +9,7 @@ export default function DropzoneComp() {
   return (
     <div className="DropzoneComp">
       <useDropzone>
-        <div {...getRootProps({ className: 'dropzone' })}>
+        <div {...getRootProps({ className: 'dropzone', id: 'dropzone' })}>
           <input {...getInputProps()} />
           <p>
             <AddImageIcon /> Upload{' '}
