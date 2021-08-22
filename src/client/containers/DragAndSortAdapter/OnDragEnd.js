@@ -1,6 +1,6 @@
 import { arrayMove } from '@dnd-kit/sortable';
 
-export function onDragEnd(setItems, sortFunction) {
+export function onDragEnd(setItems, sortFunction, transformFunction) {
   return function (event) {
     const { active, over } = event;
 
@@ -12,7 +12,9 @@ export function onDragEnd(setItems, sortFunction) {
           over.id,
         );
 
-        return arrayMove(draggedItems, oldIndex, newIndex);
+        return arrayMove(draggedItems, oldIndex, newIndex).map(
+          transformFunction,
+        );
       });
     }
   };

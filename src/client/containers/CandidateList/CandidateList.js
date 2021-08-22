@@ -11,12 +11,18 @@ import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 
 export default function CandidateList({ userId, boardId }) {
-  const { candidates, error } = useCandidates(userId, boardId);
-  const [updatedCandidates, setUpdatedCandidates] = useState(candidates);
+  const { candidates, setCandidates, error } = useCandidates(userId, boardId);
+
+  function candidateTransform(candidate, index) {
+    return {
+      ...candidate,
+      rank: index + 1,
+    };
+  }
 
   useEffect(() => {
-    updateBallots(userId, boardId, updatedCandidates);
-  }, [updatedCandidates]);
+    updateBallots(userId, boardId, candidates);
+  }, [candidates]);
 
   const onClick = () => {
     console.log('clicked');
@@ -29,17 +35,15 @@ export default function CandidateList({ userId, boardId }) {
       ) : (
         <DragAndSortAdapter
           onDragEndHandler={onDragEnd(
-            setUpdatedCandidates,
+            setCandidates,
             candidateCardSorting,
+            candidateTransform,
           )}
-          items={updatedCandidates}
+          items={candidates}
         >
-          {updatedCandidates.map((candidate) => {
+          {candidates.map((candidate) => {
             return (
-              <SortableItem
-                key={candidate.candidateId}
-                id={candidate.candidateId}
-              >
+              <SortableItem key={candidate.id} id={candidate.id}>
                 <CardItemDecorator
                   colorVariant="primary-color"
                   candidateName={candidate.name}

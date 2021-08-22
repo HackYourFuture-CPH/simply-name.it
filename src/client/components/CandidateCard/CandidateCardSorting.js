@@ -1,10 +1,6 @@
 export function candidateCardSorting(candidates, activeId, overId) {
   return {
-    oldIndex: candidates.findIndex(
-      (candidate) => candidate.candidateId === activeId,
-    ),
-    newIndex: candidates.findIndex(
-      (candidate) => candidate.candidateId === overId,
-    ),
+    oldIndex: candidates.findIndex((candidate) => candidate.id === activeId),
+    newIndex: candidates.findIndex((candidate) => candidate.id === overId),
   };
 }
