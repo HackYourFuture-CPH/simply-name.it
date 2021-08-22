@@ -22,7 +22,14 @@ li {
   margin: 6vh 6vw 5vh;
 }
 
+.card-container {
+  max-width: 85%;
+}
+
 @media only screen and (min-width: 700px) {
+  .main-container {
+    position: relative;
+  }
   .confetti-animation {
     position: absolute;
     top: 0;
