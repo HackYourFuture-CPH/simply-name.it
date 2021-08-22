@@ -1,14 +1,9 @@
-.main-container {
+#root {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
 }
 
 ul,
@@ -19,7 +14,7 @@ li {
 }
 
 .page-title-black-large {
-  margin: 6vh 6vw 5vh;
+  margin: 2vh 6vw 3vh;
 }
 
 .card-container {
@@ -30,6 +25,7 @@ li {
   .main-container {
     position: relative;
   }
+
   .confetti-animation {
     position: absolute;
     top: 0;
@@ -37,12 +33,12 @@ li {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
   }
-
   div.card-container {
     margin-right: auto;
     margin-left: auto;
   }
-  ul {
-    margin-top: 10vh;
+
+  .sub-container ul {
+    margin-top: 18vh;
   }
 }
