@@ -11,7 +11,14 @@ export function useCandidates(userId, boardId) {
       );
       if (response.ok) {
         const candidatesData = await response.json();
-        setCandidates(candidatesData);
+        setCandidates(
+          candidatesData.map((candidate) => {
+            return {
+              ...candidate,
+              id: candidate.candidateId,
+            };
+          }),
+        );
       } else {
         setError(
           `Error fetching candidates: ${response.status}. ${response.statusText}`,
@@ -20,5 +27,5 @@ export function useCandidates(userId, boardId) {
     })();
   }, []);
 
-  return { candidates, error };
+  return { candidates, setCandidates, error };
 }
