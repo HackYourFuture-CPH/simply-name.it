@@ -93,6 +93,7 @@ router.post('/:memberId', async (req, res) => {
     req.params.boardId,
     req.params.memberId,
   );
+  return res.status(201).send();
 });
 
 module.exports = router;

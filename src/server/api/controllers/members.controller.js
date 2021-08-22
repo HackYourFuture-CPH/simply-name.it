@@ -56,7 +56,7 @@ const addMember = async (userId, boardId, memberId) => {
   ) {
     throw new InvalidIdError('Id should be an integer');
   }
-  const isOwner = await userIsOwner(userId, boardId);
+  await userIsOwner(userId, boardId);
 
   const addNewMember = await knex('members').insert({
     boardId,
