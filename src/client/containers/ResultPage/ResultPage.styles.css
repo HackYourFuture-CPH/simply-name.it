@@ -1,0 +1,15 @@
+.result-container {
+  max-width: 414px;
+  position: fixed;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.page-title-black-large {
+  margin-left: 6vh;
+}

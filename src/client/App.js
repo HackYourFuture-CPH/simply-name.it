@@ -10,6 +10,7 @@ import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
+import ResultPage from './containers/ResultPage/ResultPage.container';
 
 function App() {
   const { isLoading, isAuthenticated } = useFirebase();
@@ -37,6 +38,7 @@ function App() {
           isLoading={isLoading}
         >
           <ProfilePage />
+          <ResultPage exact path="/result" />
         </AuthenticatedRoute>
       </Switch>
     </Router>
