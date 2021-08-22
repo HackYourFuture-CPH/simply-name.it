@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useCandidates } from '../UseHooks/useCandidates';
 import { updateBallots } from './updateBallots';
 import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
@@ -25,7 +25,7 @@ export default function CandidateList({ userId, boardId }) {
     if (firstCandidates !== candidates) {
       updateBallots(userId, boardId, candidates);
     }
-  }, [candidates]);
+  }, [userId, boardId, candidates]);
 
   const onClick = () => {
     console.log('clicked');
