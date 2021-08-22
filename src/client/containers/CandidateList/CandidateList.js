@@ -21,7 +21,10 @@ export default function CandidateList({ userId, boardId }) {
   }
 
   useEffect(() => {
-    updateBallots(userId, boardId, candidates);
+    const firstCandidates = candidates;
+    if (firstCandidates !== candidates) {
+      updateBallots(userId, boardId, candidates);
+    }
   }, [candidates]);
 
   const onClick = () => {
