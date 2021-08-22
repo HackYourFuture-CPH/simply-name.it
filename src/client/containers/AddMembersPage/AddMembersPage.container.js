@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+
+import { useHistory, useParams } from 'react-router-dom';
 
 import './AddMembersPage.styles.css';
 
@@ -9,13 +10,13 @@ import InputComponent from '../../components/InputComponent/InputComponent';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 
 export default function AddMembers() {
-  const members = new Set();
-  const [membersState, setmembersState] = useState(new Set());
+  const { members, updateMembers } = useParams();
+  console.log(members);
+  //const [membersState, setmembersState] = useState(new Set());
   const [searchInput, setSearchInput] = useState('_');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [addButton, setAddButton] = useState(false);
-  const [dummy, setDummy] = useState('initial dummy');
 
   const history = useHistory();
 
@@ -30,7 +31,6 @@ export default function AddMembers() {
     history.push(path);
   };
 
-  x;
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const handleInput = (e) => {
@@ -100,15 +100,6 @@ export default function AddMembers() {
                 }}
               /> */}
         </div>
-        {/* <div className="search-button">
-              <GenericButton
-                buttonLabel="&#128269;"
-                buttonSize="small"
-                buttonType="primary"
-                buttonDisabled={false}
-                onClick={console.log('searching')}
-              />
-            </div> */}
       </div>
       <div className="users-list-container">
         {loading && <p>loading....</p>}
