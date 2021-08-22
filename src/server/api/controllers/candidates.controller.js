@@ -44,17 +44,16 @@ const createCandidate = async (userId, boardId, newCandidate) => {
   });
   const getAllMembersOfBoard = await getMembers.getAllMembers(userId, boardId);
   const allMembersId = getAllMembersOfBoard.map((member) => member.userId);
-  allMembersId.forEach((id) => {
-    const newBallot = async () => {
-      await knex('ballots').insert({
+  await Promise.all(
+    allMembersId.map((id) => {
+      return knex('ballots').insert({
         boardId,
         userId: id,
         candidateId: createNewCandidate[0],
         rank: -1,
       });
-    };
-    newBallot();
-  });
+    }),
+  );
   return createNewCandidate;
 };
 
