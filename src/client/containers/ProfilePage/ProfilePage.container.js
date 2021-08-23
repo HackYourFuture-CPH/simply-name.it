@@ -16,6 +16,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import BoardCard from '../../components/BoardCard/BoardCard.component';
+import BoardMenuButton from '../../components/BoardMenuButton/BoardMenuButton.component';
 
 export const Props = createContext();
 
@@ -36,9 +37,14 @@ export default function ProfilePage() {
   const [joinedBoards, setJoinedBoards] = useState();
   const [myBoards, setMyBoards] = useState();
   const [onMyBoards, setOnMyBoards] = useState();
+  const [currentTab, setCurrentTab] = useState('my-boards');
 
   const { userId } = useParams();
   // console.log(userId);
+
+  const handleTabChange = (e) => {
+    console.log(e.innerText);
+  };
 
   const getUserData = async () => {
     setLoading(true);
@@ -89,11 +95,7 @@ export default function ProfilePage() {
         setJoinedBoards,
       }}
     >
-      <div>
-        {/* {loading && <div> Loading ... </div> 
-         
-         }  */}
-
+      <div className="profile-page-container">
         <div>
           <div className="header-container">
             <div className="header">
@@ -125,11 +127,12 @@ export default function ProfilePage() {
               <PageTitle variant="black-large" title={userData.fullName} />
             </div>
           </div>
-          <div className="tap">
+          <div className="users-boards-container">
             <TapSeparator />
+            <div className="boards-container">
+              <BoardBanners />
+            </div>
           </div>
-
-          <BoardBanners />
         </div>
       </div>
     </Props.Provider>

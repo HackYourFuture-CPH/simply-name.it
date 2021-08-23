@@ -1,3 +1,48 @@
+input,
+span {
+  position: absolute;
+  width: 50%;
+  height: 45px;
+  margin-bottom: 20px;
+  top: 0;
+  vertical-align: middle;
+}
+
+span {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 10px;
+  border-bottom: 2px lightgray solid;
+  border-top: 2px lightgray solid;
+}
+
+input {
+  cursor: pointer;
+  opacity: 0;
+  z-index: 99;
+}
+
+.tab-1,
+.tab-1 + span {
+  left: 0;
+}
+
+.tab-2,
+.tab-2 + span {
+  left: 50%;
+}
+
+.tab-2 + span {
+  border-left: 2px lightgray solid;
+}
+
+input:hover + span,
+input:checked + span {
+  color: #5d0096;
+  border-bottom: 2px solid #5d0096;
+  font-weight: bold;
+}
+
 table {
   width: 100%;
   height: 70px;
@@ -11,7 +56,8 @@ th {
   color: lightgray;
 }
 
-tr :hover {
+tr :hover,
+tr :active {
   color: blueviolet;
   cursor: pointer;
   border-bottom: 2px blueviolet solid;

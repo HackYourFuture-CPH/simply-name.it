@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
 
-import './ProfilePage.style.css';
+import './TapSeprator.style.css';
 import { Props } from './ProfilePage.container';
 
 export default function TapSeparator() {
@@ -12,8 +12,21 @@ export default function TapSeparator() {
   } = useContext(Props);
 
   return (
-    <div>
-      <table>
+    <>
+      <input
+        type="radio"
+        name="boards"
+        id="tab-1"
+        className="tab-1"
+        checked="checked"
+      />
+      <span>My Boards</span>
+      <input type="radio" name="boards" id="tab-2" className="tab-2" />
+      <span>Joined Boards</span>
+    </>
+  );
+}
+/* <table>
         <thead>
           <tr>
             <th
@@ -34,7 +47,4 @@ export default function TapSeparator() {
             </th>
           </tr>
         </thead>
-      </table>
-    </div>
-  );
-}
+      </table> */

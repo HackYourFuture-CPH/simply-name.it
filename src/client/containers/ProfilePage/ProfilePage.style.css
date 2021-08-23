@@ -2,26 +2,38 @@
   box-sizing: border-box;
 }
 
+.profile-page-container {
+  height: 100vh;
+  max-width: 414px;
+}
+
 .header-container {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 25vh;
   top: 0;
 }
 
 .header {
   width: 100%;
-  height: 150px;
 }
 
 .sub-header {
-  padding-left: 100px;
-  height: 150px;
-  padding-top: 70px;
-  margin-bottom: 70px;
+  position: absolute;
+  padding-left: 1rem;
+  bottom: -45%;
 }
 
-.tap {
+.sub-header .page-title-black-large {
+  font-size: 24px;
+}
+
+.users-boards-container {
   width: 100%;
-  margin-top: 250px;
+  position: relative;
+  margin-top: 5rem;
+}
+
+.boards-container {
+  padding: 4rem 1rem;
 }
