@@ -1,0 +1,12 @@
+.Input-component {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  margin-left: 20px;
+  width: 88%;
+}
+
+.add-button {
+  cursor: pointer;
+  margin-left: 10%;
+}
