@@ -38,16 +38,19 @@ function App() {
         >
           <ProfilePage />
         </AuthenticatedRoute>
-        <AuthenticatedRoute
-          exact
-          path="/board/:id"
-          isAuthenticated={isAuthenticated}
-          isLoading={isLoading}
-        >
-          <BoardProvider>
-            <BoardPage />
-          </BoardProvider>
-        </AuthenticatedRoute>
+        <Route
+          path="/board/:boardId"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <BoardProvider>
+                <BoardPage />
+              </BoardProvider>
+            </AuthenticatedRoute>
+          }
+        />
       </Switch>
     </Router>
   );
