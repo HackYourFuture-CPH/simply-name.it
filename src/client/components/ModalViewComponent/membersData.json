@@ -3,28 +3,24 @@
     "userId": 1,
     "role": "basic",
     "fullName": "Darrell Steward",
-    "firebaseUId": "supersecret1",
-    "photoUrl": "/member1.jpg"
+    "photoUrl": "member1.jpg"
   },
   {
     "userId": 2,
     "role": "basic",
     "fullName": "Kristin Watson",
-    "firebaseUId": "supersecret2",
-    "photoUrl": "/member2.png"
+    "photoUrl": "member2.png"
   },
   {
     "userId": 3,
     "role": "owner",
     "fullName": "Theresa Webb",
-    "firebaseUId": "supersecret3",
-    "photoUrl": "/member3.png"
+    "photoUrl": "member3.png"
   },
   {
     "userId": 4,
     "role": "basic",
     "fullName": "Dianne Russell",
-    "firebaseUId": "supersecret4",
-    "photoUrl": "/member4.png"
+    "photoUrl": "member4.png"
   }
 ]
