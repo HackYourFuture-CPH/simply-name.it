@@ -5,18 +5,15 @@ const BoardContext = createContext();
 
 export default function BoardProvider({ children }) {
   const [isBoardLoading, setBoardLoading] = useState(true);
-  const [isAddingCandidate, setAddingCandidate] = useState(true);
-  const [isCandidateListLoading, setCandidateListLoading] = useState(true);
+  const [boardInfo, setBoardInfo] = useState([]);
 
   return (
     <BoardContext.Provider
       value={{
         isBoardLoading,
         setBoardLoading,
-        isAddingCandidate,
-        setAddingCandidate,
-        isCandidateListLoading,
-        setCandidateListLoading,
+        boardInfo,
+        setBoardInfo,
       }}
     >
       {children}
