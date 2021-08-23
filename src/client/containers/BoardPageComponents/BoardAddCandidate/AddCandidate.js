@@ -1,7 +1,11 @@
-// import React, { useState } from 'react';
 import postData from './PostData';
 
-export default async function AddCandidate(newCandidate, userId, boardId) {
+export default async function AddCandidate(
+  newCandidate,
+  userId,
+  boardId,
+  setBoardLoading,
+) {
   try {
     if (!newCandidate.name) {
       console.log('Please put a candidate name');
@@ -16,6 +20,8 @@ export default async function AddCandidate(newCandidate, userId, boardId) {
     await postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
       name: newCandidate.name,
     });
+    setBoardLoading(true);
+    setBoardLoading(false);
   } catch (error) {
     throw new Error(error);
   }
