@@ -33,11 +33,7 @@ const Member = ({ member }) => {
     <li key={member.userId} id={member.userId}>
       <div className="modal-members">
         <div className="modal-body">
-          <img
-            className="round"
-            src={require(`../../assets/images/demo-members-photos${member.photoUrl}`)}
-            alt="member"
-          />
+          <img className="round" src={member.photoUrl} alt="member" />
           <div className="profile">
             <h4>{member.fullName}</h4>
             <p className="caption">{member.role}</p>
