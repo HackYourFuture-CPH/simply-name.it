@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useCandidates } from '../../UseHooks/useCandidates';
-import { updateBallots } from './updateBallots';
+import { useUpdateBallots } from './updateBallots';
 import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
 import { candidateCardSorting } from '../../../components/CandidateCard/CandidateCardSorting';
 import {
@@ -21,7 +21,7 @@ export default function CandidateList({ userId, boardId }) {
     };
   }
 
-  updateBallots(userId, boardId, candidates, draggedInit);
+  useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const onClick = () => {
     console.log('clicked');
