@@ -3,25 +3,12 @@ import './dropzone.styles.css';
 import { useDropzone } from 'react-dropzone';
 import AddImageIcon from './AddImageIcon.component';
 
-const thumbsContainer = {};
-
-const thumb = {
-  width: 325,
-  height: 200,
-};
-
-const thumbInner = {
-  overflow: 'hidden',
-};
-
 const img = {
-  width: 'auto',
-  height: '100%',
+  height: '70px',
 };
 
 export default function DropzoneComp() {
   const [files, setFiles] = useState([]);
-
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
@@ -35,11 +22,7 @@ export default function DropzoneComp() {
     },
   });
   const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img src={file.preview} style={img} alt="imagepreview" />
-      </div>
-    </div>
+    <img key={file.name} style={img} src={file.preview} alt="imagepreview" />
   ));
   useEffect(
     () => () => {
@@ -53,10 +36,10 @@ export default function DropzoneComp() {
       <useDropzone>
         <div {...getRootProps({ className: 'dropzone', id: 'dropzone' })}>
           <input {...getInputProps()} />
+          {thumbs}
           <p>
             <AddImageIcon /> Browse
           </p>
-          <aside style={thumbsContainer}>{thumbs}</aside>
         </div>
       </useDropzone>
     </div>
