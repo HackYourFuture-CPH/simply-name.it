@@ -104,3 +104,20 @@ export const CardListExampleDraggable = () => {
     </DragAndSortAdapter>
   );
 };
+
+export const CardListExampleResult = () => {
+  const candidateList = candidateListArr();
+  return (
+    <div className="result-candidate">
+      {candidateList.map((item) => (
+        <CardItemDecorator
+          key={item.id}
+          colorVariant="primary-color"
+          candidateName={item.name}
+          displayDeleteIcon="hidden"
+          onClick={action('clicked')}
+        />
+      ))}
+    </div>
+  );
+};
