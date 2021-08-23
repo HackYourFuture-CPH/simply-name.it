@@ -12,8 +12,8 @@ export const CardListItem = ({ candidateName }) => {
         </div>
 
         <div>
-          <span>&#8942;</span>
-          <span>&#8942;</span>
+          <span className="drag-dots">&#8942;</span>
+          <span className="drag-dots">&#8942;</span>
         </div>
       </div>
     </li>
@@ -24,11 +24,12 @@ export const CardItemDecorator = ({
   colorVariant,
   displayDeleteIcon,
   candidateName,
+  onClick,
 }) => {
   return (
     <div className={`card-display ${colorVariant}`}>
       <div className={`delete-icon-display ${displayDeleteIcon}`}>
-        <DeleteIcon />
+        <DeleteIcon onClick={onClick} />
       </div>
       <CardListItem candidateName={candidateName} />
     </div>
@@ -51,4 +52,5 @@ CardItemDecorator.propTypes = {
   candidateName: PropTypes.string,
   colorVariant: PropTypes.string.isRequired,
   displayDeleteIcon: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
