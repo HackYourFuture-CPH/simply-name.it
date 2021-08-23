@@ -10,7 +10,7 @@ import {
 import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 
-export default function CandidateList({ userId, boardId }) {
+export default function CandidateListPreDeadline({ userId, boardId }) {
   const { candidates, setCandidates, error } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
 
@@ -59,7 +59,7 @@ export default function CandidateList({ userId, boardId }) {
   );
 }
 
-CandidateList.propTypes = {
+CandidateListPreDeadline.propTypes = {
   userId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
 };
