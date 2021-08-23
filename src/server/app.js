@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { HttpError } = require('./api/lib/utils/http-error');
+const resultsDeadline = require('./api/lib/utils/calculateResultsDeadline.js');
 
 const buildPath = path.join(__dirname, '../../dist');
 
@@ -18,6 +19,8 @@ const apiRouter = require('./api/routes/api-router');
 require('./config/db');
 
 admin.initializeApp(); // Might need to add service key env.
+
+resultsDeadline.calculateResultsDeadline();
 
 const app = express();
 
