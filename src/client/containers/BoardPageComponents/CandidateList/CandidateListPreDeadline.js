@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCandidates } from '../../UseHooks/useCandidates';
-import { useUpdateBallots } from './updateBallots';
+import { useUpdateBallots } from './useUpdateBallots';
 import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
 import { candidateCardSorting } from '../../../components/CandidateCard/CandidateCardSorting';
 import {
@@ -9,6 +9,7 @@ import {
 } from '../../DragAndSortAdapter/DragAndSortAdapter';
 import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
+import { deleteCandidate } from './deleteCandidate';
 
 export default function CandidateListPreDeadline({ userId, boardId }) {
   const { candidates, setCandidates, error } = useCandidates(userId, boardId);
@@ -22,10 +23,6 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
   }
 
   useUpdateBallots(userId, boardId, candidates, draggedInit);
-
-  const onClick = () => {
-    console.log('clicked');
-  };
 
   return (
     <div className="CandidateCard-component">
@@ -48,7 +45,7 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
                   colorVariant="primary-color"
                   candidateName={candidate.name}
                   displayDeleteIcon="visible"
-                  onClick={onClick}
+                  onClick={() => deleteCandidate(userId, boardId, candidate.id)}
                 />
               </SortableItem>
             );
