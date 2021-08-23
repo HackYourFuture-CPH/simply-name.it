@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 
-export async function updateBallots(userId, boardId, candidates, draggedInit) {
+export async function useUpdateBallots(
+  userId,
+  boardId,
+  candidates,
+  draggedInit,
+) {
   useEffect(() => {
     if (!draggedInit) return;
     (async () => {
@@ -13,5 +18,5 @@ export async function updateBallots(userId, boardId, candidates, draggedInit) {
         body: JSON.stringify(candidates),
       });
     })();
-  }, [candidates]);
+  }, [userId, boardId, candidates, draggedInit]);
 }
