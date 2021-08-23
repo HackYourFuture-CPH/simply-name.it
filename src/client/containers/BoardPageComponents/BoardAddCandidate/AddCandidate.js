@@ -21,7 +21,6 @@ export default async function AddCandidate(
       name: newCandidate.name,
     });
     setBoardLoading(true);
-    setBoardLoading(false);
   } catch (error) {
     throw new Error(error);
   }
