@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
-import { useCandidates } from '../UseHooks/useCandidates';
+import React, { useState, useEffect } from 'react';
+import { useCandidates } from '../../UseHooks/useCandidates';
 import { updateBallots } from './updateBallots';
-import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
-import { candidateCardSorting } from '../../components/CandidateCard/CandidateCardSorting';
+import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
+import { candidateCardSorting } from '../../../components/CandidateCard/CandidateCardSorting';
 import {
   DragAndSortAdapter,
   SortableItem,
-} from '../DragAndSortAdapter/DragAndSortAdapter';
-import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
+} from '../../DragAndSortAdapter/DragAndSortAdapter';
+import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 
 export default function CandidateList({ userId, boardId }) {
   const { candidates, setCandidates, error } = useCandidates(userId, boardId);
+  const [draggedInit, setDraggedInit] = useState(false);
 
   function candidateTransform(candidate, index) {
     return {
@@ -20,12 +21,7 @@ export default function CandidateList({ userId, boardId }) {
     };
   }
 
-  useEffect(() => {
-    const firstCandidates = candidates;
-    if (firstCandidates !== candidates) {
-      updateBallots(userId, boardId, candidates);
-    }
-  }, [userId, boardId, candidates]);
+  updateBallots(userId, boardId, candidates, draggedInit);
 
   const onClick = () => {
     console.log('clicked');
@@ -41,6 +37,7 @@ export default function CandidateList({ userId, boardId }) {
             setCandidates,
             candidateCardSorting,
             candidateTransform,
+            setDraggedInit,
           )}
           items={candidates}
         >
