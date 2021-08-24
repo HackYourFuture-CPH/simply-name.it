@@ -34,7 +34,7 @@ export default function Result() {
   }, []);
 
   const onArrowButtonClick = () => {
-    const path = '/board-page';
+    const path = '/board';
     history.push(path);
   };
 

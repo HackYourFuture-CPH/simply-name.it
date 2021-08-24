@@ -13,3 +13,14 @@ li {
 .page-title-black-large {
   margin-left: 6vh;
 }
+
+.card-container .drag-dots {
+  visibility: hidden;
+  border: 1px solid green;
+}
+
+.card-container .card-title {
+  width: 100%;
+  padding-right: 50px;
+  text-align: center;
+}
