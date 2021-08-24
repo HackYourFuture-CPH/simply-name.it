@@ -1,6 +1,6 @@
 import React from 'react';
-import DropzoneComp from './dropzone.component';
+import Dropzone from '../../containers/DropZone/Dropzone.container';
 
-export default { title: 'DropzoneComponent', component: DropzoneComp };
+export default { title: 'DropzoneContainer', component: Dropzone };
 
-export const Dropzone = () => <DropzoneComp />;
+export const DropzoneContainerExample = () => <Dropzone />;
