@@ -17,22 +17,33 @@ const apiRouter = require('./api/routes/api-router');
 
 require('./config/db');
 
-try {
-  admin.initializeApp({
-    credential: admin.credential.cert({
-      project_id: process.env.FIREBASE_PROJECT_ID,
-      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-      private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      client_email: process.env.FIREBASE_CLIENT_EMAIL,
-      client_id: process.env.FIREBASE_CLIENT_ID,
-      auth_uri: process.env.FIREBASE_AUTH_URI,
-      token_uri: process.env.FIREBASE_TOKEN_URI,
-      auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER,
-      client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
-    }),
-  });
-} catch (error) {
-  console.log(error);
+if (process.env.NODE_ENV !== 'development') {
+  try {
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        project_id: process.env.FIREBASE_PROJECT_ID,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        client_email: process.env.FIREBASE_CLIENT_EMAIL,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        client_id: process.env.FIREBASE_CLIENT_ID,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        auth_uri: process.env.FIREBASE_AUTH_URI,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        token_uri: process.env.FIREBASE_TOKEN_URI,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER,
+        // eslint-disable-next-line @typescript-eslint/camelcase
+        client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
+      }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const app = express();
