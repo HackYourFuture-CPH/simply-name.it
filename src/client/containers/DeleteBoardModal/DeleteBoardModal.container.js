@@ -6,7 +6,9 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
 const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
-  // const { userId } = useParams();
+  // const { user } = useUser();
+  // const userId = user[0].id;
+  // const { boardId } = useParams();
 
   const userId = 2;
   const boardId = 1;
@@ -29,10 +31,9 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
         <div className="circle-exclamation">
           <p>!</p>
         </div>
-        {/*  {boardInfo && (
+        {boardInfo && (
           <PageTitle title={`Delete '${boardInfo.title}' board?`} />
-        )}*/}
-        <PageTitle title={`Delete 'What should I name my pet' board?`} />
+        )}
         <p>You won&apos;t be able to recover the board</p>
         <div className="delete-btn-container">
           <GenericButton
@@ -49,7 +50,7 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
             buttonSize="medium"
             buttonType="primary"
             buttonDisabled={false}
-            onClick={() => deleteBoard(boardId)} //boardInfo.id
+            onClick={() => deleteBoard(boardId)}
           />
         </div>
       </div>
@@ -59,9 +60,8 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
 
 DeleteBoardModal.propTypes = {
   boardInfo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string,
-  }),
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   setModalVisibility: PropTypes.func.isRequired,
 };
 

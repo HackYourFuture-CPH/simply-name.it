@@ -9,7 +9,6 @@ import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
-import DeleteBoardModal from './containers/DeleteBoardModal/DeleteBoardModal.container';
 import { useFirebase } from './firebase/FirebaseContext';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <DeleteBoardModal exact path="/deleteBoard" />
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
         {/* All routes below are authenticated routes - a user must login first */}
