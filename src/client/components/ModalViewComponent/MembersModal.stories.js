@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MembersModal from './MembersModal.component';
 import members from './membersData.json';
+import GenericButton from '../GenericButton/GenericButton.component';
 
 export default {
   title: 'Components / ModalView Component',
@@ -21,13 +22,13 @@ export function Component() {
           aria-hidden="true"
         />
       ) : null}
-      <button
-        type="button"
+      <GenericButton
+        buttonSize="small"
+        buttonType="secondary"
+        buttonDisabled={false}
         onClick={() => setShowModal(true)}
-        className="btn-openModal"
-      >
-        Members
-      </button>
+        buttonLabel="Members"
+      />
       <MembersModal show={showModal} close={closeModal} members={members} />
     </div>
   );
