@@ -1,24 +1,33 @@
-* {
-  box-sizing: border-box;
-}
-
-.result-container {
+.board-container {
   background:
     url('../../assets/images/pages-background/create-board.svg')
     no-repeat;
-  margin: 10px 30px;
-  padding: 10px 20px;
+  max-width: 414px;
+}
+
+.page-title-black-large {
+  margin: 25px 25px 10px;
 }
 
 label {
   display: block;
-}
-
-input,
-label {
-  margin: 0.4rem 0;
+  margin-left: 30px;
+  padding: 20px 10px 10px;
 }
 
 .input-name-container {
-  width: 40%;
+  width: 330px;
+  margin-left: 30px;
+}
+
+.drop-zone {
+  padding: 10px;
+}
+
+.generic-button.medium-button {
+  margin-left: 30px;
+}
+
+.button-primary.active-button {
+  margin: 10px 30px;
 }

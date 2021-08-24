@@ -5,26 +5,45 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import InputComponent from '../../components/InputComponent/InputComponent';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { useHistory } from 'react-router-dom';
+import AddNewBoard from './AddNewBoard';
+import { useUser } from '../../firebase/UserContext';
 
 export default function CreateBoard() {
   const history = useHistory();
-  const [inputValue, setInputValue] = useState('');
+  const { user } = useUser();
+  const userId = user[0].id;
+  const [boardName, setboardName] = useState('');
+  const [datetime, setDatetime] = useState('');
+  const [banner, setBanner] = useState('');
 
   const onArrowButtonClick = () => {
-    const path = '/profile-page';
+    const path = '/profile';
     history.push(path);
   };
 
   const onResetButtonClick = () => {
-    setInputValue('');
+    setboardName('');
+    setDatetime('');
+    setBanner('');
+  };
+
+  const newBoard = {
+    creatorId: userId,
+    title: boardName,
+    deadline: datetime,
+    isDeleted: false,
+    banner,
   };
 
   const onCreateButtonClick = () => {
-    console.log('clicked');
+    AddNewBoard(newBoard, userId);
+    setboardName('');
+    setDatetime('');
+    setBanner('');
   };
 
   return (
-    <div className="result-container">
+    <div className="board-container">
       <ArrowButton onClick={onArrowButtonClick} color="black" />
       <PageTitle title="New board" variant="black-large" />
       <label>Name</label>
@@ -33,9 +52,9 @@ export default function CreateBoard() {
           placeholder="Board Name"
           borderShape="round"
           theme="light"
-          inputValue={inputValue}
+          inputValue={boardName}
           onChange={(e) => {
-            setInputValue(e);
+            setboardName(e);
           }}
         />
       </div>
@@ -46,13 +65,13 @@ export default function CreateBoard() {
           placeholder="Date/Time"
           borderShape="round"
           theme="light"
-          inputValue={inputValue}
+          inputValue={datetime}
           onChange={(e) => {
-            setInputValue(e);
+            setDatetime(e);
           }}
         />
       </div>
-      <div>Dropzone component</div>
+      <div className="drop-zone">Dropzone component</div>
       <GenericButton
         buttonLabel="Add members"
         buttonSize="large"
