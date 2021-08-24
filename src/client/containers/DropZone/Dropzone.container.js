@@ -8,23 +8,22 @@ const img = {
 
 export default function Dropzone() {
   const [files, setFiles] = useState([]);
-  console.log(files);
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
-      acceptedFiles.forEach((file) => {
-        // upload to backend :
-        // const formData = new FormData();
-        // formData.append('image', file)
-        // example fetch mising authentication header
-        // fetch('api/image', {
-        //     method: 'POST',
-        //     body: formData,
-        //     headers : {
-        //         'Accept' : 'multipart/form-data'
-        //     }
-        // })
-      });
+      // acceptedFiles.forEach((file) => {
+      // upload to backend :
+      // const formData = new FormData();
+      // formData.append('image', file)
+      // example fetch mising authentication header
+      // fetch('api/image', {
+      //     method: 'POST',
+      //     body: formData,
+      //     headers : {
+      //         'Accept' : 'multipart/form-data'
+      //     }
+      // })
+      // });
 
       setFiles(
         acceptedFiles.map((file) =>
@@ -51,6 +50,6 @@ export default function Dropzone() {
       getRootProps={getRootProps}
       getInputProps={getInputProps}
       thumbs={thumbs}
-    ></DropzoneComp>
+    />
   );
 }
