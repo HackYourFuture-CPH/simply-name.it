@@ -18,7 +18,7 @@ export default function BoardHeader() {
     // console.log('you clicked!');
   };
   return (
-    <div className="Board-container">
+    <div className="board-header-container">
       <HeaderComponent>
         <Link to="/profile">
           <ArrowButton className="arrow-button-white" onClick={onClick} />
@@ -29,8 +29,8 @@ export default function BoardHeader() {
           visible={visibility}
           onClick={closeDropdown}
         >
-          <div className="options-container dark">
-            <ul className="option-list">
+          <div>
+            <ul className="header-option-list">
               <li>Edit Board</li>
               <li>Delete Board</li>
             </ul>

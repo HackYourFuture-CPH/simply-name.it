@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.Board-container {
+.board-header-container {
   position: relative;
   height: 739px;
   max-width: 414px;
@@ -14,24 +14,19 @@
   object-fit: cover;
 }
 
-.option-list li {
+.header-option-list li {
   list-style-type: none;
   width: 120px;
 }
 
-.option-list {
+.header-option-list {
   padding-left: 10px;
 }
 
 .arrow-button-white {
-  margin-top: -20px;
-}
-
-.dropdown-button {
   margin-top: -11px;
 }
 
-.options-container .dark {
-  margin-top: -10px;
-  margin-right: -20px;
+.dropdown-button {
+  margin-top: -2px;
 }
