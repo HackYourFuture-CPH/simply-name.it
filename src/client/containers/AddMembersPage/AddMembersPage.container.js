@@ -1,49 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 
 import './AddMembersPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
-
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
-import InputComponent from '../../components/InputComponent/InputComponent';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 
-export default function AddMembers() {
-  const location = useLocation();
-  console.log(location);
-  const { members, updateMembers } = useParams();
-  //const [membersState, setmembersState] = useState(new Set());
+export default function AddMembers({
+  members,
+  updateMembers,
+  toggleShowMembers,
+}) {
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [addButton, setAddButton] = useState(false);
-
-  const history = useHistory();
+  const membersSet = new Set(members);
+  console.log(membersSet);
+  console.log(members);
 
   let APIurl = `/api/users/search?fullName=${searchInput}`;
 
-  const changeButtonAvail = () => {
-    setAddButton(!addButton);
-  };
-
-  const goToBoard = () => {
-    const path = '/create-board';
-    history.push(path);
-  };
+  // const changeButtonAvail = () => {
+  //   setAddButton(!addButton);
+  // };
 
   const handleInput = (e) => {
     setSearchInput(e.target.value);
   };
 
-  const handleButtonClick = (id) => {
-    console.log('you clicked!');
-    console.log(id);
-    //updateMembers(id);
-    //members.add(id);
-    //changeButtonAvail();
-    console.log(members);
+  const handleArrowButton = () => {
+    toggleShowMembers();
+  };
+
+  const handleAddButton = (id) => {
+    updateMembers(id);
   };
 
   const cleanUp = (id) => {
@@ -52,7 +46,6 @@ export default function AddMembers() {
 
   useEffect(() => {
     setLoading(true);
-    // debouncing
 
     const id = setTimeout(async () => {
       try {
@@ -61,12 +54,8 @@ export default function AddMembers() {
           : (APIurl = `/api/users/search?fullName=${searchInput}`);
         const result = await fetch(APIurl);
         const fetchedData = await result.json();
-        console.log(fetchedData);
-        console.log('is array', Array.isArray(fetchedData));
-        console.log(result.ok);
-        result.ok && Array.isArray(fetchedData)
-          ? setUsers(fetchedData)
-          : setUsers([]);
+        result.ok ? setUsers(fetchedData) : setUsers([]);
+
         setLoading(false);
       } catch (error) {
         error = JSON.parse(JSON.stringify(error));
@@ -79,25 +68,16 @@ export default function AddMembers() {
 
   return (
     <div className="AddMembers-container">
-      <ArrowButton color="black" onClick={goToBoard} />
+      <ArrowButton color="black" onClick={() => handleArrowButton()} />
       <PageTitle title={'Add members'} variant={'black'} />
       <div className="search-container">
         <div className="search-input">
           <input
+            value={searchInput}
             onChange={(e) => {
               handleInput(e);
             }}
           ></input>
-          <InputComponent
-            inputValue={}
-            placeholder="Search"
-            borderShape="round"
-            theme="light"
-            showSearchIcon={true}
-            onChange={(e) => {
-              handleInput(e);
-            }}
-          />
         </div>
       </div>
       <div className="users-list-container">
@@ -122,7 +102,7 @@ export default function AddMembers() {
                         buttonSize="small"
                         buttonType="secondary"
                         buttonDisabled={addButton}
-                        onClick={() => handleButtonClick(user.id)}
+                        onClick={() => handleAddButton(user.id)}
                       />
                     </div>
                   );
@@ -135,3 +115,9 @@ export default function AddMembers() {
     </div>
   );
 }
+
+AddMembers.propTypes = {
+  updateMembers: PropTypes.func.isRequired,
+  toggleShowMembers: PropTypes.func.isRequired,
+  members: PropTypes.array.isRequired,
+};

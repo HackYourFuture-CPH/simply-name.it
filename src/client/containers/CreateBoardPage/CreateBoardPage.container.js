@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddMembers from '../AddMembersPage/AddMembersPage.container';
 
-export const CreateBoard = () => {
-  const [members, setMembers] = useState(new Set()); // tried an array too
+export default function CreateBoard() {
+  const [members, setMembers] = useState([]);
   const updateMembers = (id) => {
-    setMembers(...members, id);
+    setMembers([...members, id]);
   };
+  const [showAddMembers, setshowAddMembers] = useState(false);
+  const toggleShowMembers = () => {
+    setshowAddMembers(!showAddMembers);
+  }; //show members and pass it
 
   return (
     <div className="CreateBoard ">
-      {/* <Link to="add-members" params={(members, updateMembers)}>
-        Create Idea
-      </Link> */}
-      <Link
-        to={{
-          pathname: '/add-members',
-          state: { members, updateMembers },
-        }}
-      ></Link>
-      New Board!
+      {showAddMembers && (
+        <AddMembers
+          members={members}
+          updateMembers={updateMembers}
+          toggleShowMembers={toggleShowMembers}
+        />
+      )}
+      {!showAddMembers && (
+        <div>
+          Diny, your stuff goes inside here. :)
+          {/* the GenericButton "add members": */}
+          <button onClick={toggleShowMembers}>add members</button>
+        </div>
+      )}
     </div>
   );
-};
+}

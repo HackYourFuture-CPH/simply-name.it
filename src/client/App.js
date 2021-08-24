@@ -9,9 +9,7 @@ import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Loader from './components/Loader';
-import AddMembers from './containers/AddMembersPage/AddMembersPage.container';
-import CreateBoard from './containers/AddMembersPage/AddMembersPage.container';
-
+import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 
@@ -31,7 +29,6 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <AddMembers exact path="/add-members" />
         <CreateBoard exact path="/create-board" />
 
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
