@@ -10,10 +10,12 @@ import {
 import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
+import { useBoard } from '../../BoardPage/BoardProvider';
 
 export default function CandidateListPreDeadline({ userId, boardId }) {
   const { candidates, setCandidates, error } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
+  const { setBoardLoading } = useBoard();
 
   function candidateTransform(candidate, index) {
     return {
@@ -25,7 +27,7 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const handleDelete = (candidateId) => {
-    deleteCandidate(userId, boardId, candidateId, isDeleting);
+    deleteCandidate(userId, boardId, candidateId);
     setBoardLoading(true);
   };
 
