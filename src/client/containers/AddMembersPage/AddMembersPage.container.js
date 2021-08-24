@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 
 import './AddMembersPage.styles.css';
+import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
@@ -10,10 +11,11 @@ import InputComponent from '../../components/InputComponent/InputComponent';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 
 export default function AddMembers() {
+  const location = useLocation();
+  console.log(location);
   const { members, updateMembers } = useParams();
-  console.log(members);
   //const [membersState, setmembersState] = useState(new Set());
-  const [searchInput, setSearchInput] = useState('_');
+  const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
   const [addButton, setAddButton] = useState(false);
@@ -31,18 +33,16 @@ export default function AddMembers() {
     history.push(path);
   };
 
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-
   const handleInput = (e) => {
-    console.log(searchInput);
     setSearchInput(e.target.value);
   };
 
   const handleButtonClick = (id) => {
     console.log('you clicked!');
     console.log(id);
-    changeButtonAvail();
-    members.add(id);
+    //updateMembers(id);
+    //members.add(id);
+    //changeButtonAvail();
     console.log(members);
   };
 
@@ -72,16 +72,14 @@ export default function AddMembers() {
         error = JSON.parse(JSON.stringify(error));
         console.log(error);
       }
-    }, 2000);
+    }, 1500);
 
     return () => cleanUp(id);
   }, [searchInput]);
 
   return (
     <div className="AddMembers-container">
-      <div>
-        <button onClick={goToBoard}>arrow button</button>
-      </div>
+      <ArrowButton color="black" onClick={goToBoard} />
       <PageTitle title={'Add members'} variant={'black'} />
       <div className="search-container">
         <div className="search-input">
@@ -90,15 +88,16 @@ export default function AddMembers() {
               handleInput(e);
             }}
           ></input>
-          {/* <InputComponent
-                placeholder="Search"
-                borderShape="round"
-                theme="light"
-                showSearchIcon={true}
-                onChange={(e) => {
-                  handleInput(e);
-                }}
-              /> */}
+          <InputComponent
+            inputValue={}
+            placeholder="Search"
+            borderShape="round"
+            theme="light"
+            showSearchIcon={true}
+            onChange={(e) => {
+              handleInput(e);
+            }}
+          />
         </div>
       </div>
       <div className="users-list-container">

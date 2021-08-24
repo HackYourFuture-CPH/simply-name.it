@@ -5,11 +5,7 @@
 .AddMembers-container {
   width: 414px;
   height: 739px;
-  border: solid 1px lightskyblue;
-}
-
-.search-container {
-  border: solid 1px yellow;
+  border: solid 1px grey;
 }
 
 .search-input {
@@ -20,13 +16,11 @@
 .search-button {
   display: inline-block;
   width: 70px;
-  border: solid 1px pink;
 }
 
 .users-list-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid pink;
 }
 
 .users-list-item {
@@ -35,5 +29,8 @@
   justify-content: space-between;
   width: 80%;
   margin: auto;
-  border: 1px solid cyan;
+}
+
+.users-list-item button {
+  margin-top: 5px;
 }
