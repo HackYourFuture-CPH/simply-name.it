@@ -17,7 +17,7 @@ export default function AddMembers({
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-  const [addButton, setAddButton] = useState(false);
+  // const [addButton, setAddButton] = useState(false);
   const membersSet = new Set(members);
   console.log(membersSet);
   console.log(members);
@@ -97,13 +97,23 @@ export default function AddMembers({
                         profilePictureLink="https://picsum.photos/seed/picsum/200/300"
                       />
                       <p>{user.fullname}</p>
-                      <GenericButton
-                        buttonLabel="Add"
-                        buttonSize="small"
-                        buttonType="secondary"
-                        buttonDisabled={addButton}
-                        onClick={() => handleAddButton(user.id)}
-                      />
+                      {!membersSet.has(user.id) ? (
+                        <GenericButton
+                          buttonLabel="add"
+                          buttonSize="small"
+                          buttonType="secondary"
+                          buttonDisabled={false}
+                          onClick={() => handleAddButton(user.id)}
+                        />
+                      ) : (
+                        <GenericButton
+                          buttonLabel="added"
+                          buttonSize="small"
+                          buttonType="secondary"
+                          buttonDisabled={true}
+                          onClick={() => handleAddButton(user.id)}
+                        />
+                      )}
                     </div>
                   );
                 })}
