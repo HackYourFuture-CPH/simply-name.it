@@ -24,6 +24,11 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
 
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
+  const handleDelete = (candidateId) => {
+    deleteCandidate(userId, boardId, candidateId, isDeleting);
+    setBoardLoading(true);
+  };
+
   return (
     <div className="CandidateCard-component">
       {error ? (
@@ -45,7 +50,7 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
                   colorVariant="primary-color"
                   candidateName={candidate.name}
                   displayDeleteIcon="visible"
-                  onClick={() => deleteCandidate(userId, boardId, candidate.id)}
+                  onClick={() => handleDelete(candidate.id)}
                 />
               </SortableItem>
             );
