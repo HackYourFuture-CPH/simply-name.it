@@ -65,7 +65,9 @@ const getCandidates = async (userId, boardId) => {
     .join('ballots', 'ballots.candidateId', '=', 'candidates.id')
     .select('candidates.name', 'ballots.rank', 'candidateId')
     .where('candidates.boardId', boardId)
-    .where('ballots.userId', userId);
+    .where('ballots.userId', userId)
+    .where('candidates.isBlocked', 0)
+    .orderBy('rank', 'asc');
 
   if (candidates.length === 0) {
     throw new IncorrectEntryError(
