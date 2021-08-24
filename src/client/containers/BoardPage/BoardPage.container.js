@@ -1,48 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BoardPage.style.css';
 import OwnerBoardPage from './OwnerBoardPage';
 import MemberBoardPage from './MemberBoardPage';
-// import { useUser } from '../../firebase/UserContext';
 import { useBoard } from './BoardProvider';
+import { useUser } from '../../firebase/UserContext';
+import { useParams } from 'react-router-dom';
 
 export default function BoardPage() {
-  const { isBoardLoading } = useBoard();
-  const { setBoardLoading } = useBoard();
-  // const {user} = useUser();
-  // console.log('user', user[0].id);
-  const [boardInfo, setBoardInfo] = useState([]);
-
-  // const { userId, boardId } = useParams();
-  const userId = 2;
-  const boardId = 1;
+  const [errorCode, setErrorCode] = useState(null);
+  const {
+    isBoardLoading,
+    setBoardLoading,
+    boardInfo,
+    setBoardInfo,
+  } = useBoard();
+  const { boardId } = useParams();
+  const { user } = useUser();
+  const userId = user[0].id;
 
   useEffect(() => {
     const fetchingBoardApi = async () => {
       const API_URL = `/api/users/${userId}/boards/${boardId}`;
       try {
         const apiResponse = await fetch(API_URL);
-        const apiData = await apiResponse.json();
-        setBoardInfo(apiData[0]);
-        setBoardLoading(false);
+        if (apiResponse.ok) {
+          const apiData = await apiResponse.json();
+          setBoardInfo(apiData[0]);
+          setBoardLoading(false);
+        } else {
+          const errorResult = await apiResponse.json();
+          if (errorResult.error.startsWith('Incorrect entry Error')) {
+            setErrorCode('no_such_board');
+          }
+          console.log('Fetching board info failed : ', errorResult);
+        }
       } catch (error) {
+        console.log(error);
         throw new Error(error);
       }
     };
-    if (isBoardLoading) {
-      fetchingBoardApi();
+    (async () => {
+      await fetchingBoardApi();
+    })();
+  }, []);
+
+  if (errorCode !== null) {
+    switch (errorCode) {
+      case 'no_such_board':
+        return (
+          <div>
+            No such board exists or you do not have access to this board.
+          </div>
+        );
+      default:
+        return <div>Unknown error occurred while fetching board</div>;
     }
-  }, [isBoardLoading, setBoardLoading]);
-
-  if (isBoardLoading) {
-    return <div>LOADING....</div>;
+  } else {
+    if (isBoardLoading) {
+      return <div>LOADING....</div>;
+    }
+    return userId === boardInfo.creatorId ? (
+      <>
+        <OwnerBoardPage boardInfo={boardInfo} />
+      </>
+    ) : (
+      <MemberBoardPage boardInfo={boardInfo} />
+    );
   }
-
-  return userId === boardInfo.creatorId ? (
-    <>
-      {/* <button type="button" onClick={() => setBoardLoading(true)} style={{position:"absolute",top:"0px",right:"0px"}}>test</button> */}
-      <OwnerBoardPage boardInfo={boardInfo} />
-    </>
-  ) : (
-    <MemberBoardPage boardInfo={boardInfo} />
-  );
 }
