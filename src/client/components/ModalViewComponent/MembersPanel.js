@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Dropdown from '../Dropdown/Dropdown.component';
 
 export default function MembersPanel({ members }) {
   return (
@@ -11,7 +12,7 @@ export default function MembersPanel({ members }) {
           </li>
         ) : (
           members.map((member) => {
-            return <Member member={member} key={member.id} />;
+            return <Member member={member} key={member.userId} />;
           })
         )}
       </ul>
@@ -20,17 +21,27 @@ export default function MembersPanel({ members }) {
 }
 
 const Member = ({ member }) => {
+  const [visibility, setVisibility] = useState(false);
+  const closeDropdown = () => {
+    if (visibility === false) {
+      setVisibility(true);
+    } else {
+      setVisibility(false);
+    }
+  };
   return (
-    <li key={member.id} id={member.id}>
+    <li key={member.userId} id={member.userId}>
       <div className="modal-members">
         <div className="modal-body">
-          <img className="round" src={member.photo} alt="member" />
+          <img className="round" src={member.photoUrl} alt="member" />
           <div className="profile">
-            <h3>{member.name}</h3>
+            <h4>{member.fullName}</h4>
             <p className="caption">{member.role}</p>
           </div>
         </div>
-        <div className="dropdown" />
+        <Dropdown visible={visibility} variant="light" onClick={closeDropdown}>
+          <p>Remove</p>
+        </Dropdown>
       </div>
     </li>
   );

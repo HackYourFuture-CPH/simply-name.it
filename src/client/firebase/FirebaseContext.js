@@ -7,42 +7,56 @@ import React, {
   useState,
 } from 'react';
 
-import { resetPassword, signIn, signOut, signUp } from './auth';
-import { initFirebase } from './configure';
+import { signIn, signOut, getUserToken } from './googleAuth';
+import { auth } from './configure';
 
 const FirebaseContext = createContext();
 
 export function FirebaseProvider({ children, initialAuth }) {
-  const [auth, setAuth] = useState(initialAuth);
+  const [authUser, setAuthUser] = useState(initialAuth);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // default is loading
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (auth) {
-      // Don't initialize twice
+    if (authUser) {
       return;
     }
 
-    try {
-      const r = initFirebase();
-      setAuth(r.auth);
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Unable to initialize firebase, check console for errors',
-        e,
-      );
-    }
-  }, [auth]);
+    auth.onAuthStateChanged((user) => {
+      // if user exists it means authenticated
+      if (user) {
+        setIsAuthenticated(true);
+        setIsLoading(false);
+        setAuthUser(() => {
+          return {
+            fullName: user.displayName,
+            email: user.email,
+            firebaseUId: user.uid,
+            profilePicture: user.photoURL,
+          };
+        });
+      } else {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        setAuthUser(null);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const value = useMemo(
     () => ({
-      auth,
+      authUser,
+      isAuthenticated,
+      isLoading,
+      getUserToken,
       isInitialized: !!auth,
-      signIn: (data) => signIn(auth, data),
-      signUp: (data) => signUp(auth, data),
-      signOut: () => signOut(auth),
-      resetPassword: (data) => resetPassword(auth, data),
+      signIn: () => signIn(),
+      signOut: () => signOut(),
     }),
-    [auth],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [authUser, isLoading],
   );
 
   return (
@@ -67,12 +81,13 @@ FirebaseProvider.defaultProps = {
  * Gets the current value for FirebaseContext
  *
  * @typedef {object} FirebaseContextType
- * @property {firebase.auth.Auth} auth - Firebase auth provider
+ * @property {object} authUser - Passes the info of the user
+ * @property {boolean} isAuthenticated True when user is authenticated
+ * @property {boolean} isLoading - False when authentication ends
+ * @property {() => Promise<void>} getUserToken - gets the user token
  * @property {boolean} isInitialized - True if Firebase is initialized
- * @property {({email, password}) => Promise<void>} signIn - Signs in the user
- * @property {({email, password}) => Promise<void>} signUp - Signs in the user
+ * @property {() => Promise<void>} signIn - Signs in the user
  * @property {() => Promise<void>} signOut - Signs out the user
- * @property {({email}) => Promise<void>} resetPassword - Resets the password for the user with the specified e-mail
  *
  * @returns {FirebaseContextType}
  */
