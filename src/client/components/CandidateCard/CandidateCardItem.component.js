@@ -12,8 +12,8 @@ export const CardListItem = ({ candidateName }) => {
         </div>
 
         <div>
-          <span className="drag-dots">&#8942;</span>
-          <span className="drag-dots">&#8942;</span>
+          <span>&#8942;</span>
+          <span>&#8942;</span>
         </div>
       </div>
     </li>
