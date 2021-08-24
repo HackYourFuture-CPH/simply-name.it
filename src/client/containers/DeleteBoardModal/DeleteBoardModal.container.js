@@ -6,16 +6,13 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
 const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
-  // const { user } = useUser();
-  // const userId = user[0].id;
-  // const { boardId } = useParams();
-
   const userId = 2;
   const boardId = 1;
-  const deleteBoard = async (boardId) => {
-    const API_URL = `/api/users/${userId}/boards/${boardId}}`;
+  const deleteBoard = async () => {
+    const API_URL = `/api/users/${userId}/boards/${boardId}`;
     try {
       await fetch(API_URL, { method: 'DELETE' });
+      // eslint-disable-next-line no-alert
       alert('Data deleted');
     } catch (error) {
       throw new Error(error);
@@ -27,7 +24,7 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
       <div className="close-btn-div">
         <CloseButton onClick={() => setModalVisibility(false)} />
       </div>
-      <div className="content-container">
+      <div className="delete-board-info-box">
         <div className="circle-exclamation">
           <p>!</p>
         </div>

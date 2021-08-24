@@ -41,7 +41,7 @@
   z-index: 50;
 }
 
-.content-container {
+.delete-board-info-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
