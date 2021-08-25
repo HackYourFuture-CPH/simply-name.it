@@ -96,42 +96,41 @@ export default function ProfilePage() {
       }}
     >
       <div className="profile-page-container">
-        <div>
-          <div className="header-container">
-            <div className="header">
-              <HeaderComponent colored={true}>
-                <Link to="/welcome">
-                  <ArrowButton
-                    // onClick={console.log(' clicked')}
-                    color="white"
-                  />
-                </Link>
-                <Dropdown
-                  variant="dark"
-                  onClick={() => {
-                    setVisible(!visible);
-                  }}
-                  visible={visible}
-                >
-                  <ul>
-                    <li> Log out </li>
-                  </ul>
-                </Dropdown>
-              </HeaderComponent>
-            </div>
-            <div className="sub-header">
-              <UserProfilePicture
-                profilePictureLink="https://picsum.photos/seed/picsum/200/300"
-                size="big"
+        <div className="header">
+          <HeaderComponent colored={true}>
+            <Link to="/welcome">
+              <ArrowButton
+                // onClick={console.log(' clicked')}
+                color="white"
               />
-              <PageTitle variant="black-large" title={userData.fullName} />
-            </div>
+            </Link>
+            <Dropdown
+              variant="dark"
+              onClick={() => {
+                setVisible(!visible);
+              }}
+              visible={visible}
+            >
+              <ul>
+                <li> Log out </li>
+              </ul>
+            </Dropdown>
+          </HeaderComponent>
+        </div>
+        <div className="sub-header">
+          <div className="profile-user">
+            <UserProfilePicture
+              profilePictureLink="https://picsum.photos/seed/picsum/200/300"
+              size="big"
+            />
+            <PageTitle variant="black-large" title={userData.fullName} />
           </div>
-          <div className="users-boards-container">
-            <TapSeparator />
-            <div className="boards-container">
-              <BoardBanners />
-            </div>
+        </div>
+
+        <div className="users-boards-container">
+          <TapSeparator />
+          <div className="boards-container">
+            <BoardBanners />
           </div>
         </div>
       </div>

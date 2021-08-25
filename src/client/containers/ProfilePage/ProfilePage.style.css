@@ -7,21 +7,21 @@
   max-width: 414px;
 }
 
-.header-container {
+.header {
   position: relative;
   width: 100%;
   height: 25vh;
-  top: 0;
-}
-
-.header {
-  width: 100%;
 }
 
 .sub-header {
-  position: absolute;
+  position: relative;
+  height: 15vh;
   padding-left: 1rem;
-  bottom: -45%;
+}
+
+.profile-user {
+  position: absolute;
+  top: -40%;
 }
 
 .sub-header .page-title-black-large {
@@ -29,9 +29,8 @@
 }
 
 .users-boards-container {
-  width: 100%;
   position: relative;
-  margin-top: 5rem;
+  width: 100%;
 }
 
 .boards-container {
