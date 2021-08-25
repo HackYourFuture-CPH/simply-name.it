@@ -9,11 +9,7 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 
-export default function AddMembers({
-  members,
-  updateMembers,
-  toggleShowMembers,
-}) {
+export default function AddMembers({ members, addMember, toggleShowMembers }) {
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
@@ -37,9 +33,12 @@ export default function AddMembers({
   };
 
   const handleAddButton = (id) => {
-    updateMembers(id);
+    addMember(id);
   };
 
+  const handleAddedButton = (name) => {
+    alert(`${name} is already added!`);
+  };
   const cleanUp = (id) => {
     clearTimeout(id);
   };
@@ -68,11 +67,18 @@ export default function AddMembers({
 
   return (
     <div className="AddMembers-container">
-      <ArrowButton color="black" onClick={() => handleArrowButton()} />
-      <PageTitle title={'Add members'} variant={'black'} />
+      <div className="arrow-button">
+        <ArrowButton color="black" onClick={() => handleArrowButton()} />
+      </div>
+
+      <div className="add-members-title">
+        <PageTitle title={'Add members'} variant={'black-large'} />
+      </div>
+
       <div className="search-container">
         <div className="search-input">
           <input
+            placeholder="search..."
             value={searchInput}
             onChange={(e) => {
               handleInput(e);
@@ -81,7 +87,7 @@ export default function AddMembers({
         </div>
       </div>
       <div className="users-list-container">
-        {loading && <p>loading....</p>}
+        {loading && <p className="users-list-item">loading....</p>}
         {!loading && (
           <>
             {(users.length === 0 || !Array.isArray(users)) && // is Array does not work
@@ -111,7 +117,7 @@ export default function AddMembers({
                           buttonSize="small"
                           buttonType="secondary"
                           buttonDisabled={true}
-                          onClick={() => handleAddButton(user.id)}
+                          onClick={() => handleAddedButton(user.fullname)}
                         />
                       )}
                     </div>
@@ -127,7 +133,6 @@ export default function AddMembers({
 }
 
 AddMembers.propTypes = {
-  updateMembers: PropTypes.func.isRequired,
+  addMember: PropTypes.func.isRequired,
   toggleShowMembers: PropTypes.func.isRequired,
-  members: PropTypes.array.isRequired,
 };

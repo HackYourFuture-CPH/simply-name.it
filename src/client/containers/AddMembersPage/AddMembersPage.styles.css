@@ -8,19 +8,38 @@
   border: solid 1px grey;
 }
 
-.search-input {
-  display: inline-block;
-  width: 252px;
+.arrow-button {
+  margin-top: 20px;
 }
 
-.search-button {
+.add-members-title {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+}
+
+.search-input {
+  display: flex;
   display: inline-block;
-  width: 70px;
+  width: 100%;
+  margin: 20px auto auto auto;
+  text-align: center;
+  padding: 5px;
+}
+
+.search-input input {
+  border-radius: 50px;
+  width: 70%;
+  height: 47px;
+  border: 1px solid gray;
+  text-align: center;
 }
 
 .users-list-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .users-list-item {
@@ -29,6 +48,7 @@
   justify-content: space-between;
   width: 80%;
   margin: auto;
+  padding-top: 5px;
 }
 
 .users-list-item button {

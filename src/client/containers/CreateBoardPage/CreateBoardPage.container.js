@@ -3,7 +3,7 @@ import AddMembers from '../AddMembersPage/AddMembersPage.container';
 
 export default function CreateBoard() {
   const [members, setMembers] = useState([]);
-  const updateMembers = (id) => {
+  const addMember = (id) => {
     setMembers([...members, id]);
   };
   const [showAddMembers, setshowAddMembers] = useState(false);
@@ -16,7 +16,7 @@ export default function CreateBoard() {
       {showAddMembers && (
         <AddMembers
           members={members}
-          updateMembers={updateMembers}
+          addMember={addMember}
           toggleShowMembers={toggleShowMembers}
         />
       )}
