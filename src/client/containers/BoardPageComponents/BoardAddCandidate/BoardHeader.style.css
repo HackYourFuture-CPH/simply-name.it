@@ -2,31 +2,14 @@
   box-sizing: border-box;
 }
 
-.board-header-container {
-  position: relative;
-  height: 739px;
-  max-width: 414px;
+.board-header-option-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
 }
 
-.header-component-image {
-  width: 100%;
-  height: 20%;
-  object-fit: cover;
-}
-
-.header-option-list li {
-  list-style-type: none;
-  width: 120px;
-}
-
-.header-option-list {
+.board-header-option-list {
   padding-left: 10px;
-}
-
-.arrow-button-white {
-  margin-top: -11px;
-}
-
-.dropdown-button {
-  margin-top: -2px;
+  width: 130px;
 }

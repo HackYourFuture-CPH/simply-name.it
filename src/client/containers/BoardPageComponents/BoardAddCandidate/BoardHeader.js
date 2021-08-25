@@ -18,8 +18,8 @@ export default function BoardHeader() {
     // console.log('you clicked!');
   };
   return (
-    <div className="board-header-container">
-      <HeaderComponent>
+    <div>
+      <HeaderComponent className="header-component-image" variant="cropped">
         <Link to="/profile">
           <ArrowButton className="arrow-button-white" onClick={onClick} />
         </Link>
@@ -30,9 +30,23 @@ export default function BoardHeader() {
           onClick={closeDropdown}
         >
           <div>
-            <ul className="header-option-list">
-              <li>Edit Board</li>
-              <li>Delete Board</li>
+            <ul className="board-header-option-list">
+              <Link to="/edit-board">
+                <button
+                  className="board-header-option-link"
+                  type="button"
+                  onClick={onClick}
+                >
+                  Edit Board
+                </button>
+              </Link>
+              <button
+                className="board-header-option-link"
+                type="button"
+                onClick={onClick}
+              >
+                Delete Board
+              </button>
             </ul>
           </div>
         </Dropdown>
