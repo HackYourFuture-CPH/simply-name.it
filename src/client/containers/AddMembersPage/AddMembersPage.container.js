@@ -37,16 +37,16 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 
   useEffect(() => {
     setLoading(true);
-
+    searchInput === ''
+      ? (APIurl = `/api/users`)
+      : (APIurl = `/api/users/search?fullName=${searchInput}`);
     const id = setTimeout(async () => {
-      searchInput === ''
-        ? (APIurl = `/api/users`)
-        : (APIurl = `/api/users/search?fullName=${searchInput}`);
       try {
         const result = await fetch(APIurl);
         const fetchedData = await result.json();
         setUsers(fetchedData);
       } catch (error) {
+        throw new Error(error);
       } finally {
         setLoading(false);
       }
@@ -124,5 +124,5 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 AddMembers.propTypes = {
   addMember: PropTypes.func.isRequired,
   toggleShowMembers: PropTypes.func.isRequired,
-  members: PropTypes.array,
+  members: PropTypes.instanceOf(Array).isRequired,
 };
