@@ -11,7 +11,7 @@ export default function DropzoneComp({ getRootProps, getInputProps, thumbs }) {
         {...getRootProps({ className: 'dropzone-component', id: 'dropzone' })}
       >
         <input {...getInputProps()} />
-        <div className={'dropzone-component-thumb'}>{thumbs}</div>
+        <div className="dropzone-component-thumb">{thumbs}</div>
         <AddImageIcon /> Browse
       </div>
     </div>
@@ -21,5 +21,5 @@ export default function DropzoneComp({ getRootProps, getInputProps, thumbs }) {
 DropzoneComp.propTypes = {
   getRootProps: PropTypes.func.isRequired,
   getInputProps: PropTypes.func.isRequired,
-  thumbs: PropTypes.array.isRequired,
+  thumbs: PropTypes.instanceOf(Array).isRequired,
 };
