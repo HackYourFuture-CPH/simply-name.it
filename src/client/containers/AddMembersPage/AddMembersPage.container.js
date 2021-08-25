@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { useHistory, useParams, useLocation } from 'react-router-dom';
-
 import './AddMembersPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
@@ -13,16 +11,10 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
-  // const [addButton, setAddButton] = useState(false);
+
   const membersSet = new Set(members);
-  console.log(membersSet);
-  console.log(members);
 
   let APIurl = `/api/users/search?fullName=${searchInput}`;
-
-  // const changeButtonAvail = () => {
-  //   setAddButton(!addButton);
-  // };
 
   const handleInput = (e) => {
     setSearchInput(e.target.value);
@@ -53,14 +45,13 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
           : (APIurl = `/api/users/search?fullName=${searchInput}`);
         const result = await fetch(APIurl);
         const fetchedData = await result.json();
-        result.ok ? setUsers(fetchedData) : setUsers([]);
-
-        setLoading(false);
+        setUsers(fetchedData);
       } catch (error) {
         error = JSON.parse(JSON.stringify(error));
-        console.log(error);
+      } finally {
+        setLoading(false);
       }
-    }, 1500);
+    }, 400);
 
     return () => cleanUp(id);
   }, [searchInput]);
@@ -87,12 +78,11 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
         </div>
       </div>
       <div className="users-list-container">
-        {loading && <p className="users-list-item">loading....</p>}
+        {loading && <p className="loading-text">loading....</p>}
         {!loading && (
           <>
-            {(users.length === 0 || !Array.isArray(users)) && // is Array does not work
-            searchInput != '' ? (
-              <p>Nothing found :(</p>
+            {users.length === 0 && searchInput != '' ? (
+              <p className="nothing-found-text">...nothing found :(</p>
             ) : (
               <>
                 {users.map((user) => {

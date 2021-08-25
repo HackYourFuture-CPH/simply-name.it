@@ -9,7 +9,7 @@ export default function CreateBoard() {
   const [showAddMembers, setshowAddMembers] = useState(false);
   const toggleShowMembers = () => {
     setshowAddMembers(!showAddMembers);
-  }; //show members and pass it
+  };
 
   return (
     <div className="CreateBoard ">

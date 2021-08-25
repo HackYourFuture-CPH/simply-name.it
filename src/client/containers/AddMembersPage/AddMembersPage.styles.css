@@ -36,19 +36,30 @@
   text-align: center;
 }
 
+.search-input input:focus {
+  outline: none;
+}
+
 .users-list-container {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
-.users-list-item {
+.users-list-item,
+.nothing-found-text,
+.loading-text {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 80%;
   margin: auto;
   padding-top: 5px;
+}
+
+.nothing-found-text,
+.loading-text {
+  color: gray;
 }
 
 .users-list-item button {
