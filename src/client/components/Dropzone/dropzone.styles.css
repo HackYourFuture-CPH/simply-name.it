@@ -1,6 +1,4 @@
-.dropzone {
-  width: 325px;
-  height: 200px;
+.dropzone-component {
   text-align: center;
   border-radius: 10px;
   padding: 60px;
@@ -9,15 +7,15 @@
   color: #000;
 }
 
-p {
+.dropzone-component-thumbs {
   font-size: 20px;
 }
 
-.dropzone:hover {
+.dropzone-component:hover {
   border: 2px solid #5d0096;
   color: #5d0096;
 }
 
-.dropzone:hover svg {
+.dropzone-component:hover svg {
   fill: #5d0096;
 }

@@ -7,12 +7,12 @@ export default function DropzoneComp({ getRootProps, getInputProps, thumbs }) {
   return (
     <div className="DropzoneComp">
       {/* eslint-disable react/jsx-props-no-spreading */}
-      <div {...getRootProps({ className: 'dropzone', id: 'dropzone' })}>
+      <div
+        {...getRootProps({ className: 'dropzone-component', id: 'dropzone' })}
+      >
         <input {...getInputProps()} />
-        {thumbs}
-        <p>
-          <AddImageIcon /> Browse
-        </p>
+        <div className={'dropzone-component-thumb'}>{thumbs}</div>
+        <AddImageIcon /> Browse
       </div>
     </div>
   );
@@ -21,5 +21,5 @@ export default function DropzoneComp({ getRootProps, getInputProps, thumbs }) {
 DropzoneComp.propTypes = {
   getRootProps: PropTypes.func.isRequired,
   getInputProps: PropTypes.func.isRequired,
-  thumbs: PropTypes.objectOf(PropTypes.object()).isRequired,
+  thumbs: PropTypes.array.isRequired,
 };
