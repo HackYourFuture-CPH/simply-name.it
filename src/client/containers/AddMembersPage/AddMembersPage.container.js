@@ -39,15 +39,14 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
     setLoading(true);
 
     const id = setTimeout(async () => {
+      searchInput === ''
+        ? (APIurl = `/api/users`)
+        : (APIurl = `/api/users/search?fullName=${searchInput}`);
       try {
-        searchInput === ''
-          ? (APIurl = `/api/users`)
-          : (APIurl = `/api/users/search?fullName=${searchInput}`);
         const result = await fetch(APIurl);
         const fetchedData = await result.json();
         setUsers(fetchedData);
       } catch (error) {
-        error = JSON.parse(JSON.stringify(error));
       } finally {
         setLoading(false);
       }
@@ -63,7 +62,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
       </div>
 
       <div className="add-members-title">
-        <PageTitle title={'Add members'} variant={'black-large'} />
+        <PageTitle title="Add members" variant="black-large" />
       </div>
 
       <div className="search-container">
@@ -74,14 +73,14 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
             onChange={(e) => {
               handleInput(e);
             }}
-          ></input>
+          />
         </div>
       </div>
       <div className="users-list-container">
         {loading && <p className="loading-text">loading....</p>}
         {!loading && (
           <>
-            {users.length === 0 && searchInput != '' ? (
+            {users.length === 0 && searchInput !== '' ? (
               <p className="nothing-found-text">...nothing found :(</p>
             ) : (
               <>
@@ -125,4 +124,5 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 AddMembers.propTypes = {
   addMember: PropTypes.func.isRequired,
   toggleShowMembers: PropTypes.func.isRequired,
+  members: PropTypes.array,
 };
