@@ -3,7 +3,7 @@ import './BoardAddCandidate.style.css';
 import Input from '../../../components/InputComponent/InputComponent';
 import AddButton from '../../../components/AddButton/AddButton.component';
 
-export default function BoardAddCandidate() {
+export default function BoardAddCandidatePostDeadline() {
   return (
     <div className="Input-component">
       <Input

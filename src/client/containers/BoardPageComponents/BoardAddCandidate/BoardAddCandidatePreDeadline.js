@@ -6,7 +6,7 @@ import AddCandidate from './AddCandidate';
 import { useUser } from '../../../firebase/UserContext';
 import { useBoard } from '../../BoardPage/BoardProvider';
 
-export default function BoardAddCandidate() {
+export default function BoardAddCandidatePreDeadline() {
   const [newCandidateName, setNewCandidateName] = useState('');
   const { user } = useUser();
   const userId = user[0].id;
