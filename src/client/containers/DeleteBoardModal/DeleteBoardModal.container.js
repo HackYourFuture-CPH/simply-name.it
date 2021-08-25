@@ -21,7 +21,7 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
   return (
     <div className="delete-board-container">
       <div className="greyLine" />
-      <div className="close-btn-div">
+      <div className="delete-board-close-btn-div">
         <CloseButton onClick={() => setModalVisibility(false)} />
       </div>
       <div className="delete-board-info-box">
@@ -32,7 +32,7 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
           <PageTitle title={`Delete '${boardInfo.title}' board?`} />
         )}
         <p>You won&apos;t be able to recover the board</p>
-        <div className="delete-btn-container">
+        <div className="delete-board-btn-container">
           <GenericButton
             buttonLabel="Cancel"
             buttonSize="medium"

@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.close-btn-div {
+.delete-board-close-btn-div {
   display: flex;
   justify-content: flex-end;
   padding-right: 0.9em;
@@ -27,7 +27,7 @@
   position: absolute;
   bottom: 0;
   z-index: 100;
-  border: 1px solid grey;
+  border: 1px solid rgb(156, 154, 154);
 }
 
 .circle-exclamation {
@@ -58,7 +58,7 @@
   display: block;
 }
 
-.delete-btn-container {
+.delete-board-btn-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
