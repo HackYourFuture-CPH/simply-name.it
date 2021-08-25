@@ -40,6 +40,7 @@ function App() {
         </AuthenticatedRoute>
         <Route
           path="/board/:boardId"
+          // eslint-disable-next-line react/no-children-prop
           children={
             <AuthenticatedRoute
               isAuthenticated={isAuthenticated}

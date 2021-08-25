@@ -25,6 +25,11 @@ export default function BoardPage() {
         const apiResponse = await fetch(API_URL);
         if (apiResponse.ok) {
           const apiData = await apiResponse.json();
+          apiData[0].hasPassedDeadline = function () {
+            const deadlineDate = new Date(this.deadline);
+            const today = new Date();
+            return today > deadlineDate;
+          };
           setBoardInfo(apiData[0]);
           setBoardLoading(false);
         } else {
@@ -62,10 +67,14 @@ export default function BoardPage() {
     }
     return userId === boardInfo.creatorId ? (
       <>
+        {boardInfo.hasPassedDeadline()}
         <OwnerBoardPage boardInfo={boardInfo} />
       </>
     ) : (
-      <MemberBoardPage boardInfo={boardInfo} />
+      <>
+        {boardInfo.hasPassedDeadline()}
+        <MemberBoardPage boardInfo={boardInfo} />
+      </>
     );
   }
 }
