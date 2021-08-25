@@ -4,7 +4,6 @@ import './ResultPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Confetti from '../../components/Confetti/Confetti.component';
-import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
 import { useUser } from '../../firebase/UserContext';
 
 export default function Result() {
@@ -15,8 +14,6 @@ export default function Result() {
   const userId = user[0].id;
   const { boardId } = useParams();
 
-  // const userId=2;
-  // const boardId=1;
   const API_URL = `/api/users/${userId}/boards/${boardId}/results`;
   useEffect(() => {
     const fetchingResults = async () => {
@@ -55,11 +52,7 @@ export default function Result() {
             ? viewResults.map((result) => {
                 return (
                   <li key={result.id}>
-                    <CardItemDecorator
-                      colorVariant="primary-color"
-                      candidateName={result.name}
-                      displayDeleteIcon="hidden"
-                    />
+                    <p className="candidate-resuts">{result.name}</p>
                   </li>
                 );
               })
