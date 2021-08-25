@@ -3,6 +3,7 @@
   padding-left: 30px;
   background-color: transparent;
   border: none;
+  margin-top: -19px;
 }
 
 .arrow-button-white {
@@ -11,4 +12,5 @@
   background-color: transparent;
   border: none;
   color: white;
+  margin-top: -19px;
 }

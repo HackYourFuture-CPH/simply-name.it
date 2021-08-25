@@ -1,0 +1,11 @@
+.board-header-option-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.board-header-option-list {
+  padding-left: 10px;
+  width: 130px;
+}
