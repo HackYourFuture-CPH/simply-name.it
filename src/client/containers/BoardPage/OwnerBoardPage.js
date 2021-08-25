@@ -20,6 +20,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
 import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
 import members from '../../components/ModalViewComponent/membersData.json';
+import BoardAddCandidate from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidate';
 
 export default function OwnerBoardPage({ boardInfo }) {
   const [newCandidateName, setNewCandidateName] = useState('');
@@ -175,8 +176,9 @@ export default function OwnerBoardPage({ boardInfo }) {
           </div>
         ) : (
           <div>
-            <div className="Input-component">
-              <Input
+            <div className="add-candidate-component">
+              <BoardAddCandidate />
+              {/* <Input
                 type="text"
                 placeholder="Add candidate..."
                 theme="dark"
@@ -188,7 +190,7 @@ export default function OwnerBoardPage({ boardInfo }) {
                 type="button"
                 disabled={false}
                 onClick={saveCandidate}
-              />
+              /> */}
             </div>
             {saveState && (
               <div>
