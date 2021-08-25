@@ -10,6 +10,7 @@ import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
+import EditedBoard from './containers/EditBoardPage/EditBoardPage.container';
 
 function App() {
   const { isLoading, isAuthenticated } = useFirebase();
@@ -28,6 +29,7 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
+        <EditedBoard exact path="/edit-board" />
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute
