@@ -51,17 +51,3 @@
   visibility: hidden;
   margin-left: -20px;
 }
-
-.result-candidate .drag-dots {
-  visibility: hidden;
-}
-
-.result-candidate .card-title {
-  padding-right: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.result-candidate .card-display {
-  justify-content: center;
-}
