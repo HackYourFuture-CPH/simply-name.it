@@ -6,10 +6,7 @@
   color: white;
   align-items: center;
   margin: 20px;
-}
-
-.card-container > * {
-  width: 50px;
+  width: 100%;
 }
 
 .card-display {
@@ -20,8 +17,8 @@
   justify-content: space-between;
   color: white;
   align-items: center;
-  margin: 20px;
-  width: 368px;
+  margin-bottom: 20px;
+  width: 100%;
   height: 52px;
 }
 
@@ -37,10 +34,10 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.card-title {
-  padding-left: 0;
-  padding-right: 260px;
-  padding-top: 0;
+.card-title-centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .visible {
@@ -48,20 +45,6 @@
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
   margin-left: -20px;
-}
-
-.result-candidate .drag-dots {
-  visibility: hidden;
-}
-
-.result-candidate .card-title {
-  padding-right: 0;
-  text-align: center;
-  width: 100%;
-}
-
-.result-candidate .card-display {
-  justify-content: center;
 }

@@ -81,12 +81,36 @@ export const CardListExampleMember = () => {
   );
 };
 
+export const CardListExampleResult = () => {
+  const candidateList = candidateListArr();
+  return (
+    <>
+      {candidateList.map((item) => (
+        <CardItemDecorator
+          key={item.id}
+          colorVariant="primary-color"
+          candidateName={item.name}
+          displayDeleteIcon="hidden"
+          onClick={action('clicked')}
+          showDots={false}
+          textAlignCenter={true}
+        />
+      ))}
+    </>
+  );
+};
+
 export const CardListExampleDraggable = () => {
   const [candidates, setCandidates] = useState(candidateListArr());
 
   return (
     <DragAndSortAdapter
-      onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+      onDragEndHandler={onDragEnd(
+        setCandidates,
+        candidateCardSorting,
+        (elem) => elem,
+        () => '',
+      )}
       items={candidates}
     >
       {candidates.map((candidate) => {
@@ -102,22 +126,5 @@ export const CardListExampleDraggable = () => {
         );
       })}
     </DragAndSortAdapter>
-  );
-};
-
-export const CardListExampleResult = () => {
-  const candidateList = candidateListArr();
-  return (
-    <div className="result-candidate">
-      {candidateList.map((item) => (
-        <CardItemDecorator
-          key={item.id}
-          colorVariant="primary-color"
-          candidateName={item.name}
-          displayDeleteIcon="hidden"
-          onClick={action('clicked')}
-        />
-      ))}
-    </div>
   );
 };
