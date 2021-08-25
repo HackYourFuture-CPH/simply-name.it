@@ -42,6 +42,7 @@ export default function BoardPage() {
     (async () => {
       await fetchingBoardApi();
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (errorCode !== null) {
