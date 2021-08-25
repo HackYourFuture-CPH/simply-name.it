@@ -68,12 +68,12 @@ export default function BoardPage() {
     return userId === boardInfo.creatorId ? (
       <>
         {boardInfo.hasPassedDeadline()}
-        <OwnerBoardPage boardInfo={boardInfo} />
+        <OwnerBoardPage />
       </>
     ) : (
       <>
         {boardInfo.hasPassedDeadline()}
-        <MemberBoardPage boardInfo={boardInfo} />
+        <MemberBoardPage />
       </>
     );
   }
