@@ -48,27 +48,12 @@ html {
   margin-right: -20px;
 }
 
-.title,
-.Input-component {
+.title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
   margin-left: 20px;
-}
-
-.title {
   width: 90%;
-}
-
-.Input-component {
-  width: 88%;
-  margin-left: 20px;
-  height: 54px;
-}
-
-.add-button {
-  cursor: pointer;
-  margin-left: 10%;
 }
 
 .CandidateCard-component {
@@ -83,14 +68,4 @@ html {
   font-size: 20px;
   color: #8c8c8c;
   background-color: #c4c4c4;
-}
-
-.errorMessageContainer {
-  color: red;
-  margin-left: 20px;
-}
-
-.successMessageContainer {
-  color: green;
-  margin-left: 20px;
 }

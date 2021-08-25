@@ -25,6 +25,11 @@ export default function BoardPage() {
         const apiResponse = await fetch(API_URL);
         if (apiResponse.ok) {
           const apiData = await apiResponse.json();
+          apiData[0].hasPassedDeadline = function () {
+            const deadlineDate = new Date(this.deadline);
+            const today = new Date();
+            return today > deadlineDate;
+          };
           setBoardInfo(apiData[0]);
           setBoardLoading(false);
         } else {
@@ -42,6 +47,7 @@ export default function BoardPage() {
     (async () => {
       await fetchingBoardApi();
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (errorCode !== null) {
@@ -61,10 +67,14 @@ export default function BoardPage() {
     }
     return userId === boardInfo.creatorId ? (
       <>
-        <OwnerBoardPage boardInfo={boardInfo} />
+        {boardInfo.hasPassedDeadline()}
+        <OwnerBoardPage />
       </>
     ) : (
-      <MemberBoardPage boardInfo={boardInfo} />
+      <>
+        {boardInfo.hasPassedDeadline()}
+        <MemberBoardPage />
+      </>
     );
   }
 }

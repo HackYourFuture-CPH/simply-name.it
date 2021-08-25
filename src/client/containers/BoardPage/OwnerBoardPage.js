@@ -7,13 +7,6 @@ import AddButton from '../../components/AddButton/AddButton.component';
 import Input from '../../components/InputComponent/InputComponent';
 import { candidateListArr } from '../../components/CandidateCard/CandidateListArray';
 import AddCandidate from './AddCandidate';
-import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
-import { candidateCardSorting } from '../../components/CandidateCard/CandidateCardSorting';
-import {
-  DragAndSortAdapter,
-  SortableItem,
-} from '../DragAndSortAdapter/DragAndSortAdapter';
-import { onDragEnd } from '../DragAndSortAdapter/OnDragEnd';
 import HeaderComponent from '../../components/HeaderComponent/Header.component.js';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
@@ -21,7 +14,16 @@ import { Link } from 'react-router-dom';
 import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
 import members from '../../components/ModalViewComponent/membersData.json';
 
-export default function OwnerBoardPage({ boardInfo }) {
+import CandidateListPreDeadline from '../BoardPageComponents/CandidateList/CandidateListPreDeadline';
+import CandidateListPostDeadline from '../BoardPageComponents/CandidateList/CandidateListPostDeadline';
+import { useBoard } from './BoardProvider';
+import { useUser } from '../../firebase/UserContext';
+
+export default function OwnerBoardPage() {
+  const { boardInfo } = useBoard();
+  const boardId = boardInfo.id;
+  const { user } = useUser();
+  const userId = user[0].id;
   const [newCandidateName, setNewCandidateName] = useState('');
   const [addCandidateError, setAddCandidateError] = useState(null);
   const [addCandidateSuccess, setAddCandidateSuccess] = useState(false);
@@ -141,27 +143,7 @@ export default function OwnerBoardPage({ boardInfo }) {
                 )}
               </div>
             )}
-            <div className="CandidateCard-component">
-              <DragAndSortAdapter
-                onDragEndHandler={onDragEnd(
-                  setCandidates,
-                  candidateCardSorting,
-                )}
-                items={candidates}
-              >
-                {candidates.map((candidate) => {
-                  return (
-                    <SortableItem key={candidate.id} id={candidate.id}>
-                      <CardItemDecorator
-                        colorVariant="secondary-color"
-                        candidateName={candidate.name}
-                        displayDeleteIcon="visible"
-                      />
-                    </SortableItem>
-                  );
-                })}
-              </DragAndSortAdapter>
-            </div>
+            <CandidateListPostDeadline userId={userId} boardId={boardId} />
             <div className="Result">
               <GenericButton
                 className="Result-button"
@@ -175,8 +157,8 @@ export default function OwnerBoardPage({ boardInfo }) {
           </div>
         ) : (
           <div>
-            <div className="Input-component">
-              <Input
+            <div className="add-candidate-component">
+              {/* <Input
                 type="text"
                 placeholder="Add candidate..."
                 theme="dark"
@@ -188,7 +170,7 @@ export default function OwnerBoardPage({ boardInfo }) {
                 type="button"
                 disabled={false}
                 onClick={saveCandidate}
-              />
+              /> */}
             </div>
             {saveState && (
               <div>
@@ -204,27 +186,7 @@ export default function OwnerBoardPage({ boardInfo }) {
                 )}
               </div>
             )}
-            <div className="CandidateCard-component">
-              <DragAndSortAdapter
-                onDragEndHandler={onDragEnd(
-                  setCandidates,
-                  candidateCardSorting,
-                )}
-                items={candidates}
-              >
-                {candidates.map((candidate) => {
-                  return (
-                    <SortableItem key={candidate.id} id={candidate.id}>
-                      <CardItemDecorator
-                        colorVariant="primary-color"
-                        candidateName={candidate.name}
-                        displayDeleteIcon="visible"
-                      />
-                    </SortableItem>
-                  );
-                })}
-              </DragAndSortAdapter>
-            </div>
+            <CandidateListPreDeadline userId={userId} boardId={boardId} />
             <div className="Result">
               <GenericButton
                 className="Result-button"
