@@ -12,6 +12,8 @@ import { useUser } from '../../firebase/UserContext';
 import BoardAddCandidatePostDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePostDeadline';
 import BoardAddCandidatePreDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePreDeadline';
 import BoardHeader from '../BoardPageComponents/BoardAddCandidate/BoardHeader';
+import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
+import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.container';
 
 export default function OwnerBoardPage() {
   const { boardInfo } = useBoard();
@@ -20,12 +22,7 @@ export default function OwnerBoardPage() {
   const userId = user[0].id;
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
-  // const deadlineDate = new Date(boardInfo.deadline);
-  const deadlineDate = new Date('2021-09-12');
-  const today = new Date();
-  const onClick = () => {
-    // console.log('you clicked!');
-  };
+
   return (
     <div className="ModalView">
       {showModal && (
@@ -52,22 +49,14 @@ export default function OwnerBoardPage() {
             buttonLabel="Members"
           />
         </div>
-        {today > deadlineDate ? (
+        {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="Input-component">
               <BoardAddCandidatePostDeadline />
             </div>
             <CandidateListPostDeadline userId={userId} boardId={boardId} />
             <div className="Result">
-              {/* <ResultButtonPostDeadline /> */}
-              <GenericButton
-                className="Result-button"
-                buttonLabel="Result"
-                buttonSize="medium"
-                buttonType="primary"
-                buttonDisabled={false}
-                onClick={onClick}
-              />
+              <ResultButtonPostDeadline />
             </div>
           </div>
         ) : (
@@ -77,14 +66,7 @@ export default function OwnerBoardPage() {
             </div>
             <CandidateListPreDeadline userId={userId} boardId={boardId} />
             <div className="Result">
-              <GenericButton
-                className="Result-button"
-                buttonLabel="Result"
-                buttonSize="medium"
-                buttonType="primary"
-                buttonDisabled={true}
-                onClick={onClick}
-              />
+              <ResultButtonPreDeadline />
             </div>
           </div>
         )}

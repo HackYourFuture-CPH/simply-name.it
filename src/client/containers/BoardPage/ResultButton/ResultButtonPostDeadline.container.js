@@ -1,12 +1,12 @@
 import React from 'react';
 import '../BoardPage.style.css';
+import PropTypes from 'prop-types';
 import { useBoard } from '../BoardProvider';
 import { Link } from 'react-router-dom';
 import GenericButton from '../../../components/GenericButton/GenericButton.component';
 
-const onClick = () => {
-  // console.log('clicked');
-};
+const onClick = () => {};
+
 export default function ResultButtonPostDeadline() {
   const { boardInfo } = useBoard();
   const boardId = boardInfo.id;
@@ -25,3 +25,11 @@ export default function ResultButtonPostDeadline() {
     </div>
   );
 }
+
+GenericButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+GenericButton.defaultProps = {
+  onClick: undefined,
+};
