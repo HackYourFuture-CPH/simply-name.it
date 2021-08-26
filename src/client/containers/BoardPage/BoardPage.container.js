@@ -17,7 +17,6 @@ export default function BoardPage() {
   const { boardId } = useParams();
   const { user } = useUser();
   const userId = user[0].id;
-
   useEffect(() => {
     const fetchingBoardApi = async () => {
       const API_URL = `/api/users/${userId}/boards/${boardId}`;
@@ -25,11 +24,11 @@ export default function BoardPage() {
         const apiResponse = await fetch(API_URL);
         if (apiResponse.ok) {
           const apiData = await apiResponse.json();
-          apiData[0].hasPassedDeadline = function () {
-            const deadlineDate = new Date(this.deadline);
-            const today = new Date();
-            return today > deadlineDate;
-          };
+          // apiData[0].hasPassedDeadline = function () {
+          //   const deadlineDate = new Date(this.deadline);
+          //   const today = new Date();
+          //   return today > deadlineDate;
+          // };
           setBoardInfo(apiData[0]);
           setBoardLoading(false);
         } else {
@@ -67,13 +66,11 @@ export default function BoardPage() {
     }
     return userId === boardInfo.creatorId ? (
       <>
-        {boardInfo.hasPassedDeadline()}
-        <OwnerBoardPage boardInfo={boardInfo} />
+        <OwnerBoardPage />
       </>
     ) : (
       <>
-        {boardInfo.hasPassedDeadline()}
-        <MemberBoardPage boardInfo={boardInfo} />
+        <MemberBoardPage />
       </>
     );
   }
