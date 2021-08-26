@@ -8,19 +8,15 @@ import { useUser } from '../../firebase/UserContext';
 import BoardHeader from '../BoardPageComponents/BoardAddCandidate/BoardHeader';
 import CandidateListPostDeadline from '../BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import CandidateListPreDeadline from '../BoardPageComponents/CandidateList/CandidateListPreDeadline';
+import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
+import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.container';
 
 export default function MemberBoardPage() {
   const { boardInfo } = useBoard();
   const boardId = boardInfo.id;
   const { user } = useUser();
   const userId = user[0].id;
-  const deadlineDate = new Date(boardInfo.deadline);
-  // const deadlineDate = new Date('2021-09-12');
-  const today = new Date();
-
-  const onClick = () => {
-    // console.log('you clicked!');
-  };
+  const onClick = () => {};
   return (
     <div className="Board-container">
       <div className="Header-component">
@@ -37,20 +33,13 @@ export default function MemberBoardPage() {
           buttonLabel="Members"
         />
       </div>
-      {today > deadlineDate ? (
+      {boardInfo.hasPassedDeadline() ? (
         <div>
           <div className="CandidateCard-component">
             <CandidateListPostDeadline userId={userId} boardId={boardId} />
           </div>
           <div className="Result">
-            <GenericButton
-              className="Result-button"
-              buttonLabel="Result"
-              buttonSize="medium"
-              buttonType="primary"
-              buttonDisabled={false}
-              onClick={onClick}
-            />
+            <ResultButtonPostDeadline />
           </div>
         </div>
       ) : (
@@ -59,17 +48,18 @@ export default function MemberBoardPage() {
             <CandidateListPreDeadline userId={userId} boardId={boardId} />
           </div>
           <div className="Result">
-            <GenericButton
-              className="Result-button"
-              buttonLabel="Result"
-              buttonSize="medium"
-              buttonType="primary"
-              buttonDisabled={true}
-              onClick={onClick}
-            />
+            <ResultButtonPreDeadline />
           </div>
         </div>
       )}
     </div>
   );
 }
+
+GenericButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+GenericButton.defaultProps = {
+  onClick: undefined,
+};

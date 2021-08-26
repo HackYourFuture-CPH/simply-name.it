@@ -24,7 +24,7 @@ html {
 
 .CandidateCard-component {
   position: relative;
-  padding: 0 10px;
+  padding: 0 24px 0 20px;
 }
 
 .Result button {
