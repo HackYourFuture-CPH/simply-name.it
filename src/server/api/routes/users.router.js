@@ -111,46 +111,6 @@ router.get('/:id', async (req, res) => {
 
 /**
  * @swagger
- * /users:
- *  post:
- *    tags:
- *    - Users
- *    summary: Create a user
- *    description:
- *      Will create a new user.
- *    produces: application/json
- *    parameters:
- *      - in: body
- *        name: user
- *        description: The user to create.
- *        schema:
- *          type: object
- *          required:
- *            - fullname
- *            - email
- *          properties:
- *            fullname:
- *              type: string
- *            email:
- *              type: string
- *
- *    responses:
- *      201:
- *        description: User created
- *      5XX:
- *        description: Unexpected error.
- *      400:
- *        description: Bad request.
- *      404:
- *        description: Not found.
- */
-router.post('/', async (req, res) => {
-  await usersController.createDBuser(req.body);
-  return res.status(201).send();
-});
-
-/**
- * @swagger
  * /users/{userId}:
  *  delete:
  *    tags:
@@ -171,12 +131,9 @@ router.post('/', async (req, res) => {
  */
 
 router.delete('/:userId', async (req, res) => {
-  await usersController.deleteDBuser(req.params.userId);
+  await usersController.deleteUser(req.params.userId);
   return res.status(204).send('Deletion successfull');
 });
-
-// Application routes
-router.use('/:userId/boards', boardsRouter);
 
 /**
  * @swagger
@@ -215,9 +172,16 @@ router.use('/:userId/boards', boardsRouter);
  *      404:
  *        description: Not found.
  */
-router.post('/', [authenticate], async (req, res) => {
+
+//router.post('/', [authenticate], async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log('router', req.body);
+
   const user = await usersController.createUser(req.body);
   return res.json(user);
 });
+
+// Application routes
+router.use('/:userId/boards', boardsRouter);
 
 module.exports = router;
