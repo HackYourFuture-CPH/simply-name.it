@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .result-container {
   width: 414px;
   height: 714px;
@@ -13,4 +17,9 @@ li {
 
 .page-title-black-large {
   margin: 2vh 6vh;
+}
+
+.display-message {
+  font-size: 22px;
+  font-weight: bolder;
 }

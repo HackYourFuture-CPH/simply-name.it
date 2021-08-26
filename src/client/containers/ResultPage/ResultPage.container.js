@@ -11,6 +11,7 @@ export default function Result() {
   const history = useHistory();
   const [viewResults, setViewResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { user } = useUser();
   const userId = user[0].id;
   const { boardId } = useParams();
@@ -23,8 +24,9 @@ export default function Result() {
         const apiData = await apiResponse.json();
         setViewResults(apiData);
         setIsLoading(false);
-      } catch (error) {
-        throw new Error(error);
+      } catch (e) {
+        setError(e);
+        setIsLoading(false);
       }
     };
     fetchingResults();
@@ -32,7 +34,7 @@ export default function Result() {
   }, []);
 
   const onArrowButtonClick = () => {
-    const path = '/board';
+    const path = `/boards/${boardId}`;
     history.push(path);
   };
 
@@ -43,28 +45,38 @@ export default function Result() {
         onClick={onArrowButtonClick}
         color="black"
       />
-      <PageTitle title="Result" variant="black-large" />
-      <Confetti />
-      {isLoading ? (
-        <h3>Loading...</h3>
+      {error ? (
+        <p className="display-message">{error.message}</p>
       ) : (
-        <ul>
-          {viewResults.length > 0
-            ? viewResults.map((result) => {
-                return (
-                  <li key={result.id}>
-                    <CardItemDecorator
-                      colorVariant="primary-color"
-                      candidateName={result.name}
-                      displayDeleteIcon="hidden"
-                      showDots={false}
-                      textAlignCenter={true}
-                    />
-                  </li>
-                );
-              })
-            : 'No results found'}
-        </ul>
+        <div>
+          <PageTitle title="Result" variant="black-large" />
+          {isLoading ? (
+            <h3>Loading...</h3>
+          ) : (
+            <div>
+              {viewResults.length > 0 ? (
+                <ul>
+                  <Confetti />
+                  {viewResults.map((result) => {
+                    return (
+                      <li key={result.id}>
+                        <CardItemDecorator
+                          colorVariant="primary-color"
+                          candidateName={result.name}
+                          displayDeleteIcon="hidden"
+                          showDots={false}
+                          textAlignCenter={true}
+                        />
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="display-message">No results found</p>
+              )}
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
