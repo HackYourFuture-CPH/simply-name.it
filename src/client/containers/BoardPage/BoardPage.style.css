@@ -13,45 +13,11 @@ html {
   max-width: 414px;
 }
 
-.Header-component {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 95px;
-}
-
-.header-component-image {
-  width: 100%;
-  height: 20%;
-  object-fit: cover;
-}
-
-.option-list li {
-  list-style-type: none;
-  width: 120px;
-}
-
-.option-list {
-  padding-left: 10px;
-}
-
-.arrow-button-white {
-  margin-top: -20px;
-}
-
-.dropdown-button {
-  margin-top: -12px;
-}
-
-.options-container .dark {
-  margin-top: -10px;
-  margin-right: -20px;
-}
-
 .title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  padding-top: 20px;
+  padding-top: 95px;
   margin-left: 20px;
   width: 90%;
 }
