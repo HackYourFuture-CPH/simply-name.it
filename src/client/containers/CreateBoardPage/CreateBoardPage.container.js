@@ -3,6 +3,7 @@ import './CreateBoardPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import InputComponent from '../../components/InputComponent/InputComponent';
+// import DropZone from '../../components/Dropzone/dropzone.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { useHistory } from 'react-router-dom';
 import AddNewBoard from './AddNewBoard';
@@ -18,6 +19,11 @@ export default function CreateBoard() {
 
   const onArrowButtonClick = () => {
     const path = '/profile';
+    history.push(path);
+  };
+
+  const onAddMembersClick = () => {
+    const path = '/add-members';
     history.push(path);
   };
 
@@ -37,9 +43,7 @@ export default function CreateBoard() {
 
   const onCreateButtonClick = () => {
     AddNewBoard(newBoard, userId);
-    setboardName('');
-    setDatetime('');
-    setBanner('');
+    onResetButtonClick();
   };
 
   return (
@@ -71,13 +75,12 @@ export default function CreateBoard() {
           }}
         />
       </div>
-      <div className="drop-zone">Dropzone component</div>
       <GenericButton
         buttonLabel="Add members"
         buttonSize="large"
         buttonType="primary"
         buttonDisabled={false}
-        onClick={() => console.log('clicked')}
+        onClick={onAddMembersClick}
       />
       <br />
       <GenericButton

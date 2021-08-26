@@ -3,6 +3,11 @@
     url('../../assets/images/pages-background/create-board.svg')
     no-repeat;
   max-width: 414px;
+  height: 775px;
+}
+
+.arrow-button-black {
+  padding-top: 20px;
 }
 
 .page-title-black-large {
