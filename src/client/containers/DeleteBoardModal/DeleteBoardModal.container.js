@@ -5,9 +5,9 @@ import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
-const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
-  const userId = 2;
-  const boardId = 1;
+const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
+  const boardId = boardInfo.id;
+
   const deleteBoard = async () => {
     const API_URL = `/api/users/${userId}/boards/${boardId}`;
     try {
@@ -57,9 +57,11 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
 
 DeleteBoardModal.propTypes = {
   boardInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
   setModalVisibility: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 export default DeleteBoardModal;
