@@ -5,17 +5,25 @@ import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
-const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
+const DeleteBoardModal = ({
+  boardInfo,
+  setModalVisibility,
+  userId,
+  deleteErrorHandler,
+}) => {
   const boardId = boardInfo.id;
 
   const deleteBoard = async () => {
     const API_URL = `/api/users/${userId}/boards/${boardId}`;
     try {
-      await fetch(API_URL, { method: 'DELETE' });
+      const response = await fetch(API_URL, { method: 'DELETE' });
       // eslint-disable-next-line no-alert
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
       alert('Data deleted');
     } catch (error) {
-      throw new Error(error);
+      deleteErrorHandler(error);
     }
   };
   return (
@@ -62,6 +70,7 @@ DeleteBoardModal.propTypes = {
   }).isRequired,
   setModalVisibility: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
+  deleteErrorHandler: PropTypes.func.isRequired,
 };
 
 export default DeleteBoardModal;
