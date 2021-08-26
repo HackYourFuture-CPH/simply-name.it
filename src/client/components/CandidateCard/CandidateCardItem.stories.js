@@ -8,6 +8,7 @@ import {
 } from '../../containers/DragAndSortAdapter/DragAndSortAdapter';
 
 import { onDragEnd } from '../../containers/DragAndSortAdapter/OnDragEnd';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components / Candidate Card List Component',
@@ -24,6 +25,7 @@ export const CardListExample = () => {
           colorVariant="primary-color"
           candidateName={item.name}
           displayDeleteIcon="visible"
+          onClick={action('clicked')}
         />
       ))}
     </>
@@ -39,6 +41,7 @@ export const CardListExampleGray = () => {
           colorVariant="secondary-color"
           candidateName=""
           displayDeleteIcon="hidden"
+          onClick={action('clicked')}
         />
       ))}
     </>
@@ -54,6 +57,7 @@ export const CardListExampleMemberGray = () => {
           colorVariant="secondary-color"
           candidateName={item.name}
           displayDeleteIcon="hidden"
+          onClick={action('clicked')}
         />
       ))}
     </>
@@ -70,6 +74,26 @@ export const CardListExampleMember = () => {
           colorVariant="primary-color"
           candidateName={item.name}
           displayDeleteIcon="hidden"
+          onClick={action('clicked')}
+        />
+      ))}
+    </>
+  );
+};
+
+export const CardListExampleResult = () => {
+  const candidateList = candidateListArr();
+  return (
+    <>
+      {candidateList.map((item) => (
+        <CardItemDecorator
+          key={item.id}
+          colorVariant="primary-color"
+          candidateName={item.name}
+          displayDeleteIcon="hidden"
+          onClick={action('clicked')}
+          showDots={false}
+          textAlignCenter={true}
         />
       ))}
     </>
@@ -81,7 +105,12 @@ export const CardListExampleDraggable = () => {
 
   return (
     <DragAndSortAdapter
-      onDragEndHandler={onDragEnd(setCandidates, candidateCardSorting)}
+      onDragEndHandler={onDragEnd(
+        setCandidates,
+        candidateCardSorting,
+        (elem) => elem,
+        () => '',
+      )}
       items={candidates}
     >
       {candidates.map((candidate) => {
@@ -91,6 +120,7 @@ export const CardListExampleDraggable = () => {
               colorVariant="primary-color"
               candidateName={candidate.name}
               displayDeleteIcon="hidden"
+              onClick={action('clicked')}
             />
           </SortableItem>
         );

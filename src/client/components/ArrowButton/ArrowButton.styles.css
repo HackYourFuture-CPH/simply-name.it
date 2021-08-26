@@ -1,50 +1,16 @@
-.arrow-background-white {
-  --backgroundColor: white;
+.arrow-button-black {
+  font-size: 35px;
+  padding-left: 30px;
+  background-color: transparent;
+  border: none;
+  margin-top: -19px;
 }
 
-.arrow-background-black {
-  --backgroundColor: black;
-}
-
-.icon {
-  position: absolute;
-  top: 20%;
-  left: 15%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 60px;
-  cursor: pointer;
-}
-
-.arrow {
-  position: absolute;
-  top: 25px;
-  width: 90%;
-  height: 10px;
-  background-color: var(--backgroundColor);
-}
-
-.arrow::after,
-.arrow::before {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 10px;
-  right: 37px;
-  background-color: var(--backgroundColor);
-}
-
-.arrow::after {
-  top: -12px;
-  transform: rotate(-45deg);
-}
-
-.arrow::before {
-  top: 12px;
-  transform: rotate(45deg);
-}
-
-.arrow-button-wrapper {
-  background: transparent;
-  border: transparent;
+.arrow-button-white {
+  font-size: 35px;
+  padding-left: 30px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-top: -19px;
 }

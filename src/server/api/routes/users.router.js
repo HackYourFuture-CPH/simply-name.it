@@ -1,9 +1,12 @@
 const express = require('express');
+const { authenticate } = require('../../middleware/auth');
 
 const router = express.Router({ mergeParams: true });
 
 // Controllers
 const usersController = require('../controllers/users.controller');
+// Router imports
+const boardsRouter = require('./boards.router');
 
 /**
  * @swagger
@@ -104,6 +107,51 @@ router.get('/search', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const userById = await usersController.getUserById(req.params.id);
   return res.json(userById);
+});
+
+// Application routes
+router.use('/:userId/boards', boardsRouter);
+
+/**
+ * @swagger
+ * /users:
+ *  post:
+ *    tags:
+ *    - Users
+ *    summary: Create a user
+ *    description:
+ *      Will create a new user.
+ *    produces: application/json
+ *    parameters:
+ *      - in: body
+ *        name: user
+ *        description: The user to create.
+ *        schema:
+ *          type: object
+ *          required:
+ *            - fullName
+ *            - email
+ *            - firebaseUId
+ *          properties:
+ *            fullName:
+ *              type: string
+ *            email:
+ *              type: string
+ *            firebaseUId:
+ *              type: string
+ *    responses:
+ *      201:
+ *        description: User created
+ *      5XX:
+ *        description: Unexpected error.
+ *      400:
+ *        description: Bad request.
+ *      404:
+ *        description: Not found.
+ */
+router.post('/', [authenticate], async (req, res) => {
+  const user = await usersController.createUser(req.body);
+  return res.json(user);
 });
 
 module.exports = router;

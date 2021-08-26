@@ -1,29 +1,35 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import Loader from '../Loader';
+import { useUser } from '../../firebase/UserContext';
 
-import { useAuthentication } from '../../hooks/useAuthentication';
+function AuthenticatedRoute({ children, isAuthenticated, isLoading }) {
+  const { isFetching } = useUser();
 
-function AuthenticatedRoute({ children, ...rest }) {
-  const { isAuthenticated } = useAuthentication();
+  if (isLoading) return <Loader />;
+
+  if (isAuthenticated && isFetching) {
+    return <Loader />;
+  }
 
   return (
-    <Route
-      // (we need to spread)
-      {...rest} // eslint-disable-line
-      render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/sign-in',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+    <div>
+      <Route
+        render={({ location }) =>
+          isAuthenticated ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/welcome',
+                state: { from: location },
+              }}
+            />
+          )
+        }
+      />
+    </div>
   );
 }
 
@@ -31,4 +37,6 @@ export default AuthenticatedRoute;
 
 AuthenticatedRoute.propTypes = {
   children: PropTypes.element.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };

@@ -30,7 +30,6 @@ const swaggerDocument = swaggerJsDoc(swaggerOptions);
 router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Application routes
-
 router.use('/users', usersRouter);
 
 module.exports = router;
