@@ -90,7 +90,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
                         size="small"
                         profilePictureLink="https://picsum.photos/seed/picsum/200/300"
                       />
-                      <p>{user.fullname}</p>
+                      <p>{user.fullName}</p>
                       {!membersSet.has(user.id) ? (
                         <GenericButton
                           buttonLabel="add"
@@ -105,7 +105,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
                           buttonSize="small"
                           buttonType="secondary"
                           buttonDisabled={true}
-                          onClick={() => handleAddedButton(user.fullname)}
+                          onClick={() => handleAddedButton(user.fullName)}
                         />
                       )}
                     </div>
