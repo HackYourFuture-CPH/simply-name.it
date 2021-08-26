@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-.AddMembers-container {
+.add-members-container {
   width: 414px;
   height: 739px;
   border: solid 1px grey;
@@ -19,25 +15,10 @@
   padding: 5px;
 }
 
-.search-input {
-  display: flex;
-  display: inline-block;
-  width: 100%;
-  margin: 20px auto auto auto;
-  text-align: center;
-  padding: 5px;
-}
-
-.search-input input {
-  border-radius: 50px;
-  width: 70%;
-  height: 47px;
-  border: 1px solid gray;
-  text-align: center;
-}
-
-.search-input input:focus {
-  outline: none;
+.members-search-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .users-list-container {

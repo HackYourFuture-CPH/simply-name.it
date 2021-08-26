@@ -6,6 +6,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
+import InputComponent from '../../components/InputComponent/InputComponent.js';
 
 export default function AddMembers({ members, addMember, toggleShowMembers }) {
   const [searchInput, setSearchInput] = useState('');
@@ -16,8 +17,8 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 
   let APIurl = `/api/users/search?fullName=${searchInput}`;
 
-  const handleInput = (e) => {
-    setSearchInput(e.target.value);
+  const handleInput = (value) => {
+    setSearchInput(value);
   };
 
   const handleArrowButton = () => {
@@ -56,7 +57,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
   }, [searchInput]);
 
   return (
-    <div className="AddMembers-container">
+    <div className="add-members-container">
       <div className="arrow-button">
         <ArrowButton color="black" onClick={() => handleArrowButton()} />
       </div>
@@ -66,15 +67,16 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
       </div>
 
       <div className="search-container">
-        <div className="search-input">
-          <input
-            placeholder="search..."
-            value={searchInput}
-            onChange={(e) => {
-              handleInput(e);
-            }}
-          />
-        </div>
+        <InputComponent
+          placeholder="Search"
+          borderShape="round"
+          theme="light"
+          inputValue={searchInput}
+          showSearchIcon={true}
+          onChange={(e) => {
+            setSearchInput(e);
+          }}
+        />
       </div>
       <div className="users-list-container">
         {loading && <p className="loading-text">loading....</p>}
