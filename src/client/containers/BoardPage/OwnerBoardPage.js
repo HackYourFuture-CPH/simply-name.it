@@ -59,6 +59,7 @@ export default function OwnerBoardPage() {
             </div>
             <CandidateListPostDeadline userId={userId} boardId={boardId} />
             <div className="Result">
+              {/* <ResultButtonPostDeadline /> */}
               <GenericButton
                 className="Result-button"
                 buttonLabel="Result"
