@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import './BoardPage.style.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
@@ -37,7 +36,6 @@ export default function OwnerBoardPage() {
         <div className="Header-component">
           <BoardHeader />
         </div>
-        <MembersModal show={showModal} close={closeModal} members={members} />
         <div className="title">
           <PageTitle title={boardInfo.title} />
           <GenericButton
@@ -49,6 +47,7 @@ export default function OwnerBoardPage() {
             buttonLabel="Members"
           />
         </div>
+        <MembersModal show={showModal} close={closeModal} members={members} />
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="Input-component">
