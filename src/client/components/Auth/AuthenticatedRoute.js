@@ -2,9 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import Loader from '../Loader';
+import { useUser } from '../../firebase/UserContext';
 
 function AuthenticatedRoute({ children, isAuthenticated, isLoading }) {
+  const { isFetching } = useUser();
+
   if (isLoading) return <Loader />;
+
+  if (isAuthenticated && isFetching) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <Route
