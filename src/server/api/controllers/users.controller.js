@@ -11,7 +11,7 @@ const { isInteger } = require('../lib/utils/validators');
 const getUsers = () => {
   return knex('users').select(
     'users.id',
-    'users.fullname',
+    'users.fullName',
     'users.email',
     'users.createdOn',
     'users.firebaseUId',
@@ -39,7 +39,7 @@ const getUsersByKeyword = async (searchWord) => {
   }
 
   const users = await knex('users').where(
-    'fullname',
+    'fullName',
     'like',
     `%${searchWord}%`,
   );
