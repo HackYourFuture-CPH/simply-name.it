@@ -9,7 +9,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { HttpError } = require('./api/lib/utils/http-error');
-const resultsDeadline = require('./api/lib/utils/calculateResultsDeadline.js');
 
 const buildPath = path.join(__dirname, '../../dist');
 
@@ -46,8 +45,6 @@ if (process.env.NODE_ENV !== 'development') {
     console.log(error);
   }
 }
-
-resultsDeadline.calculateResultsDeadline();
 
 const app = express();
 
