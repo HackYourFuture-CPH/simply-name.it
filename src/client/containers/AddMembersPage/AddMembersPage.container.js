@@ -17,10 +17,6 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 
   let APIurl = `/api/users/search?fullName=${searchInput}`;
 
-  const handleInput = (value) => {
-    setSearchInput(value);
-  };
-
   const handleArrowButton = () => {
     toggleShowMembers();
   };
