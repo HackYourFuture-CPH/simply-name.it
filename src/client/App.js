@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -38,8 +39,19 @@ function App() {
           isLoading={isLoading}
         >
           <ProfilePage />
-          <ResultPage exact path="/result" />
         </AuthenticatedRoute>
+        <Route
+          exact
+          path="/boards/:boardId/results"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <ResultPage />
+            </AuthenticatedRoute>
+          }
+        />
       </Switch>
     </Router>
   );

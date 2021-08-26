@@ -4,6 +4,7 @@ import './ResultPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Confetti from '../../components/Confetti/Confetti.component';
+import { CardItemDecorator } from '../../components/CandidateCard/CandidateCardItem.component';
 import { useUser } from '../../firebase/UserContext';
 
 export default function Result() {
@@ -52,7 +53,13 @@ export default function Result() {
             ? viewResults.map((result) => {
                 return (
                   <li key={result.id}>
-                    <p className="candidate-resuts">{result.name}</p>
+                    <CardItemDecorator
+                      colorVariant="primary-color"
+                      candidateName={result.name}
+                      displayDeleteIcon="hidden"
+                      showDots={false}
+                      textAlignCenter={true}
+                    />
                   </li>
                 );
               })

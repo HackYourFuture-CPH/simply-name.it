@@ -1,28 +1,16 @@
 .result-container {
-  max-width: 414px;
+  width: 414px;
   height: 714px;
   position: fixed;
 }
 
 ul,
 li {
-  margin: 0;
+  margin: 0 10px;
   padding: 0;
   list-style-type: none;
 }
 
 .page-title-black-large {
-  margin-left: 6vh;
-}
-
-.candidate-resuts {
-  width: 368px;
-  height: 52px;
-  background: linear-gradient(90deg, #9400d3 0%, #4b0082 100%);
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 15px 22px;
+  margin: 2vh 6vh;
 }
