@@ -70,4 +70,9 @@ export default function CandidateListPreDeadline({
 CandidateListPreDeadline.propTypes = {
   userId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
+  displayDelete: PropTypes.string,
+};
+
+CandidateListPreDeadline.defaultProps = {
+  displayDelete: 'visible',
 };

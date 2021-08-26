@@ -35,4 +35,9 @@ export default function CandidateListPostDeadline({
 CandidateListPostDeadline.propTypes = {
   userId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
+  displayDelete: PropTypes.string,
+};
+
+CandidateListPostDeadline.defaultProps = {
+  displayDelete: 'visible',
 };
