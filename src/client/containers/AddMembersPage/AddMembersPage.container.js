@@ -34,6 +34,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 
   useEffect(() => {
     setLoading(true);
+
     searchInput === ''
       ? (APIurl = `/api/users`)
       : (APIurl = `/api/users/search?fullName=${searchInput}`);
@@ -62,7 +63,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
         <PageTitle title="Add members" variant="black-large" />
       </div>
 
-      <div className="search-container">
+      <div className="members-search-container">
         <InputComponent
           placeholder="Search"
           borderShape="round"
