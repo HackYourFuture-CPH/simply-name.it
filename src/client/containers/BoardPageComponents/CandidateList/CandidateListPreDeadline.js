@@ -12,7 +12,11 @@ import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
 import { useBoard } from '../../BoardPage/BoardProvider';
 
-export default function CandidateListPreDeadline({ userId, boardId }) {
+export default function CandidateListPreDeadline({
+  userId,
+  boardId,
+  displayDelete,
+}) {
   const { candidates, setCandidates, error } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
   const { setBoardLoading } = useBoard();
@@ -51,7 +55,7 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
                 <CardItemDecorator
                   colorVariant="primary-color"
                   candidateName={candidate.name}
-                  displayDeleteIcon="visible"
+                  displayDeleteIcon={displayDelete}
                   onClick={() => handleDelete(candidate.id)}
                 />
               </SortableItem>
