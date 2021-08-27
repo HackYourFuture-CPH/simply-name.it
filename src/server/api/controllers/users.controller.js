@@ -17,7 +17,7 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
-      sort: ['name.keyword'],
+      sort: ['fulName.keyword'],
     },
   });
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
@@ -64,7 +64,7 @@ const getUsersByKeyword = async (searchWord) => {
     index: usersIndex,
     body: {
       query: {
-        match: { fullname: searchWord },
+        match: { fullName: searchWord },
       },
       size: 20,
     },

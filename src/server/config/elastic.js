@@ -8,6 +8,6 @@ const client = new Client({
     apiKey: process.env.ES_API_KEY,
   },
 });
-const usersIndex = 'dolphins';
+const usersIndex = 'users';
 
 module.exports = { client, usersIndex };
