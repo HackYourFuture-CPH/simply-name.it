@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,8 +8,9 @@ export class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
+  static getDerivedStateFromError(error) {
+    console.log(error instanceof ApiError);
+    return { hasError: true, errorType: error };
   }
 
   render() {
@@ -17,6 +19,13 @@ export class ErrorBoundary extends React.Component {
     }
 
     return this.props.children;
+  }
+}
+
+export class ApiError extends Error {
+  constructor(message) {
+    super(message);
+    this.message = `An error occurred while requesting the data.  ${message}`;
   }
 }
 
