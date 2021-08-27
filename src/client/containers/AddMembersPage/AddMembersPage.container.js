@@ -100,7 +100,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
                           buttonLabel="added"
                           buttonSize="small"
                           buttonType="secondary"
-                          buttonDisabled={false}
+                          buttonDisabled={true}
                           onClick={() => ''}
                         />
                       )}
