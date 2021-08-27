@@ -25,7 +25,11 @@ export class ErrorBoundary extends React.Component {
 export class ApiError extends Error {
   constructor(message) {
     super(message);
-    this.message = `An error occurred while requesting the data.  ${message}`;
+    this.message = `Oops. Something went wrong while requesting the data  ${message}`;
+  }
+
+  render() {
+    return this.message;
   }
 }
 
