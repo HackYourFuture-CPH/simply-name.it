@@ -11,7 +11,6 @@ import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import CreateBoardPage from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
-import AddMembers from './containers/AddMembersPage/AddMembersPage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
         </AuthenticatedRoute>
         <Route
           exact
-          path="/boards/"
+          path="/boards/new-board"
           children={
             <AuthenticatedRoute
               isAuthenticated={isAuthenticated}

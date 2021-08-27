@@ -5,6 +5,7 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import InputComponent from '../../components/InputComponent/InputComponent';
 // import DropZone from '../../components/Dropzone/dropzone.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
+import AddMembers from '../AddMembersPage/AddMembersPage.container';
 import { useHistory } from 'react-router-dom';
 import AddNewBoard from './AddNewBoard';
 import { useUser } from '../../firebase/UserContext';
@@ -16,14 +17,17 @@ export default function CreateBoard() {
   const [boardName, setboardName] = useState('');
   const [datetime, setDatetime] = useState('');
   const [banner, setBanner] = useState('');
+  const [members, setMembers] = useState([]);
+  const addMember = (id) => {
+    setMembers([...members, id]);
+  };
+  const [showAddMembers, setshowAddMembers] = useState(false);
+  const toggleShowMembers = () => {
+    setshowAddMembers(!showAddMembers);
+  };
 
   const onArrowButtonClick = () => {
     const path = '/profile';
-    history.push(path);
-  };
-
-  const onAddMembersClick = () => {
-    const path = '/add-members';
     history.push(path);
   };
 
@@ -45,6 +49,7 @@ export default function CreateBoard() {
     AddNewBoard(newBoard, userId);
     onResetButtonClick();
   };
+  console.log(members);
 
   return (
     <div className="board-container">
@@ -75,13 +80,22 @@ export default function CreateBoard() {
           }}
         />
       </div>
-      <GenericButton
-        buttonLabel="Add members"
-        buttonSize="large"
-        buttonType="primary"
-        buttonDisabled={false}
-        onClick={onAddMembersClick}
-      />
+      {showAddMembers && (
+        <AddMembers
+          members={members}
+          addMember={addMember}
+          toggleShowMembers={toggleShowMembers}
+        />
+      )}
+      {!showAddMembers && (
+        <GenericButton
+          buttonLabel="Add members"
+          buttonSize="large"
+          buttonType="primary"
+          buttonDisabled={false}
+          onClick={toggleShowMembers}
+        />
+      )}
       <br />
       <GenericButton
         buttonLabel="Reset"
