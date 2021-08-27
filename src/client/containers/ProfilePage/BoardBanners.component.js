@@ -4,13 +4,11 @@ import { Props } from './ProfilePage.container';
 import BoardCard from '../../components/BoardCard/BoardCard.component';
 import DropDwonContainerMyBoards from './DropDown.container';
 import { DropDwonContainerJoinedBoards } from './DropDown.container';
-import './BoardBanners.styles.css';
 import NewBoard from './NewBoard.component';
+import './BoardBanners.styles.css';
 
 export default function BoardBanners() {
   const { onMyBoards, joinedBoards, myBoards } = useContext(Props);
-
-  useEffect(() => {}, []);
 
   if (!joinedBoards) {
     return null;

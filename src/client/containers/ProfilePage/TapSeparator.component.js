@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import './TapSeparator.styles.css';
 import { Props } from './ProfilePage.container';
 

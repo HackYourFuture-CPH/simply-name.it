@@ -1,19 +1,22 @@
-import React, { useEffect, useContext } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router';
 import './NewBoard.styles.css';
 
-export default function NewBoard({ onClick }) {
+export default function NewBoard() {
+  const history = useHistory();
   return (
     <div className="board-container">
       <div className="add-new-board">
         <div className="create-new-board-title">New board</div>
         <div className="add-new-button">
-          {/* add right path her to New board page */}
-          <Link to="/new-board">
-            <button type="button" onClick={onClick}>
-              +
-            </button>
-          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              history.push('/new-board');
+            }}
+          >
+            +
+          </button>
         </div>
       </div>
     </div>

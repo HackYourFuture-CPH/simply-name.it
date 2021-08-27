@@ -16,6 +16,7 @@ import UserProfilePicture from '../../components/UserProfilePicture/UserProfileP
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Error404Page from '../404Page/404Page.container';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
+import ApiError from '../../ErrorBoundary';
 
 export const Props = createContext();
 
@@ -29,15 +30,23 @@ export default function ProfilePage() {
 
   const history = useHistory();
   const { user } = useUser();
+
   const userId = user[0].id;
-  console.log(user);
 
   const { signOut } = useFirebase();
+
+  // const [errorState, setErrorState] = useState();
+  // setErrorState(() => {
+  //   throw new ApiError();
+  // });
 
   const getJoinedBoards = async () => {
     const response = await fetch(` /api/users/1/boards/?role=member`);
     if (!response.ok) {
       setIsLoading(false);
+      // setErrorState(() => {
+      //   throw new ApiError();
+      // });
     } else {
       const data = await response.json();
       setJoinedBoards(data);
@@ -47,8 +56,15 @@ export default function ProfilePage() {
 
   const getMyBoards = async () => {
     const response = await fetch(` /api/users/2/boards/created`);
-    const data = await response.json();
-    setMyBoards(data);
+    if (!response.ok) {
+      setIsLoading(false);
+      // setErrorState(() => {
+      //   throw new ApiError();
+      // });
+    } else {
+      const data = await response.json();
+      setMyBoards(data);
+    }
   };
 
   useEffect(() => {
@@ -77,61 +93,55 @@ export default function ProfilePage() {
         setModalVisibility,
       }}
     >
-      <div>
-        {/* {error && (
-          <>
-            <Error404Page />
-          </>
-        )} */}
-        <div>
-          <div className="header-container">
-            <div className="header">
-              <HeaderComponent colored={true}>
-                {/* user can not go welcome only if he signout  */}
-                <ArrowButton
-                  onClick={() => {
-                    history.push('/profile');
-                  }}
-                  color="white"
-                />
+      <div className="profile-page-container">
+        <div className="header">
+          <HeaderComponent colored={true}>
+            {/* user can not go welcome only if he signout  */}
+            <ArrowButton
+              onClick={() => {
+                history.push('/profile');
+              }}
+              color="white"
+            />
 
-                <Dropdown
-                  variant="dark"
-                  onClick={() => {
-                    setVisible(!visible);
-                  }}
-                  visible={visible}
-                >
-                  <ul>
-                    <li onClick={signOut}> Log out </li>
-                  </ul>
-                </Dropdown>
-              </HeaderComponent>
-            </div>
-            <div className="sub-header">
-              <UserProfilePicture
-                // i need to add the user pic
-                profilePictureLink="https://picsum.photos/seed/picsum/200/300"
-                size="big"
-              />
-              <PageTitle variant="black-large" title={user[0].fullName} />
-            </div>
-          </div>
-          <div className="tap">
-            <TapSeparator />
-          </div>
-
-          <BoardBanners />
-          {modalVisibility && (
-            <div>
-              <DeleteBoardModal
-                modalVisibility={modalVisibility}
-                setModalVisibility={setModalVisibility}
-                // boardInfo={myBoards}
-              />
-            </div>
-          )}
+            <Dropdown
+              variant="dark"
+              onClick={() => {
+                setVisible(!visible);
+              }}
+              visible={visible}
+            >
+              <ul>
+                <li onClick={signOut}> Log out </li>
+              </ul>
+            </Dropdown>
+          </HeaderComponent>
         </div>
+        <div className="sub-header">
+          <div className="profile-user">
+            <UserProfilePicture
+              // i need to add the user pic
+              profilePictureLink="https://picsum.photos/seed/picsum/200/300"
+              size="big"
+            />
+            <PageTitle variant="black-large" title={user[0].fullName} />
+          </div>
+        </div>
+        <div className="users-boards-container">
+          <TapSeparator />
+          <div className="boards-container">
+            <BoardBanners />
+          </div>
+        </div>
+        {modalVisibility && (
+          <div>
+            <DeleteBoardModal
+              modalVisibility={modalVisibility}
+              setModalVisibility={setModalVisibility}
+              // boardInfo={myBoards}
+            />
+          </div>
+        )}
       </div>
     </Props.Provider>
   );
