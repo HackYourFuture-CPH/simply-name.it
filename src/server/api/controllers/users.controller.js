@@ -1,8 +1,6 @@
 const knex = require('../../config/db');
 const { client, usersIndex } = require('../../config/elastic');
 
-const index = 'dolphins';
-
 const {
   IncorrectEntryError,
   InvalidRequestError,
@@ -11,60 +9,9 @@ const {
 
 const { isInteger } = require('../lib/utils/validators');
 
-// const createDBuser = async (document) => {
-//   // Create user in DB
-//   let newUserID;
-//   if (Object.keys(document).length === 0) {
-//     throw new InvalidRequestError(
-//       `key 'fullName, email, firebaseUId and value of type 'string' is required`,
-//     );
-//   }
-//   if (typeof document.fullname !== 'string') {
-//     throw new IncorrectEntryError(`fullName should be string`);
-//   }
-//   if (typeof document.email !== 'string') {
-//     throw new IncorrectEntryError(`email should be string`);
-//   }
-
-//   const createNewDBuser = await knex('users').insert(
-//     // create user
-//     {
-//       fullName: document.fullname,
-//       email: document.email,
-//       firebaseUId: 'whatever',
-//     },
-//     'id',
-//   );
-//   // .then(function (result) {
-//   //   newUserID = result;
-//   // });
-
-//   await createESuser(document, createNewDBuser);
-// };
-
-// const createESuser = async (document, id) => {
-//   // Create user in ES
-//   const newESuser = {
-//     fullname: document.fullname, // fullname
-//     email: document.email,
-//   };
-//   await client.index({
-//     id,
-//     index: index,
-//     body: newESuser,
-//   });
-// };
-
-// const deleteESuser = async (id) => {
-//   await client.delete({
-//     index,
-//     id,
-//   });
-// }; MOVED
-
 const getUsers = async () => {
   const result = await client.search({
-    index: index,
+    index: usersIndex,
     body: {
       query: {
         match_all: {},
@@ -75,6 +22,17 @@ const getUsers = async () => {
   });
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 };
+
+// const getUsers = () => {
+//   return knex('users').select(
+//     'users.id',
+//     'users.fullName',
+//     'users.email',
+//     'users.createdOn',
+//     'users.firebaseUId',
+//   );
+// };
+// KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
 
 const getUser = async (firebaseUId) => {
   const user = await knex('users').select('*').where({ firebaseUId });
@@ -102,9 +60,8 @@ const getUsersByKeyword = async (searchWord) => {
     throw new IncorrectEntryError('Use a keyword!', 400);
   }
 
-  // should I connect
   const users = await client.search({
-    index: index,
+    index: usersIndex,
     body: {
       query: {
         match: { fullname: searchWord },
@@ -112,6 +69,15 @@ const getUsersByKeyword = async (searchWord) => {
       size: 20,
     },
   });
+  //   const users = await knex('users').where(
+  //     'fullName',
+  //     'like',
+  //     `%${searchWord}%`,
+  //   );
+
+  //   return users;
+  // };
+  // KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN TEST DB SEARCH IF NEEDED
 
   return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 };
@@ -152,7 +118,7 @@ const createUser = async (newUser) => {
   };
   await client.index({
     id: createdUserId[0],
-    index: index,
+    index: usersIndex,
     body: newESuser,
   });
 
@@ -166,7 +132,7 @@ const deleteUser = async (id) => {
   await knex('users').where({ id: id }).del();
 
   await client.delete({
-    index,
+    usersIndex,
     id,
   });
 };

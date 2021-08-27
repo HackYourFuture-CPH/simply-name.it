@@ -8,6 +8,7 @@ import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
+import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 
@@ -27,6 +28,8 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
+        <CreateBoard exact path="/create-board" />
+
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
         {/* All routes below are authenticated routes - a user must login first */}

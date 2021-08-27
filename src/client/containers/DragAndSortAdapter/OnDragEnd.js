@@ -1,9 +1,13 @@
 import { arrayMove } from '@dnd-kit/sortable';
 
-export function onDragEnd(setItems, sortFunction) {
+export function onDragEnd(
+  setItems,
+  sortFunction,
+  transformFunction,
+  setDraggedInit,
+) {
   return function (event) {
     const { active, over } = event;
-
     if (active.id !== over.id) {
       setItems((draggedItems) => {
         const { oldIndex, newIndex } = sortFunction(
@@ -11,8 +15,10 @@ export function onDragEnd(setItems, sortFunction) {
           active.id,
           over.id,
         );
-
-        return arrayMove(draggedItems, oldIndex, newIndex);
+        setDraggedInit(true);
+        return arrayMove(draggedItems, oldIndex, newIndex).map(
+          transformFunction,
+        );
       });
     }
   };
