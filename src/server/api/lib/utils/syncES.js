@@ -25,6 +25,13 @@ const createIndex = async (index) => {
         properties: {
           fullName: {
             type: 'search_as_you_type',
+            fields: {
+              keyword: {
+                // looks like this subfield is not being placed into mapping
+                type: 'keyword',
+                ignore_above: 256,
+              },
+            },
           },
           email: {
             type: 'keyword',

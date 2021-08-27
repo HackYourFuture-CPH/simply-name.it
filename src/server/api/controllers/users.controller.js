@@ -17,22 +17,20 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
-      sort: ['fulName.keyword'],
+      //sort: ['fullName.keyword'], // here! This is search as you type and I am missing the keyword subfield in mapping
     },
   });
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
-};
 
-// const getUsers = () => {
-//   return knex('users').select(
-//     'users.id',
-//     'users.fullName',
-//     'users.email',
-//     'users.createdOn',
-//     'users.firebaseUId',
-//   );
-// };
-// KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
+  // return knex('users').select(
+  //   'users.id',
+  //   'users.fullName',
+  //   'users.email',
+  //   'users.createdOn',
+  //   'users.firebaseUId',
+  // );
+  //KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
+};
 
 const getUser = async (firebaseUId) => {
   const user = await knex('users').select('*').where({ firebaseUId });
@@ -66,9 +64,12 @@ const getUsersByKeyword = async (searchWord) => {
       query: {
         match: { fullName: searchWord },
       },
-      size: 20,
+      size: 30,
     },
   });
+
+  return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
+
   //   const users = await knex('users').where(
   //     'fullName',
   //     'like',
@@ -78,8 +79,6 @@ const getUsersByKeyword = async (searchWord) => {
   //   return users;
   // };
   // KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN TEST DB SEARCH IF NEEDED
-
-  return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 };
 
 // CREATE USER
