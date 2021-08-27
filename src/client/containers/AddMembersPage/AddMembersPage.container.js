@@ -15,8 +15,6 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
 
   const membersSet = new Set(members);
 
-  let APIurl = `/api/users/search?fullName=${searchInput}`;
-
   const handleArrowButton = () => {
     toggleShowMembers();
   };
@@ -25,9 +23,6 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
     addMember(id);
   };
 
-  const handleAddedButton = (name) => {
-    alert(`${name} is already added!`);
-  };
   const cleanUp = (id) => {
     clearTimeout(id);
   };
@@ -35,9 +30,10 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
   useEffect(() => {
     setLoading(true);
 
-    searchInput === ''
-      ? (APIurl = `/api/users`)
-      : (APIurl = `/api/users/search?fullName=${searchInput}`);
+    const APIurl =
+      searchInput === ''
+        ? `/api/users`
+        : `/api/users/search?fullName=${searchInput}`;
     const id = setTimeout(async () => {
       try {
         const result = await fetch(APIurl);
@@ -105,7 +101,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
                           buttonSize="small"
                           buttonType="secondary"
                           buttonDisabled={true}
-                          onClick={() => handleAddedButton(user.fullName)}
+                          onClick={() => ''}
                         />
                       )}
                     </div>

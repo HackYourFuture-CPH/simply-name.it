@@ -24,7 +24,9 @@ export default function CreateBoard() {
         <div>
           Diny, your stuff goes inside here. :)
           {/* the GenericButton "add members": */}
-          <button onClick={toggleShowMembers}>add members</button>
+          <button type="button" onClick={toggleShowMembers}>
+            add members
+          </button>
         </div>
       )}
     </div>
