@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  margin-left: 20px;
-  width: 88%;
+  margin-left: 10px;
+  width: 94%;
 }
 
 .add-button {
   cursor: pointer;
-  margin-left: 10%;
+  margin-left: 7%;
 }

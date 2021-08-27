@@ -16,6 +16,7 @@ export default function MemberBoardPage() {
   const boardId = boardInfo.id;
   const { user } = useUser();
   const userId = user[0].id;
+  const displayDelete = 'hidden';
   const onClick = () => {};
   return (
     <div className="Board-container">
@@ -36,7 +37,11 @@ export default function MemberBoardPage() {
       {boardInfo.hasPassedDeadline() ? (
         <div>
           <div className="CandidateCard-component">
-            <CandidateListPostDeadline userId={userId} boardId={boardId} />
+            <CandidateListPostDeadline
+              userId={userId}
+              boardId={boardId}
+              displayDelete={displayDelete}
+            />
           </div>
           <div className="Result">
             <ResultButtonPostDeadline />
@@ -45,7 +50,11 @@ export default function MemberBoardPage() {
       ) : (
         <div>
           <div className="CandidateCard-component">
-            <CandidateListPreDeadline userId={userId} boardId={boardId} />
+            <CandidateListPreDeadline
+              userId={userId}
+              boardId={boardId}
+              displayDelete={displayDelete}
+            />
           </div>
           <div className="Result">
             <ResultButtonPreDeadline />
