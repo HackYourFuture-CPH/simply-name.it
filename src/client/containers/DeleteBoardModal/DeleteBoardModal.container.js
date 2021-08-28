@@ -5,12 +5,8 @@ import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 
-const DeleteBoardModal = ({
-  boardInfo,
-  setModalVisibility,
-  userId,
-  deleteErrorHandler,
-}) => {
+const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
+  const [error, setError] = useState(null);
   const boardId = boardInfo.id;
 
   const deleteBoard = async () => {
@@ -22,8 +18,11 @@ const DeleteBoardModal = ({
         throw new Error(response.status);
       }
       alert('Data deleted');
-    } catch (error) {
-      deleteErrorHandler(error);
+    } catch {
+      setError(() => {
+        // eslint-disable-next-line new-cap
+        throw new ApiError();
+      });
     }
   };
   return (
