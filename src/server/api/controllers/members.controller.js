@@ -17,11 +17,10 @@ const userIsMember = async (userId, boardId) => {
 };
 
 const userIsOwner = async (userId, boardId) => {
-  const isOwner = await knex('members')
+  const isOwner = await knex('boards')
     .select('*')
-    .where('members.userId', userId)
-    .andWhere('members.boardId', boardId)
-    .andWhere('members.role', 'owner');
+    .where('boards.creatorId', userId)
+    .andWhere('boards.id', boardId);
   if (isOwner.length === 0) {
     throw new UnauthorizedError(`Only owner can add a member to a board `);
   }
