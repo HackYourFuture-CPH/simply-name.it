@@ -4,7 +4,7 @@ import ProfileProps from './ProfileContext';
 import { useHistory } from 'react-router';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 
-export default function DropDwonContainerMyBoards() {
+export default function DropDownMenuMyBoards() {
   const [visible, setVisible] = useState(false);
   const { setModalVisibility } = useContext(ProfileProps);
   const history = useHistory();
@@ -42,7 +42,7 @@ export default function DropDwonContainerMyBoards() {
   );
 }
 
-export function DropDwonContainerJoinedBoards() {
+export function DropDownMenuJoinedBoards() {
   const [visible, setVisible] = useState(false);
   const { setModalVisibility } = useContext(ProfileProps);
   return (

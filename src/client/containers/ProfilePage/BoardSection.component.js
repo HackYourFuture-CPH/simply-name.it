@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 
 import ProfileProps from './ProfileContext';
 import BoardCard from '../../components/BoardCard/BoardCard.component';
-import DropDwonContainerMyBoards, {
-  DropDwonContainerJoinedBoards,
-} from './DropDown.container';
-import NewBoard from './NewBoard.component';
-import './BoardBanners.styles.css';
+import DropDownMenuMyBoards, {
+  DropDownMenuJoinedBoards,
+} from './BoardCardDropdown.component';
+import NewBoard from '../../components/NewBoardCard/NewBoard.component';
+import './BoardSection.styles.css';
 
-export default function BoardBanners() {
+export default function BoardSection() {
   const { onMyBoards, joinedBoards, myBoards } = useContext(ProfileProps);
 
   if (!joinedBoards) {
@@ -26,7 +26,7 @@ export default function BoardBanners() {
               boardTitle={board.title}
               key={board.id}
             >
-              <DropDwonContainerMyBoards />
+              <DropDownMenuMyBoards />
             </BoardCard>
           ))}
         </div>
@@ -40,7 +40,7 @@ export default function BoardBanners() {
               boardTitle={board.title}
               key={board.id}
             >
-              <DropDwonContainerJoinedBoards />
+              <DropDownMenuJoinedBoards />
             </BoardCard>
           ))}
         </div>

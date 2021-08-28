@@ -8,8 +8,8 @@ import { useFirebase } from '../../firebase/FirebaseContext';
 import { ProfilePropsProvider } from './ProfileContext';
 import './ProfilePage.styles.css';
 
-import TapSeparator from './TapSeparator.component';
-import BoardBanners from './BoardBanners.component';
+import TabSeparator from './TabsSeparator.component';
+import BoardBanners from './BoardSection.component';
 
 import HeaderComponent from '../../components/HeaderComponent/Header.component';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
@@ -126,7 +126,7 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="users-boards-container">
-          <TapSeparator />
+          <TabSeparator />
           <div className="boards-container">
             <BoardBanners />
           </div>
