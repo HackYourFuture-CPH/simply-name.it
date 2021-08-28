@@ -166,10 +166,7 @@ router.delete('/:userId', async (req, res) => {
  *        description: Not found.
  */
 
-//router.post('/', [authenticate], async (req, res) => {
-router.post('/', async (req, res) => {
-  console.log('router', req.body);
-
+router.post('/', [authenticate], async (req, res) => {
   const user = await usersController.createUser(req.body);
   return res.json(user);
 });

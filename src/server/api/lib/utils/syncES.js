@@ -5,7 +5,7 @@ const knex = require('../../../config/db');
 
 const findIndex = async (index) => {
   const indexExists = await client.indices.exists({
-    index: index,
+    index,
   });
   return indexExists.body;
 };
@@ -13,12 +13,12 @@ const findIndex = async (index) => {
 const createIndex = async (index) => {
   if (await findIndex(index)) {
     await client.indices.delete({
-      index: index,
+      index,
     });
   }
 
   await client.indices.create({
-    index: index,
+    index,
     body: {
       mappings: {
         dynamic: 'strict',
@@ -39,7 +39,7 @@ const createIndex = async (index) => {
     },
   });
   const indexMapping = await client.indices.get({
-    index: index,
+    index,
   });
   console.log(indexMapping);
   console.log(`'${index}' index created! `);
@@ -59,7 +59,7 @@ const moveUSersfromDBtoES = async () => {
       fullName: user.fullName, // fullname
       email: user.email,
     };
-    //await?
+
     const DBuserToES = await client.index({
       id: user.id,
       index: usersIndex,

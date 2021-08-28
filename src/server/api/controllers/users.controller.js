@@ -17,7 +17,7 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
-      //sort: ['fullName.keyword'],
+      // sort: ['fullName.keyword'],
       sort: [
         {
           fullName: {
@@ -27,6 +27,7 @@ const getUsers = async () => {
       ],
     },
   });
+  /* eslint no-underscore-dangle: ["error", { "allow": ["__place"] }]*/
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 
   // return knex('users').select(
@@ -36,7 +37,7 @@ const getUsers = async () => {
   //   'users.createdOn',
   //   'users.firebaseUId',
   // );
-  //KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
+  // KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
 };
 
 const getUser = async (firebaseUId) => {
@@ -79,6 +80,7 @@ const getUsersByKeyword = async (searchWord) => {
     },
   });
 
+  /* eslint no-underscore-dangle: ["error", { "allow": ["__place"] }]*/
   return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 
   //   const users = await knex('users').where(
@@ -139,7 +141,7 @@ const deleteUser = async (id) => {
   if (!Number.isInteger(Number(id))) {
     throw new InvalidIdError('Id should be an integer');
   }
-  await knex('users').where({ id: id }).del();
+  await knex('users').where({ id }).del();
 
   await client.delete({
     usersIndex,
