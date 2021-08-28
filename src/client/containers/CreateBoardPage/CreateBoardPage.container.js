@@ -49,7 +49,6 @@ export default function CreateBoard() {
     AddNewBoard(newBoard, userId);
     onResetButtonClick();
   };
-  console.log(members);
 
   return (
     <div className="board-container">

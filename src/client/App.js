@@ -9,9 +9,10 @@ import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
-import CreateBoardPage from './containers/CreateBoardPage/CreateBoardPage.container';
+import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
+import ResultPage from './containers/ResultPage/ResultPage.container';
 
 function App() {
   const { isLoading, isAuthenticated } = useFirebase();
@@ -48,7 +49,19 @@ function App() {
               isAuthenticated={isAuthenticated}
               isLoading={isLoading}
             >
-              <CreateBoardPage />
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/boards/:boardId/results"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <ResultPage />
             </AuthenticatedRoute>
           }
         />
