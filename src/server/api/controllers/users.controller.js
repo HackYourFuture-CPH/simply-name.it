@@ -123,7 +123,7 @@ const createUser = async (newUser) => {
   console.log('createdUserId in conroller', createdUserId);
 
   const newESuser = {
-    fullname: newUser.fullName, // fullname
+    fullName: newUser.fullName, // fullname
     email: newUser.email,
   };
   await client.index({
