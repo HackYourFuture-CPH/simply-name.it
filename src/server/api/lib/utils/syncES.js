@@ -27,7 +27,6 @@ const createIndex = async (index) => {
             type: 'keyword',
             fields: {
               autocomplete: {
-                // looks like this subfield is not being placed into mapping
                 type: 'search_as_you_type',
               },
             },

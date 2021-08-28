@@ -70,7 +70,7 @@ const getUsersByKeyword = async (searchWord) => {
     body: {
       query: {
         multi_match: {
-          query: searchWord, // tired `${searchWord}` too
+          query: searchWord,
           type: 'bool_prefix',
           fields: ['fullName', 'fullName._2gram', 'fullName._3gram'],
         },
