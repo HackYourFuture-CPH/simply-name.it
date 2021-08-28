@@ -27,7 +27,7 @@ const getUsers = async () => {
       ],
     },
   });
-  /* eslint no-underscore-dangle: ["error", { "allow": ["__place"] }] */
+  /* eslint no-underscore-dangle: ["error", { "allow": ["_source", "_id"] }] */
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 
   // return knex('users').select(
@@ -80,7 +80,7 @@ const getUsersByKeyword = async (searchWord) => {
     },
   });
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["__place"] }] */
+  /* eslint no-underscore-dangle: ["error", { "allow": ["_source", "_id"] }] */
   return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
 
   //   const users = await knex('users').where(
