@@ -46,7 +46,7 @@ export default function CreateBoard() {
   };
 
   const onCreateButtonClick = () => {
-    AddNewBoard(newBoard, userId);
+    AddNewBoard(newBoard, userId, members);
     onResetButtonClick();
   };
 
