@@ -5,7 +5,7 @@ import BoardCard from '../../components/BoardCard/BoardCard.component';
 import DropDownMenuMyBoards, {
   DropDownMenuJoinedBoards,
 } from './BoardCardDropdown.component';
-import NewBoard from '../../components/NewBoardCard/NewBoard.component';
+import NewBoard from './NewBoard.component';
 import './BoardSection.styles.css';
 
 export default function BoardSection() {

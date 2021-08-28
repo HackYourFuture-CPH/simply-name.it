@@ -8,7 +8,7 @@ import { useFirebase } from '../../firebase/FirebaseContext';
 import { ProfilePropsProvider } from './ProfileContext';
 import './ProfilePage.styles.css';
 
-import TabSeparator from './TabsSeparator.component';
+import TabSeparator from './TabSeparator.component';
 import BoardBanners from './BoardSection.component';
 
 import HeaderComponent from '../../components/HeaderComponent/Header.component';
