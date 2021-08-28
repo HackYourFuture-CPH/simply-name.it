@@ -4,7 +4,7 @@ import './DeleteBoardModal.style.css';
 import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../statcomponents/GenericButton/GenericButton.component';
-import ApiError from '../../ErrorBoundary';
+import { ApiError } from '../../ErrorBoundary';
 
 const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
   // eslint-disable-next-line no-unused-vars
@@ -71,7 +71,6 @@ DeleteBoardModal.propTypes = {
   }).isRequired,
   setModalVisibility: PropTypes.func.isRequired,
   userId: PropTypes.number.isRequired,
-  deleteErrorHandler: PropTypes.func.isRequired,
 };
 
 export default DeleteBoardModal;
