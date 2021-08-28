@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { Props } from './ProfilePage.container';
+import ProfileProps from './ProfileContext';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useHistory } from 'react-router';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 
 export default function DropDwonContainerMyBoards() {
   const [visible, setVisible] = useState(false);
-  const { setModalVisibility } = useContext(Props);
+  const { setModalVisibility } = useContext(ProfileProps);
   const history = useHistory();
   return (
     <div>
@@ -17,19 +18,25 @@ export default function DropDwonContainerMyBoards() {
         visible={visible}
       >
         <ul>
-          <li
-            onClick={() => {
-              history.push('/edit-board');
-            }}
-          >
-            Edit board
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                history.push('/edit-board');
+              }}
+            >
+              Edit board
+            </button>
           </li>
-          <li
-            onClick={() => {
-              setModalVisibility(true);
-            }}
-          >
-            Delete board
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                setModalVisibility(true);
+              }}
+            >
+              Delete board
+            </button>
           </li>
         </ul>
       </Dropdown>

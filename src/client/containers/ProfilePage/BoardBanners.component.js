@@ -1,14 +1,15 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 
-import { Props } from './ProfilePage.container';
+import ProfileProps from './ProfileContext';
 import BoardCard from '../../components/BoardCard/BoardCard.component';
-import DropDwonContainerMyBoards from './DropDown.container';
-import { DropDwonContainerJoinedBoards } from './DropDown.container';
+import DropDwonContainerMyBoards, {
+  DropDwonContainerJoinedBoards,
+} from './DropDown.container';
 import NewBoard from './NewBoard.component';
 import './BoardBanners.styles.css';
 
 export default function BoardBanners() {
-  const { onMyBoards, joinedBoards, myBoards } = useContext(Props);
+  const { onMyBoards, joinedBoards, myBoards } = useContext(ProfileProps);
 
   if (!joinedBoards) {
     return null;

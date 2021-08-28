@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import './TapSeparator.styles.css';
-import { Props } from './ProfilePage.container';
+import ProfileProps from './ProfileContext';
 
 export default function TapSeparator() {
-  const { setOnMyBoards } = useContext(Props);
+  const { setOnMyBoards } = useContext(ProfileProps);
 
   return (
     <>

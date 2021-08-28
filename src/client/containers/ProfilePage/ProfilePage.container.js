@@ -1,9 +1,11 @@
 /* eslint-disable react/button-has-type */
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useHistory } from 'react-router';
 import { useUser } from '../../firebase/UserContext';
 import { useFirebase } from '../../firebase/FirebaseContext';
+import { ProfilePropsProvider } from './ProfileContext';
 import './ProfilePage.styles.css';
 
 import TapSeparator from './TapSeparator.component';
@@ -14,24 +16,20 @@ import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Error404Page from '../404Page/404Page.container';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
-import ApiError from '../../ErrorBoundary';
-
-export const Props = createContext();
+// import ApiError from '../../ErrorBoundary';
 
 export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
   const [joinedBoards, setJoinedBoards] = useState();
   const [myBoards, setMyBoards] = useState();
   const [onMyBoards, setOnMyBoards] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
 
   const history = useHistory();
   const { user } = useUser();
 
-  const userId = user[0].id;
+  // const userId = user[0].id;
 
   const { signOut } = useFirebase();
 
@@ -43,21 +41,18 @@ export default function ProfilePage() {
   const getJoinedBoards = async () => {
     const response = await fetch(` /api/users/1/boards/?role=member`);
     if (!response.ok) {
-      setIsLoading(false);
       // setErrorState(() => {
       //   throw new ApiError();
       // });
     } else {
       const data = await response.json();
       setJoinedBoards(data);
-      setIsLoading(false);
     }
   };
 
   const getMyBoards = async () => {
     const response = await fetch(` /api/users/2/boards/created`);
     if (!response.ok) {
-      setIsLoading(false);
       // setErrorState(() => {
       //   throw new ApiError();
       // });
@@ -71,7 +66,6 @@ export default function ProfilePage() {
     (async () => {
       await getMyBoards();
       await getJoinedBoards();
-      console.log(user);
     })();
   }, []);
 
@@ -79,7 +73,7 @@ export default function ProfilePage() {
     return null;
   }
   return (
-    <Props.Provider
+    <ProfilePropsProvider
       value={{
         onMyBoards,
         setOnMyBoards,
@@ -87,8 +81,6 @@ export default function ProfilePage() {
         setJoinedBoards,
         myBoards,
         setMyBoards,
-        joinedBoards,
-        setJoinedBoards,
         modalVisibility,
         setModalVisibility,
       }}
@@ -112,7 +104,12 @@ export default function ProfilePage() {
               visible={visible}
             >
               <ul>
-                <li onClick={signOut}> Log out </li>
+                <li>
+                  {' '}
+                  <button type="button" onClick={signOut}>
+                    Log out
+                  </button>{' '}
+                </li>
               </ul>
             </Dropdown>
           </HeaderComponent>
@@ -143,6 +140,6 @@ export default function ProfilePage() {
           </div>
         )}
       </div>
-    </Props.Provider>
+    </ProfilePropsProvider>
   );
 }
