@@ -6,6 +6,7 @@
 
 button.dark {
   color: #fff;
+  margin-top: -10px;
 }
 
 button.light {
@@ -42,6 +43,6 @@ div.light {
   top: 0;
   padding: 0.25rem;
   right: 1.25rem;
-  margin: 5px 5px 0 0;
+  margin: -3px 5px 0 0;
   line-height: 1.6em;
 }
