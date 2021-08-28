@@ -17,7 +17,14 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
-      //sort: ['fullName.keyword'], // here! This is search as you type and I am missing the keyword subfield in mapping
+      //sort: ['fullName.keyword'],
+      sort: [
+        {
+          fullName: {
+            order: 'asc',
+          },
+        },
+      ],
     },
   });
   return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
@@ -62,7 +69,11 @@ const getUsersByKeyword = async (searchWord) => {
     index: usersIndex,
     body: {
       query: {
-        match: { fullName: searchWord },
+        multi_match: {
+          query: searchWord, // tired `${searchWord}` too
+          type: 'bool_prefix',
+          fields: ['fullName', 'fullName._2gram', 'fullName._3gram'],
+        },
       },
       size: 30,
     },

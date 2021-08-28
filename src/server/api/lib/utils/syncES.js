@@ -24,12 +24,11 @@ const createIndex = async (index) => {
         dynamic: 'strict',
         properties: {
           fullName: {
-            type: 'search_as_you_type',
+            type: 'keyword',
             fields: {
-              keyword: {
+              autocomplete: {
                 // looks like this subfield is not being placed into mapping
-                type: 'keyword',
-                ignore_above: 256,
+                type: 'search_as_you_type',
               },
             },
           },
@@ -55,23 +54,27 @@ const moveUSersfromDBtoES = async () => {
     'users.createdOn',
     'users.firebaseUId',
   );
-  await DBusers.map(async (user) => {
+
+  const usersPromises = DBusers.map(async (user) => {
     const newESuser = {
       fullName: user.fullName, // fullname
       email: user.email,
     };
     //await?
-    await client.index({
+    const DBuserToES = await client.index({
       id: user.id,
       index: usersIndex,
       body: newESuser,
     });
+    return DBuserToES;
   });
+  const resolveUsersPromises = await Promise.all(usersPromises);
+  console.log('promises', resolveUsersPromises);
 };
 
-//createIndex(usersIndex);
-
-moveUSersfromDBtoES().then(() => {
-  console.log('moving from DB to ES done!');
-  knex.destroy();
-});
+createIndex(usersIndex).then(() =>
+  moveUSersfromDBtoES().then(() => {
+    console.log('moving from DB to ES done!');
+    knex.destroy();
+  }),
+);
