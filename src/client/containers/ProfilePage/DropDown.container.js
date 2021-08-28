@@ -9,43 +9,42 @@ export default function DropDwonContainerMyBoards() {
   const { setModalVisibility } = useContext(ProfileProps);
   const history = useHistory();
   return (
-    <div>
-      <Dropdown
-        variant="dark"
-        onClick={() => {
-          setVisible(!visible);
-        }}
-        visible={visible}
-      >
-        <ul>
-          <li>
-            <button
-              type="button"
-              onClick={() => {
-                history.push('/edit-board');
-              }}
-            >
-              Edit board
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              onClick={() => {
-                setModalVisibility(true);
-              }}
-            >
-              Delete board
-            </button>
-          </li>
-        </ul>
-      </Dropdown>
-    </div>
+    <Dropdown
+      variant="dark"
+      onClick={() => {
+        setVisible(!visible);
+      }}
+      visible={visible}
+    >
+      <ul>
+        <li>
+          <button
+            type="button"
+            onClick={() => {
+              history.push('/edit-board');
+            }}
+          >
+            Edit board
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            onClick={() => {
+              setModalVisibility(true);
+            }}
+          >
+            Delete board
+          </button>
+        </li>
+      </ul>
+    </Dropdown>
   );
 }
 
 export function DropDwonContainerJoinedBoards() {
   const [visible, setVisible] = useState(false);
+  const { setModalVisibility } = useContext(ProfileProps);
   return (
     <Dropdown
       variant="dark"
@@ -55,7 +54,16 @@ export function DropDwonContainerJoinedBoards() {
       visible={visible}
     >
       <ul>
-        <li> Leave board </li>
+        <li>
+          <button
+            type="button"
+            onClick={() => {
+              setModalVisibility(true);
+            }}
+          >
+            Leave board
+          </button>
+        </li>
       </ul>
     </Dropdown>
   );

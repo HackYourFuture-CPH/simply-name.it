@@ -5,10 +5,12 @@ import PropTypes from 'prop-types';
 export default function BoardCard({ src, alt, boardTitle, children }) {
   return (
     <div className="board-container">
-      <img src={src} alt={alt} className="board-image" />
-      <div className="board-header-container">
-        <div className="board-title">{boardTitle}</div>
-        <div className="board-header-children">{children}</div>
+      <div className="board-content-container">
+        <img src={src} alt={alt} className="board-image" />
+        <div className="board-header-container">
+          <div className="board-title">{boardTitle}</div>
+          <div className="board-header-children">{children}</div>
+        </div>
       </div>
     </div>
   );

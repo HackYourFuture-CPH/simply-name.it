@@ -1,5 +1,14 @@
+.boards-cards-container {
+  width: 100%;
+}
+
 .existing-boards {
-  width: 40%;
-  margin: 10px;
-  height: 100vh;
+  display: inline-flex;
+}
+
+.boards-distribution {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

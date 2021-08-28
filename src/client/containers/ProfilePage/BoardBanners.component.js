@@ -15,38 +15,33 @@ export default function BoardBanners() {
     return null;
   }
   return (
-    <div className="existing-boards">
+    <div className="boards-cards-container">
       {onMyBoards && (
-        <div>
+        <div className="boards-distribution">
           <NewBoard />
-          <div>
-            {myBoards.map((board) => (
-              <div key={board.id}>
-                <BoardCard
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Board picture"
-                  boardTitle={board.title}
-                >
-                  <DropDwonContainerMyBoards />
-                </BoardCard>
-              </div>
-            ))}
-          </div>
+          {myBoards.map((board) => (
+            <BoardCard
+              src="https://picsum.photos/seed/picsum/200/300"
+              alt="Board picture"
+              boardTitle={board.title}
+              key={board.id}
+            >
+              <DropDwonContainerMyBoards />
+            </BoardCard>
+          ))}
         </div>
       )}
-
       {!onMyBoards && (
         <div>
           {joinedBoards.map((board) => (
-            <div key={board.id}>
-              <BoardCard
-                src="https://picsum.photos/seed/picsum/200/300"
-                alt="Board picture"
-                boardTitle={board.title}
-              >
-                <DropDwonContainerJoinedBoards />
-              </BoardCard>
-            </div>
+            <BoardCard
+              src="https://picsum.photos/seed/picsum/200/300"
+              alt="Board picture"
+              boardTitle={board.title}
+              key={board.id}
+            >
+              <DropDwonContainerJoinedBoards />
+            </BoardCard>
           ))}
         </div>
       )}

@@ -23,13 +23,14 @@ export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
   const [joinedBoards, setJoinedBoards] = useState();
   const [myBoards, setMyBoards] = useState();
-  const [onMyBoards, setOnMyBoards] = useState();
+  const [onMyBoards, setOnMyBoards] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
 
   const history = useHistory();
   const { user } = useUser();
+  const userData = user[0];
 
-  // const userId = user[0].id;
+  // const userId = userData.id;
 
   const { signOut } = useFirebase();
 
@@ -121,7 +122,7 @@ export default function ProfilePage() {
               profilePictureLink="https://picsum.photos/seed/picsum/200/300"
               size="big"
             />
-            <PageTitle variant="black-large" title={user[0].fullName} />
+            <PageTitle variant="black-large" title={userData.fullName} />
           </div>
         </div>
         <div className="users-boards-container">
