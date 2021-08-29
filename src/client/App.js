@@ -45,6 +45,18 @@ function App() {
         </AuthenticatedRoute>
         <Route
           exact
+          path="/boards/new-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
           path="/boards/:boardId/results"
           children={
             <AuthenticatedRoute
