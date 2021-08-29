@@ -7,6 +7,7 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import InputComponent from '../../components/InputComponent/InputComponent.js';
+
 export default function AddMembers({
   members,
   addMember,
