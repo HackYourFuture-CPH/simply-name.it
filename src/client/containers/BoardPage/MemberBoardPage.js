@@ -36,7 +36,7 @@ export default function MemberBoardPage() {
       </div>
       {boardInfo.hasPassedDeadline() ? (
         <div>
-          <div className="CandidateCard-component">
+          <div className="CandidateCard-component-member">
             <CandidateListPostDeadline
               userId={userId}
               boardId={boardId}
@@ -49,7 +49,7 @@ export default function MemberBoardPage() {
         </div>
       ) : (
         <div>
-          <div className="CandidateCard-component">
+          <div className="CandidateCard-component-member">
             <CandidateListPreDeadline
               userId={userId}
               boardId={boardId}
