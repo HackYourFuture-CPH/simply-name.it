@@ -31,7 +31,7 @@ export default function CandidateListPreDeadline({
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const handleDelete = async (candidateId) => {
-    await deleteCandidate(userId, boardId, candidateId, setBoardLoading);
+    await deleteCandidate(userId, boardId, candidateId);
     setBoardLoading(false);
   };
 

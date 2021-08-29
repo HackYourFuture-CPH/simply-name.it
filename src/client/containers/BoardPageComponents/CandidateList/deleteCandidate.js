@@ -1,9 +1,4 @@
-export async function deleteCandidate(
-  userId,
-  boardId,
-  candidateId,
-  setBoardLoading,
-) {
+export async function deleteCandidate(userId, boardId, candidateId) {
   const response = await fetch(
     `/api/users/${userId}/boards/${boardId}/candidates/${candidateId}`,
     {
@@ -14,6 +9,5 @@ export async function deleteCandidate(
       },
     },
   );
-  setBoardLoading(true);
   return response;
 }
