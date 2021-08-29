@@ -81,8 +81,6 @@ export default function AddMembers({
           )}
         </div>
       );
-    } else {
-      return;
     }
   };
 
@@ -132,4 +130,5 @@ AddMembers.propTypes = {
   addMember: PropTypes.func.isRequired,
   toggleShowMembers: PropTypes.func.isRequired,
   members: PropTypes.instanceOf(Array).isRequired,
+  userId: PropTypes.number.isRequired,
 };
