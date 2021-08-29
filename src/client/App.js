@@ -30,7 +30,6 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <CreateBoard exact path="/create-board" />
 
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
@@ -43,6 +42,18 @@ function App() {
         >
           <ProfilePage />
         </AuthenticatedRoute>
+        <Route
+          exact
+          path="/boards/new-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
         <Route
           exact
           path="/boards/:boardId/results"
