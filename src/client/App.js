@@ -1,6 +1,6 @@
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import { Home } from './containers/Home/Home';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
@@ -29,7 +29,7 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
-        <EditedBoard exact path="/edit-board" />
+        {/* <EditedBoard exact path="/edit-board" /> */}
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute
@@ -40,6 +40,18 @@ function App() {
         >
           <ProfilePage />
         </AuthenticatedRoute>
+        <Route
+          exact
+          path="/boards/:boardId/edit-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <EditedBoard />
+            </AuthenticatedRoute>
+          }
+        />
       </Switch>
     </Router>
   );

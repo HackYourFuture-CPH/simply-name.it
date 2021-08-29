@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { useUser } from '../../firebase/UserContext';
 import './EditBoardPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Input from '../../components/InputComponent/InputComponent';
+import Dropzone from '../DropZone/Dropzone.container';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
-
-// const moment = require('moment-timezone');
 
 const EditedBoard = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const history = useHistory();
-  const userId = 2;
-  const boardId = 1;
+  const { user } = useUser();
+  const userId = user[0].id;
+  const { boardId } = useParams();
   const API_URL = `/api/users/${userId}/boards/${boardId}`;
   const onUpdateButtonClick = async () => {
     try {
@@ -28,29 +29,15 @@ const EditedBoard = () => {
           banner: '',
         }),
       });
+      // eslint-disable-next-line no-alert
       alert('board updated');
     } catch (error) {
       throw new Error(error);
     }
-    // (async () => {
-    //   await fetch(API_URL, {
-    //     method: 'PUT',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       title: name,
-    //       deadline:moment(date).format("YYYY-MM-DD HH:mm:ss"),
-    //       banner:'',
-    //     }),
-    //   });
-    // })();
-    // console.log('added');
   };
   function backButton() {
     history.push('/home');
   }
-  console.log(name);
   return (
     <div className="editedBoard ">
       <div className="arrow-button">
@@ -81,7 +68,9 @@ const EditedBoard = () => {
             setDate(e);
           }}
         />
-        <div className="browse">Browse</div>
+        <div className="browse ">
+          <Dropzone />
+        </div>
         <div className="button-container">
           <GenericButton
             buttonLabel="Cancel"
