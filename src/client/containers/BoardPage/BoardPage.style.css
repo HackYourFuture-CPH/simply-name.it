@@ -1,11 +1,11 @@
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
-html {
+/* html {
   display: flex;
   justify-content: center;
-}
+} */
 
 .Board-container {
   position: relative;
@@ -25,6 +25,11 @@ html {
 .CandidateCard-component {
   position: relative;
   padding: 0 24px 0 20px;
+}
+
+.CandidateCard-component-member {
+  position: relative;
+  padding: 0;
 }
 
 .Result button {
