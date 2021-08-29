@@ -66,13 +66,6 @@ router.get('/search', async (req, res) => {
   const searchedUsers = await usersController.getUsersByKeyword(
     req.query.fullName,
   );
-
-  if (searchedUsers.length === 0) {
-    res
-      .status(200)
-      .send(`Cannot find user with name like '${req.query.fullName}'`);
-  }
-
   return res.json(searchedUsers);
 });
 
