@@ -62,7 +62,7 @@ const addMember = async (userId, boardId, memberId) => {
   const addNewMember = await knex('members').insert({
     boardId,
     userId: memberId,
-    role: role,
+    role,
   });
   return addNewMember;
 };
