@@ -17,13 +17,12 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
       const response = await fetch(API_URL, { method: 'DELETE' });
       // eslint-disable-next-line no-alert
       if (!response.ok) {
-        throw new Error(response.status);
+        throw new ApiError(response.statusText, response.status);
       }
-      alert('Data deleted');
-    } catch {
+    } catch (err) {
       setError(() => {
         // eslint-disable-next-line new-cap
-        throw new ApiError();
+        throw new ApiError(err.message, err.statusCode);
       });
     }
   };
