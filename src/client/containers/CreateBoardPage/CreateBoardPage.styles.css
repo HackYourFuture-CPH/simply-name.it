@@ -12,21 +12,26 @@
 
 .page-title-black-large {
   margin: 25px 25px 10px;
+  padding-top: 40px;
 }
 
 label {
   display: block;
-  margin-left: 30px;
+  margin-left: 40px;
   padding: 20px 10px 10px;
 }
 
 .input-name-container {
   width: 330px;
   margin-left: 30px;
+  margin-bottom: 15px;
 }
 
 .drop-zone {
-  padding: 10px;
+  margin-top: 40px;
+  margin-left: 35px;
+  margin-bottom: 40px;
+  width: 325px;
 }
 
 .generic-button.medium-button {
