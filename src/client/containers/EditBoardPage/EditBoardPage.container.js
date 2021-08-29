@@ -7,18 +7,21 @@ import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Input from '../../components/InputComponent/InputComponent';
 import Dropzone from '../DropZone/Dropzone.container';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
+import { ApiError } from '../../ErrorBoundary';
 
 const EditedBoard = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
   const history = useHistory();
   const { user } = useUser();
   const userId = user[0].id;
   const { boardId } = useParams();
   const API_URL = `/api/users/${userId}/boards/${boardId}`;
-  const onUpdateButtonClick = async () => {
+  const updateBoard = async () => {
     try {
-      await fetch(API_URL, {
+      const response = await fetch(API_URL, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -29,14 +32,21 @@ const EditedBoard = () => {
           banner: '',
         }),
       });
-      // eslint-disable-next-line no-alert
-      alert('board updated');
-    } catch (error) {
-      throw new Error(error);
+      if (response.ok) {
+        // eslint-disable-next-line no-alert
+        alert('board updated');
+      } else {
+        throw new ApiError(response.statusText, response.status);
+      }
+    } catch (err) {
+      setError(() => {
+        // eslint-disable-next-line new-cap
+        throw new ApiError(err.message, err.statusCode);
+      });
     }
   };
   function backButton() {
-    history.push('/home');
+    history.push('/profile');
   }
   return (
     <div className="editedBoard ">
@@ -87,7 +97,7 @@ const EditedBoard = () => {
             buttonSize="medium"
             buttonType="primary"
             buttonDisabled={false}
-            onClick={onUpdateButtonClick}
+            onClick={updateBoard}
           />
         </div>
       </div>

@@ -1,0 +1,44 @@
+.editedBoard {
+  height: 100vh;
+  max-width: 414px;
+  padding: 10px;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  flex-direction: column;
+  background:
+    url('../../assets/images/pages-background/edit-board.svg')
+    no-repeat;
+}
+
+.arrow-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  padding-left: 5px;
+  width: 5rem;
+}
+
+.page-title {
+  margin: 13rem 0 13rem;
+}
+
+.main-container {
+  margin-top: 4rem;
+  line-height: 2rem;
+  width: 23rem;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.browse {
+  margin: 2rem;
+  height: 8rem;
+}
+
+.button-container {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
