@@ -8,9 +8,11 @@ import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import Header from './components/Navigation/Header';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
+import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 import EditedBoard from './containers/EditBoardPage/EditBoardPage.container';
+import ResultPage from './containers/ResultPage/ResultPage.container';
 
 function App() {
   const { isLoading, isAuthenticated } = useFirebase();
@@ -28,8 +30,8 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
+
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
-        {/* <EditedBoard exact path="/edit-board" /> */}
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute
@@ -40,6 +42,30 @@ function App() {
         >
           <ProfilePage />
         </AuthenticatedRoute>
+        <Route
+          exact
+          path="/boards/new-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/boards/:boardId/results"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <ResultPage />
+            </AuthenticatedRoute>
+          }
+        />
         <Route
           exact
           path="/boards/:boardId/edit-board"
