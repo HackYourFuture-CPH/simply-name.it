@@ -32,7 +32,7 @@ export default function CandidateListPreDeadline({
 
   const handleDelete = async (candidateId) => {
     await deleteCandidate(userId, boardId, candidateId);
-    setBoardLoading(false);
+    setBoardLoading(true);
   };
 
   return (
