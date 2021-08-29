@@ -30,7 +30,6 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <CreateBoard exact path="/create-board" />
 
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
