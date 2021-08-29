@@ -5,7 +5,7 @@ import GenericButton from '../../components/GenericButton/GenericButton.componen
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import { useBoard } from './BoardProvider';
 import { useUser } from '../../firebase/UserContext';
-import BoardHeader from '../BoardPageComponents/BoardAddCandidate/BoardHeader';
+import MemberBoardPageHeader from '../BoardPageComponents/BoarHeader/MemberBoardPageHeader';
 import CandidateListPostDeadline from '../BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import CandidateListPreDeadline from '../BoardPageComponents/CandidateList/CandidateListPreDeadline';
 import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
@@ -21,7 +21,7 @@ export default function MemberBoardPage() {
   return (
     <div className="Board-container">
       <div className="Header-component">
-        <BoardHeader />
+        <MemberBoardPageHeader />
       </div>
       <div className="title">
         <PageTitle title={boardInfo.title} />

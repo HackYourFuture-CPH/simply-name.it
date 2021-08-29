@@ -5,7 +5,7 @@ import Dropdown from '../../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
 
-export default function BoardHeader() {
+export default function MemberBoardPageHeader() {
   const [visibility, setVisibility] = useState(false);
   const closeDropdown = () => {
     if (visibility === false) {
@@ -31,22 +31,15 @@ export default function BoardHeader() {
         >
           <div>
             <ul className="board-header-option-list">
-              <Link to="/edit-board">
+              <Link to="/profile">
                 <button
                   className="board-header-option-link"
                   type="button"
                   onClick={onClick}
                 >
-                  Edit Board
+                  Leave Board
                 </button>
               </Link>
-              <button
-                className="board-header-option-link"
-                type="button"
-                onClick={onClick}
-              >
-                Delete Board
-              </button>
             </ul>
           </div>
         </Dropdown>
