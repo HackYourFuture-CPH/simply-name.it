@@ -36,10 +36,8 @@ export default function BoardPage() {
           if (errorResult.error.startsWith('Incorrect entry Error')) {
             setErrorCode('no_such_board');
           }
-          console.log('Fetching board info failed : ', errorResult);
         }
       } catch (error) {
-        console.log(error);
         throw new Error(error);
       }
     };
