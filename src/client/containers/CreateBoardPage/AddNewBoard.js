@@ -11,10 +11,8 @@ export default async function AddNewBoard(newBoard, userId, members) {
     const response = await apiFetch.json();
     const mappedIds = response.map((res) => res.id);
     const boardId = mappedIds[mappedIds.length - 1];
-    console.log('board Id', boardId);
     await Promise.all(
       members.map((memberId) => {
-        console.log('member Id', memberId);
         return postData(
           `/api/users/${userId}/boards/${boardId}/members/${memberId}`,
           {
