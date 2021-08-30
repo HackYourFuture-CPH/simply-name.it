@@ -11,7 +11,7 @@ export default function BoardAddCandidatePreDeadline() {
   const { user } = useUser();
   const userId = user[0].id;
   const { boardInfo } = useBoard();
-  const { setBoardLoading } = useBoard();
+  const { setIsCandidateLoading } = useBoard();
 
   const newCandidate = {
     boardId: boardInfo.id,
@@ -21,7 +21,12 @@ export default function BoardAddCandidatePreDeadline() {
 
   const saveCandidate = (e) => {
     e.preventDefault();
-    AddCandidate(newCandidate, userId, newCandidate.boardId, setBoardLoading);
+    AddCandidate(
+      newCandidate,
+      userId,
+      newCandidate.boardId,
+      setIsCandidateLoading,
+    );
     setNewCandidateName('');
   };
 

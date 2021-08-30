@@ -15,7 +15,7 @@ import { useUser } from '../../../firebase/UserContext';
 
 export default function CandidateListPreDeadline({ displayDelete }) {
   const [draggedInit, setDraggedInit] = useState(false);
-  const { boardInfo, setBoardLoading } = useBoard();
+  const { boardInfo, setIsCandidateLoading } = useBoard();
   const { candidates, setCandidates, error } = useCandidates();
   const boardId = boardInfo.id;
   const { user } = useUser();
@@ -31,7 +31,7 @@ export default function CandidateListPreDeadline({ displayDelete }) {
 
   const handleDelete = async (candidateId) => {
     await deleteCandidate(userId, boardId, candidateId);
-    setBoardLoading(true);
+    setIsCandidateLoading(true);
   };
 
   return (

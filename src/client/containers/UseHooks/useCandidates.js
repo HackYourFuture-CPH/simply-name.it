@@ -5,13 +5,13 @@ import { useBoard } from '../BoardPage/BoardProvider';
 export function useCandidates() {
   const { user } = useUser();
   const userId = user[0].id;
-  const { boardInfo, isBoardLoading, setBoardLoading } = useBoard();
+  const { boardInfo, isCandidateLoading, setIsCandidateLoading } = useBoard();
   const boardId = boardInfo.id;
   const [candidates, setCandidates] = useState([]);
   const [error, setError] = useState();
 
   useEffect(() => {
-    if (!isBoardLoading) return;
+    if (!isCandidateLoading) return;
     (async () => {
       const response = await fetch(
         `/api/users/${userId}/boards/${boardId}/candidates`,
@@ -26,14 +26,14 @@ export function useCandidates() {
             };
           }),
         );
-        setBoardLoading(false);
+        setIsCandidateLoading(false);
       } else {
         setError(
           `Error fetching candidates: ${response.status}. ${response.statusText}`,
         );
       }
     })();
-  }, [userId, boardId, setBoardLoading, isBoardLoading]);
+  }, [userId, boardId, setIsCandidateLoading, isCandidateLoading]);
 
   return { candidates, setCandidates, error };
 }
