@@ -27,7 +27,7 @@ export default function BoardBanners() {
                   alt="Board picture"
                   boardTitle={board.title}
                 >
-                  <DropDwonContainerMyBoards />
+                  <DropDwonContainerMyBoards boardInfo={board} />
                 </BoardCard>
               </div>
             ))}

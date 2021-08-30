@@ -31,24 +31,3 @@ export default function TapSeparator() {
     </>
   );
 }
-/* <table>
-        <thead>
-          <tr>
-            <th
-              onClick={() => {
-                setOnMyBoards(true);
-              }}
-            >
-              My boards
-            </th>
-            <th
-              onClick={() => {
-                setOnMyBoards(false);
-              }}
-            >
-              {' '}
-              Joined boards{' '}
-            </th>
-          </tr>
-        </thead>
-      </table> */

@@ -10,7 +10,6 @@ import './ProfilePage.styles.css';
 
 import TapSeparator from './TapSeparator.component';
 import BoardBanners from './BoardBanners.component';
-
 import HeaderComponent from '../../components/HeaderComponent/Header.component';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
@@ -25,11 +24,13 @@ export default function ProfilePage() {
   const [myBoards, setMyBoards] = useState();
   const [onMyBoards, setOnMyBoards] = useState();
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [clickedBoardId, setclickedBoardId] = useState();
+  const [clickedBoardInfo, setclickedBoardInfo] = useState();
 
   const history = useHistory();
   const { user } = useUser();
 
-  // const userId = user[0].id;
+  const userId = user[0].id;
 
   const { signOut } = useFirebase();
 
@@ -83,6 +84,10 @@ export default function ProfilePage() {
         setMyBoards,
         modalVisibility,
         setModalVisibility,
+        clickedBoardId,
+        setclickedBoardId,
+        clickedBoardInfo,
+        setclickedBoardInfo,
       }}
     >
       <div className="profile-page-container">
@@ -105,10 +110,9 @@ export default function ProfilePage() {
             >
               <ul>
                 <li>
-                  {' '}
                   <button type="button" onClick={signOut}>
                     Log out
-                  </button>{' '}
+                  </button>
                 </li>
               </ul>
             </Dropdown>
@@ -135,7 +139,7 @@ export default function ProfilePage() {
             <DeleteBoardModal
               modalVisibility={modalVisibility}
               setModalVisibility={setModalVisibility}
-              // boardInfo={myBoards}
+              boardInfo={clickedBoardInfo}
             />
           </div>
         )}

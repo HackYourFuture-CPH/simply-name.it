@@ -4,10 +4,20 @@ import ProfileProps from './ProfileContext';
 import { useHistory } from 'react-router';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 
-export default function DropDwonContainerMyBoards() {
+// eslint-disable-next-line react/prop-types
+export default function DropDwonContainerMyBoards({ boardInfo }) {
   const [visible, setVisible] = useState(false);
-  const { setModalVisibility } = useContext(ProfileProps);
+  const {
+    setModalVisibility,
+    myBoards,
+    setclickedBoardId,
+    setclickedBoardInfo,
+  } = useContext(ProfileProps);
   const history = useHistory();
+
+  if (!myBoards) {
+    return null;
+  }
   return (
     <div>
       <Dropdown
@@ -21,7 +31,9 @@ export default function DropDwonContainerMyBoards() {
           <li>
             <button
               type="button"
-              onClick={() => {
+              onClick={async () => {
+                // eslint-disable-next-line react/prop-types
+                await setclickedBoardId(boardInfo.id);
                 history.push('/edit-board');
               }}
             >
@@ -31,7 +43,8 @@ export default function DropDwonContainerMyBoards() {
           <li>
             <button
               type="button"
-              onClick={() => {
+              onClick={async () => {
+                await setclickedBoardInfo(boardInfo);
                 setModalVisibility(true);
               }}
             >
