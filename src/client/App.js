@@ -25,7 +25,6 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-
         {/* Anonymous pages */}
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
