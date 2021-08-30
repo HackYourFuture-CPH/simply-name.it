@@ -11,6 +11,7 @@ import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
 import { useBoard } from '../../BoardPage/BoardProvider';
+import { ApiError } from '../../../ErrorBoundary';
 
 export default function CandidateListPreDeadline({
   userId,
@@ -31,7 +32,10 @@ export default function CandidateListPreDeadline({
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const handleDelete = async (candidateId) => {
-    await deleteCandidate(userId, boardId, candidateId);
+    const response = await deleteCandidate(userId, boardId, candidateId);
+    if (!response.ok) {
+      throw new ApiError(response.statusText, response.status);
+    }
     setBoardLoading(true);
   };
 
