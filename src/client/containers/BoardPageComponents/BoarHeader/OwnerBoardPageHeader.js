@@ -4,9 +4,11 @@ import HeaderComponent from '../../../components/HeaderComponent/Header.componen
 import Dropdown from '../../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
+import { useBoard } from '../../BoardPage/BoardProvider';
 
 export default function OwnerBoardPageHeader() {
   const [visibility, setVisibility] = useState(false);
+  const { boardInfo } = useBoard();
   const closeDropdown = () => {
     if (visibility === false) {
       setVisibility(true);
@@ -31,7 +33,7 @@ export default function OwnerBoardPageHeader() {
         >
           <div>
             <ul className="board-header-option-list">
-              <Link to="/edit-board">
+              <Link to="/edit-board" boardInfo={boardInfo}>
                 <button
                   className="board-header-option-link"
                   type="button"
