@@ -32,10 +32,7 @@ const EditedBoard = () => {
           banner: '',
         }),
       });
-      if (response.ok) {
-        // eslint-disable-next-line no-alert
-        alert('board updated');
-      } else {
+      if (!response.ok) {
         throw new ApiError(response.statusText, response.status);
       }
     } catch (err) {
