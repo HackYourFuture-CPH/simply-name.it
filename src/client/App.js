@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container'
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
 import BoardPage from './containers/BoardPage/BoardPage.container';
+import ResultPage from './containers/ResultPage/ResultPage.container';
 
 function App() {
   const { isLoading, isAuthenticated } = useFirebase();
@@ -28,7 +30,6 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <CreateBoard exact path="/create-board" />
 
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
@@ -52,6 +53,30 @@ function App() {
               <BoardProvider>
                 <BoardPage />
               </BoardProvider>
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/boards/new-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/boards/:boardId/results"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <ResultPage />
             </AuthenticatedRoute>
           }
         />

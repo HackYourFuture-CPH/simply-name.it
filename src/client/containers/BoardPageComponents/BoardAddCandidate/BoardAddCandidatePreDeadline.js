@@ -26,7 +26,7 @@ export default function BoardAddCandidatePreDeadline() {
   };
 
   return (
-    <div className="Input-component">
+    <div className="Input-component-dark">
       <Input
         type="text"
         placeholder="Add candidate..."

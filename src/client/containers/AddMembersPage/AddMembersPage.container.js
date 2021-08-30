@@ -8,7 +8,12 @@ import GenericButton from '../../components/GenericButton/GenericButton.componen
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import InputComponent from '../../components/InputComponent/InputComponent.js';
 
-export default function AddMembers({ members, addMember, toggleShowMembers }) {
+export default function AddMembers({
+  members,
+  addMember,
+  userId,
+  toggleShowMembers,
+}) {
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
@@ -49,6 +54,37 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
     return () => cleanUp(id);
   }, [searchInput]);
 
+  const renderUser = (user) => {
+    if (user.id !== userId) {
+      return (
+        <div className="users-list-item" key={user.id}>
+          <UserProfilePicture
+            size="small"
+            profilePictureLink="https://picsum.photos/seed/picsum/200/300"
+          />
+          <p>{user.fullName}</p>
+          {!membersSet.has(user.id) ? (
+            <GenericButton
+              buttonLabel="add"
+              buttonSize="small"
+              buttonType="secondary"
+              buttonDisabled={false}
+              onClick={() => handleAddButton(user.id)}
+            />
+          ) : (
+            <GenericButton
+              buttonLabel="added"
+              buttonSize="small"
+              buttonType="secondary"
+              buttonDisabled={true}
+              onClick={() => ''}
+            />
+          )}
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="add-members-container">
       <div className="arrow-button">
@@ -80,32 +116,7 @@ export default function AddMembers({ members, addMember, toggleShowMembers }) {
             ) : (
               <>
                 {users.map((user) => {
-                  return (
-                    <div className="users-list-item" key={user.id}>
-                      <UserProfilePicture
-                        size="small"
-                        profilePictureLink="https://picsum.photos/seed/picsum/200/300"
-                      />
-                      <p>{user.fullName}</p>
-                      {!membersSet.has(user.id) ? (
-                        <GenericButton
-                          buttonLabel="add"
-                          buttonSize="small"
-                          buttonType="secondary"
-                          buttonDisabled={false}
-                          onClick={() => handleAddButton(user.id)}
-                        />
-                      ) : (
-                        <GenericButton
-                          buttonLabel="added"
-                          buttonSize="small"
-                          buttonType="secondary"
-                          buttonDisabled={true}
-                          onClick={() => ''}
-                        />
-                      )}
-                    </div>
-                  );
+                  return renderUser(user);
                 })}
               </>
             )}
@@ -120,4 +131,5 @@ AddMembers.propTypes = {
   addMember: PropTypes.func.isRequired,
   toggleShowMembers: PropTypes.func.isRequired,
   members: PropTypes.instanceOf(Array).isRequired,
+  userId: PropTypes.number.isRequired,
 };

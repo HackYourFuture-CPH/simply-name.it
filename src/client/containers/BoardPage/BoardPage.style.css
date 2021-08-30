@@ -1,12 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-html {
-  display: flex;
-  justify-content: center;
-}
-
 .Board-container {
   position: relative;
   height: 739px;
@@ -25,6 +16,11 @@ html {
 .CandidateCard-component {
   position: relative;
   padding: 0 24px 0 20px;
+}
+
+.CandidateCard-component-member {
+  position: relative;
+  padding: 0;
 }
 
 .Result button {

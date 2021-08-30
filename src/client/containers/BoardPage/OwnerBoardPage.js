@@ -10,7 +10,7 @@ import { useBoard } from './BoardProvider';
 import { useUser } from '../../firebase/UserContext';
 import BoardAddCandidatePostDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePostDeadline';
 import BoardAddCandidatePreDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePreDeadline';
-import BoardHeader from '../BoardPageComponents/BoardAddCandidate/BoardHeader';
+import OwnerBoardPageHeader from '../BoardPageComponents/BoarHeader/OwnerBoardPageHeader';
 import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
 import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.container';
 
@@ -34,7 +34,7 @@ export default function OwnerBoardPage() {
       )}
       <div className="Board-container">
         <div className="Header-component">
-          <BoardHeader />
+          <OwnerBoardPageHeader />
         </div>
         <div className="title">
           <PageTitle title={boardInfo.title} />
