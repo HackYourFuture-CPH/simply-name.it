@@ -1,6 +1,11 @@
 import postData from './postData';
 
-export default async function AddNewBoard(newBoard, userId, members) {
+export default async function AddNewBoard({
+  newBoard,
+  userId,
+  members,
+  setFinalResponse,
+}) {
   try {
     await postData(`/api/users/${userId}/boards`, {
       title: newBoard.title,
@@ -8,10 +13,10 @@ export default async function AddNewBoard(newBoard, userId, members) {
       banner: newBoard.banner,
     });
     const apiFetch = await fetch(`/api/users/${userId}/boards/created`);
-    const response = await apiFetch.json();
-    const mappedIds = response.map((res) => res.id);
+    const apiResponse = await apiFetch.json();
+    const mappedIds = apiResponse.map((res) => res.id);
     const boardId = mappedIds[mappedIds.length - 1];
-    await Promise.all(
+    const response = await Promise.all(
       members.map((memberId) => {
         return postData(
           `/api/users/${userId}/boards/${boardId}/members/${memberId}`,
@@ -23,6 +28,11 @@ export default async function AddNewBoard(newBoard, userId, members) {
         );
       }),
     );
+    const mappedResponse = response.map((res) => res.ok);
+    if (mappedResponse.length > 0) {
+      const everyResponse = mappedResponse.every((item) => item === true);
+      if (everyResponse) setFinalResponse(true);
+    }
   } catch (error) {
     throw new Error(error);
   }

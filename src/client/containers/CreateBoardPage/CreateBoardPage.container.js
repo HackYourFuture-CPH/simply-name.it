@@ -7,7 +7,7 @@ import Dropzone from '../DropZone/Dropzone.container';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import AddMembers from '../AddMembersPage/AddMembersPage.container';
 import { useHistory } from 'react-router-dom';
-import AddNewBoard from './AddNewBoard';
+import AddNewBoard from './useCreateNewBoard';
 import { useUser } from '../../firebase/UserContext';
 
 export default function CreateBoard() {
@@ -18,10 +18,13 @@ export default function CreateBoard() {
   const [datetime, setDatetime] = useState('');
   const [banner, setBanner] = useState('');
   const [members, setMembers] = useState([userId]);
+  const [showAddMembers, setshowAddMembers] = useState(false);
+  const [finalResponse, setFinalResponse] = useState(false);
+
   const addMember = (id) => {
     setMembers([...members, id]);
   };
-  const [showAddMembers, setshowAddMembers] = useState(false);
+
   const toggleShowMembers = () => {
     setshowAddMembers(!showAddMembers);
   };
@@ -36,6 +39,7 @@ export default function CreateBoard() {
     setDatetime('');
     setBanner('');
     setMembers([]);
+    setFinalResponse(false);
   };
 
   const newBoard = {
@@ -47,8 +51,7 @@ export default function CreateBoard() {
   };
 
   const onCreateButtonClick = () => {
-    AddNewBoard(newBoard, userId, members);
-    onResetButtonClick();
+    AddNewBoard({ newBoard, userId, members, setFinalResponse });
   };
 
   return (
@@ -100,7 +103,6 @@ export default function CreateBoard() {
             buttonDisabled={false}
             onClick={toggleShowMembers}
           />
-
           <br />
           <GenericButton
             buttonLabel="Reset"
@@ -116,6 +118,9 @@ export default function CreateBoard() {
             buttonDisabled={false}
             onClick={onCreateButtonClick}
           />
+          {finalResponse && (
+            <p className="display-message">The board {boardName} created</p>
+          )}
         </div>
       )}
     </div>

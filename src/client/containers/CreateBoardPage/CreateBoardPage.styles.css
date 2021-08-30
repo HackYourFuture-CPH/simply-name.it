@@ -38,3 +38,7 @@ label {
 .button-primary.active-button {
   margin: 10px 30px;
 }
+
+.display-message {
+  text-align: center;
+}
