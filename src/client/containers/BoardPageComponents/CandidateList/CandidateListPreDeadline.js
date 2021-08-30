@@ -21,6 +21,7 @@ export default function CandidateListPreDeadline({
   const { candidates, setCandidates } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
   const { setBoardLoading } = useBoard();
+  // eslint-disable-next-line no-unused-vars
   const [deleteError, setDeleteError] = useState(null);
 
   function candidateTransform(candidate, index) {
