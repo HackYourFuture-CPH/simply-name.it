@@ -47,7 +47,8 @@ export default function CreateBoard() {
   };
 
   const onCreateButtonClick = () => {
-    AddNewBoard(newBoard, userId, members);
+    if (AddNewBoard(newBoard, userId, members))
+      alert(`New board ${boardName} is created`);
     onResetButtonClick();
   };
 
@@ -57,6 +58,7 @@ export default function CreateBoard() {
         <AddMembers
           members={members}
           addMember={addMember}
+          userId={userId}
           toggleShowMembers={toggleShowMembers}
         />
       )}

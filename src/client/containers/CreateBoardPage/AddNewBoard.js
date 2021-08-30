@@ -18,6 +18,7 @@ export default async function AddNewBoard(newBoard, userId, members) {
           {
             boardId,
             userId: memberId,
+            role: 'basic',
           },
         );
       }),
