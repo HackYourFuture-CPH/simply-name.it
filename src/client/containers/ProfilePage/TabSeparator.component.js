@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './TapSeparator.styles.css';
+import './TabSeparator.styles.css';
 import ProfileProps from './ProfileContext';
 
 export default function TapSeparator() {
@@ -12,7 +12,7 @@ export default function TapSeparator() {
         name="boards"
         id="tab-1"
         className="tab-1"
-        checked="checked"
+        defaultChecked
         onClick={() => {
           setOnMyBoards(true);
         }}

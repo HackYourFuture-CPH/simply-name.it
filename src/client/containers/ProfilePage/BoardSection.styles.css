@@ -1,0 +1,14 @@
+.boards-cards-container {
+  width: 100%;
+}
+
+.existing-boards {
+  display: inline-flex;
+}
+
+.boards-distribution {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

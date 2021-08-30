@@ -7,9 +7,8 @@ import { useUser } from '../../firebase/UserContext';
 import { useFirebase } from '../../firebase/FirebaseContext';
 import { ProfilePropsProvider } from './ProfileContext';
 import './ProfilePage.styles.css';
-
-import TapSeparator from './TapSeparator.component';
-import BoardBanners from './BoardBanners.component';
+import TabSeparator from './TabSeparator.component';
+import BoardSection from './BoardSection.component';
 import HeaderComponent from '../../components/HeaderComponent/Header.component';
 import Dropdown from '../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
@@ -22,13 +21,14 @@ export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
   const [joinedBoards, setJoinedBoards] = useState();
   const [myBoards, setMyBoards] = useState();
-  const [onMyBoards, setOnMyBoards] = useState();
+  const [onMyBoards, setOnMyBoards] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
   const [clickedBoardId, setclickedBoardId] = useState();
   const [clickedBoardInfo, setclickedBoardInfo] = useState();
 
   const history = useHistory();
   const { user } = useUser();
+  const userData = user[0];
 
   const userId = user[0].id;
 
@@ -125,13 +125,13 @@ export default function ProfilePage() {
               profilePictureLink="https://picsum.photos/seed/picsum/200/300"
               size="big"
             />
-            <PageTitle variant="black-large" title={user[0].fullName} />
+            <PageTitle variant="black-large" title={userData.fullName} />
           </div>
         </div>
         <div className="users-boards-container">
-          <TapSeparator />
+          <TabSeparator />
           <div className="boards-container">
-            <BoardBanners />
+            <BoardSection />
           </div>
         </div>
         {modalVisibility && (

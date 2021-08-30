@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 
 import ProfileProps from './ProfileContext';
 import BoardCard from '../../components/BoardCard/BoardCard.component';
-import DropDwonContainerMyBoards, {
-  DropDwonContainerJoinedBoards,
-} from './DropDown.container';
+import DropDownMenuMyBoards, {
+  DropDownMenuJoinedBoards,
+} from './BoardCardDropdown.component';
 import NewBoard from './NewBoard.component';
 import './BoardBanners.styles.css';
 
@@ -27,7 +27,7 @@ export default function BoardBanners() {
                   alt="Board picture"
                   boardTitle={board.title}
                 >
-                  <DropDwonContainerMyBoards boardInfo={board} />
+                  <DropDownMenuMyBoards boardInfo={board} />
                 </BoardCard>
               </div>
             ))}
@@ -44,7 +44,7 @@ export default function BoardBanners() {
                 alt="Board picture"
                 boardTitle={board.title}
               >
-                <DropDwonContainerJoinedBoards />
+                <DropDownMenuJoinedBoards />
               </BoardCard>
             </div>
           ))}

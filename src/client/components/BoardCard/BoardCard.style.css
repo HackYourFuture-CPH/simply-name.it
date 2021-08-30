@@ -1,6 +1,14 @@
 .board-container {
-  position: relative;
+  display: inline-flex;
+  width: 45%;
+  height: 250px;
+  padding: 15px 0;
+}
+
+.board-content-container {
   width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .board-image {
@@ -8,23 +16,49 @@
   z-index: -1;
   border-radius: 20px;
   width: 100%;
+  height: 100%;
 }
 
 .board-header-container {
   display: flex;
   padding-top: 30px;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: 0 10px;
   width: 90%;
 }
 
 .board-title {
   color: white;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
+  width: 50%;
 }
 
 .board-header-children {
   display: flex;
   justify-content: flex-end;
+}
+
+.board-header-children > .dropdown-container {
+  width: auto;
+}
+
+.board-header-children > .dropdown-container ul {
+  width: 100px;
+  padding-left: 10px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.board-header-children > .dropdown-container button {
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  border: none;
+  color: #fff;
+}
+
+.board-header-children > .dropdown-container button:hover {
+  cursor: pointer;
 }

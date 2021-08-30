@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 .profile-page-container {
   height: 100vh;
   max-width: 414px;
@@ -7,6 +13,12 @@
   position: relative;
   width: 100%;
   height: 25vh;
+}
+
+.sub-header {
+  position: relative;
+  height: 15vh;
+  padding-left: 1rem;
 }
 
 .profile-user {
@@ -25,6 +37,4 @@
 
 .boards-container {
   padding: 4rem 1rem;
-  width: 900px;
-  height: 600px;
 }
