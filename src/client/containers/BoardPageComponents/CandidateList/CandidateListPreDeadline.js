@@ -18,9 +18,10 @@ export default function CandidateListPreDeadline({
   boardId,
   displayDelete,
 }) {
-  const { candidates, setCandidates, error } = useCandidates(userId, boardId);
+  const { candidates, setCandidates } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
   const { setBoardLoading } = useBoard();
+  const [deleteError, setDeleteError] = useState(null);
 
   function candidateTransform(candidate, index) {
     return {
@@ -32,17 +33,23 @@ export default function CandidateListPreDeadline({
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const handleDelete = async (candidateId) => {
-    const response = await deleteCandidate(userId, boardId, candidateId);
-    if (!response.ok) {
-      throw new ApiError(response.statusText, response.status);
+    try {
+      const response = await deleteCandidate(userId, boardId, candidateId);
+      if (!response.ok) {
+        throw new ApiError(response.statusText, response.status);
+      }
+    } catch (err) {
+      setDeleteError(() => {
+        throw new ApiError(err.message, err.statusCode);
+      });
     }
     setBoardLoading(true);
   };
 
   return (
     <div className="CandidateCard-component">
-      {error ? (
-        <h2 className="showups">{error}</h2>
+      {deleteError ? (
+        <h2 className="showups">{deleteError}</h2>
       ) : (
         <DragAndSortAdapter
           onDragEndHandler={onDragEnd(
