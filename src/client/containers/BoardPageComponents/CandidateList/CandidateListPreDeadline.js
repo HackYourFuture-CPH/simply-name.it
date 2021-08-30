@@ -48,32 +48,28 @@ export default function CandidateListPreDeadline({
 
   return (
     <div className="CandidateCard-component">
-      {deleteError ? (
-        <h2 className="showups">{deleteError}</h2>
-      ) : (
-        <DragAndSortAdapter
-          onDragEndHandler={onDragEnd(
-            setCandidates,
-            candidateCardSorting,
-            candidateTransform,
-            setDraggedInit,
-          )}
-          items={candidates}
-        >
-          {candidates.map((candidate) => {
-            return (
-              <SortableItem key={candidate.id} id={candidate.id}>
-                <CardItemDecorator
-                  colorVariant="primary-color"
-                  candidateName={candidate.name}
-                  displayDeleteIcon={displayDelete}
-                  onClick={() => handleDelete(candidate.id)}
-                />
-              </SortableItem>
-            );
-          })}
-        </DragAndSortAdapter>
-      )}
+      <DragAndSortAdapter
+        onDragEndHandler={onDragEnd(
+          setCandidates,
+          candidateCardSorting,
+          candidateTransform,
+          setDraggedInit,
+        )}
+        items={candidates}
+      >
+        {candidates.map((candidate) => {
+          return (
+            <SortableItem key={candidate.id} id={candidate.id}>
+              <CardItemDecorator
+                colorVariant="primary-color"
+                candidateName={candidate.name}
+                displayDeleteIcon={displayDelete}
+                onClick={() => handleDelete(candidate.id)}
+              />
+            </SortableItem>
+          );
+        })}
+      </DragAndSortAdapter>
     </div>
   );
 }
