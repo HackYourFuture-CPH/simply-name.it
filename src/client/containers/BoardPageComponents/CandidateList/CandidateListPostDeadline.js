@@ -4,12 +4,8 @@ import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCa
 import { SortableItem } from '../../DragAndSortAdapter/DragAndSortAdapter';
 import PropTypes from 'prop-types';
 
-export default function CandidateListPostDeadline({
-  userId,
-  boardId,
-  displayDelete,
-}) {
-  const { candidates, error } = useCandidates(userId, boardId);
+export default function CandidateListPostDeadline({ displayDelete }) {
+  const { candidates, error } = useCandidates();
 
   return (
     <div className="CandidateCard-component">
@@ -33,8 +29,6 @@ export default function CandidateListPostDeadline({
 }
 
 CandidateListPostDeadline.propTypes = {
-  userId: PropTypes.number.isRequired,
-  boardId: PropTypes.number.isRequired,
   displayDelete: PropTypes.string,
 };
 

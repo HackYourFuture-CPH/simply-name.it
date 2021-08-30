@@ -11,16 +11,15 @@ import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
 import { useBoard } from '../../BoardPage/BoardProvider';
+import { useUser } from '../../../firebase/UserContext';
 
-export default function CandidateListPreDeadline({
-  userId,
-  boardId,
-  displayDelete,
-}) {
-  const { candidates, setCandidates, error } = useCandidates(userId, boardId);
+export default function CandidateListPreDeadline({ displayDelete }) {
   const [draggedInit, setDraggedInit] = useState(false);
-  const { setBoardLoading } = useBoard();
-
+  const { boardInfo, setBoardLoading } = useBoard();
+  const { candidates, setCandidates, error } = useCandidates();
+  const boardId = boardInfo.id;
+  const { user } = useUser();
+  const userId = user[0].id;
   function candidateTransform(candidate, index) {
     return {
       ...candidate,
@@ -68,8 +67,6 @@ export default function CandidateListPreDeadline({
 }
 
 CandidateListPreDeadline.propTypes = {
-  userId: PropTypes.number.isRequired,
-  boardId: PropTypes.number.isRequired,
   displayDelete: PropTypes.string,
 };
 

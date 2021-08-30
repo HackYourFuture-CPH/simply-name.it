@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './BoardPage.style.css';
 import PropTypes from 'prop-types';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import { useBoard } from './BoardProvider';
-import { useUser } from '../../firebase/UserContext';
 import MemberBoardPageHeader from '../BoardPageComponents/BoarHeader/MemberBoardPageHeader';
 import CandidateListPostDeadline from '../BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import CandidateListPreDeadline from '../BoardPageComponents/CandidateList/CandidateListPreDeadline';
@@ -13,9 +12,7 @@ import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.cont
 
 export default function MemberBoardPage() {
   const { boardInfo } = useBoard();
-  const boardId = boardInfo.id;
-  const { user } = useUser();
-  const userId = user[0].id;
+
   const displayDelete = 'hidden';
   const onClick = () => {};
   return (
@@ -37,11 +34,7 @@ export default function MemberBoardPage() {
       {boardInfo.hasPassedDeadline() ? (
         <div>
           <div className="CandidateCard-component-member">
-            <CandidateListPostDeadline
-              userId={userId}
-              boardId={boardId}
-              displayDelete={displayDelete}
-            />
+            <CandidateListPostDeadline displayDelete={displayDelete} />
           </div>
           <div className="Result">
             <ResultButtonPostDeadline />
@@ -50,11 +43,7 @@ export default function MemberBoardPage() {
       ) : (
         <div>
           <div className="CandidateCard-component-member">
-            <CandidateListPreDeadline
-              userId={userId}
-              boardId={boardId}
-              displayDelete={displayDelete}
-            />
+            <CandidateListPreDeadline displayDelete={displayDelete} />
           </div>
           <div className="Result">
             <ResultButtonPreDeadline />
