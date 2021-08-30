@@ -47,8 +47,7 @@ export default function CreateBoard() {
   };
 
   const onCreateButtonClick = () => {
-    if (AddNewBoard(newBoard, userId, members))
-      alert(`New board ${boardName} is created`);
+    AddNewBoard(newBoard, userId, members);
     onResetButtonClick();
   };
 
