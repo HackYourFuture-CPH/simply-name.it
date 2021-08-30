@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useCandidates } from '../../UseHooks/useCandidates';
+import { useCandidates } from '../../../UseHooks/useCandidates';
 import { useUpdateBallots } from './useUpdateBallots';
-import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
-import { candidateCardSorting } from '../../../components/CandidateCard/CandidateCardSorting';
+import { CardItemDecorator } from '../../../../components/CandidateCard/CandidateCardItem.component';
+import { candidateCardSorting } from '../../../../components/CandidateCard/CandidateCardSorting';
 import {
   DragAndSortAdapter,
   SortableItem,
-} from '../../DragAndSortAdapter/DragAndSortAdapter';
-import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
+} from '../../../DragAndSortAdapter/DragAndSortAdapter';
+import { onDragEnd } from '../../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
-import { useBoard } from '../../BoardPage/BoardProvider';
+import { useBoard } from '../../BoardProvider';
 
 export default function CandidateListPreDeadline({
   userId,

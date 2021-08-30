@@ -4,13 +4,13 @@ import GenericButton from '../../components/GenericButton/GenericButton.componen
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
 import members from '../../components/ModalViewComponent/membersData.json';
-import CandidateListPreDeadline from '../BoardPageComponents/CandidateList/CandidateListPreDeadline';
-import CandidateListPostDeadline from '../BoardPageComponents/CandidateList/CandidateListPostDeadline';
+import CandidateListPreDeadline from './BoardPageComponents/CandidateList/CandidateListPreDeadline';
+import CandidateListPostDeadline from './BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import { useBoard } from './BoardProvider';
 import { useUser } from '../../firebase/UserContext';
-import BoardAddCandidatePostDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePostDeadline';
-import BoardAddCandidatePreDeadline from '../BoardPageComponents/BoardAddCandidate/BoardAddCandidatePreDeadline';
-import OwnerBoardPageHeader from '../BoardPageComponents/BoarHeader/OwnerBoardPageHeader';
+import BoardAddCandidatePostDeadline from './BoardPageComponents/BoardAddCandidate/BoardAddCandidatePostDeadline';
+import BoardAddCandidatePreDeadline from './BoardPageComponents/BoardAddCandidate/BoardAddCandidatePreDeadline';
+import OwnerBoardPageHeader from './BoardPageComponents/BoardHeader/OwnerBoardPageHeader';
 import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
 import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.container';
 

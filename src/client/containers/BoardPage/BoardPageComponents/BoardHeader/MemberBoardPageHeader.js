@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './BoardHeader.style.css';
-import HeaderComponent from '../../../components/HeaderComponent/Header.component.js';
-import Dropdown from '../../../components/Dropdown/Dropdown.component';
-import ArrowButton from '../../../components/ArrowButton/ArrowButton.component';
+import HeaderComponent from '../../../../components/HeaderComponent/Header.component.js';
+import Dropdown from '../../../../components/Dropdown/Dropdown.component';
+import ArrowButton from '../../../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
 
 export default function MemberBoardPageHeader() {
@@ -19,7 +19,11 @@ export default function MemberBoardPageHeader() {
   };
   return (
     <div>
-      <HeaderComponent className="header-component-image" variant="cropped">
+      <HeaderComponent
+        className="header-component-image"
+        variant="cropped"
+        colored={false}
+      >
         <Link to="/profile">
           <ArrowButton className="arrow-button-white" onClick={onClick} />
         </Link>

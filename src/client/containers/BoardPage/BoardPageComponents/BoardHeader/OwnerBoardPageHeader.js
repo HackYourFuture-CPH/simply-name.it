@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './BoardHeader.style.css';
-import HeaderComponent from '../../../components/HeaderComponent/Header.component.js';
-import Dropdown from '../../../components/Dropdown/Dropdown.component';
-import ArrowButton from '../../../components/ArrowButton/ArrowButton.component';
+import HeaderComponent from '../../../../components/HeaderComponent/Header.component.js';
+import Dropdown from '../../../../components/Dropdown/Dropdown.component';
+import ArrowButton from '../../../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
-import { useBoard } from '../../BoardPage/BoardProvider';
+import ProfilePage from '../../../ProfilePage/ProfilePage.container';
 
 export default function OwnerBoardPageHeader() {
   const [visibility, setVisibility] = useState(false);
-  const { boardInfo } = useBoard();
   const closeDropdown = () => {
     if (visibility === false) {
       setVisibility(true);
@@ -16,12 +15,26 @@ export default function OwnerBoardPageHeader() {
       setVisibility(false);
     }
   };
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const handleClick = () => {
+    setModalVisibility(true);
+    return (
+      <ProfilePage
+        modalVisibility={modalVisibility}
+        setModalVisibility={setModalVisibility}
+      />
+    );
+  };
   const onClick = () => {
-    // console.log('you clicked!');
+    // console.log(fasfa);
   };
   return (
     <div>
-      <HeaderComponent className="header-component-image" variant="cropped">
+      <HeaderComponent
+        className="header-component-image"
+        variant="cropped"
+        colored={false}
+      >
         <Link to="/profile">
           <ArrowButton className="arrow-button-white" onClick={onClick} />
         </Link>
@@ -33,7 +46,7 @@ export default function OwnerBoardPageHeader() {
         >
           <div>
             <ul className="board-header-option-list">
-              <Link to="/edit-board" boardInfo={boardInfo}>
+              <Link to="/edit-board">
                 <button
                   className="board-header-option-link"
                   type="button"
@@ -42,13 +55,15 @@ export default function OwnerBoardPageHeader() {
                   Edit Board
                 </button>
               </Link>
-              <button
-                className="board-header-option-link"
-                type="button"
-                onClick={onClick}
-              >
-                Delete Board
-              </button>
+              <Link to="/profile">
+                <button
+                  className="board-header-option-link"
+                  type="button"
+                  onClick={handleClick}
+                >
+                  Delete Board
+                </button>
+              </Link>
             </ul>
           </div>
         </Dropdown>
