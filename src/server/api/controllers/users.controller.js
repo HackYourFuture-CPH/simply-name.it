@@ -17,7 +17,6 @@ const getUsers = async () => {
         match_all: {},
       },
       size: 50,
-      // sort: ['fullName.keyword'],
       sort: [
         {
           fullName: {
@@ -73,7 +72,11 @@ const getUsersByKeyword = async (searchWord) => {
         multi_match: {
           query: searchWord,
           type: 'bool_prefix',
-          fields: ['fullName', 'fullName._2gram', 'fullName._3gram'],
+          fields: [
+            'fullName.autocomplete',
+            'fullName._2gram',
+            'fullName._3gram',
+          ],
         },
       },
       size: 30,
