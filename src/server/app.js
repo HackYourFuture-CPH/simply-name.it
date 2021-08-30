@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { HttpError } = require('./api/lib/utils/http-error');
+const { authenticate } = require('./middleware/auth');
 
 const buildPath = path.join(__dirname, '../../dist');
 
@@ -47,6 +48,8 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 const app = express();
+
+app.use(authenticate);
 
 app.use(express.static(buildPath));
 
