@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './BoardPage.style.css';
-import PropTypes from 'prop-types';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import { useBoard } from './BoardProvider';
