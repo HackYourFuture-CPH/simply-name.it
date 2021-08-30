@@ -57,10 +57,12 @@ const addMember = async (userId, boardId, memberId) => {
   }
   await userIsOwner(userId, boardId);
 
+  const role = userId === memberId ? 'owner' : 'basic';
+
   const addNewMember = await knex('members').insert({
     boardId,
     userId: memberId,
-    role: 'basic',
+    role,
   });
   return addNewMember;
 };
