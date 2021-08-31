@@ -11,11 +11,18 @@ import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
 import { useBoard } from '../../BoardPage/BoardProvider';
+import { ApiError } from '../../../ErrorBoundary';
 
-export default function CandidateListPreDeadline({ userId, boardId }) {
-  const { candidates, setCandidates, error } = useCandidates(userId, boardId);
+export default function CandidateListPreDeadline({
+  userId,
+  boardId,
+  displayDelete,
+}) {
+  const { candidates, setCandidates } = useCandidates(userId, boardId);
   const [draggedInit, setDraggedInit] = useState(false);
   const { setBoardLoading } = useBoard();
+  // eslint-disable-next-line no-unused-vars
+  const [deleteError, setDeleteError] = useState(null);
 
   function candidateTransform(candidate, index) {
     return {
@@ -27,38 +34,40 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
   useUpdateBallots(userId, boardId, candidates, draggedInit);
 
   const handleDelete = async (candidateId) => {
-    await deleteCandidate(userId, boardId, candidateId);
-    setBoardLoading(true);
+    try {
+      await deleteCandidate(userId, boardId, candidateId);
+      setBoardLoading(true);
+    } catch (err) {
+      setDeleteError(() => {
+        throw new ApiError(err.message, err.statusCode);
+      });
+    }
   };
 
   return (
     <div className="CandidateCard-component">
-      {error ? (
-        <h2 className="showups">{error}</h2>
-      ) : (
-        <DragAndSortAdapter
-          onDragEndHandler={onDragEnd(
-            setCandidates,
-            candidateCardSorting,
-            candidateTransform,
-            setDraggedInit,
-          )}
-          items={candidates}
-        >
-          {candidates.map((candidate) => {
-            return (
-              <SortableItem key={candidate.id} id={candidate.id}>
-                <CardItemDecorator
-                  colorVariant="primary-color"
-                  candidateName={candidate.name}
-                  displayDeleteIcon="visible"
-                  onClick={() => handleDelete(candidate.id)}
-                />
-              </SortableItem>
-            );
-          })}
-        </DragAndSortAdapter>
-      )}
+      <DragAndSortAdapter
+        onDragEndHandler={onDragEnd(
+          setCandidates,
+          candidateCardSorting,
+          candidateTransform,
+          setDraggedInit,
+        )}
+        items={candidates}
+      >
+        {candidates.map((candidate) => {
+          return (
+            <SortableItem key={candidate.id} id={candidate.id}>
+              <CardItemDecorator
+                colorVariant="primary-color"
+                candidateName={candidate.name}
+                displayDeleteIcon={displayDelete}
+                onClick={() => handleDelete(candidate.id)}
+              />
+            </SortableItem>
+          );
+        })}
+      </DragAndSortAdapter>
     </div>
   );
 }
@@ -66,4 +75,9 @@ export default function CandidateListPreDeadline({ userId, boardId }) {
 CandidateListPreDeadline.propTypes = {
   userId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
+  displayDelete: PropTypes.string,
+};
+
+CandidateListPreDeadline.defaultProps = {
+  displayDelete: 'visible',
 };

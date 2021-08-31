@@ -5,6 +5,10 @@ const admin = require('firebase-admin');
 // `Authorization: Bearer <Firebase ID Token>`.
 // when decoded successfully, the ID Token content will be added as `req.user`.
 const authenticate = async (req, res, next) => {
+  if (process.env.NODE_ENV === 'development') {
+    return next();
+  }
+
   if (
     !req.headers.authorization ||
     !req.headers.authorization.startsWith('Bearer ')
@@ -14,12 +18,11 @@ const authenticate = async (req, res, next) => {
   }
 
   const idToken = req.headers.authorization.split('Bearer ')[1];
-  try {
-    if (process.env.NODE_ENV === 'development') {
-      return next();
-    }
 
+  try {
     const decodedIdToken = await admin.auth().verifyIdToken(idToken);
+    // Here the user information is tored on req.user
+    // To get the firebase uid you get req.user.user_id
     req.user = decodedIdToken;
     next();
     return;

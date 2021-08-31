@@ -66,13 +66,6 @@ router.get('/search', async (req, res) => {
   const searchedUsers = await usersController.getUsersByKeyword(
     req.query.fullName,
   );
-
-  if (searchedUsers.length === 0) {
-    res
-      .status(200)
-      .send(`Cannot find user with name like '${req.query.fullName}'`);
-  }
-
   return res.json(searchedUsers);
 });
 
@@ -109,8 +102,31 @@ router.get('/:id', async (req, res) => {
   return res.json(userById);
 });
 
-// Application routes
-router.use('/:userId/boards', boardsRouter);
+/**
+ * @swagger
+ * /users/{userId}:
+ *  delete:
+ *    tags:
+ *    - Users
+ *    summary: Delete a user
+ *    description:
+ *      Will delete the user with the given ID.
+ *    produces: application/json
+ *    parameters:
+ *      - in: path
+ *        name: userId
+ *        description: ID of the user.
+ *    responses:
+ *      204:
+ *        description: User deleted
+ *      5XX:
+ *        description: Unexpected error.
+ */
+
+router.delete('/:userId', async (req, res) => {
+  await usersController.deleteUser(req.params.userId);
+  return res.status(204).send('Deletion successfull');
+});
 
 /**
  * @swagger
@@ -149,9 +165,13 @@ router.use('/:userId/boards', boardsRouter);
  *      404:
  *        description: Not found.
  */
+
 router.post('/', [authenticate], async (req, res) => {
   const user = await usersController.createUser(req.body);
   return res.json(user);
 });
+
+// Application routes
+router.use('/:userId/boards', boardsRouter);
 
 module.exports = router;
