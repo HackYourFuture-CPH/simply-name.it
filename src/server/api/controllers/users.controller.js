@@ -9,6 +9,14 @@ const {
 
 const { isInteger } = require('../lib/utils/validators');
 
+const processESresult = (result) => {
+  /* eslint no-underscore-dangle: ["error", { "allow": ["_source", "_id"] }] */
+  return result.body.hits.hits.map((hit) => ({
+    ...hit._source,
+    id: hit._id,
+  }));
+};
+
 const getUsers = async () => {
   const result = await client.search({
     index: usersIndex,
@@ -26,17 +34,7 @@ const getUsers = async () => {
       ],
     },
   });
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_source", "_id"] }] */
-  return result.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
-
-  // return knex('users').select(
-  //   'users.id',
-  //   'users.fullName',
-  //   'users.email',
-  //   'users.createdOn',
-  //   'users.firebaseUId',
-  // );
-  // KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN USE getUsers IF NEEDED
+  return processESresult(result);
 };
 
 const getUser = async (firebaseUId) => {
@@ -74,8 +72,8 @@ const getUsersByKeyword = async (searchWord) => {
           type: 'bool_prefix',
           fields: [
             'fullName.autocomplete',
-            'fullName._2gram',
-            'fullName._3gram',
+            'fullName.autocomplete._2gram',
+            'fullName.autocomplete._3gram',
           ],
         },
       },
@@ -83,18 +81,7 @@ const getUsersByKeyword = async (searchWord) => {
     },
   });
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_source", "_id"] }] */
-  return users.body.hits.hits.map((hit) => ({ ...hit._source, id: hit._id }));
-
-  //   const users = await knex('users').where(
-  //     'fullName',
-  //     'like',
-  //     `%${searchWord}%`,
-  //   );
-
-  //   return users;
-  // };
-  // KEEPING THIS SO THOSE NOT CONNECTED TO ELASTIC CAN TEST DB SEARCH IF NEEDED
+  return processESresult(users);
 };
 
 // CREATE USER
