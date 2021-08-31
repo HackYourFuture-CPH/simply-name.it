@@ -1,4 +1,4 @@
-.Board-container {
+.boardContainer {
   position: relative;
   height: 739px;
   max-width: 414px;
@@ -13,12 +13,12 @@
   width: 90%;
 }
 
-.CandidateCard-component {
+.candidate-card-component {
   position: relative;
   padding: 0 24px 0 20px;
 }
 
-.CandidateCard-component-member {
+.candidate-card-component-member {
   position: relative;
   padding: 0;
 }

@@ -12,7 +12,7 @@ export default function CandidateListPostDeadline({
   const { candidates, error } = useCandidates(userId, boardId);
 
   return (
-    <div className="CandidateCard-component">
+    <div className="candidate-card-component">
       {error ? (
         <h2 className="showups">{error}</h2>
       ) : (

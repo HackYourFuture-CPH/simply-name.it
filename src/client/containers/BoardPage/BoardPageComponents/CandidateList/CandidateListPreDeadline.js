@@ -45,7 +45,7 @@ export default function CandidateListPreDeadline({
   };
 
   return (
-    <div className="CandidateCard-component">
+    <div className="candidate-card-component">
       <DragAndSortAdapter
         onDragEndHandler={onDragEnd(
           setCandidates,

@@ -32,7 +32,7 @@ export default function OwnerBoardPage() {
           aria-hidden="true"
         />
       )}
-      <div className="Board-container">
+      <div className="boardContainer">
         <div className="Header-component">
           <OwnerBoardPageHeader />
         </div>

@@ -31,7 +31,7 @@ export default function MemberBoardPage() {
           aria-hidden="true"
         />
       )}
-      <div className="Board-container">
+      <div className="boardContainer">
         <div className="Header-component">
           <MemberBoardPageHeader />
         </div>
@@ -49,7 +49,7 @@ export default function MemberBoardPage() {
         <MembersModal show={showModal} close={closeModal} members={members} />
         {boardInfo.hasPassedDeadline() ? (
           <div>
-            <div className="CandidateCard-component-member">
+            <div className="candidate-card-component-member">
               <CandidateListPostDeadline
                 userId={userId}
                 boardId={boardId}
@@ -62,7 +62,7 @@ export default function MemberBoardPage() {
           </div>
         ) : (
           <div>
-            <div className="CandidateCard-component-member">
+            <div className="candidate-card-component-member">
               <CandidateListPreDeadline
                 userId={userId}
                 boardId={boardId}

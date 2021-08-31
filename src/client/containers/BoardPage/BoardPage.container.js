@@ -64,11 +64,11 @@ export default function BoardPage() {
     }
     return userId === boardInfo.creatorId ? (
       <>
-        <MemberBoardPage />
+        <OwnerBoardPage />
       </>
     ) : (
       <>
-        <OwnerBoardPage />
+        <MemberBoardPage />
       </>
     );
   }

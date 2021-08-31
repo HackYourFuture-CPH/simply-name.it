@@ -4,9 +4,15 @@ import HeaderComponent from '../../../../components/HeaderComponent/Header.compo
 import Dropdown from '../../../../components/Dropdown/Dropdown.component';
 import ArrowButton from '../../../../components/ArrowButton/ArrowButton.component';
 import { Link } from 'react-router-dom';
-import ProfilePage from '../../../ProfilePage/ProfilePage.container';
+import DeleteBoardModal from '../../../DeleteBoardModal/DeleteBoardModal.container';
+import { useBoard } from '../../BoardProvider';
+import { useUser } from '../../../../firebase/UserContext';
 
 export default function OwnerBoardPageHeader() {
+  const { boardInfo } = useBoard();
+  const { user } = useUser();
+  const userId = user[0].id;
+  const [modalVisibility, setModalVisibility] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const closeDropdown = () => {
     if (visibility === false) {
@@ -15,16 +21,7 @@ export default function OwnerBoardPageHeader() {
       setVisibility(false);
     }
   };
-  const [modalVisibility, setModalVisibility] = useState(false);
-  const handleClick = () => {
-    setModalVisibility(true);
-    return (
-      <ProfilePage
-        modalVisibility={modalVisibility}
-        setModalVisibility={setModalVisibility}
-      />
-    );
-  };
+
   const onClick = () => {
     // console.log(fasfa);
   };
@@ -55,18 +52,23 @@ export default function OwnerBoardPageHeader() {
                   Edit Board
                 </button>
               </Link>
-              <Link to="/profile">
-                <button
-                  className="board-header-option-link"
-                  type="button"
-                  onClick={handleClick}
-                >
-                  Delete Board
-                </button>
-              </Link>
+              <button
+                className="board-header-option-link"
+                type="button"
+                onClick={() => setModalVisibility(true)}
+              >
+                Delete Board
+              </button>
             </ul>
           </div>
         </Dropdown>
+        {modalVisibility && (
+          <DeleteBoardModal
+            userId={userId}
+            boardInfo={boardInfo}
+            setModalVisibility={setModalVisibility}
+          />
+        )}
       </HeaderComponent>
     </div>
   );
