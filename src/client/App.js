@@ -30,6 +30,7 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
+        <EditedBoard exact path="/edit-board" />
 
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute
@@ -64,7 +65,7 @@ function App() {
             </AuthenticatedRoute>
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/boards/:boardId/edit-board"
           children={
@@ -75,7 +76,7 @@ function App() {
               <EditedBoard />
             </AuthenticatedRoute>
           }
-        />
+        /> */}
       </Switch>
     </Router>
   );
