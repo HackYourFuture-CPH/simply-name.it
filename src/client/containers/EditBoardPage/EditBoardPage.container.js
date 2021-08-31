@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useUser } from '../../firebase/UserContext';
 import './EditBoardPage.styles.css';
-import PropTypes from 'prop-types';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Input from '../../components/InputComponent/InputComponent';
@@ -13,37 +12,42 @@ import { ApiError } from '../../ErrorBoundary';
 const EditedBoard = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
-  const [boardInfo, setBoardInfo] = useState('');
   const [loading, setLoading] = useState(true);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
-  // const { boardId } = useParams();;
-  // const history = useHistory();
-  // const { user } = useUser();
-  // const userId = user[0].id;
-  const userId = 2;
-  const boardId = 1;
+  const { boardId } = useParams();
+  const history = useHistory();
+  const { user } = useUser();
+  const userId = user[0].id;
+
   const boardInfoURL = `/api/users/${userId}/boards/${boardId}`;
   useEffect(() => {
     const getBoardInfo = async () => {
       try {
         const apiResponse = await fetch(boardInfoURL);
         const apiData = await apiResponse.json();
-        setBoardInfo(apiData[0]);
         setName(apiData[0].title);
-        setDate(apiData[0].deadline);
-        console.log(apiData[0].deadline);
+        const deadline = new Date(apiData[0].deadline)
+          .toISOString()
+          .replace(/T/, ' ')
+          .replace(/\..+/, '');
+        const currentDeadline = deadline.slice(0, -3).trim();
+        setDate(currentDeadline);
         setLoading(false);
+        if (!apiResponse.ok) {
+          throw new ApiError(apiResponse.statusText, apiResponse.status);
+        }
       } catch (e) {
-        setError(e);
+        setError(() => {
+          // eslint-disable-next-line new-cap
+          throw new ApiError(e.message, e.statusCode);
+        });
         setLoading(false);
       }
     };
     getBoardInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(boardInfo.title);
   const API_URL = `/api/users/${userId}/boards/${boardId}`;
   const updateBoard = async () => {
     try {
@@ -131,14 +135,6 @@ const EditedBoard = () => {
       )}
     </div>
   );
-};
-
-EditedBoard.propTypes = {
-  boardInfo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    deadline: PropTypes.instanceOf(Date),
-  }).isRequired,
 };
 
 export default EditedBoard;
