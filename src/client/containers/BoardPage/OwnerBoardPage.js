@@ -7,7 +7,6 @@ import members from '../../components/ModalViewComponent/membersData.json';
 import CandidateListPreDeadline from './BoardPageComponents/CandidateList/CandidateListPreDeadline';
 import CandidateListPostDeadline from './BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import { useBoard } from './BoardProvider';
-import { useUser } from '../../firebase/UserContext';
 import BoardAddCandidatePostDeadline from './BoardPageComponents/BoardAddCandidate/BoardAddCandidatePostDeadline';
 import BoardAddCandidatePreDeadline from './BoardPageComponents/BoardAddCandidate/BoardAddCandidatePreDeadline';
 import OwnerBoardPageHeader from './BoardPageComponents/BoardHeader/OwnerBoardPageHeader';
@@ -16,9 +15,6 @@ import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.cont
 
 export default function OwnerBoardPage() {
   const { boardInfo } = useBoard();
-  const boardId = boardInfo.id;
-  const { user } = useUser();
-  const userId = user[0].id;
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
 
@@ -53,7 +49,7 @@ export default function OwnerBoardPage() {
             <div className="Input-component">
               <BoardAddCandidatePostDeadline />
             </div>
-            <CandidateListPostDeadline userId={userId} boardId={boardId} />
+            <CandidateListPostDeadline />
             <div className="Result">
               <ResultButtonPostDeadline />
             </div>
@@ -63,7 +59,7 @@ export default function OwnerBoardPage() {
             <div>
               <BoardAddCandidatePreDeadline />
             </div>
-            <CandidateListPreDeadline userId={userId} boardId={boardId} />
+            <CandidateListPreDeadline />
             <div className="Result">
               <ResultButtonPreDeadline />
             </div>

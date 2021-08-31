@@ -8,15 +8,11 @@ import { useParams } from 'react-router-dom';
 
 export default function BoardPage() {
   const [errorCode, setErrorCode] = useState(null);
-  const {
-    isBoardLoading,
-    setBoardLoading,
-    boardInfo,
-    setBoardInfo,
-  } = useBoard();
+  const { boardInfo, setBoardInfo } = useBoard();
   const { boardId } = useParams();
   const { user } = useUser();
   const userId = user[0].id;
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchingBoardApi = async () => {
       const API_URL = `/api/users/${userId}/boards/${boardId}`;
@@ -30,7 +26,7 @@ export default function BoardPage() {
             return today > deadlineDate;
           };
           setBoardInfo(apiData[0]);
-          setBoardLoading(false);
+          setIsLoading(false);
         } else {
           const errorResult = await apiResponse.json();
           if (errorResult.error.startsWith('Incorrect entry Error')) {
@@ -59,16 +55,16 @@ export default function BoardPage() {
         return <div>Unknown error occurred while fetching board</div>;
     }
   } else {
-    if (isBoardLoading) {
+    if (isLoading) {
       return <div>LOADING....</div>;
     }
     return userId === boardInfo.creatorId ? (
       <>
-        <MemberBoardPage />
+        <OwnerBoardPage />
       </>
     ) : (
       <>
-        <OwnerBoardPage />
+        <MemberBoardPage />
       </>
     );
   }
