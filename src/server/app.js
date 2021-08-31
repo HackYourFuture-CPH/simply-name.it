@@ -13,8 +13,6 @@ const { HttpError } = require('./api/lib/utils/http-error');
 const buildPath = path.join(__dirname, '../../dist');
 
 const apiRouter = require('./api/routes/api-router');
-// eslint-disable-next-line no-unused-vars
-const { authenticate } = require('./middleware/auth');
 
 require('./config/db');
 
@@ -50,10 +48,6 @@ if (process.env.NODE_ENV !== 'development') {
 const app = express();
 
 app.use(express.static(buildPath));
-
-app.use(authenticate);
-// Enable when Firebase admin is added
-// app.use(authenticate);
 
 app.locals.ENV = process.env.NODE_ENV;
 app.locals.ENV_DEVELOPMENT = process.env.NODE_ENV === 'development';
