@@ -14,7 +14,7 @@ export default function ResultButtonPostDeadline() {
 
   return (
     <div className="Result">
-      <Link to={`/resultpage/${boardId}`}>
+      <Link to={`/boards/${boardId}/results`}>
         <GenericButton
           className="Result-button"
           buttonLabel="Result"
