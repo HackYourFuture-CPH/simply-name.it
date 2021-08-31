@@ -1,6 +1,7 @@
 import React from 'react';
 import '../BoardPage.style.css';
 import { Link } from 'react-router-dom';
+import { useBoard } from '../BoardProvider';
 import GenericButton from '../../../components/GenericButton/GenericButton.component';
 
 const onClick = () => {
@@ -8,9 +9,12 @@ const onClick = () => {
 };
 
 export default function ResultButtonPostDeadline() {
+  const { boardInfo } = useBoard();
+  const boardId = boardInfo.id;
+
   return (
     <div className="Result">
-      <Link to="/ResultPage">
+      <Link to={`/resultpage/${boardId}`}>
         <GenericButton
           className="Result-button"
           buttonLabel="Result"
