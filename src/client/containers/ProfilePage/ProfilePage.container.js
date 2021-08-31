@@ -36,13 +36,11 @@ export default function ProfilePage() {
 
   const getJoinedBoards = async () => {
     try {
+      // delete /api before merge i leave for now to test it
       const response = await fetch(` /api/users/${userId}/boards/?role=member`);
-      if (!response.ok) {
-        throw new ApiError(response.statusText, response.status);
-      } else {
-        const data = await response.json();
-        setJoinedBoards(data);
-      }
+      const data = await response.json();
+      setJoinedBoards(data);
+      //   }
     } catch (err) {
       setError(() => {
         throw new ApiError(err.message, err.statusCode);
@@ -51,19 +49,9 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    try {
-      const response = await fetch(` /api/users/${userId}/boards/created`);
-      if (!response.ok) {
-        throw new ApiError(response.statusText, response.status);
-      } else {
-        const data = await response.json();
-        setMyBoards(data);
-      }
-    } catch (err) {
-      setError(() => {
-        throw new ApiError(err.message, err.statusCode);
-      });
-    }
+    const response = await fetch(` /api/users/${userId}/boards/created`);
+    const data = await response.json();
+    setMyBoards(data);
   };
   useEffect(() => {
     (async () => {
@@ -73,9 +61,6 @@ export default function ProfilePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!myBoards || !joinedBoards) {
-    return null;
-  }
   return (
     <ProfilePropsProvider
       value={{
@@ -89,6 +74,7 @@ export default function ProfilePage() {
         setModalVisibility,
         clickedBoardInfo,
         setclickedBoardInfo,
+        userId,
       }}
     >
       <div

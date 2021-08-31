@@ -22,7 +22,6 @@ export default function DropDownMenuMyBoards({ board }) {
           <button
             type="button"
             onClick={async () => {
-              await setclickedBoardInfo(board);
               history.push('/edit-board');
             }}
           >
