@@ -14,10 +14,14 @@ export async function fetchFromDb(endpoint, fetchMethod, postBody = {}) {
   if (fetchMethod === 'post' || fetchMethod === 'put') {
     fetchOptions.body = JSON.stringify(postBody);
   }
-  const response = await fetch(`/api/users/${endpoint}`, fetchOptions);
-  if (!response.ok) {
-    throw new ApiError(response.statusText, response.status);
+  try {
+    const response = await fetch(`/api/users/${endpoint}`, fetchOptions);
+    if (!response.ok) {
+      throw new ApiError(response.statusText, response.status);
+    }
+    const dbData = await response.json();
+    return dbData;
+  } catch (error) {
+    throw new ApiError(error.message);
   }
-  const dbData = await response.json();
-  return dbData;
 }
