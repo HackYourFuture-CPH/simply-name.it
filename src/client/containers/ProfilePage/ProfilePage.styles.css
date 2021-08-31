@@ -15,6 +15,16 @@
   height: 25vh;
 }
 
+.header .dropdown-container ul li > button {
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+.header .dropdown-container ul li > button:hover {
+  cursor: pointer;
+}
+
 .sub-header {
   position: relative;
   height: 15vh;
