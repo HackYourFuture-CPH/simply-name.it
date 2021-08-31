@@ -49,7 +49,7 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/1/boards/created`);
+    const response = await fetch(` /api/users/${userId}/boards/created`);
     const data = await response.json();
     setMyBoards(data);
   };
@@ -90,6 +90,7 @@ export default function ProfilePage() {
               }}
               color="white"
             />
+
             <Dropdown
               variant="dark"
               onClick={() => {
