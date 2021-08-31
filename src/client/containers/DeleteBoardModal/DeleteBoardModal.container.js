@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './DeleteBoardModal.style.css';
 import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import GenericButton from '../../statcomponents/GenericButton/GenericButton.component';
+import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { ApiError } from '../../ErrorBoundary';
 
 const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
