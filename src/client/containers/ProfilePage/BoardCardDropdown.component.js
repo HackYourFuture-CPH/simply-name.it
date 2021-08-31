@@ -22,7 +22,8 @@ export default function DropDownMenuMyBoards({ board }) {
           <button
             type="button"
             onClick={async () => {
-              history.push('/edit-board');
+              // eslint-disable-next-line react/prop-types
+              history.push(`/boards/${board.id}/edit-board`);
             }}
           >
             Edit board
