@@ -7,11 +7,7 @@ import Dropdown from '../../components/Dropdown/Dropdown.component';
 // eslint-disable-next-line react/prop-types
 export default function DropDownMenuMyBoards({ board }) {
   const [visible, setVisible] = useState(false);
-  const {
-    setModalVisibility,
-    setclickedBoardId,
-    setclickedBoardInfo,
-  } = useContext(ProfileProps);
+  const { setModalVisibility, setclickedBoardInfo } = useContext(ProfileProps);
   const history = useHistory();
   return (
     <Dropdown
@@ -26,8 +22,7 @@ export default function DropDownMenuMyBoards({ board }) {
           <button
             type="button"
             onClick={async () => {
-              // eslint-disable-next-line react/prop-types
-              await setclickedBoardId(board.id);
+              await setclickedBoardInfo(board);
               history.push('/edit-board');
             }}
           >
@@ -52,7 +47,6 @@ export default function DropDownMenuMyBoards({ board }) {
 
 export function DropDownMenuJoinedBoards() {
   const [visible, setVisible] = useState(false);
-  const { setModalVisibility } = useContext(ProfileProps);
   return (
     <Dropdown
       variant="dark"
@@ -63,14 +57,7 @@ export function DropDownMenuJoinedBoards() {
     >
       <ul>
         <li>
-          <button
-            type="button"
-            onClick={() => {
-              setModalVisibility(true);
-            }}
-          >
-            Leave board
-          </button>
+          <button type="button">Leave board</button>
         </li>
       </ul>
     </Dropdown>

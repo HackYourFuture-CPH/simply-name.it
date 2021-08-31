@@ -15,7 +15,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
-// import ApiError from '../../ErrorBoundary';
+import ApiError from '../../ErrorBoundary';
 
 export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
@@ -23,51 +23,54 @@ export default function ProfilePage() {
   const [myBoards, setMyBoards] = useState();
   const [onMyBoards, setOnMyBoards] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
-  const [clickedBoardId, setclickedBoardId] = useState();
   const [clickedBoardInfo, setclickedBoardInfo] = useState();
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
 
   const history = useHistory();
   const { user } = useUser();
   const userData = user[0];
-
   const userId = user[0].id;
 
   const { signOut } = useFirebase();
 
-  // const [errorState, setErrorState] = useState();
-  // setErrorState(() => {
-  //   throw new ApiError();
-  // });
-
   const getJoinedBoards = async () => {
-    const response = await fetch(` /api/users/1/boards/?role=member`);
-    if (!response.ok) {
-      // setErrorState(() => {
-      //   throw new ApiError();
-      // });
-    } else {
-      const data = await response.json();
-      setJoinedBoards(data);
+    try {
+      const response = await fetch(` /api/users/${userId}/boards/?role=member`);
+      if (!response.ok) {
+        throw new ApiError(response.statusText, response.status);
+      } else {
+        const data = await response.json();
+        setJoinedBoards(data);
+      }
+    } catch (err) {
+      setError(() => {
+        throw new ApiError(err.message, err.statusCode);
+      });
     }
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/2/boards/created`);
-    if (!response.ok) {
-      // setErrorState(() => {
-      //   throw new ApiError();
-      // });
-    } else {
-      const data = await response.json();
-      setMyBoards(data);
+    try {
+      const response = await fetch(` /api/users/${userId}/boards/created`);
+      if (!response.ok) {
+        throw new ApiError(response.statusText, response.status);
+      } else {
+        const data = await response.json();
+        setMyBoards(data);
+      }
+    } catch (err) {
+      setError(() => {
+        throw new ApiError(err.message, err.statusCode);
+      });
     }
   };
-
   useEffect(() => {
     (async () => {
       await getMyBoards();
       await getJoinedBoards();
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!myBoards || !joinedBoards) {
@@ -84,16 +87,17 @@ export default function ProfilePage() {
         setMyBoards,
         modalVisibility,
         setModalVisibility,
-        clickedBoardId,
-        setclickedBoardId,
         clickedBoardInfo,
         setclickedBoardInfo,
       }}
     >
-      <div className="profile-page-container">
+      <div
+        className={`profile-page-container ${
+          modalVisibility ? 'board-overlay' : ''
+        }`}
+      >
         <div className="header">
           <HeaderComponent colored={true}>
-            {/* user can not go welcome only if he signout  */}
             <ArrowButton
               onClick={() => {
                 history.push('/profile');
