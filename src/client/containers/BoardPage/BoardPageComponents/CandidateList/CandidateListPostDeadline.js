@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCandidates } from '../../UseHooks/useCandidates';
-import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
-import { SortableItem } from '../../DragAndSortAdapter/DragAndSortAdapter';
+import { useCandidates } from '../../../UseHooks/useCandidates';
+import { CardItemDecorator } from '../../../../components/CandidateCard/CandidateCardItem.component';
+import { SortableItem } from '../../../DragAndSortAdapter/DragAndSortAdapter';
 import PropTypes from 'prop-types';
 
 export default function CandidateListPostDeadline({ displayDelete }) {

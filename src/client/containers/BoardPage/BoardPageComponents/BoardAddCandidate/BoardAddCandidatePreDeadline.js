@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './BoardAddCandidate.style.css';
-import Input from '../../../components/InputComponent/InputComponent';
-import AddButton from '../../../components/AddButton/AddButton.component';
+import Input from '../../../../components/InputComponent/InputComponent';
+import AddButton from '../../../../components/AddButton/AddButton.component';
 import AddCandidate from './AddCandidate';
-import { useUser } from '../../../firebase/UserContext';
-import { useBoard } from '../../BoardPage/BoardProvider';
+import { useUser } from '../../../../firebase/UserContext';
+import { useBoard } from '../../BoardProvider';
 
 export default function BoardAddCandidatePreDeadline() {
   const [newCandidateName, setNewCandidateName] = useState('');
