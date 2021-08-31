@@ -2,7 +2,13 @@ import { getUserToken } from '../../firebase/googleAuth';
 import { ApiError } from '../../ErrorBoundary';
 
 export async function fetchFromDb(endpoint, fetchMethod, postBody = {}) {
-  const token = await getUserToken();
+  let token;
+  try {
+    token = await getUserToken();
+  } catch (error) {
+    throw new ApiError(error.message);
+  }
+
   const fetchOptions = {
     method: fetchMethod,
     mode: 'cors',
@@ -14,14 +20,10 @@ export async function fetchFromDb(endpoint, fetchMethod, postBody = {}) {
   if (fetchMethod === 'post' || fetchMethod === 'put') {
     fetchOptions.body = JSON.stringify(postBody);
   }
-  try {
-    const response = await fetch(`/api/users/${endpoint}`, fetchOptions);
-    if (!response.ok) {
-      throw new ApiError(response.statusText, response.status);
-    }
-    const dbData = await response.json();
-    return dbData;
-  } catch (error) {
-    throw new ApiError(error.message);
+  const response = await fetch(`/api/users/${endpoint}`, fetchOptions);
+  if (!response.ok) {
+    throw new ApiError(response.statusText, response.status);
   }
+  const dbData = await response.json();
+  return dbData;
 }
