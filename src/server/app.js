@@ -9,12 +9,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { HttpError } = require('./api/lib/utils/http-error');
-const { authenticate } = require('./middleware/auth');
 
 const buildPath = path.join(__dirname, '../../dist');
 
 const apiRouter = require('./api/routes/api-router');
-// const { authenticate } = require('./middleware/auth');
+// eslint-disable-next-line no-unused-vars
+const { authenticate } = require('./middleware/auth');
 
 require('./config/db');
 
