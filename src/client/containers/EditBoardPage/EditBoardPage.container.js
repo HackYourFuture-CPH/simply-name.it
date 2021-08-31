@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../firebase/UserContext';
 import './EditBoardPage.styles.css';
+import PropTypes from 'prop-types';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
-import { useBoard } from '../BoardPage/BoardProvider';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import Input from '../../components/InputComponent/InputComponent';
 import Dropzone from '../DropZone/Dropzone.container';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { ApiError } from '../../ErrorBoundary';
 
-const EditedBoard = () => {
-  const { boardInfo } = useBoard();
+const EditedBoard = ({ boardInfo }) => {
   const [name, setName] = useState(boardInfo.title);
   const [date, setDate] = useState(boardInfo.deadline);
   // eslint-disable-next-line no-unused-vars
@@ -103,6 +102,14 @@ const EditedBoard = () => {
       </div>
     </div>
   );
+};
+
+EditedBoard.propTypes = {
+  boardInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    deadline: PropTypes.instanceOf(Date),
+  }).isRequired,
 };
 
 export default EditedBoard;
