@@ -13,7 +13,8 @@ const { HttpError } = require('./api/lib/utils/http-error');
 const buildPath = path.join(__dirname, '../../dist');
 
 const apiRouter = require('./api/routes/api-router');
-// const { authenticate } = require('./middleware/auth');
+// eslint-disable-next-line no-unused-vars
+const { authenticate } = require('./middleware/auth');
 
 require('./config/db');
 
