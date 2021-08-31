@@ -35,14 +35,13 @@ export default function CandidateListPreDeadline({
 
   const handleDelete = async (candidateId) => {
     try {
-      const response = await deleteCandidate(userId, boardId, candidateId);
-      return response;
+      await deleteCandidate(userId, boardId, candidateId);
+      setBoardLoading(true);
     } catch (err) {
       setDeleteError(() => {
         throw new ApiError(err.message, err.statusCode);
       });
     }
-    setBoardLoading(true);
   };
 
   return (
