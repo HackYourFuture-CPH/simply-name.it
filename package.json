@@ -24,7 +24,8 @@
     "code:lint": "eslint --ext .js,.jsx,.ts,.tsx \"src/\"",
     "code:format": "prettier \"./src/**/**.{js,jsx,ts,tsx}\"",
     "code:check:rules": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "knex": "knex --cwd ./src/server"
+    "knex": "knex --cwd ./src/server",
+    "es:setup": "node ./src/server/api/lib/utils/syncES.js"
   },
   "author": "Shanawaz Islam",
   "license": "MIT",
