@@ -1,0 +1,21 @@
+.result-container {
+  width: 414px;
+  height: 714px;
+  position: fixed;
+}
+
+ul,
+li {
+  margin: 0 10px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.page-title-black-large {
+  margin: 2vh 6vh;
+}
+
+.display-message {
+  font-size: 22px;
+  font-weight: bolder;
+}
