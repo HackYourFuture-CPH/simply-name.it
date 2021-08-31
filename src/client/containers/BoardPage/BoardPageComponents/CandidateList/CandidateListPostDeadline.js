@@ -5,27 +5,21 @@ import { SortableItem } from '../../../DragAndSortAdapter/DragAndSortAdapter';
 import PropTypes from 'prop-types';
 
 export default function CandidateListPostDeadline({ displayDelete }) {
-  const { candidates, error } = useCandidates();
+  const { candidates } = useCandidates();
 
-  return (
-    <div className="CandidateCard-component">
-      {error ? (
-        <h2 className="showups">{error}</h2>
-      ) : (
-        candidates.map((candidate) => {
-          return (
-            <SortableItem key={candidate.id} id={candidate.id}>
-              <CardItemDecorator
-                colorVariant="secondary-color"
-                candidateName={candidate.name}
-                displayDeleteIcon={displayDelete}
-              />
-            </SortableItem>
-          );
-        })
-      )}
-    </div>
-  );
+  return candidates.map((candidate) => {
+    return (
+      <div className="CandidateCard-component">
+        <SortableItem key={candidate.id} id={candidate.id}>
+          <CardItemDecorator
+            colorVariant="secondary-color"
+            candidateName={candidate.name}
+            displayDeleteIcon={displayDelete}
+          />
+        </SortableItem>
+      </div>
+    );
+  });
 }
 
 CandidateListPostDeadline.propTypes = {

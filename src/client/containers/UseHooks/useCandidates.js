@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '../../firebase/UserContext';
 import { useBoard } from '../BoardPage/BoardProvider';
+import { ApiError } from '../../ErrorBoundary';
 
 export function useCandidates() {
   const { user } = useUser();
@@ -8,7 +9,6 @@ export function useCandidates() {
   const { boardInfo, isCandidateLoading, setIsCandidateLoading } = useBoard();
   const boardId = boardInfo.id;
   const [candidates, setCandidates] = useState([]);
-  const [error, setError] = useState();
 
   useEffect(() => {
     if (!isCandidateLoading) return;
@@ -28,12 +28,10 @@ export function useCandidates() {
         );
         setIsCandidateLoading(false);
       } else {
-        setError(
-          `Error fetching candidates: ${response.status}. ${response.statusText}`,
-        );
+        throw new ApiError(response.statusText, response.status);
       }
     })();
   }, [userId, boardId, setIsCandidateLoading, isCandidateLoading]);
 
-  return { candidates, setCandidates, error };
+  return { candidates, setCandidates };
 }
