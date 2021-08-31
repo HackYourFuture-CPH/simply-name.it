@@ -9,6 +9,8 @@
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .board-image {
@@ -60,5 +62,23 @@
 }
 
 .board-header-children > .dropdown-container button:hover {
+  cursor: pointer;
+}
+
+.board-body {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.board-button {
+  background: none;
+  padding: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+
+.board-button:hover {
   cursor: pointer;
 }

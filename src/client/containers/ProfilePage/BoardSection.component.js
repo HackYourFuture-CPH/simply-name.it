@@ -21,21 +21,17 @@ export default function BoardSection() {
           <NewBoard />
           {Array.isArray(myBoards) &&
             myBoards.map((board) => (
-              <button
-                type="button"
+              <BoardCard
+                src="https://picsum.photos/seed/picsum/200/300"
+                alt="Board picture"
+                boardTitle={board.title}
+                key={board.id}
                 onClick={() => {
                   history.push(`users/${userId}/boards/${board.id}`);
                 }}
               >
-                <BoardCard
-                  src="https://picsum.photos/seed/picsum/200/300"
-                  alt="Board picture"
-                  boardTitle={board.title}
-                  key={board.id}
-                >
-                  <DropDownMenuMyBoards board={board} />
-                </BoardCard>
-              </button>
+                <DropDownMenuMyBoards board={board} />
+              </BoardCard>
             ))}
         </div>
       )}
@@ -48,6 +44,9 @@ export default function BoardSection() {
                 alt="Board picture"
                 boardTitle={board.title}
                 key={board.id}
+                onClick={() => {
+                  history.push(`users/${userId}/boards/${board.id}`);
+                }}
               >
                 <DropDownMenuJoinedBoards />
               </BoardCard>
