@@ -4,7 +4,7 @@ import { useUser } from '../../firebase/UserContext';
 import './EditBoardPage.styles.css';
 import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import Input from '../../components/InputComponent/InputComponent';
+import Inputfield from '../../components/InputComponent/InputComponent';
 import Dropzone from '../DropZone/Dropzone.container';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { ApiError } from '../../ErrorBoundary';
@@ -13,6 +13,7 @@ const EditedBoard = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [loading, setLoading] = useState(true);
+
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const { boardId } = useParams();
@@ -27,12 +28,7 @@ const EditedBoard = () => {
         const apiResponse = await fetch(boardInfoURL);
         const apiData = await apiResponse.json();
         setName(apiData[0].title);
-        const deadline = new Date(apiData[0].deadline)
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, '');
-        const currentDeadline = deadline.slice(0, -3).trim();
-        setDate(currentDeadline);
+        setDate(apiData[0].deadline.replace(/\..+/, ''));
         setLoading(false);
         if (!apiResponse.ok) {
           throw new ApiError(apiResponse.statusText, apiResponse.status);
@@ -87,7 +83,7 @@ const EditedBoard = () => {
           <div className="main-container">
             <PageTitle className="page-title" title="Edit board" />
             <label className="label">Name</label>
-            <Input
+            <Inputfield
               type="text"
               placeholder={name}
               inputValue={name}
@@ -98,9 +94,8 @@ const EditedBoard = () => {
               }}
             />
             <label className="label">Date</label>
-            <Input
+            <Inputfield
               type="datetime-local"
-              placeholder={date}
               borderShape="round"
               theme="light"
               inputValue={date}
