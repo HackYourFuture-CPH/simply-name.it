@@ -1,9 +1,12 @@
+import { utils as voteUtils, VotingSystem } from 'votes';
+
 const knex = require('../../config/db');
 const {
   IncorrectEntryError,
   InvalidIdError,
 } = require('../lib/utils/http-error');
 const moment = require('moment-timezone');
+
 const date = moment().toDate();
 
 const getResultsByBoardId = async (userId, boardId) => {
@@ -68,9 +71,13 @@ const getResultsByDeadline = async (userId, boardId) => {
         .where('results.boardId', boardId)
         .select('candidates.name', 'candidates.id', 'results.rank');
       return results;
-    } else {
-      // Use a library to calculate the results and insert into the results table.
     }
+    const ballots = await knex('ballots')
+      .join('candidates', 'candidates.id', '=', 'ballots.candidateId')
+      .where('candidates.boardId', boardId)
+      .andWhere('candidates.isBlocked', 0)
+      .select('ballots.userId', 'candidates.id', 'ballots.rank');
+    // calculate the results and insert in the database here
   }
 };
 
