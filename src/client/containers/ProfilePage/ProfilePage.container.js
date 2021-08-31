@@ -90,7 +90,6 @@ export default function ProfilePage() {
               }}
               color="white"
             />
-
             <Dropdown
               variant="dark"
               onClick={() => {
