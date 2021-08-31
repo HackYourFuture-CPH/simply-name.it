@@ -1,17 +1,18 @@
 import React, { useState, createContext, useContext } from 'react';
 import './BoardPage.style.css';
+import PropTypes from 'prop-types';
 
 const BoardContext = createContext();
 
 export default function BoardProvider({ children }) {
-  const [isBoardLoading, setBoardLoading] = useState(true);
+  const [isCandidateLoading, setIsCandidateLoading] = useState(true);
   const [boardInfo, setBoardInfo] = useState([]);
 
   return (
     <BoardContext.Provider
       value={{
-        isBoardLoading,
-        setBoardLoading,
+        isCandidateLoading,
+        setIsCandidateLoading,
         boardInfo,
         setBoardInfo,
       }}
@@ -30,3 +31,7 @@ export function useBoard() {
 
   return board;
 }
+
+BoardProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

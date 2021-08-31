@@ -3,7 +3,6 @@ import './BoardPage.style.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import { useBoard } from './BoardProvider';
-import { useUser } from '../../firebase/UserContext';
 import MemberBoardPageHeader from './BoardPageComponents/BoardHeader/MemberBoardPageHeader';
 import CandidateListPostDeadline from './BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import CandidateListPreDeadline from './BoardPageComponents/CandidateList/CandidateListPreDeadline';
@@ -14,9 +13,6 @@ import members from '../../components/ModalViewComponent/membersData.json';
 
 export default function MemberBoardPage() {
   const { boardInfo } = useBoard();
-  const boardId = boardInfo.id;
-  const { user } = useUser();
-  const userId = user[0].id;
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
   const displayDelete = 'hidden';
@@ -50,11 +46,7 @@ export default function MemberBoardPage() {
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="candidate-card-component-member">
-              <CandidateListPostDeadline
-                userId={userId}
-                boardId={boardId}
-                displayDelete={displayDelete}
-              />
+              <CandidateListPostDeadline displayDelete={displayDelete} />
             </div>
             <div className="Result">
               <ResultButtonPostDeadline />
@@ -63,11 +55,7 @@ export default function MemberBoardPage() {
         ) : (
           <div>
             <div className="candidate-card-component-member">
-              <CandidateListPreDeadline
-                userId={userId}
-                boardId={boardId}
-                displayDelete={displayDelete}
-              />
+              <CandidateListPreDeadline displayDelete={displayDelete} />
             </div>
             <div className="Result">
               <ResultButtonPreDeadline />

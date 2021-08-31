@@ -4,37 +4,25 @@ import { CardItemDecorator } from '../../../../components/CandidateCard/Candidat
 import { SortableItem } from '../../../DragAndSortAdapter/DragAndSortAdapter';
 import PropTypes from 'prop-types';
 
-export default function CandidateListPostDeadline({
-  userId,
-  boardId,
-  displayDelete,
-}) {
-  const { candidates, error } = useCandidates(userId, boardId);
+export default function CandidateListPostDeadline({ displayDelete }) {
+  const { candidates } = useCandidates();
 
-  return (
-    <div className="candidate-card-component">
-      {error ? (
-        <h2 className="showups">{error}</h2>
-      ) : (
-        candidates.map((candidate) => {
-          return (
-            <SortableItem key={candidate.id} id={candidate.id}>
-              <CardItemDecorator
-                colorVariant="secondary-color"
-                candidateName={candidate.name}
-                displayDeleteIcon={displayDelete}
-              />
-            </SortableItem>
-          );
-        })
-      )}
-    </div>
-  );
+  return candidates.map((candidate) => {
+    return (
+      <div className="candidate-card-component">
+        <SortableItem key={candidate.id} id={candidate.id}>
+          <CardItemDecorator
+            colorVariant="secondary-color"
+            candidateName={candidate.name}
+            displayDeleteIcon={displayDelete}
+          />
+        </SortableItem>
+      </div>
+    );
+  });
 }
 
 CandidateListPostDeadline.propTypes = {
-  userId: PropTypes.number.isRequired,
-  boardId: PropTypes.number.isRequired,
   displayDelete: PropTypes.string,
 };
 
