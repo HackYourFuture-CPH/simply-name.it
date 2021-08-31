@@ -10,7 +10,6 @@ export class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    console.log(error instanceof ApiError);
     return { hasError: true, errorType: error };
   }
 
