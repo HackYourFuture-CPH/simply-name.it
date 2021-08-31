@@ -49,10 +49,9 @@ if (process.env.NODE_ENV !== 'development') {
 
 const app = express();
 
-app.use(authenticate);
-
 app.use(express.static(buildPath));
 
+app.use(authenticate);
 // Enable when Firebase admin is added
 // app.use(authenticate);
 
