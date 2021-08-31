@@ -14,7 +14,7 @@ export default function NewBoard() {
             className="add-board-button"
             type="button"
             onClick={() => {
-              history.push('/new-board');
+              history.push('/boards/new-board');
             }}
           >
             +
