@@ -30,7 +30,7 @@ export default function ProfilePage() {
   const history = useHistory();
   const { user } = useUser();
   const userData = user[0];
-  const userId = user[0].id;
+  const userId = userData.id;
 
   const { signOut } = useFirebase();
 
