@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 
+const { authenticate } = require('./middleware/auth');
+
 // Router imports
 
 const usersRouter = require('./users.router');
@@ -30,6 +32,7 @@ const swaggerDocument = swaggerJsDoc(swaggerOptions);
 router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Application routes
+router.use(authenticate);
 router.use('/users', usersRouter);
 
 module.exports = router;
