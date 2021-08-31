@@ -48,3 +48,7 @@
 .boards-container {
   padding: 4rem 1rem;
 }
+
+.profile-user .page-title-black-large {
+  margin: 0.5rem 0;
+}
