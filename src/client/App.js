@@ -26,6 +26,9 @@ function App() {
           <Home />
         </Route>
         {/* Anonymous pages */}
+        <SignIn exact path="/sign-in" />
+        <SignUp exact path="/sign-up" />
+        <ResetPassword exact path="/reset-password" />
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
         {/* All routes below are authenticated routes - a user must login first */}
@@ -38,7 +41,7 @@ function App() {
           <ProfilePage />
         </AuthenticatedRoute>
         <Route
-          path="/boards/:boardId"
+          path="/board/:boardId"
           // eslint-disable-next-line react/no-children-prop
           children={
             <AuthenticatedRoute
