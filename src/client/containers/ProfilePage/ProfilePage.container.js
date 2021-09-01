@@ -82,7 +82,7 @@ export default function ProfilePage() {
           modalVisibility ? 'board-overlay' : ''
         }`}
       >
-        <div className="header">
+        <div className="profile-page-header">
           <HeaderComponent colored={true}>
             <ArrowButton
               onClick={() => {
@@ -108,7 +108,7 @@ export default function ProfilePage() {
             </Dropdown>
           </HeaderComponent>
         </div>
-        <div className="sub-header">
+        <div className="profile-page-sub-header">
           <div className="profile-user">
             <UserProfilePicture
               // i need to add the user pic
@@ -118,9 +118,9 @@ export default function ProfilePage() {
             <PageTitle variant="black-large" title={userData.fullName} />
           </div>
         </div>
-        <div className="users-boards-container">
+        <div className="profile-page-users-boards-container">
           <TabSeparator />
-          <div className="boards-container">
+          <div className="profile-page-boards-container">
             <BoardSection />
           </div>
         </div>
