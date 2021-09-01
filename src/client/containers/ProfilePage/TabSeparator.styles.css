@@ -1,5 +1,5 @@
-input,
-span {
+input.tabs,
+span.tab-title {
   position: absolute;
   width: 50%;
   height: 45px;
@@ -8,7 +8,7 @@ span {
   vertical-align: middle;
 }
 
-span {
+span.tab-title {
   text-align: center;
   font-size: 18px;
   padding-top: 10px;
@@ -16,7 +16,7 @@ span {
   border-top: 2px lightgray solid;
 }
 
-input {
+input.tabs {
   cursor: pointer;
   opacity: 0;
   z-index: 99;
@@ -36,29 +36,9 @@ input {
   border-left: 2px lightgray solid;
 }
 
-input:hover + span,
-input:checked + span {
+.tabs:hover + span,
+.tabs:checked + span {
   color: #5d0096;
   border-bottom: 2px solid #5d0096;
   font-weight: bold;
-}
-
-table {
-  width: 100%;
-  height: 70px;
-  margin-bottom: 20px;
-}
-
-th {
-  width: 50%;
-  border-bottom: 2px lightgray solid;
-  border-top: 2px lightgray solid;
-  color: lightgray;
-}
-
-tr :hover,
-tr :active {
-  color: blueviolet;
-  cursor: pointer;
-  border-bottom: 2px blueviolet solid;
 }
