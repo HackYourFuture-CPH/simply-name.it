@@ -11,23 +11,23 @@ export default function TapSeparator() {
         type="radio"
         name="boards"
         id="tab-1"
-        className="tabs tab-1"
+        className="profile-page-tabs tab-1"
         defaultChecked
         onClick={() => {
           setOnMyBoards(true);
         }}
       />
-      <span className="tab-title">My Boards</span>
+      <span className="profile-page-tab-title">My Boards</span>
       <input
         type="radio"
         name="boards"
         id="tab-2"
-        className="tabs tab-2"
+        className="profile-page-tabs tab-2"
         onClick={() => {
           setOnMyBoards(false);
         }}
       />
-      <span className="tab-title">Joined Boards</span>
+      <span className="profile-page-tab-title">Joined Boards</span>
     </>
   );
 }

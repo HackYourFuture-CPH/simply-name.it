@@ -1,5 +1,5 @@
-input.tabs,
-span.tab-title {
+input.profile-page-tabs,
+span.profile-page-tab-title {
   position: absolute;
   width: 50%;
   height: 45px;
@@ -8,7 +8,7 @@ span.tab-title {
   vertical-align: middle;
 }
 
-span.tab-title {
+span.profile-page-tab-title {
   text-align: center;
   font-size: 18px;
   padding-top: 10px;
@@ -16,7 +16,7 @@ span.tab-title {
   border-top: 2px lightgray solid;
 }
 
-input.tabs {
+input.profile-page-tabs {
   cursor: pointer;
   opacity: 0;
   z-index: 99;
@@ -36,8 +36,8 @@ input.tabs {
   border-left: 2px lightgray solid;
 }
 
-.tabs:hover + span,
-.tabs:checked + span {
+.profile-page-tabs:hover + span,
+.profile-page-tabs:checked + span {
   color: #5d0096;
   border-bottom: 2px solid #5d0096;
   font-weight: bold;
