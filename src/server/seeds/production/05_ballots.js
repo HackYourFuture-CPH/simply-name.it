@@ -91,7 +91,7 @@ exports.seed = function (knex) {
         },
         {
           boardId: 2,
-          userId: 75,
+          userId: 95,
           candidateId: 3,
           rank: 3,
         },
