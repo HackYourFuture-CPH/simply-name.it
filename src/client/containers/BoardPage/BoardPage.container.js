@@ -5,6 +5,7 @@ import MemberBoardPage from './MemberBoardPage';
 import { useBoard } from './BoardProvider';
 import { useUser } from '../../firebase/UserContext';
 import { useParams } from 'react-router-dom';
+import { getAllMembersOfBoard } from './GetAllMembersOfBoard';
 
 export default function BoardPage() {
   const [errorCode, setErrorCode] = useState(null);
@@ -25,6 +26,8 @@ export default function BoardPage() {
             const today = new Date();
             return today > deadlineDate;
           };
+          const result = await getAllMembersOfBoard(userId, boardId);
+          apiData[0].members = result;
           setBoardInfo(apiData[0]);
           setIsLoading(false);
         } else {

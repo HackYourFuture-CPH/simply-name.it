@@ -42,7 +42,11 @@ export default function MemberBoardPage() {
             buttonLabel="Members"
           />
         </div>
-        <MembersModal show={showModal} close={closeModal} members={members} />
+        <MembersModal
+          show={showModal}
+          close={closeModal}
+          members={boardInfo.members}
+        />
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="candidate-card-component-member">

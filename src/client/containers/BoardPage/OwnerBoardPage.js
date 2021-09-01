@@ -43,7 +43,11 @@ export default function OwnerBoardPage() {
             buttonLabel="Members"
           />
         </div>
-        <MembersModal show={showModal} close={closeModal} members={members} />
+        <MembersModal
+          show={showModal}
+          close={closeModal}
+          members={boardInfo.members}
+        />
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="Input-component">
