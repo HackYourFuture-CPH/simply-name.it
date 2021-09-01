@@ -55,7 +55,7 @@ export default function CreateBoard() {
   };
 
   return (
-    <div className="board-container">
+    <div className="new-board-container">
       {showAddMembers && (
         <AddMembers
           members={members}
@@ -69,7 +69,7 @@ export default function CreateBoard() {
           <ArrowButton onClick={onArrowButtonClick} color="black" />
           <PageTitle title="New board" variant="black-large" />
           <label>Name</label>
-          <div className="input-name-container">
+          <div className="new-board-input-name-container">
             <InputComponent
               placeholder="Board Name"
               borderShape="round"
@@ -81,7 +81,7 @@ export default function CreateBoard() {
             />
           </div>
           <label>Deadline</label>
-          <div className="input-name-container">
+          <div className="new-board-input-name-container">
             <InputComponent
               type="datetime-local"
               placeholder="Date/Time"
@@ -93,7 +93,7 @@ export default function CreateBoard() {
               }}
             />
           </div>
-          <div className="drop-zone">
+          <div className="new-board-drop-zone">
             <Dropzone />
           </div>
           <GenericButton
@@ -119,7 +119,9 @@ export default function CreateBoard() {
             onClick={onCreateButtonClick}
           />
           {finalResponse && (
-            <p className="display-message">The board {boardName} created</p>
+            <p className="new-board-display-message">
+              The board {boardName} created
+            </p>
           )}
         </div>
       )}
