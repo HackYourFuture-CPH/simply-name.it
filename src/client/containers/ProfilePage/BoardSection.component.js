@@ -15,9 +15,9 @@ export default function BoardSection() {
   );
   const history = useHistory();
   return (
-    <div className="boards-cards-container">
+    <div className="profile-page-boards-cards-container">
       {onMyBoards && (
-        <div className="boards-distribution">
+        <div className="profile-page-boards-distribution">
           <NewBoard />
           {Array.isArray(myBoards) &&
             myBoards.map((board) => (

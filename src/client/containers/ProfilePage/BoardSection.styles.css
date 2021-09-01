@@ -1,12 +1,8 @@
-.boards-cards-container {
+.profile-page-boards-cards-container {
   width: 100%;
 }
 
-.existing-boards {
-  display: inline-flex;
-}
-
-.boards-distribution {
+.profile-page-boards-distribution {
   display: flex;
   width: 100%;
   justify-content: space-between;
