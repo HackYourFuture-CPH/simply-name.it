@@ -1,10 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Home } from './containers/Home/Home';
-import SignIn from './containers/SignIn';
-import SignUp from './containers/SignUp';
-import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
 import BoardProvider from './containers/BoardPage/BoardProvider';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
