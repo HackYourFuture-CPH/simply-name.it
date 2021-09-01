@@ -2,4 +2,4 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 
-export const Home = () => <Redirect to="/welcome" />;
+export const Home = () => <Redirect to="/profile" />;
