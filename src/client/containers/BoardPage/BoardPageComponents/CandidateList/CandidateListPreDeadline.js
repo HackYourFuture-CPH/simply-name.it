@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import { useCandidates } from '../../UseHooks/useCandidates';
+import { useCandidates } from '../../../UseHooks/useCandidates';
 import { useUpdateBallots } from './useUpdateBallots';
-import { CardItemDecorator } from '../../../components/CandidateCard/CandidateCardItem.component';
-import { candidateCardSorting } from '../../../components/CandidateCard/CandidateCardSorting';
+import { CardItemDecorator } from '../../../../components/CandidateCard/CandidateCardItem.component';
+import { candidateCardSorting } from '../../../../components/CandidateCard/CandidateCardSorting';
 import {
   DragAndSortAdapter,
   SortableItem,
-} from '../../DragAndSortAdapter/DragAndSortAdapter';
-import { onDragEnd } from '../../DragAndSortAdapter/OnDragEnd';
+} from '../../../DragAndSortAdapter/DragAndSortAdapter';
+import { onDragEnd } from '../../../DragAndSortAdapter/OnDragEnd';
 import PropTypes from 'prop-types';
 import { deleteCandidate } from './deleteCandidate';
-import { useBoard } from '../../BoardPage/BoardProvider';
-import { ApiError } from '../../../ErrorBoundary';
+import { useBoard } from '../../BoardProvider';
+import { ApiError } from '../../../../ErrorBoundary';
+import { useUser } from '../../../../firebase/UserContext';
 
-export default function CandidateListPreDeadline({
-  userId,
-  boardId,
-  displayDelete,
-}) {
-  const { candidates, setCandidates } = useCandidates(userId, boardId);
+export default function CandidateListPreDeadline({ displayDelete }) {
+  const { user } = useUser();
+  const userId = user[0].id;
+  const { boardInfo } = useBoard();
+  const boardId = boardInfo.id;
+  const { candidates, setCandidates } = useCandidates();
   const [draggedInit, setDraggedInit] = useState(false);
-  const { setBoardLoading } = useBoard();
+  const { setIsCandidateLoading } = useBoard();
   // eslint-disable-next-line no-unused-vars
   const [deleteError, setDeleteError] = useState(null);
 
@@ -36,7 +37,7 @@ export default function CandidateListPreDeadline({
   const handleDelete = async (candidateId) => {
     try {
       await deleteCandidate(userId, boardId, candidateId);
-      setBoardLoading(true);
+      setIsCandidateLoading(true);
     } catch (err) {
       setDeleteError(() => {
         throw new ApiError(err.message, err.statusCode);
@@ -45,7 +46,7 @@ export default function CandidateListPreDeadline({
   };
 
   return (
-    <div className="CandidateCard-component">
+    <div className="candidate-card-component">
       <DragAndSortAdapter
         onDragEndHandler={onDragEnd(
           setCandidates,
@@ -73,8 +74,6 @@ export default function CandidateListPreDeadline({
 }
 
 CandidateListPreDeadline.propTypes = {
-  userId: PropTypes.number.isRequired,
-  boardId: PropTypes.number.isRequired,
   displayDelete: PropTypes.string,
 };
 
