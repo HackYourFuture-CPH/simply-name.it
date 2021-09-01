@@ -10,33 +10,33 @@
     no-repeat;
 }
 
-.arrow-button {
+.edit-board-arrow-button {
   margin-top: 1rem;
   margin-left: 1rem;
   padding-left: 5px;
   width: 5rem;
 }
 
-.page-title {
+.edit-board-page-title {
   margin: 13rem 0 13rem;
 }
 
-.main-container {
+.edit-board-main-container {
   margin-top: 4rem;
   line-height: 2rem;
   width: 23rem;
 }
 
-.label {
+.edit-board-label {
   font-weight: bold;
 }
 
-.browse {
+.edit-board-browse {
   margin: 2rem;
   height: 8rem;
 }
 
-.button-container {
+.edit-board-button-container {
   padding-top: 6rem;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 
-.update-message {
+.edit-board-update-message {
   text-align: center;
   color: orangered;
 }

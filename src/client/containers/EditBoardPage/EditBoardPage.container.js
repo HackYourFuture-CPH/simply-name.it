@@ -77,12 +77,12 @@ const EditedBoard = () => {
         <p>Loading.....</p>
       ) : (
         <div>
-          <div className="arrow-button">
+          <div className="edit-board-arrow-button">
             <ArrowButton color="black" onClick={backButton} />
           </div>
-          <div className="main-container">
-            <PageTitle className="page-title" title="Edit board" />
-            <label className="label">Name</label>
+          <div className="edit-board-main-container">
+            <PageTitle className="edit-board-page-title" title="Edit board" />
+            <label className="edit-board-label">Name</label>
             <Inputfield
               type="text"
               placeholder={name}
@@ -103,10 +103,10 @@ const EditedBoard = () => {
                 setDate(e);
               }}
             />
-            <div className="browse ">
+            <div className="edit-board-browse ">
               <Dropzone />
             </div>
-            <div className="button-container">
+            <div className="edit-board-button-container">
               <GenericButton
                 buttonLabel="Cancel"
                 buttonSize="medium"
@@ -128,7 +128,7 @@ const EditedBoard = () => {
           </div>
         </div>
       )}
-      {sucess && <p className="update-message">Board updated</p>}
+      {sucess && <p className="edit-board-update-message">Board updated</p>}
     </div>
   );
 };
