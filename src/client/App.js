@@ -7,11 +7,12 @@ import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
 import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
-import Header from './components/Navigation/Header';
+import BoardProvider from './containers/BoardPage/BoardProvider';
 import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
+import BoardPage from './containers/BoardPage/BoardPage.container';
 import ResultPage from './containers/ResultPage/ResultPage.container';
 
 function App() {
@@ -19,7 +20,6 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Switch>
         {/* Home page */}
         <Route exact path="/">
@@ -42,6 +42,20 @@ function App() {
         >
           <ProfilePage />
         </AuthenticatedRoute>
+        <Route
+          path="/board/:boardId"
+          // eslint-disable-next-line react/no-children-prop
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <BoardProvider>
+                <BoardPage />
+              </BoardProvider>
+            </AuthenticatedRoute>
+          }
+        />
         <Route
           exact
           path="/boards/new-board"

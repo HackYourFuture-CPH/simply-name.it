@@ -1,7 +1,7 @@
 import React from 'react';
 import './BoardAddCandidate.style.css';
-import Input from '../../../components/InputComponent/InputComponent';
-import AddButton from '../../../components/AddButton/AddButton.component';
+import Input from '../../../../components/InputComponent/InputComponent';
+import AddButton from '../../../../components/AddButton/AddButton.component';
 
 export default function BoardAddCandidatePostDeadline() {
   return (

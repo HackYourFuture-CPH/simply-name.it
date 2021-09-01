@@ -1,4 +1,4 @@
-import { ApiError } from '../../../ErrorBoundary';
+import { ApiError } from '../../../../ErrorBoundary';
 
 export async function deleteCandidate(userId, boardId, candidateId) {
   const response = await fetch(

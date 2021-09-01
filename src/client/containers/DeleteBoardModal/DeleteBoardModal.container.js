@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import './DeleteBoardModal.style.css';
 import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
-import GenericButton from '../../statcomponents/GenericButton/GenericButton.component';
+import GenericButton from '../../components/GenericButton/GenericButton.component';
 import { ApiError } from '../../ErrorBoundary';
+import { Link } from 'react-router-dom';
 
 const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
   // eslint-disable-next-line no-unused-vars
@@ -50,13 +51,15 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
               setModalVisibility(false);
             }}
           />
-          <GenericButton
-            buttonLabel="Delete"
-            buttonSize="medium"
-            buttonType="primary"
-            buttonDisabled={false}
-            onClick={() => deleteBoard(boardId)}
-          />
+          <Link to="/profile">
+            <GenericButton
+              buttonLabel="Delete"
+              buttonSize="medium"
+              buttonType="primary"
+              buttonDisabled={false}
+              onClick={() => deleteBoard(boardId)}
+            />
+          </Link>
         </div>
       </div>
     </div>
