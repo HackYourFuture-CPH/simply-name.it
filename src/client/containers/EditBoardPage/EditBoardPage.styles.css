@@ -1,4 +1,4 @@
-.editedBoard {
+.edit-Board {
   height: 100vh;
   max-width: 414px;
   padding: 10px;
@@ -41,4 +41,14 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+}
+
+.generic-button.medium-button,
+.arrow-button-black:hover {
+  cursor: pointer;
+}
+
+.update-message {
+  text-align: center;
+  color: orangered;
 }

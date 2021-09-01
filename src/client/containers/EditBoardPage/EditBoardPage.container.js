@@ -13,26 +13,25 @@ const EditedBoard = () => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [loading, setLoading] = useState(true);
-
+  const [sucess, setSucess] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const { boardId } = useParams();
   const history = useHistory();
   const { user } = useUser();
   const userId = user[0].id;
-
-  const boardInfoURL = `/api/users/${userId}/boards/${boardId}`;
+  const API_URL = `/api/users/${userId}/boards/${boardId}`;
   useEffect(() => {
     const getBoardInfo = async () => {
       try {
-        const apiResponse = await fetch(boardInfoURL);
+        const apiResponse = await fetch(API_URL);
+        if (!apiResponse.ok) {
+          throw new ApiError(apiResponse.statusText, apiResponse.status);
+        }
         const apiData = await apiResponse.json();
         setName(apiData[0].title);
         setDate(apiData[0].deadline.replace(/\..+/, ''));
         setLoading(false);
-        if (!apiResponse.ok) {
-          throw new ApiError(apiResponse.statusText, apiResponse.status);
-        }
       } catch (e) {
         setError(() => {
           // eslint-disable-next-line new-cap
@@ -44,7 +43,6 @@ const EditedBoard = () => {
     getBoardInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const API_URL = `/api/users/${userId}/boards/${boardId}`;
   const updateBoard = async () => {
     try {
       const response = await fetch(API_URL, {
@@ -58,7 +56,9 @@ const EditedBoard = () => {
           banner: '',
         }),
       });
-      if (!response.ok) {
+      if (response.ok) {
+        setSucess(true);
+      } else {
         throw new ApiError(response.statusText, response.status);
       }
     } catch (err) {
@@ -72,7 +72,7 @@ const EditedBoard = () => {
     history.goBack();
   }
   return (
-    <div className="editedBoard ">
+    <div className="edit-Board ">
       {loading ? (
         <p>Loading.....</p>
       ) : (
@@ -128,6 +128,7 @@ const EditedBoard = () => {
           </div>
         </div>
       )}
+      {sucess && <p className="update-message">Board updated</p>}
     </div>
   );
 };
