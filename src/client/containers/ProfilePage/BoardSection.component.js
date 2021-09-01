@@ -27,7 +27,7 @@ export default function BoardSection() {
                 boardTitle={board.title}
                 key={board.id}
                 onClick={() => {
-                  history.push(`users/${userId}/boards/${board.id}`);
+                  history.push(`/boards/${board.id}`);
                 }}
               >
                 <DropDownMenuMyBoards board={board} />
