@@ -49,7 +49,7 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/2/boards/created`);
+    const response = await fetch(` /api/users/${userId}/boards/created`);
     const data = await response.json();
     setMyBoards(data);
   };
