@@ -25,6 +25,21 @@ exports.seed = function (knex) {
           userId: 4,
           role: 'basic',
         },
+        {
+          boardId: 2,
+          userId: 95,
+          role: 'owner',
+        },
+        {
+          boardId: 2,
+          userId: 75,
+          role: 'basic',
+        },
+        {
+          boardId: 2,
+          userId: 85,
+          role: 'basic',
+        },
       ]);
     });
 };
