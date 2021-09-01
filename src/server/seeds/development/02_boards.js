@@ -15,7 +15,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          creatorId: 95,
+          creatorId: 2,
           createdOn: '2021-08-01 22:30:00',
           title: 'Puppy name',
           deadline: '2021-08-31 00:00:00',
