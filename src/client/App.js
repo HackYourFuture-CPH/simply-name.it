@@ -41,6 +41,19 @@ function App() {
           <ProfilePage />
         </AuthenticatedRoute>
         <Route
+          exact
+          path="/boards/new-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <CreateBoard />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
           path="/boards/:boardId"
           // eslint-disable-next-line react/no-children-prop
           children={
@@ -54,18 +67,7 @@ function App() {
             </AuthenticatedRoute>
           }
         />
-        <Route
-          exact
-          path="/boards/new-board"
-          children={
-            <AuthenticatedRoute
-              isAuthenticated={isAuthenticated}
-              isLoading={isLoading}
-            >
-              <CreateBoard />
-            </AuthenticatedRoute>
-          }
-        />
+
         <Route
           exact
           path="/boards/:boardId/results"
