@@ -22,7 +22,7 @@ function AuthenticatedRoute({ children, isAuthenticated, isLoading }) {
           ) : (
             <Redirect
               to={{
-                pathname: '/welcome',
+                pathname: '/',
                 state: { from: location },
               }}
             />
