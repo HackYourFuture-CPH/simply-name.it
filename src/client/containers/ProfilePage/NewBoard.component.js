@@ -7,7 +7,7 @@ export default function NewBoard() {
   const history = useHistory();
   return (
     <div className="board-container">
-      <div className="add-new-board">
+      <div className="board-content-container add-new-board">
         <div className="create-new-board-title">New board</div>
         <div className="add-board-container">
           <button

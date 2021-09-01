@@ -15,7 +15,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton.component';
 import UserProfilePicture from '../../components/UserProfilePicture/UserProfilePicture.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
-import ApiError from '../../ErrorBoundary';
+import { ApiError } from '../../ErrorBoundary';
 
 export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
@@ -49,7 +49,7 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/${userId}/boards/created`);
+    const response = await fetch(` /api/users/2/boards/created`);
     const data = await response.json();
     setMyBoards(data);
   };
