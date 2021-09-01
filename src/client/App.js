@@ -23,8 +23,14 @@ function App() {
       <Switch>
         {/* Home page */}
         <Route exact path="/">
-          <Welcome isAuthenticated={isAuthenticated} />
+          <Home />
         </Route>
+        {/* Anonymous pages */}
+        <SignIn exact path="/sign-in" />
+        <SignUp exact path="/sign-up" />
+        <ResetPassword exact path="/reset-password" />
+        <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
+
         {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute
           exact
