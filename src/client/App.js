@@ -1,7 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import { Home } from './containers/Home/Home';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
@@ -12,6 +11,7 @@ import ProfilePage from './containers/ProfilePage/ProfilePage.container';
 import CreateBoard from './containers/CreateBoardPage/CreateBoardPage.container';
 import Welcome from './containers/WelcomePage/WelcomePage.container';
 import { useFirebase } from './firebase/FirebaseContext';
+import EditedBoard from './containers/EditBoardPage/EditBoardPage.container';
 import BoardPage from './containers/BoardPage/BoardPage.container';
 import ResultPage from './containers/ResultPage/ResultPage.container';
 
@@ -25,12 +25,10 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-
         {/* Anonymous pages */}
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-
         <Welcome exact path="/welcome" isAuthenticated={isAuthenticated} />
 
         {/* All routes below are authenticated routes - a user must login first */}
@@ -77,6 +75,18 @@ function App() {
               isLoading={isLoading}
             >
               <ResultPage />
+            </AuthenticatedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/boards/:boardId/edit-board"
+          children={
+            <AuthenticatedRoute
+              isAuthenticated={isAuthenticated}
+              isLoading={isLoading}
+            >
+              <EditedBoard />
             </AuthenticatedRoute>
           }
         />
