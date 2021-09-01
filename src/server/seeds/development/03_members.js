@@ -27,17 +27,17 @@ exports.seed = function (knex) {
         },
         {
           boardId: 2,
-          userId: 95,
+          userId: 5,
           role: 'owner',
         },
         {
           boardId: 2,
-          userId: 75,
+          userId: 1,
           role: 'basic',
         },
         {
           boardId: 2,
-          userId: 85,
+          userId: 2,
           role: 'basic',
         },
       ]);
