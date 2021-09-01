@@ -1,0 +1,22 @@
+.add-new-board {
+  background-color: lightgray;
+}
+
+.create-new-board-title {
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.add-board-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-board-button {
+  background: transparent;
+  color: #fff;
+  font-size: 60px;
+  border: none;
+}
