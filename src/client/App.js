@@ -41,7 +41,7 @@ function App() {
           <ProfilePage />
         </AuthenticatedRoute>
         <Route
-          path="/board/:boardId"
+          path="/boards/:boardId"
           // eslint-disable-next-line react/no-children-prop
           children={
             <AuthenticatedRoute
