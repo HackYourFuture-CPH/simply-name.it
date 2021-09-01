@@ -23,6 +23,24 @@ exports.seed = function (knex) {
           name: 'Balthromaw',
           isBlocked: false,
         },
+        {
+          id: 4,
+          boardId: 2,
+          name: 'Guacamole',
+          isBlocked: false,
+        },
+        {
+          id: 5,
+          boardId: 2,
+          name: 'Thor',
+          isBlocked: false,
+        },
+        {
+          id: 6,
+          boardId: 2,
+          name: 'Hulk',
+          isBlocked: false,
+        },
       ]);
     });
 };
