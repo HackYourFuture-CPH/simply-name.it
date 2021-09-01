@@ -1,7 +1,7 @@
 .add-members-container {
   width: 414px;
   height: 739px;
-  border: solid 1px grey;
+  border-right: solid 1px grey;
 }
 
 .arrow-button {
@@ -35,7 +35,13 @@
   justify-content: space-between;
   width: 80%;
   margin: auto;
-  padding-top: 5px;
+  padding-top: 15px;
+}
+
+.users-list-item p {
+  inline-size: 150px;
+  overflow: hidden;
+  text-align: center;
 }
 
 .nothing-found-text,
