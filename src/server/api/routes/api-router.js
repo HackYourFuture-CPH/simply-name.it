@@ -34,7 +34,7 @@ router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Application routes
 // Use authentication for router when global fetch is implemented
-// router.use(authenticate);
+router.use(authenticate);
 router.use('/users', usersRouter);
 
 module.exports = router;
