@@ -9,7 +9,6 @@ import CandidateListPreDeadline from './BoardPageComponents/CandidateList/Candid
 import ResultButtonPostDeadline from './ResultButton/ResultButtonPostDeadline.container';
 import ResultButtonPreDeadline from './ResultButton/ResultButtonPreDeadline.container';
 import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
-import members from '../../components/ModalViewComponent/membersData.json';
 
 export default function MemberBoardPage() {
   const { boardInfo } = useBoard();
@@ -42,7 +41,11 @@ export default function MemberBoardPage() {
             buttonLabel="Members"
           />
         </div>
-        <MembersModal show={showModal} close={closeModal} members={members} />
+        <MembersModal
+          show={showModal}
+          close={closeModal}
+          members={boardInfo.members}
+        />
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="candidate-card-component-member">

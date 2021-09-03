@@ -3,7 +3,6 @@ import './BoardPage.style.css';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import MembersModal from '../../components/ModalViewComponent/MembersModal.component';
-import members from '../../components/ModalViewComponent/membersData.json';
 import CandidateListPreDeadline from './BoardPageComponents/CandidateList/CandidateListPreDeadline';
 import CandidateListPostDeadline from './BoardPageComponents/CandidateList/CandidateListPostDeadline';
 import { useBoard } from './BoardProvider';
@@ -43,7 +42,11 @@ export default function OwnerBoardPage() {
             buttonLabel="Members"
           />
         </div>
-        <MembersModal show={showModal} close={closeModal} members={members} />
+        <MembersModal
+          show={showModal}
+          close={closeModal}
+          members={boardInfo.members}
+        />
         {boardInfo.hasPassedDeadline() ? (
           <div>
             <div className="Input-component">
