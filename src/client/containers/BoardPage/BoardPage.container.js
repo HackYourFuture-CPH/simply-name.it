@@ -5,9 +5,9 @@ import MemberBoardPage from './MemberBoardPage';
 import { useBoard } from './BoardProvider';
 import { useUser } from '../../firebase/UserContext';
 import { useParams } from 'react-router-dom';
+import { fetchFromDb } from '../fetchMethod/fetch';
 
 export default function BoardPage() {
-  const [errorCode, setErrorCode] = useState(null);
   const { boardInfo, setBoardInfo } = useBoard();
   const { boardId } = useParams();
   const { user } = useUser();
@@ -15,27 +15,15 @@ export default function BoardPage() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchingBoardApi = async () => {
-      const API_URL = `/api/users/${userId}/boards/${boardId}`;
-      try {
-        const apiResponse = await fetch(API_URL);
-        if (apiResponse.ok) {
-          const apiData = await apiResponse.json();
-          apiData[0].hasPassedDeadline = function () {
-            const deadlineDate = new Date(this.deadline);
-            const today = new Date();
-            return today > deadlineDate;
-          };
-          setBoardInfo(apiData[0]);
-          setIsLoading(false);
-        } else {
-          const errorResult = await apiResponse.json();
-          if (errorResult.error.startsWith('Incorrect entry Error')) {
-            setErrorCode('no_such_board');
-          }
-        }
-      } catch (error) {
-        throw new Error(error);
-      }
+      const API_URL = `${userId}/boards/${boardId}`;
+      const apiData = await fetchFromDb(API_URL, 'get');
+      apiData[0].hasPassedDeadline = function () {
+        const deadlineDate = new Date(apiData[0].deadline);
+        const today = new Date();
+        return today > deadlineDate;
+      };
+      setBoardInfo(apiData[0]);
+      setIsLoading(false);
     };
     (async () => {
       await fetchingBoardApi();
@@ -43,29 +31,16 @@ export default function BoardPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (errorCode !== null) {
-    switch (errorCode) {
-      case 'no_such_board':
-        return (
-          <div>
-            No such board exists or you do not have access to this board.
-          </div>
-        );
-      default:
-        return <div>Unknown error occurred while fetching board</div>;
-    }
-  } else {
-    if (isLoading) {
-      return <div>LOADING....</div>;
-    }
-    return userId === boardInfo.creatorId ? (
-      <>
-        <OwnerBoardPage />
-      </>
-    ) : (
-      <>
-        <MemberBoardPage />
-      </>
-    );
+  if (isLoading) {
+    return <div>LOADING....</div>;
   }
+  return userId === boardInfo.creatorId ? (
+    <>
+      <OwnerBoardPage />
+    </>
+  ) : (
+    <>
+      <MemberBoardPage />
+    </>
+  );
 }
