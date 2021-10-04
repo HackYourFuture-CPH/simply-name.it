@@ -1,4 +1,5 @@
 import postData from './PostData';
+import { fetchFromDb } from '../../../fetchMethod/fetch';
 
 export default async function AddCandidate(
   newCandidate,
@@ -7,11 +8,19 @@ export default async function AddCandidate(
   setIsCandidateLoading,
 ) {
   try {
-    await postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
+    const candidateObject = {
       name: newCandidate.name,
-    });
-    setIsCandidateLoading(true);
+    };
+    fetchFromDb(
+      `${userId}/boards/${boardId}/candidates`,
+      'post',
+      candidateObject,
+    ).then(() => setIsCandidateLoading(true));
+    /*     await postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
+      name: newCandidate.name,
+    }); */
   } catch (error) {
+    console.log('addcandidate error', error);
     throw new Error(error);
   }
 }
