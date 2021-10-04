@@ -1,4 +1,3 @@
-import postData from './PostData';
 import { fetchFromDb } from '../../../fetchMethod/fetch';
 
 export default async function AddCandidate(
