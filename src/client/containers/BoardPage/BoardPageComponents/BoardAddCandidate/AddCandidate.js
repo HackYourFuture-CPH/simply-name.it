@@ -16,9 +16,6 @@ export default async function AddCandidate(
       'post',
       candidateObject,
     ).then(() => setIsCandidateLoading(true));
-    /*     await postData(`/api/users/${userId}/boards/${boardId}/candidates`, {
-      name: newCandidate.name,
-    }); */
   } catch (error) {
     console.log('addcandidate error', error);
     throw new Error(error);
