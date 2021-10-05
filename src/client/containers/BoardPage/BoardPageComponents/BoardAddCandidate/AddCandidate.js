@@ -10,13 +10,13 @@ export default async function AddCandidate(
     const candidateObject = {
       name: newCandidate.name,
     };
-    fetchFromDb(
+    await fetchFromDb(
       `${userId}/boards/${boardId}/candidates`,
       'post',
       candidateObject,
-    ).then(() => setIsCandidateLoading(true));
+    );
+    setIsCandidateLoading(true);
   } catch (error) {
-    console.log('addcandidate error', error);
     throw new Error(error);
   }
 }
