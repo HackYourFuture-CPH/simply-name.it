@@ -24,6 +24,9 @@ export async function fetchFromDb(endpoint, fetchMethod, postBody = {}) {
   if (!response.ok) {
     throw new ApiError(response.statusText, response.status);
   }
-  const dbData = await response.json();
-  return dbData;
+  if (fetchMethod === 'get') {
+    const dbData = await response.json();
+    return dbData;
+  }
+  return response;
 }
