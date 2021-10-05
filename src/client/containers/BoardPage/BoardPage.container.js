@@ -15,8 +15,7 @@ export default function BoardPage() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchingBoardApi = async () => {
-      const API_URL = `${userId}/boards/${boardId}`;
-      const apiData = await fetchFromDb(API_URL, 'get');
+      const apiData = await fetchFromDb(`${userId}/boards/${boardId}`, 'get');
       apiData[0].hasPassedDeadline = function () {
         const deadlineDate = new Date(apiData[0].deadline);
         const today = new Date();
