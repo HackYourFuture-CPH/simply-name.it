@@ -16,6 +16,7 @@ import UserProfilePicture from '../../components/UserProfilePicture/UserProfileP
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
 import { ApiError } from '../../ErrorBoundary';
+import { fetchFromDb } from '../fetchMethod/fetch';
 
 export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
@@ -36,11 +37,8 @@ export default function ProfilePage() {
 
   const getJoinedBoards = async () => {
     try {
-      // delete /api before merge i leave for now to test it
-      const response = await fetch(` /api/users/${userId}/boards/?role=member`);
-      const data = await response.json();
+      const data = await fetchFromDb(`${userId}/boards/?role=member`, 'get');
       setJoinedBoards(data);
-      //   }
     } catch (err) {
       setError(() => {
         throw new ApiError(err.message, err.statusCode);
@@ -49,8 +47,7 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/${userId}/boards/created`);
-    const data = await response.json();
+    const data = await fetchFromDb(`${userId}/boards/created`, 'get');
     setMyBoards(data);
   };
   useEffect(() => {
