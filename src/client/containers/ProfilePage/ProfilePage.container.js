@@ -47,8 +47,14 @@ export default function ProfilePage() {
   };
 
   const getMyBoards = async () => {
-    const data = await fetchFromDb(`${userId}/boards/created`, 'get');
-    setMyBoards(data);
+    try {
+      const data = await fetchFromDb(`${userId}/boards/created`, 'get');
+      setMyBoards(data);
+    } catch (err) {
+      setError(() => {
+        throw new ApiError(err.message, err.statusCode);
+      });
+    }
   };
   useEffect(() => {
     (async () => {
