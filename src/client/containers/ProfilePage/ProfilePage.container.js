@@ -25,9 +25,6 @@ export default function ProfilePage() {
   const [onMyBoards, setOnMyBoards] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
   const [clickedBoardInfo, setclickedBoardInfo] = useState();
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null);
-
   const history = useHistory();
   const { user } = useUser();
   const userData = user[0];
@@ -40,9 +37,7 @@ export default function ProfilePage() {
       const data = await fetchFromDb(`${userId}/boards/?role=member`, 'get');
       setJoinedBoards(data);
     } catch (err) {
-      setError(() => {
-        throw new ApiError(err.message, err.statusCode);
-      });
+      throw new ApiError(err.message, err.statusCode);
     }
   };
 
@@ -51,9 +46,7 @@ export default function ProfilePage() {
       const data = await fetchFromDb(`${userId}/boards/created`, 'get');
       setMyBoards(data);
     } catch (err) {
-      setError(() => {
-        throw new ApiError(err.message, err.statusCode);
-      });
+      throw new ApiError(err.message, err.statusCode);
     }
   };
   useEffect(() => {
