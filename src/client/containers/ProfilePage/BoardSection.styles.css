@@ -1,0 +1,10 @@
+.profile-page-boards-cards-container {
+  width: 100%;
+}
+
+.profile-page-boards-distribution {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

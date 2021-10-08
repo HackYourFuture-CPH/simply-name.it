@@ -95,9 +95,6 @@ const getBoardsByCreatorId = async (id) => {
       creatorId: id,
       isDeleted: false,
     });
-  if (boards.length === 0) {
-    throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
-  }
   return boards;
 };
 
@@ -111,11 +108,6 @@ const getBoardsByMemberId = async (id) => {
     .select('*')
     .where('members.userId', id)
     .whereNot('members.role', 'owner');
-
-  if (boards.length === 0) {
-    throw new IncorrectEntryError(`incorrect entry with the id of ${id}`);
-  }
-
   return boards;
 };
 

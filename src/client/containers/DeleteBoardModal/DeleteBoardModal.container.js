@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './DeleteBoardModal.style.css';
 import CloseButton from '../../components/CloseButton/CloseButton.component';
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import GenericButton from '../../components/GenericButton/GenericButton.component';
+import { ApiError } from '../../ErrorBoundary';
+import { Link } from 'react-router-dom';
 
-const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
-  const userId = 2;
-  const boardId = 1;
+const DeleteBoardModal = ({ boardInfo, setModalVisibility, userId }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
+  const boardId = boardInfo.id;
+
   const deleteBoard = async () => {
     const API_URL = `/api/users/${userId}/boards/${boardId}`;
     try {
-      await fetch(API_URL, { method: 'DELETE' });
+      const response = await fetch(API_URL, { method: 'DELETE' });
       // eslint-disable-next-line no-alert
-      alert('Data deleted');
-    } catch (error) {
-      throw new Error(error);
+      if (!response.ok) {
+        throw new ApiError(response.statusText, response.status);
+      }
+    } catch (err) {
+      setError(() => {
+        // eslint-disable-next-line new-cap
+        throw new ApiError(err.message, err.statusCode);
+      });
     }
   };
   return (
@@ -42,13 +51,15 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
               setModalVisibility(false);
             }}
           />
-          <GenericButton
-            buttonLabel="Delete"
-            buttonSize="medium"
-            buttonType="primary"
-            buttonDisabled={false}
-            onClick={() => deleteBoard(boardId)}
-          />
+          <Link to="/profile">
+            <GenericButton
+              buttonLabel="Delete"
+              buttonSize="medium"
+              buttonType="primary"
+              buttonDisabled={false}
+              onClick={() => deleteBoard(boardId)}
+            />
+          </Link>
         </div>
       </div>
     </div>
@@ -57,9 +68,11 @@ const DeleteBoardModal = ({ boardInfo, setModalVisibility }) => {
 
 DeleteBoardModal.propTypes = {
   boardInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
   setModalVisibility: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 export default DeleteBoardModal;

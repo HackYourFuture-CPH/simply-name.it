@@ -2,6 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
+// eslint-disable-next-line no-unused-vars
+const { authenticate } = require('../../middleware/auth');
+
 // Router imports
 
 const usersRouter = require('./users.router');
@@ -30,6 +33,8 @@ const swaggerDocument = swaggerJsDoc(swaggerOptions);
 router.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Application routes
+// Use authentication for router when global fetch is implemented
+router.use(authenticate);
 router.use('/users', usersRouter);
 
 module.exports = router;

@@ -77,6 +77,24 @@ exports.seed = function (knex) {
           candidateId: 3,
           rank: 1,
         },
+        {
+          boardId: 2,
+          userId: 2,
+          candidateId: 4,
+          rank: 1,
+        },
+        {
+          boardId: 2,
+          userId: 2,
+          candidateId: 5,
+          rank: 2,
+        },
+        {
+          boardId: 2,
+          userId: 2,
+          candidateId: 3,
+          rank: 3,
+        },
       ]);
     });
 };

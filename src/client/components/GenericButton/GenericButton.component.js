@@ -29,13 +29,14 @@ GenericButton.propTypes = {
   buttonSize: PropTypes.oneOf(['large', 'medium', 'small']),
   buttonType: PropTypes.oneOf(['primary', 'secondary']),
   buttonDisabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 GenericButton.defaultProps = {
   buttonSize: 'medium',
   buttonType: 'primary',
   buttonDisabled: false,
+  onClick: undefined,
 };
 
 export default GenericButton;

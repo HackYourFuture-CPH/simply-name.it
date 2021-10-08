@@ -1,0 +1,54 @@
+.add-members-container {
+  width: 414px;
+  height: 739px;
+  border-right: solid 1px grey;
+}
+
+.arrow-button {
+  margin-top: 20px;
+}
+
+.add-members-title {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+}
+
+.members-search-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.users-list-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.users-list-item,
+.nothing-found-text,
+.loading-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.users-list-item p {
+  inline-size: 150px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.nothing-found-text,
+.loading-text {
+  color: gray;
+}
+
+.users-list-item button {
+  margin-top: 5px;
+}
