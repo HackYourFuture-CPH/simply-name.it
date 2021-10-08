@@ -16,6 +16,7 @@ import UserProfilePicture from '../../components/UserProfilePicture/UserProfileP
 import PageTitle from '../../components/PageTitle/PageTitle.component';
 import DeleteBoardModal from '../DeleteBoardModal/DeleteBoardModal.container';
 import { ApiError } from '../../ErrorBoundary';
+import { fetchFromDb } from '../fetchMethod/fetch';
 
 export default function ProfilePage() {
   const [visible, setVisible] = useState(false);
@@ -24,9 +25,6 @@ export default function ProfilePage() {
   const [onMyBoards, setOnMyBoards] = useState(true);
   const [modalVisibility, setModalVisibility] = useState(false);
   const [clickedBoardInfo, setclickedBoardInfo] = useState();
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(null);
-
   const history = useHistory();
   const { user } = useUser();
   const userData = user[0];
@@ -36,22 +34,20 @@ export default function ProfilePage() {
 
   const getJoinedBoards = async () => {
     try {
-      // delete /api before merge i leave for now to test it
-      const response = await fetch(` /api/users/${userId}/boards/?role=member`);
-      const data = await response.json();
+      const data = await fetchFromDb(`${userId}/boards/?role=member`, 'get');
       setJoinedBoards(data);
-      //   }
     } catch (err) {
-      setError(() => {
-        throw new ApiError(err.message, err.statusCode);
-      });
+      throw new ApiError(err.message, err.statusCode);
     }
   };
 
   const getMyBoards = async () => {
-    const response = await fetch(` /api/users/${userId}/boards/created`);
-    const data = await response.json();
-    setMyBoards(data);
+    try {
+      const data = await fetchFromDb(`${userId}/boards/created`, 'get');
+      setMyBoards(data);
+    } catch (err) {
+      throw new ApiError(err.message, err.statusCode);
+    }
   };
   useEffect(() => {
     (async () => {
