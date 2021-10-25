@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useUser } from '../../firebase/UserContext';
 import { useBoard } from '../BoardPage/BoardProvider';
 import { ApiError } from '../../ErrorBoundary';
+import { fetchFromDb } from '../fetchMethod/fetch';
 
 export function useCandidates() {
   const { user } = useUser();
@@ -13,11 +14,12 @@ export function useCandidates() {
   useEffect(() => {
     if (!isCandidateLoading) return;
     (async () => {
-      const response = await fetch(
-        `/api/users/${userId}/boards/${boardId}/candidates`,
-      );
-      if (response.ok) {
-        const candidatesData = await response.json();
+      try {
+        const candidatesData = await fetchFromDb(
+          `${userId}/boards/${boardId}/candidates`,
+          'get',
+        );
+
         setCandidates(
           candidatesData.map((candidate) => {
             return {
@@ -27,8 +29,8 @@ export function useCandidates() {
           }),
         );
         setIsCandidateLoading(false);
-      } else {
-        throw new ApiError(response.statusText, response.status);
+      } catch (error) {
+        throw new ApiError(error.message, error.statusCode);
       }
     })();
   }, [userId, boardId, setIsCandidateLoading, isCandidateLoading]);

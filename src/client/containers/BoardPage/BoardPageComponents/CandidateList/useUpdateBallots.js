@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { fetchFromDb } from '../../../fetchMethod/fetch';
 
 export async function useUpdateBallots(
   userId,
@@ -9,14 +10,11 @@ export async function useUpdateBallots(
   useEffect(() => {
     if (!draggedInit) return;
     (async () => {
-      await fetch(`/api/users/${userId}/boards/${boardId}/ballots`, {
-        method: 'PUT',
-        mode: 'cors',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(candidates),
-      });
+      await fetchFromDb(
+        `${userId}/boards/${boardId}/ballots`,
+        'put',
+        candidates,
+      );
     })();
   }, [userId, boardId, candidates, draggedInit]);
 }
