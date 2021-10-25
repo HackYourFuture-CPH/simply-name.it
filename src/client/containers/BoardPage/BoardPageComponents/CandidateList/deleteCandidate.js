@@ -1,18 +1,10 @@
-import { ApiError } from '../../../../ErrorBoundary';
+import { fetchFromDb } from '../../../fetchMethod/fetch';
 
 export async function deleteCandidate(userId, boardId, candidateId) {
-  const response = await fetch(
-    `/api/users/${userId}/boards/${boardId}/candidates/${candidateId}`,
-    {
-      method: 'DELETE',
-      mode: 'cors',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    },
+  const response = await fetchFromDb(
+    `${userId}/boards/${boardId}/candidates/${candidateId}`,
+    'delete',
   );
-  if (!response.ok) {
-    throw new ApiError(response.statusText, response.status);
-  }
+
   return response;
 }
