@@ -122,7 +122,7 @@ _Add here the DB Model Diagram_ - Use https://dbdiagram.io/d/60db3d75dd6a5971482
 ### 💻 Working with code
 
 - Take a story/task by assigning to you on the storyboard. Remember to update the status of your work when needed: in progress, blocked, waiting for review, etc.
-- Always create your branches from the develop branch. Do not interact with the master branch.
+- Always create your branches from the develop branch. Do not interact with the main branch.
 - ALWAYS run code before a PR is made
 - Remember to go through the checklist for the PRs, and to make it easier for others, try to be as pedagogical as possible in your PRs by fx. adding pictures of your changes.
 - Test, test, test. Check the console before commiting, are there any errors/warnings?
@@ -289,7 +289,7 @@ Generally components should be styled using a dedicated stylesheet per component
 
 ### 👍🏽 Code best practices
 
-Follow these best practices for coding: [HERE](https://github.com/HackYourFuture-CPH/curriculum/blob/master/review/review-checklist.md)
+Follow these best practices for coding: [HERE](https://github.com/HackYourFuture-CPH/curriculum/blob/main/review/review-checklist.md)
 
 This can be used as a checklist for every PR you make. Go through the list and see if you have used all the best practices
 
